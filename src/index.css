@@ -1,13 +1,119 @@
+@media (min-width: 376px) {
+  #tools-flex {
+    flex-direction: column;
+    gap: 40px;
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 576px) {
+  #tools-flex {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  #tools-flex {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+  #tools-flex {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  #tools-flex {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1400px) {
+  #tools-flex {
+    flex-direction: row;
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.navbar {
+  box-shadow: none !important;
+}
+
+text-align {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.bg-image {
+  height: inherit;
+}
+
+.image-cards {
+  max-width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  max-width: fit-content;
+}
+
+#cluster-container {
+  max-width: -webkit-fill-available;
+}
+
+#cluster-img {
+  width: -webkit-fill-available;
+}
+
+#tools-flex {
+  padding: 0.75rem;
+}
+
+#news-underline {
+  padding-top: 2rem;
+  border-bottom: 1px solid black;
+}
+
+#logo-img {
+  max-width: 300px;
+}
+
+#carousel-nav {
+  margin-top: -111px;
+  z-index: -1;
+}
+
+#greyscale-img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+#footer-bg {
+  background-color: #1e1e1e;
+}
+
+.css-18sg6k4-MuiPaper-root-MuiDrawer-paper {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  height: 450px !important;
+}
+
+.menu-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  height: -webkit-fill-available;
+  text-align: center;
 }
