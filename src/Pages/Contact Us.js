@@ -20,7 +20,7 @@ import Contactcol from "../Components/Contactcol";
 
 const Contactus = () => {
   return (
-    <div className="App">
+    <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
         <MDBContainer>
           <MDBRow className="pt-0 pb-5">

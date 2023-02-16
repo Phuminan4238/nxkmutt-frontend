@@ -13,7 +13,7 @@ import Researchaccordion from "../Components/ResearchAccordion";
 
 const Research = () => {
   return (
-    <div className="App">
+    <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
         <MDBContainer>
           <MDBRow className="pt-0 pb-5">
