@@ -87,13 +87,19 @@ text-align {
 }
 
 #logo-img {
-  max-width: 300px;
+  max-width: -webkit-fill-available;
+  height: 80px;
 }
 
-#carousel-nav {
+#logokmutt-img {
+  max-width: -webkit-fill-available;
+  height: 80px;
+}
+
+/* #carousel-nav {
   margin-top: -111px;
   z-index: -1;
-}
+} */
 
 #greyscale-img {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
@@ -116,4 +122,9 @@ text-align {
   justify-content: space-evenly;
   height: -webkit-fill-available;
   text-align: center;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }

@@ -17,8 +17,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 import { Container, StepIcon, TableRow, Stack } from "@mui/material";
-/* React Router */
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const drawerWidth = 240;
 

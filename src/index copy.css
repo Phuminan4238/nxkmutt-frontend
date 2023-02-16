@@ -70,7 +70,7 @@ text-align {
 }
 
 #cluster-container {
-  max-width: -webkit-fill-available;
+  max-width: -webkit-fit-content;
 }
 
 #cluster-img {

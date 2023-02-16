@@ -29,9 +29,9 @@ function Image() {
         <MDBCol md="8" className="p-0">
           <img src={clusterimg1} class="image-fluid" id="cluster-img" />
         </MDBCol>
-        <MDBCol className="d-flex p-5 bg-danger">
+        <MDBCol className="d-flex p-5" style={{ background: "#AE023E" }}>
           <div className="d-flex flex-column w-100">
-            <h3 className="text-white">
+            <h3 className="text-white fw-bold">
               Cognitive, Clinical &<br></br>
               Computational
               <br></br>
@@ -53,7 +53,7 @@ function ReverseImage() {
       <MDBRow className="p-0 ">
         <MDBCol className="d-flex p-5 bg-success">
           <div className="d-flex flex-column w-100">
-            <h3 className="text-white">
+            <h3 className="text-white fw-bold">
               Educational &<br></br>
               Neuroscience &<br></br>
               Neurodevelopment
@@ -80,7 +80,7 @@ function Image2() {
         </MDBCol>
         <MDBCol className="d-flex p-5 bg-primary">
           <div className="d-flex flex-column w-100">
-            <h3 className="text-white">
+            <h3 className="text-white fw-bold">
               Human Factors<br></br>
               Research & Decision &<br></br>
               Neuroscience
@@ -101,7 +101,7 @@ function ReverseImage2() {
       <MDBRow className="p-0 ">
         <MDBCol className="d-flex p-5 bg-warning">
           <div className="d-flex flex-column w-100">
-            <h3 className="text-white">
+            <h3 className="text-white fw-bold">
               Pharmaceutical<br></br>
               Biology & <br></br>
               Neuropharmacology

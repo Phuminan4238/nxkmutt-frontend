@@ -6,19 +6,19 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import LanguageIcon from "@mui/icons-material/Language";
 import Container from "@mui/material/Container";
-import SearchIcon from "@mui/icons-material/Search";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import logo from "../Images/logo.png";
-import logored from "../Images/logo-red.png";
 
-const pages = ["TEAM MEMBER", "RESEARCH", "PUBLICATIONS"];
-const drawerWidth = 360;
+const pages = ["Products", "Pricing", "Blog"];
+const drawerWidth = 240;
 
-function ResponsiveAppBar() {
+function ResponsiveAppBarColor() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -39,60 +39,57 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar
-      style={{
-        background: "unset",
-        boxShadow: "unset",
-        borderBottom: "1px solid",
-        borderColor: "#000000",
-      }}
+      style={{ background: "unset", boxShadow: "unset" }}
       position="static"
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Toolbar disableGutters>
+          {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}> */}
+          {/* <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              <img src={logo} height="60" alt="" loading="lazy" />
+            </Typography> */}
+          {/* </Box> */}
+
           <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
             <Typography
               variant="h6"
               noWrap
-              sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+              sx={{ flexGrow: 1, marginTop: 2 }}
               component="div"
             >
-              <Link to="/">
-                <img src={logored} height="60" alt="" loading="lazy" />
-              </Link>
+              <img src={logo} height="60" alt="" loading="lazy" />
             </Typography>
-            {/* 👇️ Anchor link
-              <a href="https://google.com" target="_blank" rel="noreferrer">
-                <img
-                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
-                  alt="example"
-                />
-              </a> */}
           </Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexGrow: 0,
-              flexDirection: "initial",
-              gap: "3rem",
-            }}
-          >
-            <SearchIcon style={{ color: "#AF013E" }}></SearchIcon>
-            <LanguageIcon style={{ color: "#AF013E" }}></LanguageIcon>
+          <Box sx={{ flexGrow: 0, flexDirection: "row-reverse" }}>
             <Tooltip title="Open settings">
               <IconButton
-                color="#AF013E"
+                color="inherit"
                 onClick={handleOpenUserMenu}
                 sx={{ p: 0 }}
               >
-                <MenuIcon style={{ color: "#AF013E" }} />
+                <MenuIcon />
               </IconButton>
             </Tooltip>
             <Menu
-              // style={{ opacity: 0.7 }}
+              style={{ opacity: 0.7 }}
               sx={{
                 mt: "45px",
-
+                background: "unset",
                 width: drawerWidth,
                 flexShrink: 0,
                 "& .MuiDrawer-paper": {
@@ -115,13 +112,12 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem
-                  style={{ justifyContent: "center", width: "300px" }}
+                  style={{ justifyContent: "center" }}
                   key={page}
                   onClick={handleCloseUserMenu}
                   sx={{
                     ":hover": {
                       bgcolor: "#AE023E",
-                      opacity: "100%",
                       color: "white",
                     },
                     fontWeight: "bold",
@@ -155,4 +151,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default ResponsiveAppBarColor;

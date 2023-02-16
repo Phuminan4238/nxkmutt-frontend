@@ -1,52 +1,39 @@
 import React from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
+/* Routes */
+import { Route, Routes } from "react-router";
+/* MDBootstrap */
+import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 /* Material UI */
 import { Container } from "@mui/system";
 /* Components */
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Clusterimage from "./Components/Cluster";
-import Carousel from "./Components/Carousel";
-import Toolsimage from "./Components/Tools";
-import News from "./Components/News";
-import Team from "./Components/Team";
-import Collaborator from "./Components/Collaborator";
-import Student from "./Components/Student";
-import { Typography } from "@mui/material";
-import { Card } from "react-bootstrap";
-/* Routes */
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ResponsiveAppBar from "../Components/Nav";
+/* Components */
+import Clusterimage from "../Components/Cluster";
+import Carousel from "../Components/Carousel";
+import Toolsimage from "../Components/Tools";
+import News from "../Components/News";
+import Team from "../Components/Team";
+import Collaborator from "../Components/Collaborator";
+import Student from "../Components/Student";
+/* Pages */
+import Member from "./Team Member";
+import Research from "./Research";
+import Publications from "./Publications";
 
-function App() {
+function Home() {
   return (
-    <React.Fragment>
-      {/* Navbar */}
-      <Header />
+    <div className="App">
       {/* ******************/}
       <main>
         {/* Section Carousel */}
         <Carousel></Carousel>
         {/* ******************/}
-
         {/* Paragraph */}
         <section>
           <MDBContainer>
             <MDBRow className="pt-5 py-4">
               <div className="d-inline-flex p-2">
-                <h3 className="fw-bold">ABOUT US</h3>
+                <h3 className="fw-bold text-uppercase">Who are we</h3>
               </div>
               <div className="d-inline-flex px-5 py-5">
                 <h5 className="fw-normal ps-4">
@@ -64,7 +51,7 @@ function App() {
                 </h5>
               </div>
               <div className="d-inline-flex p-2">
-                <h3 className="fw-bold">RESEARCH CLUSTER</h3>
+                <h3 className="fw-bold text-uppercase">What we do</h3>
               </div>
             </MDBRow>
           </MDBContainer>{" "}
@@ -113,7 +100,7 @@ function App() {
         <MDBContainer>
           <MDBRow className="py-4">
             <div className="d-inline-flex p-2">
-              <h3 className="fw-bold">TEAM</h3>
+              <h3 className="fw-bold text-uppercase">Our Brain Army</h3>
             </div>
           </MDBRow>
         </MDBContainer>
@@ -124,7 +111,7 @@ function App() {
         <MDBContainer>
           <MDBRow className="py-4">
             <div className="d-inline-flex p-2">
-              <h3 className="fw-bold">COLLABORATORS</h3>
+              <h3 className="fw-bold text-uppercase">Collaborators</h3>
             </div>
           </MDBRow>
         </MDBContainer>
@@ -135,7 +122,9 @@ function App() {
         <MDBContainer>
           <MDBRow className="pt-5 pb-4">
             <div className="d-inline-flex p-2">
-              <h3 className="fw-bold">STUDENT & RESEARCH ASSISTANTS</h3>
+              <h3 className="fw-bold text-uppercase">
+                Students & Research Assistants & Alumni{" "}
+              </h3>
             </div>
           </MDBRow>
         </MDBContainer>
@@ -143,9 +132,8 @@ function App() {
         <div className="pb-5"></div>
         {/* ******************** */}
       </main>
-      <Footer></Footer>
-    </React.Fragment>
+    </div>
   );
 }
 
-export default App;
+export default Home;
