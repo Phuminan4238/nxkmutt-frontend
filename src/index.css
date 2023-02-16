@@ -73,6 +73,11 @@ text-align {
   max-width: -webkit-fill-available;
 }
 
+#contact-container {
+  max-width: -webkit-fill-available;
+  max-height: 400px;
+}
+
 #cluster-img {
   width: -webkit-fill-available;
 }

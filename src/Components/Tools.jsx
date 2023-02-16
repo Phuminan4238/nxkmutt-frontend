@@ -48,7 +48,7 @@ function Image() {
         <MDBRipple className="bg-image" rippleTag="div" rippleColor="light">
           <img
             class="image-cards img-fluid"
-            src={vr2}
+            src={vr1}
             position="top"
             alt="..."
             style={{ height: 400 }}
@@ -57,7 +57,7 @@ function Image() {
         <MDBRipple className="bg-image" rippleTag="div" rippleColor="light">
           <img
             class="image-cards img-fluid"
-            src={vr2}
+            src={vr1}
             position="top"
             alt="..."
             style={{ height: 400 }}

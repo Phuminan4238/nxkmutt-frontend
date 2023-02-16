@@ -15,7 +15,14 @@ import { Link } from "react-router-dom";
 import logo from "../Images/logo.png";
 import logored from "../Images/logo-red.png";
 
-const pages = ["TEAM MEMBER", "RESEARCH", "PUBLICATIONS"];
+const pages = [
+  "TEAM MEMBER",
+  "RESEARCH",
+  "PUBLICATIONS",
+  "TOOLS SERVICE",
+  "NEWS ACTIVITIES",
+  "CONTACT US",
+];
 const drawerWidth = 360;
 
 function ResponsiveAppBar() {

@@ -13,13 +13,13 @@ import Membercol from "../Components/Membercol";
 /* Routes */
 import { Route, Routes } from "react-router";
 
-const Member2 = () => {
+const Member = () => {
   return (
     <div className="App">
       <section>
         <MDBContainer>
           <MDBRow className="pt-0 pb-0">
-            <MDBCol className="d-flex pt-5 pb-0 ps-5 pe-5">
+            <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h2 className="fw-bold text-uppercase text-black">Meet Our</h2>
                 <h1
@@ -49,7 +49,7 @@ const Member2 = () => {
         <MDBContainer>
           <MDBRow className="pt-5 py-4">
             <div className="d-inline-flex p-2">
-              <h3 className="fw-bold text-uppercase text-black ps-5">Member</h3>
+              <h4 className="fw-bold text-uppercase text-black ps-2">Member</h4>
             </div>
             <Memberimage></Memberimage>
             <Memberimage></Memberimage>
@@ -81,4 +81,4 @@ const Member2 = () => {
   );
 };
 
-export default Member2;
+export default Member;

@@ -29,7 +29,6 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              objectFit: "contain ",
               height: "250px",
               borderRadius: "0px",
             }}
@@ -60,7 +59,6 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              objectFit: "contain ",
               height: "250px",
               borderRadius: "0px",
             }}
@@ -88,11 +86,10 @@ function Image() {
         >
           <MDBCardImage
             className="rounded-0"
-            src={teamimg3}
+            src={teamimg4}
             position="top"
             alt="..."
             style={{
-              objectFit: "contain ",
               height: "250px",
               borderRadius: "0px",
             }}

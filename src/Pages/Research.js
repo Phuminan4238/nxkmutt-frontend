@@ -17,7 +17,7 @@ const Research = () => {
       <section>
         <MDBContainer>
           <MDBRow className="pt-0 pb-5">
-            <MDBCol className="d-flex pt-5 pb-0 ps-5 pe-5">
+            <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1 className="fw-bold text-uppercase text-black"> Research</h1>
                 <h2 className="fw-light text-uppercase">Clusters</h2>

@@ -4,14 +4,20 @@ import { Route, Routes } from "react-router";
 /* Material UI */
 import { Container } from "@mui/system";
 /* MDBootstrap */
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
+import PeopleIcon from "@mui/icons-material/People";
+import SchoolIcon from "@mui/icons-material/School";
+import BuildIcon from "@mui/icons-material/Build";
+import RedeemIcon from "@mui/icons-material/Redeem";
 /* Components */
 import Publicationimage from "../Components/Publicationimage";
 import Publicationreport from "../Components/Publicationreport";
+import Toolsimage from "../Components/Tools";
+import News from "../Components/News";
 
-const Publications = () => {
+const Newsactivities = () => {
   return (
     <div className="App">
       <section>
@@ -19,9 +25,18 @@ const Publications = () => {
           <MDBRow className="pt-0 pb-5">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-light text-uppercase text-black">Our</h1>
+                <h1 className="fw-bold text-uppercase text-black">News</h1>
                 <h1 className="fw-bold text-uppercase text-black">
-                  Publications
+                  <span
+                    style={{
+                      fontSize: "4rem",
+                      color: "#AE023E",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    &
+                  </span>{" "}
+                  Activities
                 </h1>
                 <div
                   className="d-flex justify-content-between mt-auto"
@@ -51,17 +66,12 @@ const Publications = () => {
               />
             </MDBCol>
           </MDBRow>
-          <MDBRow>
-            <MDBCol>
-              <p className="ms-5 text-uppercase">Filter By</p>
-            </MDBCol>
-          </MDBRow>
-          <Publicationimage></Publicationimage>
-          <Publicationreport></Publicationreport>
+          <News></News>
+          <News></News>
         </MDBContainer>
       </section>
     </div>
   );
 };
 
-export default Publications;
+export default Newsactivities;
