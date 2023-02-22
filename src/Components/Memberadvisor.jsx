@@ -36,8 +36,8 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              objectFit: "cover",
-              height: "250px",
+              height: "300px",
+              objectFit: "contain",
               borderRadius: "0px",
             }}
           />
@@ -65,8 +65,8 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              objectFit: "cover ",
-              height: "250px",
+              height: "300px",
+              objectFit: "contain",
               borderRadius: "0px",
             }}
           />
@@ -94,8 +94,8 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              objectFit: "cover ",
-              height: "250px",
+              height: "300px",
+              objectFit: "contain",
               borderRadius: "0px",
             }}
           />

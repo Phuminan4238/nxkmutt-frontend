@@ -6,7 +6,7 @@ import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 /* Material UI */
 import { Container } from "@mui/system";
 /* Components */
-import ResponsiveAppBar from "../Components/Nav";
+import ResponsiveAppBar from "../Components/AllNav";
 /* Components */
 import Clusterimage from "../Components/Cluster";
 import Carousel from "../Components/Carousel";

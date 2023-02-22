@@ -29,8 +29,9 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              height: "250px",
+              height: "300px",
               borderRadius: "0px",
+              objectFit: "contain",
             }}
           />
           <MDBCardBody>
@@ -59,7 +60,8 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              height: "250px",
+              height: "300px",
+              objectFit: "contain",
               borderRadius: "0px",
             }}
           />
@@ -90,7 +92,8 @@ function Image() {
             position="top"
             alt="..."
             style={{
-              height: "250px",
+              height: "300px",
+              objectFit: "contain",
               borderRadius: "0px",
             }}
           />

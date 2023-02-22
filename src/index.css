@@ -101,10 +101,10 @@ text-align {
   height: 80px;
 }
 
-/* #carousel-nav {
-  margin-top: -111px;
+#carousel-nav {
+  margin-top: -91px;
   z-index: -1;
-} */
+}
 
 #greyscale-img {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */

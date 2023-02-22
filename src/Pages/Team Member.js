@@ -49,30 +49,30 @@ const Member = () => {
         <MDBContainer>
           <MDBRow className="pt-5 py-4">
             <div className="d-inline-flex p-2">
-              <h4 className="fw-bold text-uppercase text-black ps-2">Member</h4>
+              <h3 className="fw-bold text-uppercase text-black ps-2">Member</h3>
             </div>
             <Memberimage></Memberimage>
             <Memberimage></Memberimage>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
                 Advisor
               </h3>
             </div>
+            <Memberadvisor></Memberadvisor>
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
+                Active Alumni
+              </h3>
+            </div>
+            <Memberalumni></Memberalumni>
+            <Memberalumni></Memberalumni>
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
+                Collaborator
+              </h3>
+            </div>
+            <Membercol></Membercol>
           </MDBRow>
-          <Memberadvisor></Memberadvisor>
-          <div className="d-inline-flex p-2 pt-5">
-            <h3 className="fw-bold text-uppercase text-black ps-5">
-              Active Alumni
-            </h3>
-          </div>
-          <Memberalumni></Memberalumni>
-          <Memberalumni></Memberalumni>
-          <div className="d-inline-flex p-2 pt-5">
-            <h3 className="fw-bold text-uppercase text-black ps-5">
-              Collaborator
-            </h3>
-          </div>
-          <Membercol></Membercol>
         </MDBContainer>
       </section>
       {/* <Membercluster></Membercluster> */}
