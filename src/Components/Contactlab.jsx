@@ -129,6 +129,6 @@ function Image() {
   );
 }
 
-export default function Contactcol() {
+export default function Contactlab() {
   return <Image />;
 }

@@ -31,7 +31,7 @@ function Profile() {
           className="d-flex align-content-center flex-wrap p-5 bg-danger"
         >
           <div className="d-flex align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3 className="text-white text-center ">Sirawaj Itthipuripat</h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -46,7 +46,7 @@ function Profile() {
           className="d-flex align-content-center flex-wrap p-5 bg-warning"
         >
           <div className="d-flex align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3 className="text-white text-center ">Kanda Lertladaluck</h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -69,7 +69,9 @@ function Profile2() {
           className="d-flex align-content-center flex-wrap p-5 bg-warning"
         >
           <div className="d-flex align-content-center flex-column w-100">
-            <h3 className="text-white text-center">Name Surname</h3>
+            <h3 className="text-white text-center">
+              Thitaporn Chaisilprungraung
+            </h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -83,7 +85,7 @@ function Profile2() {
           className="d-flex align-content-center flex-wrap p-5 bg-info"
         >
           <div className="d-flex align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3 className="text-white text-center ">Kejkaew Thanasuan</h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>

@@ -45,8 +45,8 @@ function Image() {
                     borderBottom: "1px solid black",
                     boxShadow: "unset",
                     borderRadius: "0px",
-                    // width: "400px",
-                    // height: "600px",
+                    width: "400px",
+                    height: "640px",
                   }}
                 >
                   <MDBCardImage
@@ -69,7 +69,11 @@ function Image() {
                       // objectFit: "contain",
                     }}
                   />
-                  <MDBCardBody>
+                  <MDBCardBody
+                  // style={{
+                  //   height: "100%",
+                  // }}
+                  >
                     <MDBCardTitle>
                       <h4
                         className="fw-bold text-center"

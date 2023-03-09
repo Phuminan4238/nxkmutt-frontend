@@ -24,7 +24,14 @@ import Publications from "./Publications";
 function Home() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
+  // const [hasDataFetched, setHasDataFetched] = useState(false);
+
   useEffect(() => {
+    // if (!hasDataFetched){
+    //   axios
+
+    // }
+
     fetch("https://10.35.29.186/api/contents?populate=id")
       .then((res) => res.json())
       .then((result) => {

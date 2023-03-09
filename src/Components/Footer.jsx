@@ -21,7 +21,7 @@ export default function App() {
                   {" "}
                   <img src={logokmutt} class="image-fluid" id="logokmutt-img" />
                 </div>
-                <div className="col-2">
+                <div className="col-2 pt-3">
                   {" "}
                   <img src={logo} class="image-fluid" id="logo-img" />
                 </div>
