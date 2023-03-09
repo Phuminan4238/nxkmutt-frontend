@@ -25,6 +25,7 @@ const pages = [
   "TOOLS SERVICE",
   "NEWS ACTIVITIES",
   "CONTACT US",
+  // "UPLOADFILE",
 ];
 const drawerWidth = 360;
 
@@ -124,7 +125,7 @@ export default function HomeNav(props) {
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  style={{ opacity: 0.7 }}
+                  // style={{ opacity: 0.7 }}
                   sx={{
                     mt: "60px",
                     left: "30px",
@@ -153,6 +154,7 @@ export default function HomeNav(props) {
                       style={{
                         justifyContent: "center",
                         width: "300px",
+                        height: "60px",
                         borderBottom: "1px solid gray",
                       }}
                       key={page}
@@ -160,7 +162,7 @@ export default function HomeNav(props) {
                       sx={{
                         ":hover": {
                           bgcolor: "#AE023E",
-                          opacity: "100%",
+                          opacity: "0.7",
                           color: "white",
                         },
                         fontWeight: "bold",

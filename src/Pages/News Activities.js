@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* Material UI */
@@ -18,6 +19,15 @@ import Toolsimage from "../Components/Tools";
 import News from "../Components/News";
 
 const Newsactivities = () => {
+  const [uploadfiles, setUploadfiles] = useState([]);
+
+  useEffect(() => {
+    fetch("http://10.35.29.186:1337/api/contents?populate=id")
+      .then((res) => res.json())
+      .then((result) => {
+        setUploadfiles(result.data);
+      });
+  });
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>

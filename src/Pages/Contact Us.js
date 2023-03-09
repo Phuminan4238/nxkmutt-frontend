@@ -39,6 +39,7 @@ const Contactus = () => {
             <MDBCol className="pt-5 pb-0 pe-5">
               <MDBRow>
                 <h4 className="fw-bold text-black ps-5">E-mail</h4>
+                <h4 className=" text-black ps-5 pt-2">nx.kmutt.@gmail.com</h4>
               </MDBRow>
               <MDBRow className="pt-5">
                 <h4 className="fw-bold text-black ps-5">Phone</h4>
@@ -49,7 +50,7 @@ const Contactus = () => {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        <div className="container">
+        <div className="container pt-5">
           <div className="d-inline-flex p-2 pt-5">
             <h3 className="fw-bold  text-black ">Social Media</h3>
           </div>

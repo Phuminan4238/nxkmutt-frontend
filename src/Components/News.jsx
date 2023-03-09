@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 import {
   MDBContainer,
   MDBCarousel,
@@ -17,81 +18,56 @@ import new1 from "../Images/new-1.png";
 import new2 from "../Images/new-2.png";
 
 function Post() {
-  return (
-    <MDBContainer className="py-4">
-      <MDBRow>
-        <MDBCol md="4">
-          <MDBRipple
-            className="bg-image hover-overlay shadow-1-strong rounded"
-            rippleTag="div"
-            rippleColor="light"
-          >
-            <img src={new1} className="w-100" />
-            <a href="#!">
-              <div
-                className="mask"
-                style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-              ></div>
-            </a>
-          </MDBRipple>
-        </MDBCol>
-        <MDBCol className="d-flex ps-4">
-          <div className="d-flex flex-column w-100">
-            <h4 className="fw-bold">Burapha University's Visit</h4>
-            <p className="mt-2">Burapha University's Visit</p>
-            <div
-              className="d-flex justify-content-between mt-auto"
-              id="news-underline"
-            >
-              <p>7.10.2022</p>
-              <p className="mb-0">Content Master</p>
-            </div>
-            <p href="#" className="link-danger pt-2 fw-bold">
-              Read more
-            </p>
-          </div>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
-}
+  const [uploadfiles, setUploadfiles] = useState([]);
 
-function Post2() {
+  useEffect(() => {
+    fetch("http://10.35.29.186:1337/api/events?populate=id")
+      .then((res) => res.json())
+      .then((result) => {
+        setUploadfiles(result.data);
+      });
+  });
   return (
     <MDBContainer className="py-4">
-      <MDBRow>
-        <MDBCol md="4">
-          <MDBRipple
-            className="bg-image hover-overlay shadow-1-strong rounded"
-            rippleTag="div"
-            rippleColor="light"
-          >
-            <img src={new2} className="w-100" />
-            <a href="#!">
-              <div
-                className="mask"
-                style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-              ></div>
-            </a>
-          </MDBRipple>
-        </MDBCol>
-        <MDBCol className="d-flex ps-4">
-          <div className="d-flex flex-column w-100">
-            <h4 className="fw-bold">Burapha University's Visit</h4>
-            <p className="mt-2">Burapha University's Visit</p>
-            <div
-              className="d-flex justify-content-between mt-auto"
-              id="news-underline"
+      {uploadfiles.map((member) => (
+        <MDBRow className="pb-4">
+          <MDBCol md="4">
+            <MDBRipple
+              className="bg-image hover-overlay shadow-1-strong rounded"
+              rippleTag="div"
+              rippleColor="light"
             >
-              <p>7.10.2022</p>
-              <p className="mb-0">Content Master</p>
+              <img src={new1} className="w-100" />
+              <a href="#!">
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
+                ></div>
+              </a>
+            </MDBRipple>
+          </MDBCol>
+          <MDBCol className="d-flex ps-4 xs:pt-4 sm:pt-2">
+            <div className="d-flex flex-column w-100">
+              <h4 className="fw-bold xs:text-lg sm:text-2xl">
+                {member.attributes.name_en}
+              </h4>
+              <p className="mt-2 xs:text-sm sm:text-lg">
+                {member.attributes.name_th}
+              </p>
+              <div
+                className="d-flex justify-content-between mt-auto xs:text-base pt-1 sm:text-lg pt-2"
+                id="news-underline"
+              >
+                <p> {member.attributes.createdAt}</p>
+                <p className="mb-0">Content Master</p>
+              </div>
+              <p href="#" className="pt-2 fw-bold" style={{ color: "#AE023E" }}>
+                Read more
+              </p>
             </div>
-            <p href="#" className="link-danger pt-2 fw-bold">
-              Read more
-            </p>
-          </div>
-        </MDBCol>
-      </MDBRow>
+          </MDBCol>
+        </MDBRow>
+      ))}
     </MDBContainer>
   );
 }
@@ -100,7 +76,6 @@ export default function News() {
   return (
     <>
       <Post />
-      <Post2 />
     </>
   );
 }

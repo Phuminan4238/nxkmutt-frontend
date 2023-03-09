@@ -20,11 +20,12 @@ import teamimg4 from "../Images/team-4.png";
 
 function Profile() {
   return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
+    <MDBContainer className="fluid p-0 xs:hidden sm:contents">
       <MDBRow className="p-0 ">
         <MDBCol md="3" className="p-0">
           <img src={teamimg1} class="image-fluid" id="cluster-img" />
         </MDBCol>
+
         <MDBCol
           md="3"
           className="d-flex align-content-center flex-wrap p-5 bg-danger"
@@ -36,6 +37,7 @@ function Profile() {
             </h5>
           </div>
         </MDBCol>
+
         <MDBCol md="3" className="p-0">
           <img src={teamimg2} class="image-fluid" id="cluster-img" />
         </MDBCol>
@@ -57,7 +59,10 @@ function Profile() {
 
 function Profile2() {
   return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
+    <MDBContainer
+      className="fluid p-0 xs:hidden sm:contents"
+      id="cluster-container"
+    >
       <MDBRow className="p-0 ">
         <MDBCol
           md="3"
@@ -92,11 +97,44 @@ function Profile2() {
   );
 }
 
+function CardMember() {
+  return (
+    <MDBCard className="px-5 xs:block sm:hidden">
+      <MDBRipple
+        rippleColor="light"
+        rippleTag="div"
+        className="bg-image hover-overlay"
+      >
+        <MDBCardImage
+          src="https://mdbootstrap.com/img/new/standard/nature/111.webp"
+          fluid
+          alt="..."
+        />
+        <a>
+          <div
+            className="mask"
+            style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
+          ></div>
+        </a>
+      </MDBRipple>
+      <MDBCardBody>
+        <MDBCardTitle>Card title</MDBCardTitle>
+        <MDBCardText>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </MDBCardText>
+        <MDBBtn href="#">Button</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+  );
+}
+
 export default function Team() {
   return (
     <>
       <Profile />
       <Profile2 />
+      <CardMember />
     </>
   );
 }

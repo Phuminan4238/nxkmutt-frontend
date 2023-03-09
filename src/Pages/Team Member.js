@@ -52,7 +52,6 @@ const Member = () => {
               <h3 className="fw-bold text-uppercase text-black ps-2">Member</h3>
             </div>
             <Memberimage></Memberimage>
-            <Memberimage></Memberimage>
             <div className="d-inline-flex p-2 pt-5">
               <h3 className="fw-bold text-uppercase text-black ps-2">
                 Advisor

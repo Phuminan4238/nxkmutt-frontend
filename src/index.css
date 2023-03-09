@@ -74,7 +74,7 @@ text-align {
 }
 
 #contact-container {
-  max-width: -webkit-fill-available;
+  max-width: initial;
   max-height: 400px;
 }
 
@@ -87,7 +87,7 @@ text-align {
 }
 
 #news-underline {
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   border-bottom: 1px solid black;
 }
 
@@ -133,3 +133,17 @@ text-align {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
+
+.carousel-indicators [data-mdb-target] {
+  height: 0.5rem !important;
+  width: 0.5rem !important;
+  border-radius: 50%;
+  background-color: rgb(176, 176, 176) !important;
+}
+
+/* #main-container {
+  max-width: auto;
+} */
+
+@tailwind components;
+@tailwind utilities;

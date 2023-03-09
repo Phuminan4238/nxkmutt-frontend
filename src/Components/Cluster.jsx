@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 import {
   MDBContainer,
   MDBCarousel,
@@ -23,26 +24,42 @@ const cluster1 = {
 };
 
 function Image() {
+  const [uploadfiles, setUploadfiles] = useState([]);
+
+  useEffect(() => {
+    fetch("http://10.35.29.186:1337/api/contents?populate=id")
+      .then((res) => res.json())
+      .then((result) => {
+        setUploadfiles(result.data);
+      });
+  });
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
-        <MDBCol md="8" className="p-0">
-          <img src={clusterimg1} class="image-fluid" id="cluster-img" />
-        </MDBCol>
-        <MDBCol className="d-flex p-5" style={{ background: "#AE023E" }}>
-          <div className="d-flex flex-column w-100">
-            <h3 className="text-white fw-bold">
-              Cognitive, Clinical &<br></br>
-              Computational
-              <br></br>
-              Neuroscience
-            </h3>
-            <div className="d-flex justify-content-between mt-auto">
-              <h5 className="text-white fw-normal mt-5">More Info</h5>
+      {uploadfiles.map((member) => (
+        <MDBRow className="p-0 ">
+          <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
+            <img src={clusterimg1} class="image-fluid" id="cluster-img" />
+          </MDBCol>
+          <MDBCol
+            order="1"
+            className="d-flex p-5"
+            style={{ background: "#AE023E" }}
+          >
+            {/* In progress */}
+            <div className="d-flex flex-column w-100">
+              <h3 className="text-white fw-bold">
+                Cognitive, Clinical &<br></br>
+                Computational
+                <br></br>
+                Neuroscience
+              </h3>
+              <div className="d-flex justify-content-between mt-auto">
+                <h5 className="text-white fw-normal mt-5">More Info</h5>
+              </div>
             </div>
-          </div>
-        </MDBCol>
-      </MDBRow>
+          </MDBCol>
+        </MDBRow>
+      ))}
     </MDBContainer>
   );
 }
@@ -73,12 +90,32 @@ function ReverseImage() {
 
 function Image2() {
   return (
+    // <MDBContainer className="fluid p-0" id="cluster-container">
+    //   <MDBRow className="p-0 ">
+    //     <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
+    //       <img src={clusterimg3} class="image-fluid" id="cluster-img" />
+    //     </MDBCol>
+    //     <MDBCol className="d-flex p-5 bg-primary">
+    //       <div className="d-flex flex-column w-100">
+    //         <h3 className="text-white fw-bold">
+    //           Human Factors<br></br>
+    //           Research & Decision &<br></br>
+    //           Neuroscience
+    //         </h3>
+    //         <div className="d-flex justify-content-between mt-auto">
+    //           <h5 className="text-white fw-normal mt-5">More Info</h5>
+    //         </div>
+    //       </div>
+    //     </MDBCol>
+    //   </MDBRow>
+    // </MDBContainer>
+
     <MDBContainer className="fluid p-0" id="cluster-container">
       <MDBRow className="p-0 ">
-        <MDBCol md="8" className="p-0">
+        <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
           <img src={clusterimg3} class="image-fluid" id="cluster-img" />
         </MDBCol>
-        <MDBCol className="d-flex p-5 bg-primary">
+        <MDBCol order="1" className="d-flex p-5 bg-primary">
           <div className="d-flex flex-column w-100">
             <h3 className="text-white fw-bold">
               Human Factors<br></br>

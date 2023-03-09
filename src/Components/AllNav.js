@@ -25,6 +25,7 @@ const pages = [
   "TOOLS SERVICE",
   "NEWS ACTIVITIES",
   "CONTACT US",
+  // "UPLOADFILE",
 ];
 const drawerWidth = 360;
 
@@ -153,6 +154,7 @@ export default function HomeNav(props) {
                       style={{
                         justifyContent: "center",
                         width: "300px",
+                        height: "60px",
                         borderBottom: "1px solid gray",
                       }}
                       key={page}

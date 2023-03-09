@@ -9,12 +9,15 @@ import reportWebVitals from "./reportWebVitals";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
+// import InjectTailwind from "./InjectTailwind";
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <InjectTailwind> */}
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    {/* </InjectTailwind> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

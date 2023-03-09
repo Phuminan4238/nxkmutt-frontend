@@ -66,7 +66,7 @@ function Image() {
         <MDBCard className="shadow-0">
           <MDBCard className="mb-4">
             <MDBCardBody
-              className="square border border-2 border-danger rounded-0 bg-white"
+              className="square border border-2 border-danger rounded-2 bg-white"
               style={{ borderColor: "#AE023E" }}
             >
               <p
@@ -97,7 +97,7 @@ function Image() {
         </MDBCard>{" "}
         <MDBCard className="shadow-0">
           <MDBCard className="mb-4">
-            <MDBCardBody className="square border border-2 border-success rounded-0 bg-white">
+            <MDBCardBody className="square border border-2 border-success rounded-2 bg-white">
               <p className="fw-bold text-start text-success mb-0">
                 Human Factors &<br></br> Decision Neuroscience
               </p>
@@ -120,7 +120,7 @@ function Image() {
         </MDBCard>{" "}
         <MDBCard className="shadow-0">
           <MDBCard className="mb-4">
-            <MDBCardBody className="square border border-2 border-info rounded-0 bg-white">
+            <MDBCardBody className="square border border-2 border-info rounded-2 bg-white">
               <p className="fw-bold text-start mb-0 text-info">
                 Neurodevelopment & <br></br> Educational Neuroscience
               </p>
@@ -143,7 +143,7 @@ function Image() {
         </MDBCard>{" "}
         <MDBCard className="shadow-0">
           <MDBCard className="mb-4">
-            <MDBCardBody className="square border border-2 border-warning rounded-0 bg-white">
+            <MDBCardBody className="square border border-2 border-warning rounded-2 bg-white">
               <p className="fw-bold text-start mb-0 text-warning">
                 Neuropharmacology & <br></br> Pharmaceutical Biology
               </p>
