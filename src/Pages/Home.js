@@ -25,7 +25,7 @@ function Home() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/contents?populate=id")
+    fetch("https://10.35.29.186/api/contents?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);

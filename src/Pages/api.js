@@ -6,7 +6,7 @@ function Member() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/uploadfiles?populate=fileupload")
+    fetch("https://10.35.29.186/api/uploadfiles?populate=fileupload")
       .then((res) => res.json())
       .then(
         (result) => {

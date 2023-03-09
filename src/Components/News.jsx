@@ -21,7 +21,7 @@ function Post() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/events?populate=id")
+    fetch("http://10.35.29.186/api/events?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);

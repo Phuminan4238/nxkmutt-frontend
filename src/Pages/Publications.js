@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* Material UI */
@@ -12,6 +13,15 @@ import Publicationimage from "../Components/Publicationimage";
 import Publicationreport from "../Components/Publicationreport";
 
 const Publications = () => {
+  const [uploadfiles, setUploadfiles] = useState([]);
+
+  useEffect(() => {
+    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+      .then((res) => res.json())
+      .then((result) => {
+        setUploadfiles(result.data);
+      });
+  });
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>

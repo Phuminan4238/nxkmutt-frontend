@@ -76,16 +76,16 @@ const Toolservice = () => {
                 </h4>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
-                <MDBRow>
-                  <p className="fw-bold">..........</p>
-                  <p>Contact Detail</p>
-                </MDBRow>
                 <MDBRow className="pt-2">
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     <PeopleIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
-                    <p className="fw-bold">Consulting</p>
+                    <p className="fw-bold">Research consultation</p>
+                    <p>
+                      We are open to research project consultant or
+                      collaboration and sharing tools, etc.
+                    </p>
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
@@ -93,10 +93,14 @@ const Toolservice = () => {
                     <SchoolIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
-                    <p className="fw-bold">Research</p>
+                    <p className="fw-bold">Coursework and workshop</p>
+                    <p>
+                      We are open to holding neuroscience seminar and EEG,
+                      neuroscience, neurotechnology.
+                    </p>
                   </MDBCol>
                 </MDBRow>
-                <MDBRow>
+                {/* <MDBRow>
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     <BuildIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
@@ -111,7 +115,7 @@ const Toolservice = () => {
                   <MDBCol>
                     <p className="fw-bold">Course & Workshop</p>
                   </MDBCol>
-                </MDBRow>
+                </MDBRow> */}
               </MDBCol>
             </MDBCol>
           </MDBRow>

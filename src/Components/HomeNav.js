@@ -134,6 +134,7 @@ export default function HomeNav(props) {
                     "& .MuiDrawer-paper": {
                       width: drawerWidth,
                     },
+                    opacity: "0.7",
                   }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
@@ -156,13 +157,13 @@ export default function HomeNav(props) {
                         width: "300px",
                         height: "60px",
                         borderBottom: "1px solid gray",
+                        // opacity: "0.7",
                       }}
                       key={page}
                       onClick={handleCloseUserMenu}
                       sx={{
                         ":hover": {
                           bgcolor: "#AE023E",
-                          opacity: "0.7",
                           color: "white",
                         },
                         fontWeight: "bold",
@@ -173,8 +174,12 @@ export default function HomeNav(props) {
                       <Link
                         style={{
                           color: "black",
-                          ":hover": { color: "white" },
                         }}
+                        // sx={{
+                        //   ":hover": {
+                        //     color: "white",
+                        //   },
+                        // }}
                         to={`/${page}`}
                       >
                         <Typography

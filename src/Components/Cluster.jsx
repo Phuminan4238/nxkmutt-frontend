@@ -27,7 +27,7 @@ function Image() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/contents?populate=id")
+    fetch("https://10.35.29.186/api/tags?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -35,31 +35,32 @@ function Image() {
   });
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
-      {uploadfiles.map((member) => (
-        <MDBRow className="p-0 ">
-          <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
-            <img src={clusterimg1} class="image-fluid" id="cluster-img" />
-          </MDBCol>
-          <MDBCol
-            order="1"
-            className="d-flex p-5"
-            style={{ background: "#AE023E" }}
-          >
-            {/* In progress */}
-            <div className="d-flex flex-column w-100">
-              <h3 className="text-white fw-bold">
-                Cognitive, Clinical &<br></br>
-                Computational
-                <br></br>
-                Neuroscience
-              </h3>
-              <div className="d-flex justify-content-between mt-auto">
-                <h5 className="text-white fw-normal mt-5">More Info</h5>
-              </div>
+      <MDBRow className="p-0 ">
+        <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
+          <img src={clusterimg1} class="image-fluid" id="cluster-img" />
+        </MDBCol>
+        <MDBCol
+          order="1"
+          className="d-flex p-5"
+          style={{ background: "#AE023E" }}
+        >
+          {/* In progress */}
+          {/* {uploadfiles.map((member) => ( */}
+          <div className="d-flex flex-column w-100">
+            <h3 className="text-white fw-bold">
+              Cognitive, Clinical &<br></br>
+              Computational
+              {/* {member.attributes.name_en} */}
+              <br></br>
+              Neuroscience
+            </h3>
+            <div className="d-flex justify-content-between mt-auto">
+              <h5 className="text-white fw-normal mt-5">More Info</h5>
             </div>
-          </MDBCol>
-        </MDBRow>
-      ))}
+          </div>
+          {/* ))} */}
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
   );
 }

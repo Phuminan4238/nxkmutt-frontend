@@ -26,9 +26,7 @@ function Image() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "http://10.35.29.186:1337/api/members?populate=uploadfiles.fileupload"
-    )
+    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -47,20 +45,25 @@ function Image() {
                     borderBottom: "1px solid black",
                     boxShadow: "unset",
                     borderRadius: "0px",
+                    // width: "400px",
+                    // height: "600px",
                   }}
                 >
                   <MDBCardImage
                     className="rounded-0"
                     src={
-                      "http://10.35.29.186:1337" +
+                      "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url
                     }
                     position="top"
                     alt="..."
                     style={{
-                      height: "300px",
-                      width: "300px",
+                      height: "400px",
+                      width: "340px",
+                      // width: "100%",
+                      // height: "100%",
+                      objectFit: "cover",
                       borderRadius: "0px",
                       alignSelf: "center",
                       // objectFit: "contain",
@@ -80,7 +83,7 @@ function Image() {
                     <MDBCardText>
                       <h6
                         className="fw-light text-center"
-                        style={{ color: "#AE023E" }}
+                        style={{ color: "#AE023E", paddingTop: "1rem" }}
                       >
                         {member.attributes.position_en}
                       </h6>

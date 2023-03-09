@@ -93,7 +93,7 @@ text-align {
 
 #logo-img {
   max-width: -webkit-fill-available;
-  height: 80px;
+  height: 60px;
 }
 
 #logokmutt-img {
@@ -139,6 +139,10 @@ text-align {
   width: 0.5rem !important;
   border-radius: 50%;
   background-color: rgb(176, 176, 176) !important;
+}
+
+a:hover {
+  color: white;
 }
 
 /* #main-container {

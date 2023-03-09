@@ -46,6 +46,12 @@ const Contactus = () => {
               </MDBRow>
               <MDBRow className="pt-5">
                 <h4 className="fw-bold text-black ps-5">Location</h4>
+                <p className=" text-black ps-5 pe-5 pt-2">
+                  Neuroscience Center for Research and Innovation (NX), Learning
+                  Institute King Mongkut's University of Technology Thonburi
+                  (KMUTT) 126 Pracha Uthit Rd,
+                  <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
+                </p>
               </MDBRow>
             </MDBCol>
           </MDBRow>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 import {
   MDBContainer,
   MDBCarousel,
@@ -60,6 +61,15 @@ import { border } from "@mui/system";
 // }
 
 function Image() {
+  const [uploadfiles, setUploadfiles] = useState([]);
+
+  useEffect(() => {
+    fetch("https://10.35.29.186/api/tags?populate=id")
+      .then((res) => res.json())
+      .then((result) => {
+        setUploadfiles(result.data);
+      });
+  });
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">

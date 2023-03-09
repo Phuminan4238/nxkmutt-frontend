@@ -115,7 +115,7 @@ import { useState, useEffect, setIsLoaded } from "react";
 const Tags = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/members?populate=id ")
+    fetch("https://10.35.29.186/api/members?populate=id ")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -124,7 +124,7 @@ const Tags = () => {
 
   const [uploadfiles2, setUploadfiles2] = useState([]);
   useEffect(() => {
-    fetch("http://10.35.29.186:1337/api/uploadfiles?populate=fileupload ")
+    fetch("https://10.35.29.186/api/uploadfiles?populate=fileupload ")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles2(result.data);
@@ -178,7 +178,7 @@ const Tags = () => {
                 class="image-fluid"
                 id="cluster-img"
                 src={
-                  "http://10.35.29.186:1337" +
+                  "https://10.35.29.186" +
                   uploadfile.attributes.fileupload.data[0].attributes.url
                 }
               />
@@ -217,7 +217,7 @@ const Tags = () => {
                 <MDBCardImage
                   variant="top"
                   src={
-                    "http://10.35.29.186:1337" +
+                    "https://10.35.29.186" +
                     uploadfile.attributes.fileupload.data[0].attributes.url
                     // uploadfile.attributes.filetype
                   }
