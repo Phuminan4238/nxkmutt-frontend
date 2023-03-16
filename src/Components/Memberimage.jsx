@@ -45,8 +45,8 @@ function Image() {
                     borderBottom: "1px solid black",
                     boxShadow: "unset",
                     borderRadius: "0px",
-                    width: "400px",
-                    height: "640px",
+                    // width: "400px",
+                    // height: "640px",
                   }}
                 >
                   <MDBCardImage
@@ -59,8 +59,7 @@ function Image() {
                     position="top"
                     alt="..."
                     style={{
-                      height: "400px",
-                      width: "340px",
+                      height: "350px",
                       // width: "100%",
                       // height: "100%",
                       objectFit: "cover",

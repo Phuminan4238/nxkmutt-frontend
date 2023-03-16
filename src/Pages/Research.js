@@ -10,6 +10,13 @@ import { Container } from "@mui/system";
 /* Components */
 import Clusterimage from "../Components/Cluster";
 import Researchaccordion from "../Components/ResearchAccordion";
+/* Components */
+import Memberimage2 from "../Components/Memberimage2";
+import Membercluster from "../Components/Membercluster";
+import Memberalumni from "../Components/Memberalumni";
+import Memberadvisor from "../Components/Memberadvisor";
+import Membercol from "../Components/Membercol";
+import Team from "../Components/Team";
 
 const Research = () => {
   return (
@@ -40,6 +47,38 @@ const Research = () => {
       </section>
       {/* <Researchaccordion></Researchaccordion> */}
       <Clusterimage></Clusterimage>
+      {/* Member image test*/}
+      {/* <section>
+        <MDBContainer>
+          <MDBRow className="pt-5 py-4">
+            <div className="d-inline-flex p-2">
+              <h3 className="fw-bold text-uppercase text-black ps-2">Member</h3>
+            </div>
+            <Memberimage2></Memberimage2>
+            <Team></Team>
+
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
+                Advisor
+              </h3>
+            </div>
+            <Memberadvisor></Memberadvisor>
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
+                Active Alumni
+              </h3>
+            </div>
+            <Memberalumni></Memberalumni>
+            <Memberalumni></Memberalumni>
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-uppercase text-black ps-2">
+                Collaborator
+              </h3>
+            </div>
+            <Membercol></Membercol>
+          </MDBRow>
+        </MDBContainer> */}
+      {/* </section> */}
     </div>
   );
 };
