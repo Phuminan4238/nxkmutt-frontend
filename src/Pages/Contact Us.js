@@ -34,13 +34,24 @@ const Contactus = () => {
         </MDBContainer>
         <MDBContainer className="fluid p-0" id="contact-container">
           <MDBRow className="p-0">
-            <MDBCol md="6" className="p-0">
-              <img
+            <MDBCol md="6" className="p-0" s>
+              {/* <img
                 src={vr2}
                 class="image-fluid h-50"
                 id="cluster-img"
                 style={{ paddingLeft: "8rem" }}
-              />
+              /> */}
+              <iframe
+                class=" h-full w-full"
+                // id="cluster-img"
+                style={{ paddingLeft: "8rem" }}
+                // id="gmap_canvas"
+                src="https://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                // frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0"
+              ></iframe>
             </MDBCol>
             <MDBCol className="pt-0 pb-0 pe-5">
               <MDBRow>
