@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router";
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 /* Material UI */
 import { Container } from "@mui/system";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EastIcon from "@mui/icons-material/East";
 /* Components */
 import ResponsiveAppBar from "../Components/AllNav";
 /* Components */
@@ -86,11 +88,12 @@ function Home() {
                 {" "}
                 <h5
                   href="#"
-                  className="xs:text-base sm:text-xl"
+                  className="pe-4 xs:text-base sm:text-xl"
                   style={{ color: "#AE023E" }}
                 >
                   Find out more
                 </h5>
+                <EastIcon style={{ color: "#AE023E" }}></EastIcon>
               </div>
             </MDBRow>
           </MDBContainer>
@@ -105,15 +108,12 @@ function Home() {
                 <h3 className="fw-bold">NEW & ACTIVITY</h3>
               </div>
               <News></News>
+
               <div className="d-inline-flex py-4 text-red">
-                {" "}
-                <h5
-                  href="#"
-                  className="xs:text-base sm:text-xl"
-                  style={{ color: "#AE023E" }}
-                >
+                <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
                   More News & Activity
                 </h5>
+                <EastIcon style={{ color: "#AE023E" }}></EastIcon>
               </div>
             </MDBRow>
           </MDBContainer>

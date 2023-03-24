@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router";
 /* Material UI */
 import { Container } from "@mui/system";
 import ArticleIcon from "@mui/icons-material/Article";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 /* MDBootstrap */
 import {
   MDBCard,
@@ -69,7 +70,7 @@ const Researchdetail = () => {
               Research
             </MDBCol>
             <MDBCol size="6">
-              <span> > </span>
+              <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
               <span className="text-uppercase fw-bold ps-4">
                 {/* {uploadfiles.attributes?.prefix_en || "not found"}
                 {uploadfiles.attributes?.nickname_en || "not found"} */}
