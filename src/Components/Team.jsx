@@ -33,7 +33,7 @@ function Profile() {
           <div className="d-flex align-content-center flex-column w-100">
             <h3 className="text-white text-center ">Sirawaj Itthipuripat</h3>
             <h5 className="text-white fw-light text-center">
-              Position / Main Interest
+              Research director
             </h5>
           </div>
         </MDBCol>
@@ -47,9 +47,7 @@ function Profile() {
         >
           <div className="d-flex align-content-center flex-column w-100">
             <h3 className="text-white text-center ">Kanda Lertladaluck</h3>
-            <h5 className="text-white fw-light text-center">
-              Position / Main Interest
-            </h5>
+            <h5 className="text-white fw-light text-center">Researcher</h5>
           </div>
         </MDBCol>
       </MDBRow>
@@ -73,7 +71,7 @@ function Profile2() {
               Thitaporn Chaisilprungraung
             </h3>
             <h5 className="text-white fw-light text-center">
-              Position / Main Interest
+              Research scientist
             </h5>
           </div>
         </MDBCol>
@@ -87,7 +85,7 @@ function Profile2() {
           <div className="d-flex align-content-center flex-column w-100">
             <h3 className="text-white text-center ">Kejkaew Thanasuan</h3>
             <h5 className="text-white fw-light text-center">
-              Position / Main Interest
+              Assistant Professor
             </h5>
           </div>
         </MDBCol>

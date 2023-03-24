@@ -25,6 +25,9 @@ const pages = [
   "TOOLS SERVICE",
   "NEWS ACTIVITIES",
   "CONTACT US",
+  "PARTICIPATE DONATE",
+  "MEMBER DETAIL",
+  "RESEARCH DETAIL",
   // "UPLOADFILE",
 ];
 const drawerWidth = 360;

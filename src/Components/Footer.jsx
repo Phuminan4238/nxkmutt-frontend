@@ -30,7 +30,6 @@ export default function App() {
               <div className="d-flex flex-row mt-3 text-white">
                 <div className="col-2 p-2">Privacy policy</div>
                 <div className="col-2 p-2">Terms of use</div>
-                <div className="col-2 p-2">Use High-contrast text</div>
               </div>
               <div className="d-flex flex-row mt-3 text-white">
                 © 2022 NX KMUTT

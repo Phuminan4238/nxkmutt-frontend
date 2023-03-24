@@ -10,7 +10,6 @@ import ResponsiveAppBar from "./Components/AllNav";
 /* Pages */
 import Home from "./Pages/Home";
 import Member from "./Pages/Team Member";
-import Memberdetail from "./Pages/Memberdetail";
 import Research from "./Pages/Research";
 import Publications from "./Pages/Publications";
 import Toolservice from "./Pages/Tools Service";
@@ -19,6 +18,9 @@ import Contactus from "./Pages/Contact Us";
 import HomeNav from "./Components/HomeNav";
 import AllNav from "./Components/AllNav";
 import CallImage from "./Pages/Uploadfile";
+import Participate from "./Pages/Participate Donate";
+import Memberdetail from "./Pages/Member Detail";
+import Researchdetail from "./Pages/Research Detail";
 
 function App() {
   // return (
@@ -50,7 +52,9 @@ function App() {
           <Route path="/Tools service" element={<Toolservice />} />
           <Route path="/News Activities" element={<Newsactivities />} />
           <Route path="/Contact Us" element={<Contactus />} />
-          {/* <Route path="/Memberdetail" element={<Memberdetail />} /> */}
+          <Route path="/Participate Donate" element={<Participate />} />
+          <Route path="/Member Detail" element={<Memberdetail />} />
+          <Route path="/Research Detail" element={<Researchdetail />} />
         </Routes>
 
         <Footer></Footer>

@@ -47,7 +47,7 @@ function Home() {
         {/* ******************/}
         {/* Paragraph */}
         <section>
-          <MDBContainer className="xs:max-w-fit sm:max-w-7xl">
+          <MDBContainer className="xs:max-w-fit sm:max-w-7xl 2xl:max-w-screen-2xl">
             {uploadfiles.map((member) => (
               <MDBRow className="pt-5 pb-4 xs:px-5 sm:px-5 md:px-0">
                 <div className="d-inline-flex p-2">
