@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router";
 import { Container } from "@mui/system";
 import ArticleIcon from "@mui/icons-material/Article";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import EastIcon from "@mui/icons-material/East";
 /* MDBootstrap */
 import {
   MDBCard,
@@ -33,7 +34,7 @@ import Toolsimage from "../Components/Tools";
 import Participateimage from "../Components/Participateimage";
 import MemberDetailimage from "../Components/MemberDetailimage";
 
-const Memberdetail = () => {
+function Memberdetail({ title }) {
   const [uploadfiles, setUploadfiles] = useState({});
 
   useEffect(() => {
@@ -63,7 +64,8 @@ const Memberdetail = () => {
               className="text-uppercase fw-bold"
               style={{ width: "13.33%" }}
             >
-              Team member
+              {/* Team member */}
+              {title}
             </MDBCol>
             <MDBCol size="2">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
@@ -135,7 +137,6 @@ const Memberdetail = () => {
                   //   height: "350px",
                   // width: "100%",
                   // height: "400px",
-
                   objectFit: "initial",
                   borderRadius: "0px",
                   alignSelf: "center",
@@ -160,33 +161,26 @@ const Memberdetail = () => {
           </MDBRow>
           <MDBCol className="pt-2">
             <MDBRow className="pt-2">
-              <MDBCol md="1" style={{ width: "3.33%" }}>
-                <p>*</p>
-              </MDBCol>
               <MDBCol md="10">
-                <p>
-                  BS in psychology and neuroscience from Duke University (Summa
-                  Cum Laude)
-                </p>
-              </MDBCol>
-              <MDBCol md="1">
-                <p>- 2011</p>
-              </MDBCol>
-            </MDBRow>
-            <MDBRow>
-              <MDBCol size="1" style={{ width: "3.33%" }}>
-                <p>*</p>
-              </MDBCol>
-              <MDBCol md="10">
-                <p>
-                  MS and PhD in neurosciences from University of California San
-                  Diego
-                </p>
+                {uploadfiles.attributes?.education_en ? (
+                  <ul>
+                    {uploadfiles.attributes.education_en.map(
+                      (education, index) => (
+                        <li key={index} className="fw-normal text-normal">
+                          {education}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                ) : (
+                  <p className="fw-normal text-normal">not found</p>
+                )}
               </MDBCol>
               <MDBCol md="1">
                 <p>- 2017</p>
               </MDBCol>
             </MDBRow>
+
             {/* Current Affiliations */}
             <MDBRow>
               <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
@@ -195,33 +189,20 @@ const Memberdetail = () => {
             </MDBRow>
             <MDBCol className="pt-2">
               <MDBRow className="pt-2">
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
                 <MDBCol md="10">
-                  <p>
-                    Research director at Neuroscience Center for Research and
-                    Innovation (NX), Learning Institute, KMUTT
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    Advisor for Research and Innovation for Sustainability
-                    Center (RISC)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p> Reviewing editor position at Frontiers in Neuroimaging</p>
+                  {uploadfiles.attributes?.affiliation_en ? (
+                    <ul>
+                      {uploadfiles.attributes.project_en.map(
+                        (affiliation, index) => (
+                          <li key={index} className="fw-normal text-normal">
+                            {affiliation}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal">not found</p>
+                  )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
@@ -232,38 +213,21 @@ const Memberdetail = () => {
               </h5>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2">
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    The neurodevelopment of human attentional network and reward
-                    processing
-                  </p>
-                </MDBCol>
-              </MDBRow>
               <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
                 <MDBCol md="10">
-                  <p>
-                    Neural mechanisms of healthy aging and mild cognitive
-                    impairment
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Effects of stress, exercise and cognitive training on brain
-                    functions
-                  </p>
+                  {uploadfiles.attributes?.project_en ? (
+                    <ul>
+                      {uploadfiles.attributes.project_en.map(
+                        (project, index) => (
+                          <li key={index} className="fw-normal text-normal">
+                            {project}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal">not found</p>
+                  )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
@@ -273,65 +237,24 @@ const Memberdetail = () => {
                 Grants
               </h5>
             </MDBRow>
+
             <MDBCol className="pt-2">
               <MDBRow className="pt-2">
-                <MDBCol md="1" style={{ width: "3.33%" }}>
+                {/* <MDBCol md="1" style={{ width: "3.33%" }}>
                   <p>*</p>
-                </MDBCol>
+                </MDBCol> */}
                 <MDBCol md="10">
-                  <p>
-                    National Research Council Thailand: mild cognitive
-                    impairment (PI; 2021-2024)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    Research and Innovation for Sustainability Center: exercise
-                    and cognitive aging (PI; 2022-2023) and green environment
-                    and stress (PI; 2020-2022)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Thailand Science Research and Innovation: neurodevelopment
-                    of attention (PI; 2020-2022) and neuro-inspired AI (co-PI;
-                    2019-2021)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Mahidol-KMUTT Partnering Program: brain-computer interface
-                    (PI; 2020-2022)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Asahi Glass Foundation: value-driven attention (PI;
-                    2020-2022)
-                  </p>
+                  {uploadfiles.attributes?.grant_en ? (
+                    <ul>
+                      {uploadfiles.attributes.grant_en.map((grant, index) => (
+                        <li key={index} className="fw-normal text-normal">
+                          {grant}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal">not found</p>
+                  )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
@@ -343,96 +266,18 @@ const Memberdetail = () => {
             </MDBRow>
             <MDBCol className="pt-2">
               <MDBRow className="pt-2">
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
                 <MDBCol md="10">
-                  <p>
-                    Rising-star Young Researcher Award, King’s Mongkut’s
-                    University of Technology Thonburi (2020)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    Elsevier/Vision Research Travel Award from Vision Science
-                    Society (2020)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    FORBES Asia 30 Under 30 in Healthcare and Science (2018)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Leon Thal Award for Excellence in Graduate Research, UCSD
-                    (2017)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Howard Hughes Medical Institute International Student
-                    Research Fellowship (2014 – 2016)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Training scholarship, UCSD Neurosciences Graduate Program
-                    (2011 – 2012)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Summer Research Fellowship from Dean Office, Duke University
-                    (2010)
-                  </p>
-                </MDBCol>
-              </MDBRow>
-              <MDBRow>
-                <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol>
-                <MDBCol md="10">
-                  <p>
-                    {" "}
-                    Leadership Program in Aging Society Fellowship Scholarship,
-                    Duke Medical Center (2009)
-                  </p>
+                  {uploadfiles.attributes?.award_en ? (
+                    <ul>
+                      {uploadfiles.attributes.award_en.map((award, index) => (
+                        <li key={index} className="fw-normal text-normal">
+                          {award}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal">not found</p>
+                  )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
@@ -475,16 +320,27 @@ const Memberdetail = () => {
               <h4 className="fw-bold text-uppercase text-black">
                 Other Members
               </h4>
-              <p className="mb-0 text-uppercase" style={{ color: "#AE023E" }}>
-                --> ALL Team members
-              </p>
+
+              <span>
+                {" "}
+                <EastIcon
+                  style={{ color: "#AE023E", marginRight: "1rem" }}
+                ></EastIcon>
+                All Team Member
+              </span>
             </div>
           </MDBRow>
           <MemberDetailimage></MemberDetailimage>
+          {/* <Route
+            path="/members/:memberID/image"
+            element={<MemberDetailimage />}
+          /> */}
+          {/* <Route path="/members/:memberId" element={<MemberDetailimage />} /> */}
+          {/* <Route element={<MemberDetailimage />} /> */}
         </MDBContainer>
       </section>
     </div>
   );
-};
+}
 
 export default Memberdetail;

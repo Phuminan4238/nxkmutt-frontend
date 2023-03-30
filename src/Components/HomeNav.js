@@ -116,8 +116,14 @@ export default function HomeNav(props) {
                 }}
               >
                 <SearchIcon style={{ color: "white" }}></SearchIcon>
-                <LanguageIcon style={{ color: "white" }}></LanguageIcon>
-                {/* <span style={{ color: "red" }}>EN</span> */}
+                {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
+                <span>
+                  {" "}
+                  <LanguageIcon
+                    style={{ color: "white", marginRight: "0.5rem" }}
+                  ></LanguageIcon>
+                  EN
+                </span>
                 <Tooltip title="Open settings">
                   <IconButton
                     color="black"

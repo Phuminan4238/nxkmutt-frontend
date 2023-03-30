@@ -62,7 +62,10 @@ function Home() {
                     {member.attributes.content_en}
                   </h5>
                 </div>
-                <div className="d-inline-flex p-2">
+                <div
+                  className="d-inline-flex "
+                  style={{ padding: "4rem 0.5rem 0.5rem 0.5rem" }}
+                >
                   {/* Missing data*/}
                   <h3 className="fw-bold text-uppercase">What we do</h3>
                 </div>

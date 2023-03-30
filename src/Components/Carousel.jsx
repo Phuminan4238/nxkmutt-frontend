@@ -22,7 +22,7 @@ function Image() {
     <MDBCarousel showIndicators fade id="carousel-nav">
       <MDBCarouselItem
         className="w-100 d-block"
-        style={{ height: 500 }}
+        style={{}}
         itemId={1}
         src={carouselimg1}
         alt="..."

@@ -145,6 +145,36 @@ a:hover {
   color: white;
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container img {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease-in-out;
+}
+
+.image-container:hover img {
+  filter: grayscale(0%);
+}
+
+.image-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  /* background-color: ); */
+  background-color: "rgba(251, 251, 251, 0.2)";
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
 /* #main-container {
   max-width: auto;
 } */

@@ -17,11 +17,16 @@ export default function App() {
           <MDBRow className="mt-3">
             <MDBCol className="my-5">
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-2">
+                <div className="col-1">
                   {" "}
-                  <img src={logokmutt} class="image-fluid" id="logokmutt-img" />
+                  <img
+                    src={logokmutt}
+                    class="image-fluid pr-6"
+                    id="logokmutt-img"
+                    style={{ borderRight: "1px solid white" }}
+                  />
                 </div>
-                <div className="col-2 pt-3">
+                <div className="col-2 pt-4 ps-4">
                   {" "}
                   <img src={logo} class="image-fluid" id="logo-img" />
                 </div>

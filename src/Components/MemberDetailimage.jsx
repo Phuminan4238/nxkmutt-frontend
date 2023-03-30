@@ -2,6 +2,7 @@ import React from "react";
 /* Routes */
 import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router";
+import { useParams } from "react-router-dom";
 import {
   MDBCard,
   MDBCardBody,
@@ -23,6 +24,7 @@ import teamimg4 from "../Images/team-4.png";
 import { useState, useEffect, setIsLoaded } from "react";
 
 function Image() {
+  const { memberID } = useParams();
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
@@ -31,14 +33,14 @@ function Image() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, [memberID]);
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
         {/* <Route path="Memberdetail" element={<MemberDetail />} /> */}
         <MDBContainer>
           <MDBRow>
-            {uploadfiles.map((member) => (
+            {uploadfiles.slice(0, 3).map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">
                 <MDBCard
                   style={{

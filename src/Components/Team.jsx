@@ -17,8 +17,18 @@ import teamimg1 from "../Images/team-1.png";
 import teamimg2 from "../Images/team-2.png";
 import teamimg3 from "../Images/team-3.png";
 import teamimg4 from "../Images/team-4.png";
+import { useState } from "react";
 
 function Profile() {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
   return (
     <MDBContainer className="fluid p-0 xs:hidden sm:contents">
       <MDBRow className="p-0 ">
@@ -138,3 +148,105 @@ export default function Team() {
     </>
   );
 }
+
+// import React from "react";
+// import { useState, useEffect, setIsLoaded } from "react";
+// import {
+//   MDBContainer,
+//   MDBCarousel,
+//   MDBCarouselItem,
+//   MDBRow,
+//   MDBCol,
+//   MDBRipple,
+//   MDBCard,
+//   MDBCardBody,
+//   MDBCardTitle,
+//   MDBCardText,
+//   MDBCardImage,
+//   MDBBtn,
+// } from "mdb-react-ui-kit";
+// import new1 from "../Images/new-1.png";
+// import new2 from "../Images/new-2.png";
+// import EastIcon from "@mui/icons-material/East";
+// import teamimg1 from "../Images/team-1.png";
+// import teamimg2 from "../Images/team-2.png";
+// import teamimg3 from "../Images/team-3.png";
+// import teamimg4 from "../Images/team-4.png";
+
+// function Post() {
+//   const [memberfiles, setMemberfiles] = useState([]);
+
+//   useEffect(() => {
+//     fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setMemberfiles(result.data);
+//       });
+//   });
+
+//   const colors = ["#B34C66", "#F2B032", "#F2B032", "#88BFD2"];
+//   const Column = ({ color, children }) => {
+//     return (
+//       <MDBCol
+//         className="p-5 align-content-center"
+//         style={{ backgroundColor: color }}
+//       >
+//         {children}
+//       </MDBCol>
+//     );
+//   };
+
+//   return (
+//     <MDBContainer
+//       className="container-fluid py-4 grid grid-cols-2 "
+//       id="cluster-container"
+//     >
+//       {memberfiles.map((member, index) => (
+//         <MDBRow>
+//           <MDBCol md="6" className="p-0">
+//             <img
+//               src={
+//                 "https://10.35.29.186" +
+//                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
+//                   .data[0]?.attributes.url
+//               }
+//               className="image-fluid"
+//               id="cluster-img"
+//               style={{
+//                 height: "350px",
+//                 // width: "100%",
+//                 // height: "100%",
+//                 objectFit: "cover",
+//               }}
+//             />
+//           </MDBCol>
+//           <MDBCol md="6" className="p-0  d-flex">
+//             <Column
+//               color={colors[index % colors.length]}
+//               className="align-content-center p-5"
+//             >
+//               <div className="p-5 align-content-center">
+//                 <h4 className="fw-bold text-white text-center xs:text-lg sm:text-2xl">
+//                   {member.attributes.name_en}
+//                   &nbsp;
+//                   {member.attributes.surname_en}
+//                 </h4>
+//                 <p className="fw-bold text-white text-center xs:text-lg sm:text-2xl">
+//                   {member.attributes.position_en}
+//                 </p>
+//               </div>
+//             </Column>
+//           </MDBCol>
+//         </MDBRow>
+//       ))}
+//     </MDBContainer>
+//   );
+// }
+
+// export default function Team() {
+//   return (
+//     <>
+//       <Post />
+//     </>
+//   );
+// }

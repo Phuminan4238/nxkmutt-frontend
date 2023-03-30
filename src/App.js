@@ -23,44 +23,30 @@ import Memberdetail from "./Pages/Member Detail";
 import Researchdetail from "./Pages/Research Detail";
 
 function App() {
-  // return (
-  // <div className="app ">
-  // <Container>
-  //   <Row>
-  //     <Col sm={8}>sm=8</Col>
-  //     <Col sm={4}>sm=4</Col>
-  //   </Row>
-  //   <Row>
-  //     <Col sm>smtrue</Col>
-  //     <Col sm>smtrue</Col>
-  //   </Row>
-  // </Container>
-  // </div>
-
   const location = useLocation();
 
-  return (
-    <div className="app ">
-      {location.pathname === "/" ? <HomeNav /> : <AllNav />}
-      <React.Fragment>
-        {/* <Navbar1 /> */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Team Member" element={<Member />} />
-          <Route path="/Research" element={<Research />} />
-          <Route path="/Publications" element={<Publications />} />
-          <Route path="/Tools service" element={<Toolservice />} />
-          <Route path="/News Activities" element={<Newsactivities />} />
-          <Route path="/Contact Us" element={<Contactus />} />
-          <Route path="/Participate Donate" element={<Participate />} />
-          <Route path="/Member Detail" element={<Memberdetail />} />
-          <Route path="/Research Detail" element={<Researchdetail />} />
-        </Routes>
+  const nav = location.pathname === "/" ? <HomeNav /> : <AllNav />;
 
-        <Footer></Footer>
-      </React.Fragment>
+  return (
+    <div className="app">
+      {nav}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Team Member" element={<Member />} />
+        <Route path="/Research" element={<Research />} />
+        <Route path="/Publications" element={<Publications />} />
+        <Route path="/Tools Service" element={<Toolservice />} />
+        <Route path="/News Activities" element={<Newsactivities />} />
+        <Route path="/Contact Us" element={<Contactus />} />
+        <Route path="/Participate Donate" element={<Participate />} />
+        <Route
+          path="/Member Detail"
+          element={<Memberdetail title="TEAM MEMBER" />}
+        />
+        <Route path="/Research Detail" element={<Researchdetail />} />
+      </Routes>
+      <Footer />
     </div>
-    // );
   );
 }
 

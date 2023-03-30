@@ -21,8 +21,9 @@ import teamimg2 from "../Images/team-2.png";
 import teamimg3 from "../Images/team-3.png";
 import teamimg4 from "../Images/team-4.png";
 import { useState, useEffect, setIsLoaded } from "react";
+import Memberdetail from "../Pages/Member Detail";
 
-function Image() {
+function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
@@ -36,6 +37,7 @@ function Image() {
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
         {/* <Route path="Memberdetail" element={<MemberDetail />} /> */}
+        <MDBRow></MDBRow>
         <MDBContainer>
           <MDBRow>
             {uploadfiles.map((member) => (

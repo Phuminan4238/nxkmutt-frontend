@@ -28,6 +28,7 @@ function Post() {
         setUploadfiles(result.data);
       });
   });
+
   return (
     <MDBContainer className="py-4">
       {uploadfiles.map((member) => (

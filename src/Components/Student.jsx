@@ -20,40 +20,76 @@ function Profile() {
     <MDBContainer className="fluid p-0" id="cluster-container">
       <MDBRow className="p-0" id="student-row">
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
         <MDBCol md="1" className="col-md-1 d-flex flex-column p-0 bg-warning">
-          <img src={teamimg5} class="image-fluid" id="greyscale-img" />
+          <div class="image-container">
+            <img src={teamimg5} className="w-100" alt="Team Member" />
+            <div class="overlay"></div>
+          </div>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
