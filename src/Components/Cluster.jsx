@@ -57,7 +57,7 @@ function Image() {
               Neuroscience
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <Link to="/Research Cognitive">
+              <Link to="/Research Cognitive" target={"_blank"}>
                 <h5 className="text-white fw-normal mt-5">More Info</h5>
               </Link>
             </div>
@@ -81,7 +81,7 @@ function ReverseImage() {
               Neurodevelopment
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <Link to="/Research Education">
+              <Link to="/Research Education" target={"_blank"}>
                 <h5 className="text-white fw-normal mt-5">More Info</h5>
               </Link>
             </div>
@@ -130,7 +130,9 @@ function Image2() {
               Neuroscience
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <h5 className="text-white fw-normal mt-5">More Info</h5>
+              <Link to="/Research Human" target={"_blank"}>
+                <h5 className="text-white fw-normal mt-5">More Info</h5>
+              </Link>
             </div>
           </div>
         </MDBCol>
@@ -151,7 +153,12 @@ function ReverseImage2() {
               Neuropharmacology
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <h5 className="text-white fw-normal mt-5">More Info</h5>
+              <h5 className="text-white fw-normal mt-5">
+                {" "}
+                <Link to="/Research Pharma" target={"_blank"}>
+                  <h5 className="text-white fw-normal mt-5">More Info</h5>
+                </Link>
+              </h5>
             </div>
           </div>
         </MDBCol>

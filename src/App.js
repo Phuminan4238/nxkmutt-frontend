@@ -22,6 +22,8 @@ import Participate from "./Pages/Participate Donate";
 import Memberdetail from "./Pages/Member Detail";
 import ResearchCognitive from "./Pages/Research Cognitive";
 import ResearchEducation from "./Pages/Research Education";
+import ResearchHuman from "./Pages/Research Human";
+import ResearchPharma from "./Pages/Research Pharma";
 
 function App() {
   const location = useLocation();
@@ -46,6 +48,8 @@ function App() {
         />
         <Route path="/Research Cognitive" element={<ResearchCognitive />} />
         <Route path="/Research Education" element={<ResearchEducation />} />
+        <Route path="/Research Human" element={<ResearchHuman />} />
+        <Route path="/Research Pharma" element={<ResearchPharma />} />
       </Routes>
       <Footer />
     </div>
