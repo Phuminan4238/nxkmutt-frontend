@@ -20,7 +20,8 @@ import AllNav from "./Components/AllNav";
 import CallImage from "./Pages/Uploadfile";
 import Participate from "./Pages/Participate Donate";
 import Memberdetail from "./Pages/Member Detail";
-import Researchdetail from "./Pages/Research Detail";
+import ResearchCognitive from "./Pages/Research Cognitive";
+import ResearchEducation from "./Pages/Research Education";
 
 function App() {
   const location = useLocation();
@@ -43,7 +44,8 @@ function App() {
           path="/Member Detail"
           element={<Memberdetail title="TEAM MEMBER" />}
         />
-        <Route path="/Research Detail" element={<Researchdetail />} />
+        <Route path="/Research Cognitive" element={<ResearchCognitive />} />
+        <Route path="/Research Education" element={<ResearchEducation />} />
       </Routes>
       <Footer />
     </div>

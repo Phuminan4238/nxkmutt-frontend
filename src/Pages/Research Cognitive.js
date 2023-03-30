@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
+import { Link } from "react-router-dom";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* Material UI */
@@ -37,7 +38,7 @@ import Toolsimage from "../Components/Tools";
 import Participateimage from "../Components/Participateimage";
 import MemberDetailimage from "../Components/MemberDetailimage";
 
-const Researchdetail = () => {
+const ResearchCognitive = () => {
   const [uploadfiles, setUploadfiles] = useState({});
 
   useEffect(() => {
@@ -321,4 +322,4 @@ const Researchdetail = () => {
   );
 };
 
-export default Researchdetail;
+export default ResearchCognitive;

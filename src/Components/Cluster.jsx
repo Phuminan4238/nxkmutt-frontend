@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useState, useEffect, setIsLoaded } from "react";
 import {
   MDBContainer,
@@ -55,7 +57,9 @@ function Image() {
               Neuroscience
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <h5 className="text-white fw-normal mt-5">More Info</h5>
+              <Link to="/Research Cognitive">
+                <h5 className="text-white fw-normal mt-5">More Info</h5>
+              </Link>
             </div>
           </div>
           {/* ))} */}
@@ -77,7 +81,9 @@ function ReverseImage() {
               Neurodevelopment
             </h3>
             <div className="d-flex justify-content-between mt-auto">
-              <h5 className="text-white fw-normal mt-5">More Info</h5>
+              <Link to="/Research Education">
+                <h5 className="text-white fw-normal mt-5">More Info</h5>
+              </Link>
             </div>
           </div>
         </MDBCol>
