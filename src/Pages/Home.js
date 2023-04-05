@@ -53,21 +53,23 @@ function Home() {
             {uploadfiles.map((member) => (
               <MDBRow className="pt-5 pb-4 xs:px-5 sm:px-5 md:px-0">
                 <div className="d-inline-flex p-2">
-                  <h3 className="fw-bold text-uppercase">
+                  <p className="font-black text-uppercase xs:text-xl md:text-3xl">
                     {member.attributes.header_en}
-                  </h3>
+                  </p>
                 </div>
                 <div className="d-inline-flex px-5 py-5">
-                  <h5 className="fw-normal ps-4">
+                  <p className="fw-normal xs:text-base md:text-lg ps-4">
                     {member.attributes.content_en}
-                  </h5>
+                  </p>
                 </div>
                 <div
-                  className="d-inline-flex "
-                  style={{ padding: "4rem 0.5rem 0.5rem 0.5rem" }}
+                  className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16"
+                  // style={{ padding: "4rem 0.5rem 0.5rem 0.5rem" }}
                 >
                   {/* Missing data*/}
-                  <h3 className="fw-bold text-uppercase">What we do</h3>
+                  <p className="fw-bold text-uppercase xs:text-xl md:text-3xl">
+                    What we do
+                  </p>
                 </div>
               </MDBRow>
             ))}

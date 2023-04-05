@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+/* */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,6 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Images/logo.png";
+import logored from "../Images/logo-red.png";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -74,144 +77,296 @@ export default function HomeNav(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          style={{
-            background: "unset",
-            boxShadow: "unset",
-          }}
-          position="sticky"
-        >
-          <Container maxWidth="xl">
-            <Toolbar disableGutters>
-              <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
-                <Typography
-                  variant="h6"
-                  noWrap
-                  sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
-                  component="div"
-                >
-                  <Link to="/">
-                    <img src={logo} height="60" alt="" loading="lazy" />
-                  </Link>
-                </Typography>
-                {/* 👇️ Anchor link
+
+  /* Switch Navbar */
+  const [navbarType, setNavbarType] = useState("navbar1");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setNavbarType("navbar2");
+      } else {
+        setNavbarType("navbar1");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const renderNavbar1 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            style={{
+              background: "unset",
+              boxShadow: "unset",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/">
+                      <img src={logo} height="60" alt="" loading="lazy" />
+                    </Link>
+                  </Typography>
+                  {/* 👇️ Anchor link
               <a href="https://google.com" target="_blank" rel="noreferrer">
                 <img
                   src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
                   alt="example"
                 />
               </a> */}
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexGrow: 0,
-                  flexDirection: "initial",
-                  gap: "3rem",
-                }}
-              >
-                <SearchIcon style={{ color: "white" }}></SearchIcon>
-                {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
-                <span>
-                  {" "}
-                  <LanguageIcon
-                    style={{ color: "white", marginRight: "0.5rem" }}
-                  ></LanguageIcon>
-                  EN
-                </span>
-                <Tooltip title="Open settings">
-                  <IconButton
-                    color="black"
-                    onClick={handleOpenUserMenu}
-                    sx={{ p: 0 }}
-                  >
-                    <MenuIcon style={{ color: "white" }} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  // style={{ opacity: 0.7 }}
+                </Box>
+                <Box
                   sx={{
-                    mt: "60px",
-                    left: "30px",
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    "& .MuiDrawer-paper": {
-                      width: drawerWidth,
-                    },
-                    opacity: "0.7",
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
                   }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
                 >
-                  {pages.map((page) => (
-                    <MenuItem
-                      style={{
-                        justifyContent: "center",
-                        width: "300px",
-                        height: "60px",
-                        borderBottom: "1px solid gray",
-                        // opacity: "0.7",
-                      }}
-                      key={page}
-                      onClick={handleCloseUserMenu}
-                      sx={{
-                        ":hover": {
-                          bgcolor: "#AE023E",
-                          color: "white",
-                        },
-                        fontWeight: "bold",
-                        padding: "10px 20px 10px 20px",
-                        borderBottom: "1px solid white",
-                      }}
+                  <SearchIcon style={{ color: "white" }}></SearchIcon>
+                  {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
+                  <span>
+                    {" "}
+                    <LanguageIcon
+                      style={{ color: "white", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    EN
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
                     >
-                      <Link
+                      <MenuIcon style={{ color: "white" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    // style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "60px",
+                      left: "30px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                      opacity: "0.7",
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page) => (
+                      <MenuItem
                         style={{
-                          color: "black",
+                          justifyContent: "center",
+                          width: "300px",
+                          height: "60px",
+                          borderBottom: "1px solid gray",
                         }}
-                        // sx={{
-                        //   ":hover": {
-                        //     color: "white",
-                        //   },
-                        // }}
-                        to={`/${page}`}
-                      >
-                        <Typography
-                          textAlign="center"
-                          to={`/${page}`}
-                          sx={{
-                            fontWeight: "bold",
-                            padding: "20px",
-                            ":hover": {
+                        key={page}
+                        onClick={handleCloseUserMenu}
+                        sx={{
+                          ":hover": {
+                            bgcolor: "#AE023E",
+                            opacity: "100%",
+                            "& a, & > a": {
                               color: "white",
                             },
-                          }}
-                        >
-                          {page}
-                        </Typography>
-                      </Link>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </HideOnScroll>
-    </React.Fragment>
+                          },
+                          fontWeight: "bold",
+                          padding: "10px 20px 10px 20px",
+                          borderBottom: "1px solid white",
+                          color: "inherit", // set default link color to black
+                        }}
+                      >
+                        <Link to={`/${page}`} style={{ color: "inherit" }}>
+                          <a
+                            textAlign="center"
+                            to={`/${page}`}
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+                              color: "inherit", // set link color to inherit to match parent
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  const renderNavbar2 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            style={{
+              background: "white",
+              boxShadow: "unset",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/">
+                      <img src={logored} height="60" alt="" loading="lazy" />
+                    </Link>
+                  </Typography>
+                  {/* 👇️ Anchor link
+              <a href="https://google.com" target="_blank" rel="noreferrer">
+                <img
+                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
+                  alt="example"
+                />
+              </a> */}
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
+                >
+                  <SearchIcon style={{ color: "#AE023E" }}></SearchIcon>
+                  <span>
+                    {" "}
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    <span style={{ color: "#AE023E" }}>EN</span>
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      <MenuIcon style={{ color: "#AE023E" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "60px",
+                      left: "30px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page) => (
+                      <MenuItem
+                        style={{
+                          justifyContent: "center",
+                          width: "300px",
+                          height: "60px",
+                          borderBottom: "1px solid gray",
+                        }}
+                        key={page}
+                        onClick={handleCloseUserMenu}
+                        sx={{
+                          ":hover": {
+                            bgcolor: "#AE023E",
+                            opacity: "100%",
+                            "& a, & > a": {
+                              color: "white",
+                            },
+                          },
+                          fontWeight: "bold",
+                          padding: "10px 20px 10px 20px",
+                          borderBottom: "1px solid white",
+                          color: "inherit", // set default link color to black
+                        }}
+                      >
+                        <Link to={`/${page}`} style={{ color: "inherit" }}>
+                          <a
+                            textAlign="center"
+                            to={`/${page}`}
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+                              color: "inherit", // set link color to inherit to match parent
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  return (
+    <>
+      {navbarType === "navbar1" && renderNavbar1()}
+      {navbarType === "navbar2" && renderNavbar2()}
+    </>
   );
 }

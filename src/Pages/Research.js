@@ -45,8 +45,8 @@ const Research = () => {
           </MDBRow>
         </MDBContainer>
       </section>
-      {/* <Researchaccordion></Researchaccordion> */}
       <Clusterimage></Clusterimage>
+      {/* <Researchaccordion></Researchaccordion> */}
       {/* Member image test*/}
       {/* <section>
         <MDBContainer>

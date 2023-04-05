@@ -13,9 +13,9 @@ export default function App() {
   return (
     <MDBFooter className="text-center text-lg-start text-muted" id="footer-bg">
       <section className="">
-        <MDBContainer className="text-center text-md-start mt-5">
+        <MDBContainer className="text-center text-md-start mt-5 xs:max-w-full ">
           <MDBRow className="mt-3">
-            <MDBCol className="my-5">
+            <MDBCol className="my-5 px-4">
               <div className="d-flex flex-row mt-3 text-white">
                 <div className="col-1">
                   {" "}

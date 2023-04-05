@@ -170,33 +170,28 @@ export default function HomeNav(props) {
                         ":hover": {
                           bgcolor: "#AE023E",
                           opacity: "100%",
-                          color: "white",
+                          "& a, & > a": {
+                            color: "white",
+                          },
                         },
                         fontWeight: "bold",
                         padding: "10px 20px 10px 20px",
                         borderBottom: "1px solid white",
+                        color: "inherit", // set default link color to black
                       }}
                     >
-                      <Link
-                        style={{
-                          color: "black",
-                          ":hover": { color: "white" },
-                        }}
-                        to={`/${page}`}
-                      >
-                        <Typography
+                      <Link to={`/${page}`} style={{ color: "inherit" }}>
+                        <a
                           textAlign="center"
                           to={`/${page}`}
                           sx={{
                             fontWeight: "bold",
                             padding: "20px",
-                            ":hover": {
-                              color: "white",
-                            },
+                            color: "inherit", // set link color to inherit to match parent
                           }}
                         >
                           {page}
-                        </Typography>
+                        </a>
                       </Link>
                     </MenuItem>
                   ))}
