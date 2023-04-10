@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 /* Routes */
-import { Route, Routes } from "react-router";
+import { Route, Routes, useParams } from "react-router";
 /* Material UI */
 import { Container } from "@mui/system";
 import ArticleIcon from "@mui/icons-material/Article";
@@ -35,15 +35,22 @@ import Participateimage from "../Components/Participateimage";
 import MemberDetailimage from "../Components/MemberDetailimage";
 
 function Memberdetail({ title }) {
+  let { id } = useParams();
+  console.log(id);
+
   const [uploadfiles, setUploadfiles] = useState({});
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/members/1?populate=uploadfiles.fileupload")
+    fetch(
+      `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload`
+    )
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
       });
   });
+
+  /* return teamber */
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
 

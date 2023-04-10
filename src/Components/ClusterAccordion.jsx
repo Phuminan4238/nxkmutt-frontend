@@ -36,6 +36,12 @@ function Image() {
       });
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
       <MDBRow className="p-0 ">
@@ -47,28 +53,45 @@ function Image() {
           className="d-flex p-5"
           style={{ background: "#AE023E" }}
         >
-          {/* In progress */}
-          {/* {uploadfiles.map((member) => ( */}
           <div className="d-flex flex-column w-100">
             <p className="fw-bold text-white xs:text-xl md:text-3xl">
-              {/* Cognitive, Clinical &<br></br>
-              Computational */}
-              {/* {member.attributes.name_en} */}
               {uploadfiles.attributes?.name_en || "not found"}
-              {/* <br></br> */}
-              {/* Neuroscience */}
             </p>
-            <div className="d-flex justify-content-between mt-auto">
-              <Link to="/Research Cognitive" target={"_blank"}>
-                <p className="fw-normal text-white mt-5 xs:text-base md:text-lg">
-                  More Info
-                </p>
-              </Link>
+            <div className="d-flex justify-content-between mt-auto align-items-end">
+              <p
+                className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
+                onClick={toggleAccordion}
+              >
+                {isOpen ? (
+                  <span>&#x25B2; Hide Info</span>
+                ) : (
+                  <span>&#x25BC; More Info</span>
+                )}
+              </p>
             </div>
           </div>
-          {/* ))} */}
         </MDBCol>
       </MDBRow>
+      {isOpen && (
+        <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
+          <MDBCol>
+            <p className="text-black px-20">
+              The Cognitive, Clinical and Computational neuroscience cluster
+              focuses on investigating neural mechanisms that support human
+              perception, attention, memory, and affective systems across
+              healthy and clinical populations. We employ multiple neuroscience
+              techniques (e.g., EEG, fMRI, and fNIR) as well as non-invasive
+              brain stimulation to study these cognitive functions and come up
+              with new ways to treat and slow the progress of neurodegenerative
+              disorders in aging society like Mild Cognitive Impairment,
+              Alzhiemer’s and Parkinson’s diseases (PD). In addition, we use
+              computational modeling and machine learning methods to map neural
+              activity to brain functions and to develop brain-based diagnostic
+              tools for neurological and psychiatric disorders.
+            </p>
+          </MDBCol>
+        </MDBRow>
+      )}
     </MDBContainer>
   );
 }
@@ -160,7 +183,7 @@ function ReverseImage2() {
   );
 }
 
-export default function Clusterimage() {
+export default function ClusterAccordion() {
   return (
     <>
       <Image />

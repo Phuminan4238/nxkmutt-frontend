@@ -13,15 +13,7 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-/* Images */
-import vr1 from "../Images/vr-1.png";
-import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
 import { useState, useEffect, setIsLoaded } from "react";
-import Memberdetail from "../Pages/Member Detail";
 
 function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -36,20 +28,16 @@ function Image({ members }) {
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
-        {/* <Route path="Memberdetail" element={<MemberDetail />} /> */}
-        {/* <MDBRow></MDBRow> */}
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">
-                <Link to="/Member Detail">
+                <Link to={`/Member Detail/${member.id}`}>
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",
                       boxShadow: "unset",
                       borderRadius: "0px",
-                      // width: "400px",
-                      // height: "640px",
                     }}
                   >
                     <MDBCardImage
@@ -63,21 +51,14 @@ function Image({ members }) {
                       alt="..."
                       style={{
                         height: "350px",
-                        // width: "100%",
-                        // height: "100%",
+
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
-                        // objectFit: "contain",
                       }}
                     />
-                    <MDBCardBody
-                    // style={{
-                    //   height: "100%",
-                    // }}
-                    >
+                    <MDBCardBody>
                       <MDBCardTitle className="m-0">
-                        {/* <Link to="/Member Detail"> */}{" "}
                         <p
                           className="text-2xl fw-bold text-center mb-0"
                           style={{ color: "#AE023E" }}
@@ -86,7 +67,6 @@ function Image({ members }) {
                           &nbsp;
                           {member.attributes.surname_en}
                         </p>
-                        {/* </Link> */}
                       </MDBCardTitle>
                       <MDBCardText>
                         <p

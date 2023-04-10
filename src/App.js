@@ -43,13 +43,13 @@ function App() {
         <Route path="/Contact Us" element={<Contactus />} />
         <Route path="/Participate Donate" element={<Participate />} />
         <Route
-          path="/Member Detail"
+          path="/Member Detail/:id"
           element={<Memberdetail title="TEAM MEMBER" />}
         />
         <Route path="/Research Cognitive" element={<ResearchCognitive />} />
         <Route path="/Research Education" element={<ResearchEducation />} />
         <Route path="/Research Human" element={<ResearchHuman />} />
-        <Route path="/Research Pharma" element={<ResearchPharma />} />
+        <Route path="/Research Pharma/" element={<ResearchPharma />} />
       </Routes>
       <Footer />
     </div>

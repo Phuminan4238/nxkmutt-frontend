@@ -11,12 +11,8 @@ import { Container } from "@mui/system";
 import Clusterimage from "../Components/Cluster";
 import Researchaccordion from "../Components/ResearchAccordion";
 /* Components */
-import Memberimage2 from "../Components/Memberimage2";
-import Membercluster from "../Components/Membercluster";
-import Memberalumni from "../Components/Memberalumni";
-import Memberadvisor from "../Components/Memberadvisor";
-import Membercol from "../Components/Membercol";
-import Team from "../Components/Team";
+
+import ClusterAccordion from "../Components/ClusterAccordion";
 
 const Research = () => {
   return (
@@ -45,7 +41,7 @@ const Research = () => {
           </MDBRow>
         </MDBContainer>
       </section>
-      <Clusterimage></Clusterimage>
+      <ClusterAccordion></ClusterAccordion>
       {/* <Researchaccordion></Researchaccordion> */}
       {/* Member image test*/}
       {/* <section>
