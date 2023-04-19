@@ -17,13 +17,11 @@ import Newsactivities from "./Pages/News Activities";
 import Contactus from "./Pages/Contact Us";
 import HomeNav from "./Components/HomeNav";
 import AllNav from "./Components/AllNav";
-import CallImage from "./Pages/Uploadfile";
 import Participate from "./Pages/Participate Donate";
 import Memberdetail from "./Pages/Member Detail";
-import ResearchCognitive from "./Pages/Research Cognitive";
-import ResearchEducation from "./Pages/Research Education";
-import ResearchHuman from "./Pages/Research Human";
-import ResearchPharma from "./Pages/Research Pharma";
+
+import TagsDetail from "./Pages/Tags Detail";
+import NewsDetail from "./Pages/News Detail";
 
 function App() {
   const location = useLocation();
@@ -46,10 +44,11 @@ function App() {
           path="/Member Detail/:id"
           element={<Memberdetail title="TEAM MEMBER" />}
         />
-        <Route path="/Research Cognitive" element={<ResearchCognitive />} />
-        <Route path="/Research Education" element={<ResearchEducation />} />
-        <Route path="/Research Human" element={<ResearchHuman />} />
-        <Route path="/Research Pharma/" element={<ResearchPharma />} />
+        <Route
+          path="/Tags Detail/:id"
+          element={<TagsDetail title="RESEARCH" />}
+        />
+        <Route path="/News Detail/:id" element={<NewsDetail title="NEWS" />} />
       </Routes>
       <Footer />
     </div>

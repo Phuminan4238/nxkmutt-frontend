@@ -1,24 +1,6 @@
 import React from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import clusterimg1 from "../Images/cluster-1.png";
-import clusterimg2 from "../Images/cluster-2.png";
-import clusterimg3 from "../Images/cluster-3.png";
-import clusterimg4 from "../Images/cluster-4.png";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import vr1 from "../Images/vr-1.png";
-import vr2 from "../Images/vr-2.png";
 
 const cluster1 = {
   name: " Cognitive, Clinical",

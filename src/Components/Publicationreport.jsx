@@ -1,28 +1,8 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
-import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+
 import ArticleIcon from "@mui/icons-material/Article";
-import HomeIcon from "@mui/icons-material/Article";
-import Article from "@mui/icons-material/Article";
 
 function Report1() {
   const [uploadfiles, setUploadfiles] = useState([]);

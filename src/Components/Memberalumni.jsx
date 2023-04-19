@@ -1,26 +1,19 @@
 import React from "react";
 import {
   MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
   MDBRow,
   MDBCol,
-  MDBRipple,
   MDBCard,
   MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
   MDBCardImage,
-  MDBBtn,
 } from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
 import vr2 from "../Images/vr-2.png";
 
 function Image() {
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl p-0">
           <MDBRow>
             <MDBCol>
               <MDBCard

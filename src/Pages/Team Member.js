@@ -2,16 +2,12 @@ import React from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images*/
-import vr1 from "../Images/vr-1.png";
 import vr2 from "../Images/vr-2.png";
 /* Components */
 import Memberimage from "../Components/Memberimage";
-import Membercluster from "../Components/Membercluster";
 import Memberalumni from "../Components/Memberalumni";
 import Memberadvisor from "../Components/Memberadvisor";
 import Membercol from "../Components/Membercol";
-/* Routes */
-import { Route, Routes } from "react-router";
 
 const Member = () => {
   return (
@@ -57,7 +53,9 @@ const Member = () => {
             </div>
             <Memberimage></Memberimage>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ">Advisor</h3>
+              <p className="font-black text-uppercase xs:text-xl md:text-3xl">
+                Advisor
+              </p>
             </div>
             <Memberadvisor></Memberadvisor>
             <div className="d-inline-flex p-2 pt-5">

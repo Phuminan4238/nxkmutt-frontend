@@ -1,25 +1,14 @@
 import React from "react";
 /* Routes */
-import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router";
 import {
-  MDBCard,
-  MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBCardImage,
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
 /* Images */
-import vr1 from "../Images/vr-1.png";
-import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
+
 import { useState, useEffect, setIsLoaded } from "react";
 
 function Image() {

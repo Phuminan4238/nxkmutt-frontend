@@ -1,66 +1,9 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
+import { MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
-import { border } from "@mui/system";
 
-// function Menu() {
-//   return (
-//     <>
-//       <div className="d-flex justify-content-between py-4" id="tools-flex">
-//         <h4 className="fw-normal text-uppercase text-black">Filters</h4>
-//         <MDBCard>
-//           <MDBCardBody className="square border border-danger bg-white">
-//             <p className="text-danger fw-bold text-center ">
-//               Cognitive, Clinical &<br></br> Computational Neuroscience
-//             </p>
-//           </MDBCardBody>
-//         </MDBCard>{" "}
-//         <MDBCard>
-//           <MDBCardBody className="square border border-success bg-white">
-//             <p className="text-success fw-bold text-center ">
-//               Human Factors & Decision Neuroscience
-//             </p>
-//           </MDBCardBody>
-//         </MDBCard>{" "}
-//         <MDBCard>
-//           <MDBCardBody className="square border border-success bg-white">
-//             <p className="text-success fw-bold text-center ">
-//               Human Factors & Decision Neuroscience
-//             </p>
-//           </MDBCardBody>
-//         </MDBCard>{" "}
-//         <MDBCard>
-//           <MDBCardBody className="square border border-success bg-white">
-//             <p className="text-success fw-bold text-center ">
-//               Human Factors & Decision Neuroscience
-//             </p>
-//           </MDBCardBody>
-//         </MDBCard>{" "}
-//       </div>
-//     </>
-//   );
-// }
-
-function Image() {
+function Menu() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
@@ -182,8 +125,7 @@ function Image() {
 export default function Publicationimage() {
   return (
     <>
-      {/* <Menu /> */}
-      <Image />
+      <Menu />
     </>
   );
 }

@@ -1,29 +1,24 @@
 import React from "react";
-/* Routes */
-import { Route, Routes } from "react-router";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
-/* Material UI */
-import { Container } from "@mui/system";
-/* Components */
-import Clusterimage from "../Components/Cluster";
-import Researchaccordion from "../Components/ResearchAccordion";
-/* Components */
-
 import ClusterAccordion from "../Components/ClusterAccordion";
 
 const Research = () => {
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer>
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-uppercase text-black"> Research</h1>
-                <h2 className="fw-light text-uppercase">Clusters</h2>
+                <p className="text-5xl font-black text-uppercase text-black">
+                  Research
+                </p>
+                <p className="text-4xl font-black fw-light text-uppercase pt-2">
+                  Clusters
+                </p>
                 <div
                   className="d-flex justify-content-between mt-auto"
                   style={{ width: "80%" }}
@@ -42,39 +37,6 @@ const Research = () => {
         </MDBContainer>
       </section>
       <ClusterAccordion></ClusterAccordion>
-      {/* <Researchaccordion></Researchaccordion> */}
-      {/* Member image test*/}
-      {/* <section>
-        <MDBContainer>
-          <MDBRow className="pt-5 py-4">
-            <div className="d-inline-flex p-2">
-              <h3 className="fw-bold text-uppercase text-black ps-2">Member</h3>
-            </div>
-            <Memberimage2></Memberimage2>
-            <Team></Team>
-
-            <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2">
-                Advisor
-              </h3>
-            </div>
-            <Memberadvisor></Memberadvisor>
-            <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2">
-                Active Alumni
-              </h3>
-            </div>
-            <Memberalumni></Memberalumni>
-            <Memberalumni></Memberalumni>
-            <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2">
-                Collaborator
-              </h3>
-            </div>
-            <Membercol></Membercol>
-          </MDBRow>
-        </MDBContainer> */}
-      {/* </section> */}
     </div>
   );
 };

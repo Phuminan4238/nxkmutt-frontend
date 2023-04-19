@@ -1,7 +1,5 @@
 import React from "react";
 /* Routes */
-import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router";
 import { useParams } from "react-router-dom";
 import {
   MDBCard,
@@ -9,18 +7,11 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
 /* Images */
-import vr1 from "../Images/vr-1.png";
-import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
 import { useState, useEffect, setIsLoaded } from "react";
 
 function Image() {
@@ -38,7 +29,7 @@ function Image() {
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
         {/* <Route path="Memberdetail" element={<MemberDetail />} /> */}
-        <MDBContainer>
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow>
             {uploadfiles.slice(0, 3).map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">

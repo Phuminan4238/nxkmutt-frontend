@@ -1,80 +1,66 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
+import axios from "axios";
 /* Routes */
 import { Route, Routes, useParams } from "react-router";
 /* Material UI */
-import { Container } from "@mui/system";
 import ArticleIcon from "@mui/icons-material/Article";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import EastIcon from "@mui/icons-material/East";
 /* MDBootstrap */
 import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
   MDBCardImage,
   MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
-/* Images */
-import vr2 from "../Images/vr-2.png";
-import PeopleIcon from "@mui/icons-material/People";
+/* Icon */
 import SchoolIcon from "@mui/icons-material/School";
-import BuildIcon from "@mui/icons-material/Build";
-import RedeemIcon from "@mui/icons-material/Redeem";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
 /* Components */
-import Publicationimage from "../Components/Publicationimage";
-import Publicationreport from "../Components/Publicationreport";
-import Toolsimage from "../Components/Tools";
-import Participateimage from "../Components/Participateimage";
 import MemberDetailimage from "../Components/MemberDetailimage";
 
 function Memberdetail({ title }) {
   let { id } = useParams();
-  console.log(id);
-
   const [uploadfiles, setUploadfiles] = useState({});
+  const [publicationfiles, setPublicationfiles] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
+    axios
+      .get(
+        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload`
+      )
+      .then((response) => {
+        setUploadfiles(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-  });
-
-  /* return teamber */
-
-  const [publicationfiles, setPuplicataionfiles] = useState([]);
+  }, [id]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
-      .then((res) => res.json())
-      .then((result) => {
-        setPuplicataionfiles(result.data);
+    axios
+      .get("https://10.35.29.186/api/publications?populate=id")
+      .then((response) => {
+        setPublicationfiles(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-  });
+  }, []);
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer className="pt-5">
-          <MDBRow>
-            <MDBCol
-              size="2"
-              className="text-uppercase fw-bold"
-              style={{ width: "13.33%" }}
-            >
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <MDBCol className="col-2 text-uppercase fw-bold pb-4 sm:pb-0">
               {/* Team member */}
               {title}
             </MDBCol>
-            <MDBCol size="2">
+            <MDBCol className="col-md-6 col-12">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
               <span className="text-uppercase fw-bold ps-4">
                 {uploadfiles.attributes?.prefix_en || "not found"}
@@ -83,13 +69,13 @@ function Memberdetail({ title }) {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        <MDBContainer className="pt-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           {/* {uploadfiles.map((member) => ( */}
-          <MDBRow className="pt-0 pb-5">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1 className="fw-bold text-uppercase text-black">
-                  {uploadfiles.attributes?.prefix_en}{" "}
+                  {uploadfiles.attributes?.prefix_en}
                   {uploadfiles.attributes?.name_en}
                   {/* <span>&nbsp</span> */}
                   <span>(</span>
@@ -130,7 +116,7 @@ function Memberdetail({ title }) {
                 </p>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+            <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
               <MDBCardImage
                 className="rounded-0"
                 src={
@@ -152,10 +138,19 @@ function Memberdetail({ title }) {
                 }}
               />
             </MDBCol>
-          </MDBRow>
-          <MDBRow style={{ borderBottom: "1px solid black" }}></MDBRow>
+          </MDBRow>{" "}
+          <MDBRow
+            style={{
+              borderBottom: "1px solid black",
+              paddingTop: "1.5rem",
+            }}
+          ></MDBRow>
+        </MDBContainer>
+      </section>
+      <section>
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           {/* Education */}
-          <MDBRow>
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
               <h5 className="fw-bold text-uppercase text-black">Education</h5>
 
@@ -168,7 +163,7 @@ function Memberdetail({ title }) {
             </div>
           </MDBRow>
           <MDBCol className="pt-2">
-            <MDBRow className="pt-2">
+            <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="10">
                 {uploadfiles.attributes?.education_en ? (
                   <ul>
@@ -190,13 +185,13 @@ function Memberdetail({ title }) {
             </MDBRow>
 
             {/* Current Affiliations */}
-            <MDBRow>
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
               <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
                 Current Affiliations
               </h5>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2">
+              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
                 <MDBCol md="10">
                   {uploadfiles.attributes?.affiliation_en ? (
                     <ul>
@@ -215,13 +210,13 @@ function Memberdetail({ title }) {
               </MDBRow>
             </MDBCol>
             {/*  Recent and on-going projects */}
-            <MDBRow>
+            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
               <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
                 Recent and on-going projects
               </h5>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow>
+              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
                 <MDBCol md="10">
                   {uploadfiles.attributes?.project_en ? (
                     <ul>
@@ -240,14 +235,14 @@ function Memberdetail({ title }) {
               </MDBRow>
             </MDBCol>
             {/*  Grants */}
-            <MDBRow>
+            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
               <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
                 Grants
               </h5>
             </MDBRow>
 
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2">
+              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
                 {/* <MDBCol md="1" style={{ width: "3.33%" }}>
                   <p>*</p>
                 </MDBCol> */}
@@ -267,13 +262,13 @@ function Memberdetail({ title }) {
               </MDBRow>
             </MDBCol>
             {/*  Awards */}
-            <MDBRow>
+            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
               <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
                 Awards
               </h5>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2">
+              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
                 <MDBCol md="10">
                   {uploadfiles.attributes?.award_en ? (
                     <ul>
@@ -290,8 +285,13 @@ function Memberdetail({ title }) {
               </MDBRow>
             </MDBCol>
           </MDBCol>
-          {/*  Selected Publications */}
-          <MDBRow>
+        </MDBContainer>
+      </section>
+      {/*  Selected Publications */}
+      <section>
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          {/* Education */}
+          <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
               <h5 className="fw-bold text-uppercase text-black">
                 Selected Publications
@@ -306,7 +306,7 @@ function Memberdetail({ title }) {
             </div>
           </MDBRow>
           {publicationfiles.map((member) => (
-            <MDBRow className="pt-4">
+            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               <MDBCol size="1">
                 <ArticleIcon color="primary" />
               </MDBCol>
@@ -323,7 +323,7 @@ function Memberdetail({ title }) {
             }}
           ></MDBRow>
           {/* Other Members */}
-          <MDBRow>
+          <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
               <h4 className="fw-bold text-uppercase text-black">
                 Other Members
@@ -339,12 +339,6 @@ function Memberdetail({ title }) {
             </div>
           </MDBRow>
           <MemberDetailimage></MemberDetailimage>
-          {/* <Route
-            path="/members/:memberID/image"
-            element={<MemberDetailimage />}
-          /> */}
-          {/* <Route path="/members/:memberId" element={<MemberDetailimage />} /> */}
-          {/* <Route element={<MemberDetailimage />} /> */}
         </MDBContainer>
       </section>
     </div>

@@ -1,15 +1,10 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
+import axios from "axios";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* MDBootstrap */
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
-/* Material UI */
-import { Container } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import EastIcon from "@mui/icons-material/East";
-/* Components */
-import ResponsiveAppBar from "../Components/AllNav";
 /* Components */
 import Clusterimage from "../Components/Cluster";
 import Carousel from "../Components/Carousel";
@@ -18,28 +13,32 @@ import News from "../Components/News";
 import Team from "../Components/Team";
 import Collaborator from "../Components/Collaborator";
 import Student from "../Components/Student";
-/* Pages */
-import Member from "./Team Member";
-import Research from "./Research";
-import Publications from "./Publications";
 
-function Home() {
+function Home(props) {
   const [uploadfiles, setUploadfiles] = useState([]);
-
-  // const [hasDataFetched, setHasDataFetched] = useState(false);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
 
   useEffect(() => {
-    // if (!hasDataFetched){
-    //   axios
-
-    // }
-
-    fetch("https://10.35.29.186/api/contents?populate=id")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
+    if (!hasDataFetched) {
+      const instance = axios.create({
+        baseURL: "https://10.35.29.186/api/",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
       });
-  });
+      instance
+        .get("contents?populate=id")
+        .then((response) => {
+          setUploadfiles(response.data.data);
+          setHasDataFetched(true);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [hasDataFetched]);
+
   return (
     <div className="App">
       {/* ******************/}
@@ -89,17 +88,6 @@ function Home() {
                 <h3 className="fw-bold">TOOLS & SERVICES</h3>
               </div>
               <Toolsimage></Toolsimage>
-              <div className="d-inline-flex py-4 text-red">
-                {" "}
-                <h5
-                  href="#"
-                  className="pe-4 xs:text-base sm:text-xl"
-                  style={{ color: "#AE023E" }}
-                >
-                  Find out more
-                </h5>
-                <EastIcon style={{ color: "#AE023E" }}></EastIcon>
-              </div>
             </MDBRow>
           </MDBContainer>
         </section>
@@ -113,13 +101,6 @@ function Home() {
                 <h3 className="fw-bold">NEW & ACTIVITY</h3>
               </div>
               <News></News>
-
-              <div className="d-inline-flex py-4 text-red">
-                <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
-                  More News & Activity
-                </h5>
-                <EastIcon style={{ color: "#AE023E" }}></EastIcon>
-              </div>
             </MDBRow>
           </MDBContainer>
         </section>

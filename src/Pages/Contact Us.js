@@ -1,21 +1,9 @@
 import React from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
-/* Material UI */
-import { Container } from "@mui/system";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
-/* Images */
-import vr2 from "../Images/vr-2.png";
-import PeopleIcon from "@mui/icons-material/People";
-import SchoolIcon from "@mui/icons-material/School";
-import BuildIcon from "@mui/icons-material/Build";
-import RedeemIcon from "@mui/icons-material/Redeem";
 /* Components */
-import Publicationimage from "../Components/Publicationimage";
-import Publicationreport from "../Components/Publicationreport";
-import Toolsimage from "../Components/Tools";
-import News from "../Components/News";
 import Contactlab from "../Components/Contactlab";
 import Contactsocial from "../Components/Contactsocial";
 
@@ -23,66 +11,76 @@ const Contactus = () => {
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer className="xs:max-w-fit sm:max-w-7xl 2xl:max-w-screen-2xl">
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-black">Contact Us</h1>
+                <p className="text-5xl font-black text-uppercase text-black">
+                  Contact Us
+                </p>
               </div>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        <MDBContainer className="fluid p-0" id="contact-container">
-          <MDBRow className="p-0">
-            <MDBCol md="6" className="p-0" s>
-              {/* <img
-                src={vr2}
-                class="image-fluid h-50"
-                id="cluster-img"
-                style={{ paddingLeft: "8rem" }}
-              /> */}
+
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+            <MDBCol md="6" className="p-0">
               <iframe
-                class=" h-full w-full"
-                // id="cluster-img"
-                style={{ paddingLeft: "8rem" }}
-                // id="gmap_canvas"
+                class="image-fluid"
+                id="cluster-img"
+                style={{ height: "350px" }}
                 src="https://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                // frameborder="0"
                 scrolling="no"
                 marginheight="0"
                 marginwidth="0"
               ></iframe>
             </MDBCol>
-            <MDBCol className="pt-0 pb-0 pe-5">
-              <MDBRow>
-                <h4 className="fw-bold text-black ps-5">E-mail</h4>
-                <h4 className=" text-black ps-5 pt-2">nx.kmutt.@gmail.com</h4>
-              </MDBRow>
-              <MDBRow className="pt-5">
-                <h4 className="fw-bold text-black ps-5">Phone</h4>
-              </MDBRow>
-              <MDBRow className="pt-5">
-                <h4 className="fw-bold text-black ps-5">Location</h4>
-                <p className=" text-black ps-5 pe-5 pt-2">
-                  Neuroscience Center for Research and Innovation (NX), Learning
-                  Institute King Mongkut's University of Technology Thonburi
-                  (KMUTT) 126 Pracha Uthit Rd,
-                  <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
-                </p>
-              </MDBRow>
+            <MDBCol className="d-flex pb-0 pe-5">
+              <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
+                <MDBRow>
+                  <h4 className="xs:pt-5 sm:pt-0 fw-bold text-black  ">
+                    E-mail
+                  </h4>
+                  <p className="text-black pt-2">nx.kmutt.@gmail.com</p>
+                </MDBRow>
+                <MDBRow className="pt-4">
+                  <h4 className="fw-bold text-black">Phone</h4>
+                  <p className=" text-black pt-2">0123456789</p>
+                </MDBRow>
+                <MDBRow className="pt-4">
+                  <h4 className="fw-bold text-black">Location</h4>
+                  <p className=" text-black pe-5 pt-2">
+                    Neuroscience Center for Research and Innovation (NX),
+                    Learning Institute King Mongkut's University of Technology
+                    Thonburi (KMUTT) 126 Pracha Uthit Rd,
+                    <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
+                  </p>
+                </MDBRow>
+              </div>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        <div className="container">
-          <div className="d-inline-flex p-2 pt-5">
-            <h3 className="fw-bold  text-black ">Social Media</h3>
-          </div>
-          <Contactsocial></Contactsocial>
-          <div className="d-inline-flex p-2 pt-5">
-            <h3 className="fw-bold text-black ">Lab Portal</h3>
-          </div>
-          <Contactlab></Contactlab>
-        </div>
+      </section>
+      <section>
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
+            <div className="d-inline-flex p-2">
+              <p className="font-black text-uppercase xs:text-xl md:text-3xl">
+                Social Media
+              </p>
+            </div>
+            <div className="pt-5 py-4 mx-0 md:px-0 ">
+              <Contactsocial></Contactsocial>
+            </div>
+            <div className="d-inline-flex p-2 pt-5">
+              <h3 className="fw-bold text-black ">Lab Portal</h3>
+            </div>
+            <div className="pt-5 py-4 mx-0 md:px-0 ">
+              <Contactlab></Contactlab>
+            </div>
+          </MDBRow>
+        </MDBContainer>
       </section>
     </div>
   );

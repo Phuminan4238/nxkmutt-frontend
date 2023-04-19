@@ -1,144 +1,49 @@
 import React from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
+import { MDBCol, MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
-import teamimg1 from "../Images/team-1.png";
-import teamimg2 from "../Images/team-2.png";
-import teamimg3 from "../Images/team-3.png";
-import teamimg4 from "../Images/team-4.png";
 
-function Image() {
+const cards = [
+  {
+    title: "Facebook",
+    img: vr2,
+  },
+  {
+    title: "Youtube",
+    img: vr2,
+  },
+  {
+    title: "Instagram",
+    img: vr2,
+  },
+];
+
+const CardList = ({ cards }) => {
   return (
-    <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBCol>
-          <MDBCard
-            style={{
-              boxShadow: "unset",
-              borderRadius: "0px",
-            }}
-          >
+    <div className="row row-cols-md-5 row-cols-2">
+      {cards.map((card, index) => (
+        <MDBCol key={index}>
+          <MDBCard style={{ boxShadow: "unset", borderRadius: "0px" }}>
             <MDBCardImage
               className="rounded-2"
-              src={vr2}
+              src={card.img}
               position="top"
               alt="..."
-              style={{
-                height: "150px",
-                objectFit: "contain",
-              }}
+              style={{ height: "150px", objectFit: "contain" }}
             />
             <MDBCardBody>
-              <h5 className="fw-normal text-center text-black">Facebook</h5>
+              <h5 className="fw-normal text-center text-black">{card.title}</h5>
             </MDBCardBody>
-          </MDBCard>{" "}
+          </MDBCard>
         </MDBCol>
-        <MDBCol>
-          <MDBCard
-            style={{
-              boxShadow: "unset",
-              borderRadius: "0px",
-            }}
-          >
-            <MDBCardImage
-              className="rounded-2"
-              src={vr2}
-              position="top"
-              alt="..."
-              style={{
-                height: "150px",
-                objectFit: "contain",
-              }}
-            />
-            <MDBCardBody>
-              <h5 className="fw-normal text-center text-black">Youtube</h5>
-            </MDBCardBody>
-          </MDBCard>{" "}
-        </MDBCol>
-        <MDBCol>
-          <MDBCard
-            style={{
-              boxShadow: "unset",
-              borderRadius: "0px",
-            }}
-          >
-            <MDBCardImage
-              className="rounded-2"
-              src={vr2}
-              position="top"
-              alt="..."
-              style={{
-                height: "150px",
-                objectFit: "contain",
-              }}
-            />
-            <MDBCardBody>
-              <h5 className="fw-normal text-center text-black">Instagram</h5>
-            </MDBCardBody>
-          </MDBCard>{" "}
-        </MDBCol>
-        <MDBCol></MDBCol>
-        <MDBCol></MDBCol>
-
-        {/*         
-        <MDBCard
-          style={{
-            boxShadow: "unset",
-            borderRadius: "0px",
-          }}
-        >
-          <MDBCardImage
-            className="rounded-2"
-            src={vr2}
-            position="top"
-            alt="..."
-            style={{
-              height: "150px",
-              objectFit: "contain",
-            }}
-          />
-          <MDBCardBody>
-            <h5 className="fw-normal text-center text-black"></h5>
-          </MDBCardBody>
-        </MDBCard>{" "}
-        <MDBCard
-          style={{
-            boxShadow: "unset",
-            borderRadius: "0px",
-          }}
-        >
-          <MDBCardImage
-            className="rounded-2"
-            src={vr2}
-            position="top"
-            alt="..."
-            style={{
-              height: "150px",
-              objectFit: "contain",
-            }}
-          />
-          <MDBCardBody>
-            <h5 className="fw-normal text-center text-black"></h5>
-          </MDBCardBody>
-        </MDBCard>{" "} */}
-      </div>
-    </>
+      ))}
+    </div>
   );
-}
+};
 
-export default function Contactsocial() {
-  return <Image />;
+export default function App() {
+  return (
+    <div className="container px-0 mx-0">
+      <CardList cards={cards} />
+    </div>
+  );
 }

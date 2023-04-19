@@ -1,19 +1,5 @@
 import React from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import carouselimg1 from "../Images/carousel-1.png";
+import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import carouselimg2 from "../Images/cluster-1.png";
 import carouselimg3 from "../Images/cluster-2.png";
 import carouselimg4 from "../Images/cluster-3.png";
@@ -22,7 +8,7 @@ function Image() {
   return (
     <MDBCarousel showIndicators fade id="carousel-nav">
       <MDBCarouselItem
-        className="w-100 d-block xs:h-fit md:h-full"
+        className="w-100 d-block xs:h-fit md:h-full "
         itemId={1}
         src={carouselimg4}
         alt="..."

@@ -1,34 +1,23 @@
 import React from "react";
-/* Routes */
-import { Route, Routes } from "react-router";
-/* Material UI */
-import { Container } from "@mui/system";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
-import PeopleIcon from "@mui/icons-material/People";
-import SchoolIcon from "@mui/icons-material/School";
-import BuildIcon from "@mui/icons-material/Build";
-import RedeemIcon from "@mui/icons-material/Redeem";
 /* Components */
-import Publicationimage from "../Components/Publicationimage";
-import Publicationreport from "../Components/Publicationreport";
-import Toolsimage from "../Components/Tools";
 import Participateimage from "../Components/Participateimage";
 
 const Participate = () => {
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer>
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-uppercase text-black">
+                <p className="text-5xl font-black text-uppercase text-black">
                   PARTICIPATE
-                </h1>
-                <h1 className="fw-bold text-uppercase text-black">
+                </p>
+                <p className="text-5xl font-black text-uppercase pt-2">
                   <span
                     style={{
                       fontSize: "4rem",
@@ -39,7 +28,7 @@ const Participate = () => {
                     &
                   </span>{" "}
                   DONATE
-                </h1>
+                </p>
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
@@ -52,7 +41,7 @@ const Participate = () => {
             </MDBCol>
           </MDBRow>
 
-          <MDBRow className="pt-5">
+          <MDBRow className="pt-5 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol>
               <MDBRow>
                 <h4 className="fw-bold text-uppercase text-black ps-2">
@@ -108,10 +97,10 @@ const Participate = () => {
                   </MDBCol>
                 </MDBRow>
               </MDBCol>
-              <MDBRow>
+              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
                 <Participateimage></Participateimage>
               </MDBRow>
-              <MDBRow>
+              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
                 <h4 className="fw-bold text-uppercase text-black ps-2 pt-4">
                   DONATION
                 </h4>

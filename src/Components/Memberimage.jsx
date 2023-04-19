@@ -1,14 +1,12 @@
 import React from "react";
 /* Routes */
 import { Link } from "react-router-dom";
-import { Route, Routes } from "react-router";
 import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -32,7 +30,7 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">
-                <Link to={`/Member Detail/${member.id}`}>
+                <Link to={`/Member Detail/${member.id}`} target="_blank">
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",
@@ -78,7 +76,7 @@ function Image({ members }) {
                       </MDBCardText>
                       <MDBCardText key={member.attributes}>
                         <p
-                          className="fw-normal text-center text-sm"
+                          className="fw-normal text-center text-sm md:text-lg"
                           style={{ color: "#AE023E" }}
                         >
                           Main Interest, Main <br></br> Interest, Main Interest

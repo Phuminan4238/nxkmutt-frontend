@@ -1,19 +1,5 @@
 import React from "react";
-import {
-  MDBContainer,
-  MDBCarousel,
-  MDBCarouselItem,
-  MDBRow,
-  MDBCol,
-  MDBRipple,
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardImage,
-  MDBBtn,
-} from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
+import { MDBRipple } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
 
 function Image() {

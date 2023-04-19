@@ -29,16 +29,11 @@ const pages = [
   "NEWS ACTIVITIES",
   "CONTACT US",
   "PARTICIPATE DONATE",
-
-  // "UPLOADFILE",
 ];
 const drawerWidth = 360;
 
 function HideOnScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
@@ -62,25 +57,32 @@ HideOnScroll.propTypes = {
 export default function HomeNav(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
 
+  /* Search box */
+  const [searchText, setSearchText] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const handleInputChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
   /* Switch Navbar */
   const [navbarType, setNavbarType] = useState("navbar1");
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -89,9 +91,7 @@ export default function HomeNav(props) {
         setNavbarType("navbar1");
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -138,7 +138,31 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <SearchIcon style={{ color: "white" }}></SearchIcon>
+                  <SearchIcon
+                    style={{ color: "white" }}
+                    onClick={handleSearchClick}
+                  />
+                  {isSearchOpen && (
+                    <div className="flex">
+                      <input
+                        type="search"
+                        class="form-control rounded"
+                        placeholder="Search"
+                        aria-label="Search"
+                        aria-describedby="search-addon"
+                        value={searchText}
+                        onChange={handleInputChange}
+                        id="form1"
+                      />
+
+                      <span
+                        class="input-group-text border-0"
+                        id="search-addon"
+                        onClick={() => console.log(searchText)}
+                      ></span>
+                      <i class="fas fa-search"></i>
+                    </div>
+                  )}
                   {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
                   <span>
                     {" "}

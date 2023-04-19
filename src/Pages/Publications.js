@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
-/* Material UI */
-import { Container } from "@mui/system";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images */
@@ -25,16 +23,18 @@ const Publications = () => {
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer>
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-light text-uppercase text-black">Our</h1>
-                <h1 className="fw-bold text-uppercase text-black">
+                <p className="text-4xl font-black fw-light text-uppercase text-black">
+                  Our
+                </p>
+                <p className="text-5xl font-black  text-uppercase pt-2">
                   Publications
-                </h1>
+                </p>
                 <div
-                  className="d-flex justify-content-between mt-auto"
+                  className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0"
                   style={{ width: "80%" }}
                 >
                   <div class="input-group rounded">
@@ -52,7 +52,8 @@ const Publications = () => {
                 </div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+
+            <MDBCol md="4" className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0">
               <img
                 src={vr2}
                 class="image-fluid"
@@ -63,7 +64,7 @@ const Publications = () => {
           </MDBRow>
           <MDBRow>
             <MDBCol>
-              <p className="ms-5 text-uppercase">Filter By</p>
+              <p className="ms-5 pt-5 text-uppercase">Filter By</p>
             </MDBCol>
           </MDBRow>
           <Publicationimage></Publicationimage>

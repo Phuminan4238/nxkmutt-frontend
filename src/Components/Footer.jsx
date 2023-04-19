@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  MDBFooter,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+import { MDBFooter, MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import logo from "../Images/logo.png";
 import logokmutt from "../Images/logo-kmutt.png";
 
@@ -26,7 +20,7 @@ export default function App() {
                     style={{ borderRight: "1px solid white" }}
                   />
                 </div>
-                <div className="col-2 pt-4 ps-4">
+                <div className="col-2 pt-2 ps-4">
                   {" "}
                   <img src={logo} class="image-fluid" id="logo-img" />
                 </div>

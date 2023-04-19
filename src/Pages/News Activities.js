@@ -1,42 +1,38 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
-/* Routes */
-import { Route, Routes } from "react-router";
-/* Material UI */
-import { Container } from "@mui/system";
+import axios from "axios";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
-import PeopleIcon from "@mui/icons-material/People";
-import SchoolIcon from "@mui/icons-material/School";
-import BuildIcon from "@mui/icons-material/Build";
-import RedeemIcon from "@mui/icons-material/Redeem";
 /* Components */
-import Publicationimage from "../Components/Publicationimage";
-import Publicationreport from "../Components/Publicationreport";
-import Toolsimage from "../Components/Tools";
 import News from "../Components/News";
 
 const Newsactivities = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/contents?populate=id")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
+    axios
+      .get("https://10.35.29.186/api/contents?populate=id")
+      .then((res) => {
+        setUploadfiles(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  });
+  }, []);
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer>
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-uppercase text-black">News</h1>
-                <h1 className="fw-bold text-uppercase text-black">
+                <p className="text-5xl font-black text-uppercase text-black">
+                  News
+                </p>
+                <p className="text-5xl font-black text-uppercase pt-2">
                   <span
                     style={{
                       fontSize: "4rem",
@@ -47,9 +43,9 @@ const Newsactivities = () => {
                     &
                   </span>{" "}
                   Activities
-                </h1>
+                </p>
                 <div
-                  className="d-flex justify-content-between mt-auto"
+                  className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0"
                   style={{ width: "80%" }}
                 >
                   <div class="input-group rounded">
@@ -76,8 +72,9 @@ const Newsactivities = () => {
               />
             </MDBCol>
           </MDBRow>
-          <News></News>
-          <News></News>
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+            <News></News>
+          </MDBRow>
         </MDBContainer>
       </section>
     </div>

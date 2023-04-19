@@ -1,31 +1,29 @@
 import React from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
-/* Material UI */
-import { Container } from "@mui/system";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
 import PeopleIcon from "@mui/icons-material/People";
 import SchoolIcon from "@mui/icons-material/School";
-import BuildIcon from "@mui/icons-material/Build";
-import RedeemIcon from "@mui/icons-material/Redeem";
+
 /* Components */
-import Publicationimage from "../Components/Publicationimage";
-import Publicationreport from "../Components/Publicationreport";
+
 import Toolsimage from "../Components/Tools";
 
 const Toolservice = () => {
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
-        <MDBContainer>
-          <MDBRow className="pt-0 pb-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-uppercase text-black">Tools</h1>
-                <h1 className="fw-bold text-uppercase text-black">
+                <p className="text-5xl font-black text-uppercase text-black">
+                  Tools
+                </p>
+                <p className="text-5xl font-black text-uppercase pt-2">
                   <span
                     style={{
                       fontSize: "4rem",
@@ -36,7 +34,11 @@ const Toolservice = () => {
                     &
                   </span>{" "}
                   Service
-                </h1>
+                </p>
+                <div
+                  className="d-flex justify-content-between mt-auto"
+                  style={{ width: "80%" }}
+                ></div>
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
@@ -70,14 +72,18 @@ const Toolservice = () => {
           </MDBRow>
           <MDBRow className="pt-5">
             <MDBCol>
-              <MDBRow>
+              <div className="d-inline-flex p-2">
                 <h4 className="fw-bold text-uppercase text-black ps-2">
                   Service
                 </h4>
-              </MDBRow>
+              </div>
               <MDBCol className="ps-4 pt-2">
                 <MDBRow className="pt-2">
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
+                  <MDBCol
+                    size="1"
+                    style={{ width: "3.33%" }}
+                    className="me-4 md:me-0"
+                  >
                     <PeopleIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
@@ -89,7 +95,11 @@ const Toolservice = () => {
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
+                  <MDBCol
+                    size="1"
+                    style={{ width: "3.33%" }}
+                    className="me-4 md:me-0"
+                  >
                     <SchoolIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
@@ -100,22 +110,6 @@ const Toolservice = () => {
                     </p>
                   </MDBCol>
                 </MDBRow>
-                {/* <MDBRow>
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
-                    <BuildIcon style={{ color: "#AE023E" }} />
-                  </MDBCol>
-                  <MDBCol>
-                    <p className="fw-bold">Tools Renting</p>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
-                    <RedeemIcon style={{ color: "#AE023E" }} />
-                  </MDBCol>
-                  <MDBCol>
-                    <p className="fw-bold">Course & Workshop</p>
-                  </MDBCol>
-                </MDBRow> */}
               </MDBCol>
             </MDBCol>
           </MDBRow>
