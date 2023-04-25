@@ -72,6 +72,16 @@ const ToolsImage = () => {
     { imageUrl: vr1, maskText: "XR" },
   ];
 
+  const [iconStyle, setIconStyle] = useState({ color: "#AE023E" });
+
+  const handleMouseEnter = () => {
+    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+  };
+
+  const handleMouseLeave = () => {
+    setIconStyle({ color: "#AE023E" });
+  };
+
   return (
     <>
       <div
@@ -84,7 +94,7 @@ const ToolsImage = () => {
           </div>
         ))}
       </div>
-      <MDBRow>
+      <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <Link
           to={`/Tools Service`}
           target="_blank"
@@ -94,7 +104,7 @@ const ToolsImage = () => {
             <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
               Find out more
             </h5>
-            <EastIcon style={{ color: "#AE023E" }}></EastIcon>
+            <EastIcon style={iconStyle}></EastIcon>
           </div>
         </Link>
       </MDBRow>

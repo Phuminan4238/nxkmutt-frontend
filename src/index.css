@@ -175,6 +175,14 @@ a:hover {
   opacity: 1;
 }
 
+.navlink-color {
+  color: inherit !important;
+}
+
+.page-item {
+  padding: 0 5px;
+}
+
 /* #main-container {
   max-width: auto;
 } */

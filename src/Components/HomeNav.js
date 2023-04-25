@@ -30,6 +30,7 @@ const pages = [
   "CONTACT US",
   "PARTICIPATE DONATE",
 ];
+
 const drawerWidth = 360;
 
 function HideOnScroll(props) {
@@ -206,7 +207,7 @@ export default function HomeNav(props) {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {pages.map((page) => (
+                    {pages.map((page, index) => (
                       <MenuItem
                         style={{
                           justifyContent: "center",
@@ -230,19 +231,54 @@ export default function HomeNav(props) {
                           color: "inherit", // set default link color to black
                         }}
                       >
-                        <Link to={`/${page}`} style={{ color: "inherit" }}>
+                        <Link
+                          to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                          style={{ color: "inherit" }}
+                          sx={{
+                            ":hover": {
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
+                            // color: "inherit", // set link color to inherit to match parent
+                          }}
+                        >
                           <a
                             textAlign="center"
                             to={`/${page}`}
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
-                              color: "inherit", // set link color to inherit to match parent
+                              // ":hover": {
+                              //   "& a, & > a": {
+                              //     color: "white",
+                              //   },
+                              // },
+                              // color: "inherit", // set link color to inherit to match parent
+                            }}
+                          >
+                            {decodeURI(page)}
+                          </a>
+                        </Link>
+                        {/* <Link to={`/${page}`} style={{ color: "inherit" }}>
+                          <a
+                            textAlign="center"
+                            to={`/${page}`}
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+
+                              ":hover": {
+                                "& a, & > a": {
+                                  color: "white",
+                                },
+                              },
+                              // color: "inherit", // set link color to inherit to match parent
                             }}
                           >
                             {page}
                           </a>
-                        </Link>
+                        </Link> */}
                       </MenuItem>
                     ))}
                   </Menu>
@@ -362,14 +398,23 @@ export default function HomeNav(props) {
                           color: "inherit", // set default link color to black
                         }}
                       >
-                        <Link to={`/${page}`} style={{ color: "inherit" }}>
+                        <Link
+                          to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                          style={{ color: "inherit" }}
+                        >
                           <a
                             textAlign="center"
                             to={`/${page}`}
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
-                              color: "inherit", // set link color to inherit to match parent
+
+                              ":hover": {
+                                "& a, & > a": {
+                                  color: "white",
+                                },
+                              },
+                              // color: "inherit", // set link color to inherit to match parent
                             }}
                           >
                             {page}

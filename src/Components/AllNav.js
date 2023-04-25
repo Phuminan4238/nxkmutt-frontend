@@ -172,7 +172,10 @@ export default function HomeNav(props) {
                         color: "inherit", // set default link color to black
                       }}
                     >
-                      <Link to={`/${page}`} style={{ color: "inherit" }}>
+                      <Link
+                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                        style={{ color: "inherit" }}
+                      >
                         <a
                           textAlign="center"
                           to={`/${page}`}

@@ -11,7 +11,7 @@ export default function App() {
           <MDBRow className="mt-3">
             <MDBCol className="my-5 px-4">
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-1">
+                <div className="col-2 col-md-1">
                   {" "}
                   <img
                     src={logokmutt}
@@ -20,15 +20,15 @@ export default function App() {
                     style={{ borderRight: "1px solid white" }}
                   />
                 </div>
-                <div className="col-2 pt-2 ps-4">
+                <div className="col-3 col-md-2 pt-2 ms-4">
                   {" "}
                   <img src={logo} class="image-fluid" id="logo-img" />
                 </div>
               </div>
 
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-2 p-2">Privacy policy</div>
-                <div className="col-2 p-2">Terms of use</div>
+                <div className="col-3 col-md-2 p-2">Privacy policy</div>
+                <div className="col-4 col-md-2 p-2">Terms of use</div>
               </div>
               <div className="d-flex flex-row mt-3 text-white">
                 © 2022 NX KMUTT

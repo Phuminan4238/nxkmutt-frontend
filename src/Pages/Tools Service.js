@@ -59,7 +59,7 @@ const Toolservice = () => {
               </div>
             </MDBCol>
           </MDBRow>
-          <Toolsimage></Toolsimage>
+          {/* Tools image */}
           <Toolsimage></Toolsimage>
           <MDBRow className="mt-4">
             <MDBCol>

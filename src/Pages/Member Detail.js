@@ -131,7 +131,7 @@ function Memberdetail({ title }) {
                   // width: "100%",
                   // height: "400px",
                   objectFit: "fill",
-                  height: "500px",
+                  // height: "500px",
                   borderRadius: "0px",
                   alignSelf: "center",
                   // objectFit: "contain",
@@ -168,11 +168,14 @@ function Memberdetail({ title }) {
                 {uploadfiles.attributes?.education_en ? (
                   <ul>
                     {uploadfiles.attributes.education_en.map(
-                      (education, index) => (
-                        <li key={index} className="fw-normal text-normal">
-                          {education}
-                        </li>
-                      )
+                      (education, index) => {
+                        const [degree, year] = education.split("–");
+                        return (
+                          <li key={index} className="fw-normal text-normal">
+                            {degree}
+                          </li>
+                        );
+                      }
                     )}
                   </ul>
                 ) : (
@@ -180,7 +183,28 @@ function Memberdetail({ title }) {
                 )}
               </MDBCol>
               <MDBCol md="1">
-                <p>- 2017</p>
+                <ul>
+                  {uploadfiles.attributes?.education_en?.map(
+                    (education, index) => {
+                      const [degree, year] = education.split("–");
+                      return (
+                        <li
+                          key={index}
+                          className="fw-normal text-normal"
+                          style={{
+                            listStyle: '"- "',
+                            "::before": {
+                              content: '"-"',
+                              marginRight: "0.5rem",
+                            },
+                          }}
+                        >
+                          {year}
+                        </li>
+                      );
+                    }
+                  )}
+                </ul>
               </MDBCol>
             </MDBRow>
 

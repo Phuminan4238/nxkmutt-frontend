@@ -33,22 +33,22 @@ function App() {
       {nav}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Team Member" element={<Member />} />
+        <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
         <Route path="/Research" element={<Research />} />
         <Route path="/Publications" element={<Publications />} />
-        <Route path="/Tools Service" element={<Toolservice />} />
-        <Route path="/News Activities" element={<Newsactivities />} />
-        <Route path="/Contact Us" element={<Contactus />} />
-        <Route path="/Participate Donate" element={<Participate />} />
+        <Route path="/Tools-Service" element={<Toolservice />} />
+        <Route path="/News-Activities" element={<Newsactivities />} />
+        <Route path="/Contact-Us" element={<Contactus />} />
+        <Route path="/Participate-Donate" element={<Participate />} />
         <Route
-          path="/Member Detail/:id"
+          path="/Member-Detail/:id"
           element={<Memberdetail title="TEAM MEMBER" />}
         />
         <Route
-          path="/Tags Detail/:id"
+          path="/Tags-Detail/:id"
           element={<TagsDetail title="RESEARCH" />}
         />
-        <Route path="/News Detail/:id" element={<NewsDetail title="NEWS" />} />
+        <Route path="/News-Detail/:id" element={<NewsDetail title="NEWS" />} />
       </Routes>
       <Footer />
     </div>

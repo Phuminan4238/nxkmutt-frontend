@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 
 function Post() {
   const [memberfiles, setMemberfiles] = useState([]);
@@ -44,16 +45,18 @@ function Post() {
           className={`${index % 2 === 0 ? "flex-row-reverse" : ""}`}
         >
           <MDBCol md="6" className={`p-0 order-${order1}`}>
-            <img
-              src={imgSrc}
-              className="image-fluid"
-              id="cluster-img"
-              style={{
-                height: "340px",
-                // objectFit: "cover",
-              }}
-              alt={`Member ${index + 1} Image`}
-            />
+            <Link to={`/Member-Detail/${member.id}`} target="_blank">
+              <img
+                src={imgSrc}
+                className="image-fluid"
+                id="cluster-img"
+                style={{
+                  height: "320px",
+                  objectFit: "fill",
+                }}
+                alt={`Member ${index + 1} Image`}
+              />
+            </Link>
           </MDBCol>
 
           <MDBCol
