@@ -109,9 +109,9 @@ function Post({ member }) {
           // style={colStyle}
         >
           <div className="d-flex flex-column w-100">
-            <h4 className="fw-bold xs:text-lg sm:text-2xl">
+            <p className="fw-bold xs:pt-4 md:pt-0 xs:text-xl md:text-2xl">
               {member.attributes.name_en}
-            </h4>
+            </p>
             <p className="mt-2 xs:text-sm sm:text-lg">
               {member.attributes.name_th}
             </p>

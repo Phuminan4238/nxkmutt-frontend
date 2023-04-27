@@ -30,7 +30,7 @@ function Image({ members }) {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-4">
+              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
                 <Link to={`/Member-Detail/${member.id}`} target="_blank">
                   <MDBCard
                     style={{
@@ -59,7 +59,7 @@ function Image({ members }) {
                     <MDBCardBody>
                       <MDBCardTitle className="m-0">
                         <p
-                          className="text-2xl fw-bold text-center mb-0"
+                          className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
                           style={{ color: "#AE023E" }}
                         >
                           {member.attributes.name_en}
@@ -69,7 +69,7 @@ function Image({ members }) {
                       </MDBCardTitle>
                       <MDBCardText>
                         <p
-                          className="text-xl fw-normal text-center mb-0"
+                          className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
                           style={{ color: "#AE023E" }}
                         >
                           {member.attributes.position_en}

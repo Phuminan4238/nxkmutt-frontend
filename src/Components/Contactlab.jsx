@@ -39,7 +39,9 @@ const CardList = ({ cards }) => {
               style={{ height: "150px", objectFit: "contain" }}
             />
             <MDBCardBody>
-              <h5 className="fw-normal text-center text-black">{card.title}</h5>
+              <p className="fw-normal text-center text-black xs:text-base md:text-lg ">
+                {card.title}
+              </p>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

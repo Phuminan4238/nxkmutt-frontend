@@ -85,11 +85,14 @@ const ToolsImage = () => {
   return (
     <>
       <div
-        className="d-flex justify-content-center align-items-center py-4 flex-row xs:flex-row"
+        className="d-flex justify-content-center py-4 align-items-start md:align-items-center  xs:flex-column sm:flex-row"
         id="tools-flex"
       >
         {images.map((image, index) => (
-          <div key={index} className="col-md-3 col-sm-1 mb-4 flex-fill">
+          <div
+            key={index}
+            className="flex-fill col-sm-1 col-md-3 w-50 xs:mb-0 md:mb-4 md:w-100"
+          >
             <ImageMask imageUrl={image.imageUrl} maskText={image.maskText} />
           </div>
         ))}
@@ -100,7 +103,7 @@ const ToolsImage = () => {
           target="_blank"
           style={{ color: "inherit" }}
         >
-          <div className="d-inline-flex py-4 text-red">
+          <div className="d-inline-flex text-red py-2 md:py-4">
             <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
               Find out more
             </h5>

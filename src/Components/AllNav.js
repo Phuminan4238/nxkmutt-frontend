@@ -149,32 +149,32 @@ export default function HomeNav(props) {
                   onClose={handleCloseUserMenu}
                 >
                   {pages.map((page) => (
-                    <MenuItem
-                      style={{
-                        justifyContent: "center",
-                        width: "300px",
-                        height: "60px",
-                        borderBottom: "1px solid gray",
-                      }}
-                      key={page}
-                      onClick={handleCloseUserMenu}
-                      sx={{
-                        ":hover": {
-                          bgcolor: "#AE023E",
-                          opacity: "100%",
-                          "& a, & > a": {
-                            color: "white",
-                          },
-                        },
-                        fontWeight: "bold",
-                        padding: "10px 20px 10px 20px",
-                        borderBottom: "1px solid white",
-                        color: "inherit", // set default link color to black
-                      }}
+                    <Link
+                      to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                      style={{ color: "inherit" }}
                     >
-                      <Link
-                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
-                        style={{ color: "inherit" }}
+                      <MenuItem
+                        style={{
+                          justifyContent: "center",
+                          width: "300px",
+                          height: "60px",
+                          borderBottom: "1px solid gray",
+                        }}
+                        key={page}
+                        onClick={handleCloseUserMenu}
+                        sx={{
+                          ":hover": {
+                            bgcolor: "#AE023E",
+                            opacity: "100%",
+                            "& a, & > a": {
+                              color: "white",
+                            },
+                          },
+                          fontWeight: "bold",
+                          padding: "10px 20px 10px 20px",
+                          borderBottom: "1px solid white",
+                          color: "inherit", // set default link color to black
+                        }}
                       >
                         <a
                           textAlign="center"
@@ -187,8 +187,8 @@ export default function HomeNav(props) {
                         >
                           {page}
                         </a>
-                      </Link>
-                    </MenuItem>
+                      </MenuItem>
+                    </Link>
                   ))}
                 </Menu>
               </Box>

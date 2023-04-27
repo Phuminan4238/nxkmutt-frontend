@@ -56,7 +56,7 @@ function Home(props) {
                     {member.attributes.header_en}
                   </p>
                 </div>
-                <div className="d-inline-flex px-5 py-5">
+                <div className="d-inline-flex px-5 xs:py-2 md:py-5">
                   <p className="fw-normal xs:text-base md:text-lg ps-4">
                     {member.attributes.content_en}
                   </p>
@@ -109,7 +109,7 @@ function Home(props) {
         {/* Section Team */}
         <section>
           <MDBContainer className="xs:max-w-fit sm:max-w-7xl">
-            <MDBRow className="pt-5 pb-4 xs:px-5 sm:px-5 md:px-0">
+            <MDBRow className="pb-4 xs:pt-5 sm:pt-0 xs:px-5 sm:px-5 md:px-0">
               <div className="d-inline-flex p-2">
                 <h3 className="fw-bold text-uppercase">Our Brain Army</h3>
               </div>

@@ -13,10 +13,10 @@ const Research = () => {
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="text-5xl font-black text-uppercase text-black">
+                <p className="font-black text-uppercase text-black xs:text-3xl md:text-5xl">
                   Research
                 </p>
-                <p className="text-4xl font-black fw-light text-uppercase pt-2">
+                <p className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl">
                   Clusters
                 </p>
                 <div

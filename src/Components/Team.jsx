@@ -13,7 +13,7 @@ function Post() {
       });
   }, []);
 
-  const colors = ["#B34C66", "#F2B032", "#02A27D", "#88BFD2"];
+  const colors = ["#B34C66", "#F2B032", "#88BFD2", "#F2B032"];
 
   const Column = ({ color, children }) => {
     return (

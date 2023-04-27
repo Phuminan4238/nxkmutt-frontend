@@ -14,10 +14,10 @@ const Participate = () => {
           <MDBRow className="pt-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="text-5xl font-black text-uppercase text-black">
+                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
                   PARTICIPATE
                 </p>
-                <p className="text-5xl font-black text-uppercase pt-2">
+                <p className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl">
                   <span
                     style={{
                       fontSize: "4rem",
@@ -44,9 +44,9 @@ const Participate = () => {
           <MDBRow className="pt-5 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol>
               <MDBRow>
-                <h4 className="fw-bold text-uppercase text-black ps-2">
+                <p className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-2xl">
                   JOB & Internship
-                </h4>
+                </p>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
                 <MDBRow className="pt-2">
@@ -72,7 +72,7 @@ const Participate = () => {
                 </MDBRow>
               </MDBCol>
               <MDBRow>
-                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4">
+                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-2xl">
                   STUDY participation
                 </h4>
               </MDBRow>
@@ -101,7 +101,7 @@ const Participate = () => {
                 <Participateimage></Participateimage>
               </MDBRow>
               <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4">
+                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-2xl">
                   DONATION
                 </h4>
                 <p>Contact Detail</p>

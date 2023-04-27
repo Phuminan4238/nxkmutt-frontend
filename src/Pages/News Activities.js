@@ -29,10 +29,10 @@ const Newsactivities = () => {
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="text-5xl font-black text-uppercase text-black">
+                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
                   News
                 </p>
-                <p className="text-5xl font-black text-uppercase pt-2">
+                <p className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl">
                   <span
                     style={{
                       fontSize: "4rem",

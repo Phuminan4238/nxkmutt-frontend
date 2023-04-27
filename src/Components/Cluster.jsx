@@ -165,7 +165,7 @@ function Reuse() {
               key={index}
             >
               <div className="d-flex flex-column w-100">
-                <p className="fw-bold text-white xs:text-xl md:text-3xl">
+                <p className="fw-bold text-white xs:text-xl md:text-2xl">
                   {tagsData.attributes?.name_en || "not found"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">

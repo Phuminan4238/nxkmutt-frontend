@@ -17,11 +17,11 @@ const Member = () => {
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="text-5xl font-black text-uppercase text-black">
+                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
                   Meet Our
                 </p>
                 <p
-                  className="text-6xl font-black text-uppercase pt-2"
+                  className="font-black text-uppercase pt-2 xs:text-3xl md:text-6xl"
                   style={{ color: "#AE023E" }}
                 >
                   Team
@@ -59,14 +59,14 @@ const Member = () => {
             </div>
             <Memberadvisor></Memberadvisor>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2">
+              <h3 className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
                 Active Alumni
               </h3>
             </div>
             <Memberalumni></Memberalumni>
             <Memberalumni></Memberalumni>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2">
+              <h3 className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
                 Collaborator
               </h3>
             </div>
