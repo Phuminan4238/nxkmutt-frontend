@@ -19,7 +19,8 @@ const Publications = () => {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array added
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>

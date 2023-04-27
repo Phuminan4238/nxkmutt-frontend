@@ -12,7 +12,8 @@ function Menu() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array added
+
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">

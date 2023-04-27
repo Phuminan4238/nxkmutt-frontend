@@ -24,7 +24,7 @@ function TagsDetail({ title }) {
       .then((result) => {
         setTags(result.data);
       });
-  });
+  }, [id]);
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
 
@@ -34,7 +34,7 @@ function TagsDetail({ title }) {
       .then((result) => {
         setPuplicataionfiles(result.data);
       });
-  });
+  }, []);
 
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>

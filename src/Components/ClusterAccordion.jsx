@@ -18,7 +18,7 @@ function Image() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -89,7 +89,7 @@ function ReverseImage() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -156,13 +156,14 @@ function Image2() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
       <MDBRow className="p-0 ">
@@ -222,13 +223,14 @@ function ReverseImage2() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array
 
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
       <MDBRow className="p-0 ">

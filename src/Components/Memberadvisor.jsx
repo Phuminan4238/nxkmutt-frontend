@@ -14,17 +14,40 @@ import {
 /* Images */
 import vr2 from "../Images/vr-2.png";
 import { useState, useEffect, setIsLoaded } from "react";
+import axios from "axios";
 
 function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
-      });
-  });
+    let isMounted = true;
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const fetchData = async () => {
+      try {
+        const response = await instance.get(
+          "members?populate=uploadfiles.fileupload"
+        );
+        if (isMounted) {
+          setUploadfiles(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">

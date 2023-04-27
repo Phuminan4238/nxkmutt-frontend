@@ -13,7 +13,7 @@ function Report1() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array added
   return (
     <MDBContainer>
       <MDBRow className="pt-5 py-4">
@@ -87,7 +87,7 @@ function Report2() {
       .then((result) => {
         setUploadfiles(result.data);
       });
-  });
+  }, []); // empty dependency array added
   return (
     <MDBContainer>
       <MDBRow className="pt-5 py-4">

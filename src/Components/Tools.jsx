@@ -99,7 +99,7 @@ const ToolsImage = () => {
       </div>
       <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <Link
-          to={`/Tools Service`}
+          to={`/Tools-Service`}
           target="_blank"
           style={{ color: "inherit" }}
         >

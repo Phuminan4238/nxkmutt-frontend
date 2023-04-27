@@ -1,6 +1,7 @@
 import React from "react";
 /* Routes */
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   MDBCard,
   MDBCardBody,
@@ -17,12 +18,37 @@ function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
-      });
-  }, []);
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "members?populate=uploadfiles.fileupload"
+        );
+        if (isMounted) {
+          setUploadfiles(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfiles.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfiles]);
 
   return (
     <>

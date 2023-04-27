@@ -212,6 +212,20 @@ export default function News() {
           .map((member) => (
             <Post key={member.id} member={member} />
           ))}
+        <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <Link
+            to={`/News-Activities`}
+            target="_blank"
+            style={{ color: "inherit" }}
+          >
+            <div className="d-inline-flex text-red py-2 md:py-4">
+              <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                More News & Activity
+              </h5>
+              <EastIcon style={iconStyle}></EastIcon>
+            </div>
+          </Link>
+        </MDBRow>
       </MDBContainer>
     );
   }
@@ -228,6 +242,7 @@ export default function News() {
             <Post key={member.id} member={member} />
           ))}
       </MDBContainer>
+
       <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <div className="d-inline-flex justify-center py-4 text-red">
           <ReactPaginate
