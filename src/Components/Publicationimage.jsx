@@ -380,10 +380,16 @@ function Menu() {
                       style={{
                         backgroundColor: allTagsSelected
                           ? colors[index]
-                          : activeTag === index
-                          ? colors[index]
-                          : "#ccc",
+                          : tagColors[selectedTag],
                       }}
+
+                      // "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0273458",
+
+                      // style={{
+                      //   backgroundColor: allTagsSelected
+                      //     ? tagColor
+                      //     : tagColors[selectedTag],
+                      // }}
                     >
                       <MDBCardTitle className="m-0">
                         <p

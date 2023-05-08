@@ -74,7 +74,7 @@ function Reuse() {
                 className="image-fluid"
                 style={{
                   width: "-webkit-fill-available",
-                  height: "-webkit-fit-content",
+                  height: "auto",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -92,7 +92,7 @@ function Reuse() {
                 className="image-fluid"
                 style={{
                   width: "-webkit-fill-available",
-                  height: "-webkit-fit-content",
+                  height: "auto",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -110,7 +110,7 @@ function Reuse() {
                 className="image-fluid"
                 style={{
                   width: "-webkit-fill-available",
-                  height: "-webkit-fit-content",
+                  height: "auto",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -128,7 +128,7 @@ function Reuse() {
                 className="image-fluid"
                 style={{
                   width: "-webkit-fill-available",
-                  height: "-webkit-fit-content",
+                  height: "auto",
                 }}
                 src={
                   "https://10.35.29.186" +
