@@ -52,6 +52,7 @@ function Post() {
                 id="cluster-img"
                 style={{
                   height: "320px",
+                  maxWidth: "100%",
                   objectFit: "fill",
                 }}
                 alt={`Member ${index + 1} Image`}

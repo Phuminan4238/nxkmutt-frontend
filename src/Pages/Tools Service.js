@@ -53,9 +53,9 @@ const Toolservice = () => {
           <MDBRow>
             <MDBCol>
               <div className="d-inline-flex p-2">
-                <h4 className="fw-bold text-uppercase text-black ps-2">
+                <p className="font-black text-uppercase xs:text-xl md:text-3xl">
                   Tools
-                </h4>
+                </p>
               </div>
             </MDBCol>
           </MDBRow>

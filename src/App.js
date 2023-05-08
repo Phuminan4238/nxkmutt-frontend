@@ -22,6 +22,8 @@ import Memberdetail from "./Pages/Member Detail";
 
 import TagsDetail from "./Pages/Tags Detail";
 import NewsDetail from "./Pages/News Detail";
+import ToolsDetail from "./Pages/Tools Detail";
+import PublicationsDetail from "./Pages/Publication Detail";
 
 function App() {
   const location = useLocation();
@@ -48,7 +50,15 @@ function App() {
           path="/Tags-Detail/:id"
           element={<TagsDetail title="RESEARCH" />}
         />
+        <Route
+          path="/Publications-Detail/:id"
+          element={<PublicationsDetail title="PUBLICATION" />}
+        />
         <Route path="/News-Detail/:id" element={<NewsDetail title="NEWS" />} />
+        <Route
+          path="/Tools-Detail/:id"
+          element={<ToolsDetail title="TOOLS" />}
+        />
       </Routes>
       <Footer />
     </div>

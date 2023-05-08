@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+/* Routes */
 import { Link } from "react-router-dom";
-import { MDBContainer, MDBRow, MDBCol, MDBRipple } from "mdb-react-ui-kit";
-import vr1 from "../Images/vr-1.png";
-import EastIcon from "@mui/icons-material/East";
+import axios from "axios";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+} from "mdb-react-ui-kit";
+import { useState, useEffect, setIsLoaded } from "react";
 
 const ImageMask = ({ imageUrl, maskText }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -45,83 +55,107 @@ const ImageMask = ({ imageUrl, maskText }) => {
   };
 
   return (
-    <MDBRipple
-      className="bg-image"
-      rippleTag="div"
-      rippleColor="light"
+    <div
+      style={imageStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img
-        className="image-cards img-fluid"
-        src={imageUrl}
-        alt="..."
-        style={imageStyle}
-      />
+      <img src={imageUrl} alt="" />
       <div style={maskStyle}>
-        <div style={textStyle}>{isHovering ? maskText : ""}</div>
+        <p style={textStyle}>{maskText}</p>
       </div>
-    </MDBRipple>
+    </div>
   );
 };
 
-const ToolsImage = () => {
-  const images = [
-    { imageUrl: vr1, maskText: "VR" },
-    { imageUrl: vr1, maskText: "AR" },
-    { imageUrl: vr1, maskText: "XR" },
-  ];
+function Image({ members }) {
+  const [uploadfiles, setUploadfiles] = useState([]);
 
-  const [iconStyle, setIconStyle] = useState({ color: "#AE023E" });
+  useEffect(() => {
+    let isMounted = true;
 
-  const handleMouseEnter = () => {
-    setIconStyle({ ...iconStyle, marginLeft: "12px" });
-  };
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
 
-  const handleMouseLeave = () => {
-    setIconStyle({ color: "#AE023E" });
-  };
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "tools?populate=uploadfiles.fileupload"
+        );
+        if (isMounted) {
+          setUploadfiles(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfiles.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfiles]);
 
   return (
     <>
-      <div
-        className="d-flex justify-content-center py-4 align-items-start md:align-items-center  xs:flex-column sm:flex-row"
-        id="tools-flex"
-      >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="flex-fill col-sm-1 col-md-3 w-50 xs:mb-0 md:mb-4 md:w-100"
-          >
-            <ImageMask imageUrl={image.imageUrl} maskText={image.maskText} />
-          </div>
-        ))}
+      <div className="d-flex justify-content-between py-4" id="tools-flex">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow>
+            {uploadfiles.map((member) => (
+              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
+                <Link to={`/Tools-Detail/${member.id}`} target="_blank">
+                  <MDBCard
+                    style={{
+                      // borderBottom: "1px solid black",
+                      boxShadow: "unset",
+                      borderRadius: "0px",
+                    }}
+                  >
+                    <ImageMask
+                      imageUrl={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      maskText={
+                        member.attributes.name_en + " "
+                        // member.attributes.surname_en
+                      }
+                    ></ImageMask>
+                  </MDBCard>
+                </Link>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer>
       </div>
-      <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <Link
-          to={`/Tools-Service`}
-          target="_blank"
-          style={{ color: "inherit" }}
-        >
-          <div className="d-inline-flex text-red py-2 md:py-4">
-            <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
-              Find out more
-            </h5>
-            <EastIcon style={iconStyle}></EastIcon>
-          </div>
-        </Link>
-      </MDBRow>
     </>
   );
-};
+}
 
-export default ToolsImage;
+export default function ToolsImage() {
+  return (
+    <>
+      <Image />
+      {/* <Image2 /> */}
+    </>
+  );
+}
 
-// import React from "react";
-// import { useState } from "react";
-// import { MDBRipple } from "mdb-react-ui-kit";
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+// import { MDBContainer, MDBRow, MDBCol, MDBRipple } from "mdb-react-ui-kit";
 // import vr1 from "../Images/vr-1.png";
-// import vr2 from "../Images/vr-2.png";
+// import EastIcon from "@mui/icons-material/East";
 
 // const ImageMask = ({ imageUrl, maskText }) => {
 //   const [isHovering, setIsHovering] = useState(false);
@@ -184,29 +218,89 @@ export default ToolsImage;
 //   );
 // };
 
-// function Image() {
+// const ToolsImage = () => {
+//   const images = [
+//     { imageUrl: vr1, maskText: "VR" },
+//     { imageUrl: vr1, maskText: "AR" },
+//     { imageUrl: vr1, maskText: "XR" },
+//   ];
+
+//   const [iconStyle, setIconStyle] = useState({ color: "#AE023E" });
+
+//   const handleMouseEnter = () => {
+//     setIconStyle({ ...iconStyle, marginLeft: "12px" });
+//   };
+
+//   const handleMouseLeave = () => {
+//     setIconStyle({ color: "#AE023E" });
+//   };
+
+//   const [uploadfiles, setUploadfiles] = useState([]);
+
+//   useEffect(() => {
+//     let isMounted = true;
+
+//     const instance = axios.create({
+//       baseURL: "https://10.35.29.186/api/",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     });
+
+//     async function fetchData() {
+//       try {
+//         const response = await instance.get(
+//           "tools?populate=uploadfiles.fileupload"
+//         );
+//         if (isMounted) {
+//           setUploadfiles(response.data.data);
+//         }
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
+
+//     if (uploadfiles.length === 0) {
+//       fetchData();
+//     }
+
+//     return () => {
+//       isMounted = false;
+//     };
+//   }, [uploadfiles]);
+
 //   return (
 //     <>
 //       <div
-//         className="d-flex justify-content-center align-items-center py-4 flex-row xs:flex-row"
+//         className="d-flex justify-content-center py-4 align-items-start md:align-items-center  xs:flex-column sm:flex-row"
 //         id="tools-flex"
 //       >
-//         <div className="col-md-3 col-sm-1 mb-4 flex-fill">
-//           <ImageMask imageUrl={vr1} maskText="VR" />
-//         </div>
-
-//         <div className="col-md-3 col-sm-1 mb-4 flex-fill">
-//           <ImageMask imageUrl={vr1} maskText="AR" />
-//         </div>
-
-//         <div className="col-md-3 col-sm-1 mb-4 flex-fill">
-//           <ImageMask imageUrl={vr1} maskText="XR" />
-//         </div>
+//         {images.map((image, index) => (
+//           <div
+//             key={index}
+//             className="flex-fill col-sm-1 col-md-3 w-50 xs:mb-0 md:mb-4 md:w-100"
+//           >
+//             <ImageMask imageUrl={image.imageUrl} maskText={image.maskText} />
+//           </div>
+//         ))}
 //       </div>
+//       {/* <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+//         <Link
+//           to={`/Tools-Service`}
+//           target="_blank"
+//           style={{ color: "inherit" }}
+//         >
+//           <div className="d-inline-flex text-red py-2 md:py-4">
+//             <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+//               Find out more
+//             </h5>
+//             <EastIcon style={iconStyle}></EastIcon>
+//           </div>
+//         </Link>
+//       </MDBRow> */}
 //     </>
 //   );
-// }
+// };
 
-// export default function Toolsimage() {
-//   return <Image />;
-// }
+// export default ToolsImage;

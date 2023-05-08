@@ -1,6 +1,16 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
-import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+} from "mdb-react-ui-kit";
 
 import ArticleIcon from "@mui/icons-material/Article";
 
@@ -14,8 +24,46 @@ function Report1() {
         setUploadfiles(result.data);
       });
   }, []); // empty dependency array added
+
+  const [publications, setPublications] = useState([]);
+
+  useEffect(() => {
+    fetch("https://10.35.29.186/api/publications?populate=id")
+      .then((res) => res.json())
+      .then((result) => {
+        setPublications(result.data);
+      });
+  }, []);
+
   return (
     <MDBContainer>
+      <MDBRow>
+        {publications.map((publication) => (
+          <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
+            <Link to={`/Publications-Detail/${publication.id}`} target="_blank">
+              <MDBCard className="shadow-0">
+                <MDBCardBody
+                  className="rounded-0"
+
+                  // style={{ backgroundColor: "#AE023E" }}
+                >
+                  <MDBCardTitle className="m-0">
+                    <p className="fw-bold text-start mb-0 xs:text-xl md:text-lg">
+                      {publication.attributes.title
+                        ? publication.attributes.title.slice(0, 60) +
+                          (publication.attributes.title.length > 50
+                            ? "..."
+                            : "")
+                        : "not found"}
+                    </p>
+                  </MDBCardTitle>
+                </MDBCardBody>
+              </MDBCard>{" "}
+            </Link>
+          </MDBCol>
+        ))}
+      </MDBRow>
+      /* row */
       <MDBRow className="pt-5 py-4">
         <MDBCol size="1">
           <h4 className="fw-bold text-uppercase text-black">

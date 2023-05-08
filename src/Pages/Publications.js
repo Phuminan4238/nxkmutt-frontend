@@ -69,7 +69,7 @@ const Publications = () => {
             </MDBCol>
           </MDBRow>
           <Publicationimage></Publicationimage>
-          <Publicationreport></Publicationreport>
+          {/* <Publicationreport></Publicationreport> */}
         </MDBContainer>
       </section>
     </div>
