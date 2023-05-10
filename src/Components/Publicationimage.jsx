@@ -17,6 +17,7 @@ import { useState, useEffect, setIsLoaded } from "react";
 import vr2 from "../Images/vr-2.png";
 import ArticleIcon from "@mui/icons-material/Article";
 import styled from "styled-components";
+import { blue, green, red } from "@mui/material/colors";
 
 function Menu() {
   // const [uploadfiles, setUploadfiles] = useState([]);
@@ -172,6 +173,7 @@ function Menu() {
   };
 
   const tagColor = selectedTag !== null ? tagColors[selectedTag] : "#CCCCCC";
+
   const getTagColor = (tag) => tagColors[tag] || "#CCCCCC";
 
   const StyledArticleIcon = styled(ArticleIcon)`
@@ -231,12 +233,22 @@ function Menu() {
         ></MDBCol>
         {publications.map((publication) => (
           <>
-            <MDBCol md="11" key={publication.id} className="pb-4">
-              <p>
-                <StyledArticleIcon tag={selectedTag} />
-                {publication.attributes.description}
-              </p>
-            </MDBCol>
+            <Link
+              to={publication.attributes.url}
+              target="_blank"
+              style={{ color: "black" }}
+            >
+              <MDBCol md="11" key={publication.id} className="pb-4">
+                <p>
+                  <StyledArticleIcon
+                    tag={
+                      allTagsSelected ? publication.attributes.tag : selectedTag
+                    }
+                  />
+                  {publication.attributes.description}
+                </p>
+              </MDBCol>
+            </Link>
           </>
         ))}
       </MDBRow>
@@ -364,32 +376,15 @@ function Menu() {
           <MDBRow>
             {publications.map((publication, index) => (
               <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
-                <Link
-                  to={`/Publications-Detail/${publication.id}`}
-                  target="_blank"
-                >
+                <Link to={publication.attributes.url} target="_blank">
                   <MDBCard className="shadow-0">
                     <MDBCardBody
                       className="rounded-0"
-                      // style={getCardStyle(
-                      //   allTagsSelected,
-                      //   selectedTag,
-                      //   tagColor,
-                      //   tagColors
-                      // )}
                       style={{
                         backgroundColor: allTagsSelected
                           ? colors[index]
                           : tagColors[selectedTag],
                       }}
-
-                      // "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0273458",
-
-                      // style={{
-                      //   backgroundColor: allTagsSelected
-                      //     ? tagColor
-                      //     : tagColors[selectedTag],
-                      // }}
                     >
                       <MDBCardTitle className="m-0">
                         <p
@@ -425,3 +420,40 @@ export default function Publicationimage() {
     </>
   );
 }
+
+// "data": [
+//   {
+//       "id": 1,
+//       "theme": {
+//         "data": {
+//             "id": 1,
+//             "attributes": {
+//                 "name_en": "Cognitive, Clinical & Computational Neuroscience",
+
+//                 "key": "cognitive_clinical_and_computational_neuroscience"
+//             }
+//      }
+// },
+// "id": 2,
+// "theme": {
+//   "data": {
+//       "id": 2,
+//       "attributes": {
+//           "name_th": "Educational Neuroscience & Neurodevelopment  ",
+
+//           "key": "educational_neuroscience_and_neurodevelopment"
+//       }
+//   }
+// },
+
+//   }
+// ]
+
+// if key =  "key": "pharmaceutical_biology_and_neuropharmacology"
+// the color is red
+
+// if key = "key": "human_factors_research_and_decision_neuroscience"
+// the color is green
+
+// if key =  "key": "educational_neuroscience_and_neurodevelopment"
+// the color is blue
