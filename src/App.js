@@ -12,7 +12,7 @@ import Home from "./Pages/Home";
 import Member from "./Pages/Team Member";
 import Research from "./Pages/Research";
 import Publications from "./Pages/Publications";
-import Toolservice from "./Pages/Tools&Service";
+import Toolservice from "./Pages/Tools Service";
 import Newsactivities from "./Pages/News Activities";
 import Contactus from "./Pages/Contact Us";
 import HomeNav from "./Components/HomeNav";
