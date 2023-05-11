@@ -75,15 +75,15 @@ function Memberdetail({ title }) {
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1 className="fw-bold text-uppercase text-black">
-                  {uploadfiles.attributes?.prefix_en}
-                  {uploadfiles.attributes?.name_en}
+                  {uploadfiles.attributes?.prefix_en || "not found"}
+                  {uploadfiles.attributes?.name_en || "not found"}
                   {/* <span>&nbsp</span> */}
                   <span>(</span>
                   {uploadfiles.attributes?.nickname_en}
                   <span>)</span>
                 </h1>
                 <h1 className="fw-bold text-uppercase text-black">
-                  {uploadfiles.attributes?.surname_en}
+                  {uploadfiles.attributes?.surname_en || "not found"}
                 </h1>
                 <h4
                   className="fw-normal text-normal"
@@ -121,8 +121,8 @@ function Memberdetail({ title }) {
                 className="rounded-0"
                 src={
                   "https://10.35.29.186" +
-                  uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                    .fileupload.data[0]?.attributes.url
+                    uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                      .fileupload.data[0]?.attributes.url || "not found"
                 }
                 position="top"
                 alt="..."
@@ -172,7 +172,7 @@ function Memberdetail({ title }) {
                         const [degree, year] = education.split("–");
                         return (
                           <li key={index} className="fw-normal text-normal">
-                            {degree}
+                            {degree || "not found"}
                           </li>
                         );
                       }

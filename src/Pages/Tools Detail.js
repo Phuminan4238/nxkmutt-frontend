@@ -75,8 +75,8 @@ function ToolsDetail({ title }) {
                 // }
                 src={
                   "https://10.35.29.186" +
-                  uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                    .fileupload.data[0]?.attributes.url
+                    uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                      .fileupload.data[0]?.attributes.url || "not found"
                 }
                 position="top"
                 alt="..."
