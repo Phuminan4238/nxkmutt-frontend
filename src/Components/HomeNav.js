@@ -144,7 +144,7 @@ export default function HomeNav(props) {
                     style={{ color: "white" }}
                     onClick={handleSearchClick}
                   />
-                  {isSearchOpen && (
+                  {/* {isSearchOpen && (
                     <div className="flex">
                       <input
                         type="search"
@@ -164,7 +164,7 @@ export default function HomeNav(props) {
                       ></span>
                       <i class="fas fa-search"></i>
                     </div>
-                  )}
+                  )} */}
                   {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
                   <span>
                     {" "}

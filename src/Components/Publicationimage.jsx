@@ -376,32 +376,43 @@ function Menu() {
           <MDBRow>
             {publications.map((publication, index) => (
               <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
-                <Link to={publication.attributes.url} target="_blank">
-                  <MDBCard className="shadow-0">
-                    <MDBCardBody
-                      className="rounded-0"
-                      style={{
-                        backgroundColor: allTagsSelected
-                          ? colors[index]
-                          : tagColors[selectedTag],
-                      }}
-                    >
-                      <MDBCardTitle className="m-0">
-                        <p
-                          className="fw-bold text-start mb-0 xs:text-xl md:text-lg"
-                          style={{ color: "#fff" }}
-                        >
-                          {publication.attributes.title
-                            ? publication.attributes.title.slice(0, 60) +
-                              (publication.attributes.title.length > 50
-                                ? "..."
-                                : "")
-                            : "not found"}
-                        </p>
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCard>
-                </Link>
+                {publication.attributes.url ? (
+                  <Link
+                    to={
+                      publication.attributes.url
+                        ? publication.attributes.url
+                        : "/not-found"
+                    }
+                    target="_blank"
+                  >
+                    <MDBCard className="shadow-0">
+                      <MDBCardBody
+                        className="rounded-0"
+                        style={{
+                          backgroundColor: allTagsSelected
+                            ? colors[index]
+                            : tagColors[selectedTag],
+                        }}
+                      >
+                        <MDBCardTitle className="m-0">
+                          <p
+                            className="fw-bold text-start mb-0 xs:text-xl md:text-lg"
+                            style={{ color: "#fff" }}
+                          >
+                            {publication.attributes.title
+                              ? publication.attributes.title.slice(0, 60) +
+                                (publication.attributes.title.length > 50
+                                  ? "..."
+                                  : "")
+                              : "not found"}
+                          </p>
+                        </MDBCardTitle>
+                      </MDBCardBody>
+                    </MDBCard>
+                  </Link>
+                ) : (
+                  <p>Sorry, there is no url for this publication</p>
+                )}
               </MDBCol>
             ))}
           </MDBRow>
