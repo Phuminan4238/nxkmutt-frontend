@@ -245,7 +245,7 @@ function Menu() {
                       allTagsSelected ? publication.attributes.tag : selectedTag
                     }
                   />
-                  {publication.attributes.description}
+                  {publication.attributes.description_en}
                 </p>
               </MDBCol>
             </Link>
@@ -399,9 +399,9 @@ function Menu() {
                             className="fw-bold text-start mb-0 xs:text-xl md:text-lg"
                             style={{ color: "#fff" }}
                           >
-                            {publication.attributes.title
-                              ? publication.attributes.title.slice(0, 60) +
-                                (publication.attributes.title.length > 50
+                            {publication.attributes.title_en
+                              ? publication.attributes.title_en.slice(0, 60) +
+                                (publication.attributes.title_en.length > 50
                                   ? "..."
                                   : "")
                               : "not found"}
