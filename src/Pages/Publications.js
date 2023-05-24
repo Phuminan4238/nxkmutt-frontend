@@ -21,6 +21,17 @@ const Publications = () => {
       });
   }, []); // empty dependency array added
 
+  const [memberCover, setMembercover] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=publications_cover_image"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setMembercover(result.data);
+      });
+  }, []);
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
@@ -55,12 +66,30 @@ const Publications = () => {
             </MDBCol>
 
             <MDBCol md="4" className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0">
-              <img
+              {/* <img
                 src={vr2}
                 class="image-fluid"
                 id="cluster-img"
                 style={{ height: "350px" }}
-              />
+              /> */}
+              {memberCover.map((member) => (
+                <img
+                  className="image-fluid"
+                  style={{
+                    width: "-webkit-fill-available",
+                    height: "300px",
+                    // maxWidth: "-webkit-fill-available",
+                    // height: "400px",
+                    // objectFit: "contain",
+                    // verticalAlign: "top",
+                  }}
+                  id="cluster-img"
+                  src={
+                    "https://10.35.29.186" +
+                    member.attributes.fileupload.data[0]?.attributes.url
+                  }
+                />
+              ))}
             </MDBCol>
           </MDBRow>
           <MDBRow>

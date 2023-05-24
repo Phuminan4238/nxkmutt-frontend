@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Images */
@@ -7,6 +8,16 @@ import vr2 from "../Images/vr-2.png";
 import Participateimage from "../Components/Participateimage";
 
 const Participate = () => {
+  const [memberCover, setMembercover] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=participate_cover_image"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setMembercover(result.data);
+      });
+  }, []);
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
@@ -32,12 +43,24 @@ const Participate = () => {
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
-              <img
-                src={vr2}
-                class="image-fluid"
-                id="cluster-img"
-                style={{ height: "350px" }}
-              />
+              {memberCover.map((member) => (
+                <img
+                  className="image-fluid"
+                  style={{
+                    width: "-webkit-fill-available",
+                    height: "300px",
+                    // maxWidth: "-webkit-fill-available",
+                    // height: "400px",
+                    // objectFit: "contain",
+                    // verticalAlign: "top",
+                  }}
+                  id="cluster-img"
+                  src={
+                    "https://10.35.29.186" +
+                    member.attributes.fileupload.data[0]?.attributes.url
+                  }
+                />
+              ))}
             </MDBCol>
           </MDBRow>
 

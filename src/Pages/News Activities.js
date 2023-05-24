@@ -10,7 +10,6 @@ import News from "../Components/News";
 
 const Newsactivities = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
-
   useEffect(() => {
     axios
       .get("https://10.35.29.186/api/contents?populate=id")
@@ -19,6 +18,17 @@ const Newsactivities = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  }, []);
+
+  const [memberCover, setMembercover] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=news_cover_image"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setMembercover(result.data);
       });
   }, []);
 
@@ -64,12 +74,24 @@ const Newsactivities = () => {
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
-              <img
-                src={vr2}
-                class="image-fluid"
-                id="cluster-img"
-                style={{ height: "350px" }}
-              />
+              {memberCover.map((member) => (
+                <img
+                  className="image-fluid"
+                  style={{
+                    width: "-webkit-fill-available",
+                    height: "300px",
+                    // maxWidth: "-webkit-fill-available",
+                    // height: "400px",
+                    // objectFit: "contain",
+                    // verticalAlign: "top",
+                  }}
+                  id="cluster-img"
+                  src={
+                    "https://10.35.29.186" +
+                    member.attributes.fileupload.data[0]?.attributes.url
+                  }
+                />
+              ))}
             </MDBCol>
           </MDBRow>
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">

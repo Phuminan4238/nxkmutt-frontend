@@ -22,11 +22,12 @@ const pages = [
   "TEAM MEMBER",
   "RESEARCH",
   "PUBLICATIONS",
-  "TOOLS SERVICE",
-  "NEWS ACTIVITIES",
+  "TOOLS & SERVICE",
+  "NEWS & ACTIVITIES",
   "CONTACT US",
-  "PARTICIPATE DONATE",
+  "PARTICIPATE & DONATE",
 ];
+
 const drawerWidth = 360;
 
 function HideOnScroll(props) {
@@ -148,10 +149,26 @@ export default function HomeNav(props) {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {pages.map((page) => (
+                  {pages.map((page, index) => (
                     <Link
-                      to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                      to={
+                        page === "TOOLS & SERVICE"
+                          ? "/tools-and-service"
+                          : page === "NEWS & ACTIVITIES"
+                          ? "/news-and-activities"
+                          : page === "PARTICIPATE & DONATE"
+                          ? "/participate-and-donate"
+                          : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                      }
                       style={{ color: "inherit" }}
+                      sx={{
+                        ":hover": {
+                          "& a, & > a": {
+                            color: "white",
+                          },
+                        },
+                      }}
+                      key={page}
                     >
                       <MenuItem
                         style={{
@@ -160,7 +177,6 @@ export default function HomeNav(props) {
                           height: "60px",
                           borderBottom: "1px solid gray",
                         }}
-                        key={page}
                         onClick={handleCloseUserMenu}
                         sx={{
                           ":hover": {
@@ -173,16 +189,19 @@ export default function HomeNav(props) {
                           fontWeight: "bold",
                           padding: "10px 20px 10px 20px",
                           borderBottom: "1px solid white",
-                          color: "inherit", // set default link color to black
+                          color: "inherit",
                         }}
                       >
                         <a
                           textAlign="center"
-                          to={`/${page}`}
+                          to={
+                            page === "TOOLS & SERVICE"
+                              ? "/tools-and-service"
+                              : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                          }
                           sx={{
                             fontWeight: "bold",
                             padding: "20px",
-                            color: "inherit", // set link color to inherit to match parent
                           }}
                         >
                           {page}

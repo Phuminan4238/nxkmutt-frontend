@@ -40,6 +40,17 @@ function ToolsDetail({ title }) {
       });
   }, []);
 
+  const [memberCover, setMembercover] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setMembercover(result.data);
+      });
+  }, []);
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>

@@ -2,6 +2,7 @@ import React from "react";
 /* Routes */
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useMediaQuery } from "react-responsive";
 import {
   MDBCard,
   MDBCardBody,
@@ -29,12 +30,17 @@ const ImageMask = ({ imageUrl, maskText }) => {
     height: "auto",
     maxWidth: "100%",
     position: "relative",
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    minWidth: "0",
   };
 
   const maskStyle = {
     position: "absolute",
-    top: 0,
-    left: 0,
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
     width: "100%",
     height: "100%",
     borderRadius: "50%",
@@ -70,6 +76,14 @@ const ImageMask = ({ imageUrl, maskText }) => {
 
 function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  const cardStyle = {
+    width: isMobile ? "-webkit-fit-content" : "100%",
+    boxShadow: "unset",
+    borderRadius: ".25rem",
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -107,7 +121,7 @@ function Image({ members }) {
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+        {/* <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
@@ -120,16 +134,49 @@ function Image({ members }) {
                     }}
                   >
                     <ImageMask
+                      style={{
+                        height: "350px",
+
+                        objectFit: "cover",
+                        borderRadius: "0px",
+                        alignSelf: "center",
+                      }}
                       imageUrl={
                         "https://10.35.29.186" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url
                       }
-                      maskText={
-                        member.attributes.name_en + " "
-                        // member.attributes.surname_en
-                      }
+                      maskText={member.attributes.name_en + " "}
                     ></ImageMask>
+                  </MDBCard>
+                </Link>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer> */}
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow>
+            {uploadfiles.map((member) => (
+              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
+                <Link to={`/Tools-Detail/${member.id}`} target="_blank">
+                  {/* <MDBCard
+                    style={{ boxShadow: "unset", borderRadius: ".25rem" }}
+                  > */}
+                  <MDBCard style={cardStyle}>
+                    <ImageMask
+                      style={{
+                        height: "350px",
+                        objectFit: "cover",
+
+                        alignSelf: "center",
+                      }}
+                      imageUrl={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      maskText={member.attributes.name_en + " "}
+                    />
                   </MDBCard>
                 </Link>
               </MDBCol>

@@ -7,7 +7,7 @@ import { Route, Routes } from "react-router";
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
 /* Components */
 import Clusterimage from "../Components/Cluster";
-import Carousel from "../Components/Carousel";
+import Carousel2 from "../Components/Carousel";
 import Toolsimage from "../Components/Tools";
 import News from "../Components/News";
 import Team from "../Components/Team";
@@ -38,13 +38,49 @@ function Home(props) {
         });
     }
   }, [hasDataFetched]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = async (event) => {
+    const { value } = event.target;
+    setSearchTerm(value);
+
+    try {
+      const response = await fetch(
+        `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+          value
+        )}&filters[title_th][$contains]=${encodeURIComponent(value)}`
+      );
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
 
   return (
     <div className="App">
       {/* ******************/}
       <main>
         {/* Section Carousel */}
-        <Carousel></Carousel>
+        <Carousel2></Carousel2>
+        {/* <div>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          {searchResults.length > 0 ? (
+            <ul>
+              {searchResults.map((result) => (
+                <li key={result.id}>{result.title}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>No results found.</p>
+          )}
+        </div> */}
         {/* ******************/}
         {/* Paragraph */}
         <section>
@@ -106,15 +142,28 @@ function Home(props) {
         </section>
         {/* ******************** */}
 
+        {/* <section>
+          <MDBContainer className="xs:max-w-fit sm:max-w-fit">
+            <MDBRow className="pt-5 pb-4 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-inline-flex p-2">
+                <h3 className="fw-bold text-start">TOOLS & SERVICES</h3>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+        </section> */}
+
         {/* Section Team */}
         <section>
           <MDBContainer className="xs:max-w-fit sm:max-w-7xl">
             <MDBRow className="pb-4 xs:pt-5 sm:pt-0 xs:px-5 sm:px-5 md:px-0">
               <div className="d-inline-flex p-2">
-                <h3 className="fw-bold text-uppercase">Our Brain Army</h3>
+                <h3 className="fw-bold text-uppercase text-left">
+                  Our Brain Army
+                </h3>
               </div>
             </MDBRow>
           </MDBContainer>
+
           <Team></Team>
           {/* ******************** */}
 

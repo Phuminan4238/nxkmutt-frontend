@@ -38,10 +38,11 @@ function App() {
         <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
         <Route path="/Research" element={<Research />} />
         <Route path="/Publications" element={<Publications />} />
-        <Route path="/Tools-Service" element={<Toolservice />} />
-        <Route path="/News-Activities" element={<Newsactivities />} />
+        {/* <Route path="/Tools-Service" element={<Toolservice />} /> */}
+        <Route path="/Tools-and-Service" element={<Toolservice />} />
+        <Route path="/News-and-Activities" element={<Newsactivities />} />
         <Route path="/Contact-Us" element={<Contactus />} />
-        <Route path="/Participate-Donate" element={<Participate />} />
+        <Route path="/Participate-and-Donate" element={<Participate />} />
         <Route
           path="/Member-Detail/:id"
           element={<Memberdetail title="TEAM MEMBER" />}
