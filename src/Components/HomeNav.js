@@ -133,9 +133,11 @@ export default function HomeNav(props) {
   const fetchMemberResults = async () => {
     try {
       const memberResponse = await fetch(
-        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
           searchTerm
-        )}&filters[surname_en][$contains]=${encodeURIComponent(searchTerm)}`
+        )}&filters[$or][1][surname_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}`
       );
       const memberData = await memberResponse.json();
       setMemberResults(memberData.data);

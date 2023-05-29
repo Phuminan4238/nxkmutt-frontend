@@ -33,7 +33,7 @@ const Searchresult = () => {
 
         // Fetch member results
         const memberResponse = await fetch(
-          `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodedTerm}&filters[surname_en][$contains]=${encodedTerm}`
+          `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][surname_en][$contains]=${encodedTerm}`
         );
         const memberData = await memberResponse.json();
         setMemberResults(memberData.data);
@@ -99,16 +99,20 @@ const Searchresult = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p>No publication results found.</p>
+                  <>
+                    <ul className="ms-4">
+                      <li>
+                        <p>No member results found.</p>
+                      </li>
+                    </ul>
+                  </>
                 )}
 
-                {/* Render member results */}
-                <h2 className="ps-4">Member Results:</h2>
+                {/* <h2 className="ps-4">Member Results:</h2>
                 {memberResults.length > 0 ? (
                   <ul className="ms-4">
                     {memberResults.map((result) => (
                       <li key={result.id}>
-                        {/* Display the relevant data from the member results */}
                         <a href={result.attributes.url}>
                           {result.attributes.name_en}{" "}
                           {result.attributes.surname_en}
@@ -124,6 +128,30 @@ const Searchresult = () => {
                       </li>
                     </ul>
                   </>
+                )} */}
+
+                {/* Render member results */}
+                <h2 className="ps-4">Member Results:</h2>
+                {memberResults.length > 0 ? (
+                  <ul className="ms-4">
+                    {memberResults.map((result) => (
+                      <li key={result.id}>
+                        {/* Display the relevant data from the member results */}
+                        <a
+                          href={`https://10.35.29.186/Member-Detail/${result.id}`}
+                        >
+                          {result.attributes.name_en}{" "}
+                          {result.attributes.surname_en}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul className="ms-4">
+                    <li>
+                      <p>No member results found.</p>
+                    </li>
+                  </ul>
                 )}
 
                 {/* Render event results */}
@@ -140,7 +168,11 @@ const Searchresult = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p>No tool results found.</p>
+                  <ul className="ms-4">
+                    <li>
+                      <p>No member results found.</p>
+                    </li>
+                  </ul>
                 )}
 
                 {/* Render tool results */}
@@ -157,7 +189,13 @@ const Searchresult = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p>No tool results found.</p>
+                  <>
+                    <ul className="ms-4">
+                      <li>
+                        <p>No member results found.</p>
+                      </li>
+                    </ul>
+                  </>
                 )}
               </div>
             </MDBCol>
