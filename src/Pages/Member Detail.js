@@ -43,14 +43,16 @@ function Memberdetail({ title }) {
 
   useEffect(() => {
     axios
-      .get("https://10.35.29.186/api/publications?populate=id")
+      .get(
+        `https://10.35.29.186/api/publications?populate=*&filters[owner][id][$eq]=${id}`
+      )
       .then((response) => {
         setPublicationfiles(response.data.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
@@ -232,8 +234,26 @@ function Memberdetail({ title }) {
                       )}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal">not found</p>
+                    <p className="fw-normal text-normal text-black">
+                      not found
+                    </p>
                   )}
+                  {/* {uploadfiles.attributes?.project_en &&
+                  uploadfiles.attributes.project_en.length > 0 ? (
+                    <ul>
+                      {uploadfiles.attributes.project_en.map(
+                        (affiliation, index) => (
+                          <li key={index} className="fw-normal text-normal">
+                            {affiliation}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal text-black">
+                      not found
+                    </p>
+                  )} */}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
@@ -340,10 +360,38 @@ function Memberdetail({ title }) {
               </MDBCol>
 
               <MDBCol md="11" key={member.id}>
-                <p> {member.attributes.description}</p>
+                <p> {member.attributes.title_en}</p>
               </MDBCol>
             </MDBRow>
           ))}
+          {/* 
+          {uploadfiles.map((member) => (
+            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol size="1">
+                <ArticleIcon color="primary" />
+              </MDBCol>
+
+              <MDBCol md="11" key={member.id}>
+                <p> {member.attributes.grant_en}</p>
+              </MDBCol>
+            </MDBRow>
+          ))} */}
+          {/* 
+          {uploadfiles.attributes?.grant_en ? (
+            <ul>
+              {uploadfiles.attributes.education_en.map((education, index) => {
+                const [degree, year] = education.split("–");
+                return (
+                  <li key={index} className="fw-normal text-normal">
+                    {degree || "not found"}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p className="fw-normal text-normal">not found</p>
+          )} */}
+
           <MDBRow
             style={{
               borderBottom: "1px solid black",

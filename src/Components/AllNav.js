@@ -233,22 +233,25 @@ export default function HomeNav(props) {
                   gap: "3rem",
                 }}
               >
-                <SearchIcon
-                  style={{ color: "#AE023E" }}
-                  onClick={handleSearchClick}
-                />
-                {isSearchOpen && (
-                  <div className="flex">
-                    <input
-                      type="text"
-                      placeholder="  Search.."
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      onKeyDown={handleKeyDown}
-                      className="ms-4"
-                    />
-                  </div>
-                )}
+                <div className="flex flex-row-reverse">
+                  {/* Search box */}
+                  <SearchIcon
+                    style={{ color: "#AE023E" }}
+                    onClick={handleSearchClick}
+                  />
+                  {isSearchOpen && (
+                    <div className="flex">
+                      <input
+                        type="text"
+                        placeholder="  Search.."
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        onKeyDown={handleKeyDown}
+                        className="me-4"
+                      />
+                    </div>
+                  )}
+                </div>
                 <span>
                   {" "}
                   <LanguageIcon
@@ -320,7 +323,9 @@ export default function HomeNav(props) {
                         }}
                         onClick={handleCloseUserMenu}
                         sx={{
+                          color: "black",
                           ":hover": {
+                            color: "white",
                             bgcolor: "#AE023E",
                             opacity: "100%",
                             "& a, & > a": {

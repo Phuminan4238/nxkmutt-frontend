@@ -37,7 +37,6 @@ function App() {
       <Routes>
         <Route path="/Search" element={<Searchresult />} />
         <Route path="/Search/:term" element={<Searchresult />} />
-
         <Route path="/" element={<Home />} />
         <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
         <Route path="/Research" element={<Research />} />

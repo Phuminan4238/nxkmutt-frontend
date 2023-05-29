@@ -237,7 +237,7 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="flex">
+                  <div className="flex flex-row-reverse">
                     {/* Search box */}
                     <SearchIcon
                       style={{ color: "white" }}
@@ -251,12 +251,13 @@ export default function HomeNav(props) {
                           value={searchTerm}
                           onChange={handleSearch}
                           onKeyDown={handleKeyDown}
-                          className="ms-4"
+                          className="me-4"
                         />
                       </div>
                     )}
+                  </div>
 
-                    {/* <input
+                  {/* <input
                       type="search"
                       className="form-control rounded"
                       placeholder="Search"
@@ -273,8 +274,8 @@ export default function HomeNav(props) {
                     ></span>
                     <i className="fas fa-search"></i> */}
 
-                    {/* Rest of the code */}
-                    {/* <div>
+                  {/* Rest of the code */}
+                  {/* <div>
                       <input
                         type="text"
                         placeholder="Search..."
@@ -294,7 +295,6 @@ export default function HomeNav(props) {
                       )}
                     </div>
                   </div> */}
-                  </div>
                   {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
                   <span>
                     {" "}
@@ -339,6 +339,26 @@ export default function HomeNav(props) {
                     onClose={handleCloseUserMenu}
                   >
                     {pages.map((page, index) => (
+                      // <Link
+                      //   to={
+                      //     page === "TOOLS & SERVICE"
+                      //       ? "/tools-and-service"
+                      //       : page === "NEWS & ACTIVITIES"
+                      //       ? "/news-and-activities"
+                      //       : page === "PARTICIPATE & DONATE"
+                      //       ? "/participate-and-donate"
+                      //       : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                      //   }
+                      //   style={{ color: "black" }}
+                      //   sx={{
+                      //     ":hover": {
+                      //       "& a, & > a": {
+                      //         color: "white",
+                      //       },
+                      //     },
+                      //   }}
+                      //   key={page}
+                      // >
                       <Link
                         to={
                           page === "TOOLS & SERVICE"
@@ -349,12 +369,11 @@ export default function HomeNav(props) {
                             ? "/participate-and-donate"
                             : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                         }
-                        style={{ color: "inherit" }}
+                        // style={{ color: "black" }}
                         sx={{
+                          color: "black",
                           ":hover": {
-                            "& a, & > a": {
-                              color: "white",
-                            },
+                            color: "white",
                           },
                         }}
                         key={page}
@@ -368,7 +387,9 @@ export default function HomeNav(props) {
                           }}
                           onClick={handleCloseUserMenu}
                           sx={{
+                            color: "black",
                             ":hover": {
+                              color: "white",
                               bgcolor: "#AE023E",
                               opacity: "100%",
                               "& a, & > a": {
@@ -378,7 +399,6 @@ export default function HomeNav(props) {
                             fontWeight: "bold",
                             padding: "10px 20px 10px 20px",
                             borderBottom: "1px solid white",
-                            color: "inherit",
                           }}
                         >
                           <a
@@ -391,6 +411,7 @@ export default function HomeNav(props) {
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
+                              // color: "inherit",
                             }}
                           >
                             {page}
@@ -449,22 +470,25 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <SearchIcon
-                    style={{ color: "#AE023E" }}
-                    onClick={handleSearchClick}
-                  />
-                  {isSearchOpen && (
-                    <div className="flex">
-                      <input
-                        type="text"
-                        placeholder="  Search.."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        onKeyDown={handleKeyDown}
-                        className="ms-4"
-                      />
-                    </div>
-                  )}
+                  <div className="flex flex-row-reverse">
+                    {/* Search box */}
+                    <SearchIcon
+                      style={{ color: "#AE023E" }}
+                      onClick={handleSearchClick}
+                    />
+                    {isSearchOpen && (
+                      <div className="flex">
+                        <input
+                          type="text"
+                          placeholder="  Search.."
+                          value={searchTerm}
+                          onChange={handleSearch}
+                          onKeyDown={handleKeyDown}
+                          className="me-4"
+                        />
+                      </div>
+                    )}
+                  </div>
                   <span>
                     {" "}
                     <LanguageIcon
@@ -521,7 +545,10 @@ export default function HomeNav(props) {
                           key={page}
                           onClick={handleCloseUserMenu}
                           sx={{
+                            color: "black",
                             ":hover": {
+                              color: "white",
+
                               bgcolor: "#AE023E",
                               opacity: "100%",
                               "& a, & > a": {
