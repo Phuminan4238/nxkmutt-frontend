@@ -5,7 +5,7 @@ import teamimg5 from "../Images/team-5.png";
 function Profile() {
   return (
     <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
+      <MDBRow className="p-0 w-fill">
         <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-warning">
           <img src={teamimg5} class="image-fluid" id="cluster-img" />
           <div className="d-flex p-5 align-content-center flex-column w-100">

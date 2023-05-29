@@ -132,7 +132,7 @@ function Menu() {
       switch (activeTag) {
         case 0:
           endpoint =
-            "https://10.35.29.186/api/publications?filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
+            "https://10.35.29.186/api/publications?filters[theme][key][$eq]=cognitive_clinical_and_computational_neuroscience";
           break;
         case 1:
           endpoint =

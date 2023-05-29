@@ -214,7 +214,7 @@ export default function News() {
           ))}
         <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <Link
-            to={`/News-Activities`}
+            to={`/news-and-activities`}
             target="_blank"
             style={{ color: "inherit" }}
           >

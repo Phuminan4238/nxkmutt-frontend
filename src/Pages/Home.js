@@ -34,28 +34,36 @@ function Home(props) {
           setHasDataFetched(true);
         })
         .catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
     }
   }, [hasDataFetched]);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearch = async (event) => {
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      try {
+        const response = await fetch(
+          `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+            searchTerm
+          )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
+        );
+        const data = await response.json();
+        setSearchResults(data.data);
+        console.log("data", data.data);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+      }
+    };
+
+    fetchSearchResults();
+  }, [searchTerm]);
+
+  const handleSearch = (event) => {
     const { value } = event.target;
     setSearchTerm(value);
-
-    try {
-      const response = await fetch(
-        `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
-          value
-        )}&filters[title_th][$contains]=${encodeURIComponent(value)}`
-      );
-      const data = await response.json();
-      setSearchResults(data);
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
   };
 
   return (
@@ -64,6 +72,7 @@ function Home(props) {
       <main>
         {/* Section Carousel */}
         <Carousel2></Carousel2>
+
         {/* <div>
           <input
             type="text"
@@ -74,13 +83,16 @@ function Home(props) {
           {searchResults.length > 0 ? (
             <ul>
               {searchResults.map((result) => (
-                <li key={result.id}>{result.title}</li>
+                <li key={result.id}>
+                  {result.attributes.title_en}
+                </li>
               ))}
             </ul>
           ) : (
             <p>No results found.</p>
           )}
         </div> */}
+
         {/* ******************/}
         {/* Paragraph */}
         <section>

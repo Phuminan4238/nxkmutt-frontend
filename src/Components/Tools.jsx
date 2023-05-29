@@ -121,39 +121,6 @@ function Image({ members }) {
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
-        {/* <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow>
-            {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Tools-Detail/${member.id}`} target="_blank">
-                  <MDBCard
-                    style={{
-                      // borderBottom: "1px solid black",
-                      boxShadow: "unset",
-                      borderRadius: "0px",
-                    }}
-                  >
-                    <ImageMask
-                      style={{
-                        height: "350px",
-
-                        objectFit: "cover",
-                        borderRadius: "0px",
-                        alignSelf: "center",
-                      }}
-                      imageUrl={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      maskText={member.attributes.name_en + " "}
-                    ></ImageMask>
-                  </MDBCard>
-                </Link>
-              </MDBCol>
-            ))}
-          </MDBRow>
-        </MDBContainer> */}
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (

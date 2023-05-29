@@ -19,11 +19,12 @@ import HomeNav from "./Components/HomeNav";
 import AllNav from "./Components/AllNav";
 import Participate from "./Pages/Participate Donate";
 import Memberdetail from "./Pages/Member Detail";
-
 import TagsDetail from "./Pages/Tags Detail";
 import NewsDetail from "./Pages/News Detail";
 import ToolsDetail from "./Pages/Tools Detail";
 import PublicationsDetail from "./Pages/Publication Detail";
+import Search from "./Pages/Search";
+import Searchresult from "./Pages/Search";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,9 @@ function App() {
     <div className="app">
       {nav}
       <Routes>
+        <Route path="/Search" element={<Searchresult />} />
+        <Route path="/Search/:term" element={<Searchresult />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
         <Route path="/Research" element={<Research />} />
