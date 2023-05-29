@@ -56,7 +56,7 @@ function Post() {
           className={`${index % 2 === 0 ? "flex-row-reverse" : ""}`}
         >
           <MDBCol md="6" className={`p-0 order-${order1}`}>
-            <Link to={`/Member-Detail/${member.id}`} target="_blank">
+            <Link to={`/Member-Detail/${member.id}`}>
               <img
                 src={imgSrc}
                 className="image-fluid"
@@ -64,7 +64,7 @@ function Post() {
                 style={{
                   height: "320px",
                   maxWidth: "100%",
-                  objectFit: "fill",
+                  objectFit: "cover",
                 }}
                 alt={`Member ${index + 1} Image`}
               />
@@ -146,7 +146,7 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Member-Detail/${member.id}`} target="_blank">
+                <Link to={`/Member-Detail/${member.id}`}>
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",
@@ -165,8 +165,7 @@ function Image({ members }) {
                       alt="..."
                       style={{
                         height: "350px",
-
-                        objectFit: "cover",
+                        objectFit: "contain",
                         borderRadius: "0px",
                         alignSelf: "center",
                       }}

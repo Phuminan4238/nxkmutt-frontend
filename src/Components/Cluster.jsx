@@ -169,7 +169,7 @@ function Reuse() {
                   {tagsData.attributes?.name_en || "not found"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
-                  <Link to={`/Tags-Detail/${tagsData.id}`} target="_blank">
+                  <Link to={`/Tags-Detail/${tagsData.id}`}>
                     <p
                       className="fw-normal text-white mt-5 xs:text-base md:text-lg"
                       sx={{

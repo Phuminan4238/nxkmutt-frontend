@@ -92,13 +92,13 @@ text-align {
 }
 
 #logo-img {
-  max-width: -webkit-fill-available;
-  height: 60px;
+  max-width: 100%;
+  height: 50px;
 }
 
 #logokmutt-img {
-  max-width: -webkit-fill-available;
-  height: 80px;
+  max-width: 100%;
+  height: 60px;
 }
 
 #carousel-nav {

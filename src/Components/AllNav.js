@@ -1,4 +1,8 @@
 import * as React from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+/* */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,6 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import logo from "../Images/logo.png";
 import logored from "../Images/logo-red.png";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -50,12 +55,14 @@ HideOnScroll.propTypes = {
 };
 
 export default function HomeNav(props) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -67,6 +74,106 @@ export default function HomeNav(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  /* Search box */
+  const [searchText, setSearchText] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const handleInputChange = (event) => {
+    setSearchText(event.target.value);
+  };
+
+  const [navbarType, setNavbarType] = useState("navbar1");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setNavbarType("navbar2");
+      } else {
+        setNavbarType("navbar1");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Search Result
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [memberResults, setMemberResults] = useState([]);
+  const [toolResults, setToolResults] = useState([]);
+
+  const fetchPublicationResults = async () => {
+    try {
+      const publicationResponse = await fetch(
+        `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
+      );
+      const publicationData = await publicationResponse.json();
+      setSearchResults(publicationData.data);
+      console.log("Publication data:", publicationData.data);
+    } catch (error) {
+      console.error("Error fetching publication results:", error);
+    }
+  };
+
+  const fetchMemberResults = async () => {
+    try {
+      const memberResponse = await fetch(
+        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}&filters[surname_en][$contains]=${encodeURIComponent(searchTerm)}`
+      );
+      const memberData = await memberResponse.json();
+      setMemberResults(memberData.data);
+      console.log("Member data:", memberData.data);
+    } catch (error) {
+      console.error("Error fetching member results:", error);
+    }
+  };
+
+  const fetchToolResults = async () => {
+    try {
+      const toolResponse = await fetch(
+        `https://10.35.29.186/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
+      );
+      const toolData = await toolResponse.json();
+      setToolResults(toolData.data);
+      console.log("Tool data:", toolData.data);
+    } catch (error) {
+      console.error("Error fetching tool results:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPublicationResults();
+    fetchMemberResults();
+    fetchToolResults();
+  }, [searchTerm]);
+
+  const handleSearch = (event) => {
+    const { value } = event.target;
+    setSearchTerm(value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      // Redirect to the search result page
+      navigate(`/search/${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -107,7 +214,22 @@ export default function HomeNav(props) {
                   gap: "3rem",
                 }}
               >
-                <SearchIcon style={{ color: "#AE023E" }}></SearchIcon>
+                <SearchIcon
+                  style={{ color: "#AE023E" }}
+                  onClick={handleSearchClick}
+                />
+                {isSearchOpen && (
+                  <div className="flex">
+                    <input
+                      type="text"
+                      placeholder="  Search.."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      className="ms-4"
+                    />
+                  </div>
+                )}
                 <span>
                   {" "}
                   <LanguageIcon
@@ -125,7 +247,7 @@ export default function HomeNav(props) {
                   </IconButton>
                 </Tooltip>
                 <Menu
-                  style={{ opacity: 0.7 }}
+                  style={{ opacity: 0.9 }}
                   sx={{
                     mt: "60px",
                     left: "30px",

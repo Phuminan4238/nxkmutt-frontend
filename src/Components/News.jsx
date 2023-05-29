@@ -54,7 +54,6 @@ function Post({ member }) {
       to={`/News-Detail/${member.id}`}
       style={{ color: "inherit" }}
       rel="noopener noreferrer"
-      target="_blank"
     >
       <MDBRow className="pb-4">
         <MDBCol md="4">
@@ -213,11 +212,7 @@ export default function News() {
             <Post key={member.id} member={member} />
           ))}
         <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <Link
-            to={`/news-and-activities`}
-            target="_blank"
-            style={{ color: "inherit" }}
-          >
+          <Link to={`/news-and-activities`} style={{ color: "inherit" }}>
             <div className="d-inline-flex text-red py-2 md:py-4">
               <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
                 More News & Activity

@@ -14,6 +14,10 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import { useState, useEffect, setIsLoaded } from "react";
+import new1 from "../Images/new-1.png";
+import EastIcon from "@mui/icons-material/East";
+import ReactPaginate from "react-paginate";
+import { useLocation } from "react-router-dom";
 
 const ImageMask = ({ imageUrl, maskText }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -118,6 +122,22 @@ function Image({ members }) {
     };
   }, [uploadfiles]);
 
+  const [iconStyle, setIconStyle] = useState({
+    color: "#AE023E",
+    marginLeft: 0,
+  });
+
+  const handleMouseEnter = () => {
+    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+  };
+
+  const handleMouseLeave = () => {
+    setIconStyle({ color: "#AE023E" });
+  };
+
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
@@ -125,16 +145,12 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Tools-Detail/${member.id}`} target="_blank">
-                  {/* <MDBCard
-                    style={{ boxShadow: "unset", borderRadius: ".25rem" }}
-                  > */}
+                <Link to={`/Tools-Detail/${member.id}`}>
                   <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
                         height: "350px",
                         objectFit: "cover",
-
                         alignSelf: "center",
                       }}
                       imageUrl={
@@ -149,6 +165,22 @@ function Image({ members }) {
               </MDBCol>
             ))}
           </MDBRow>
+
+          {isHomePage && (
+            <MDBRow
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Link to={`/Tools-and-Service`} style={{ color: "inherit" }}>
+                <div className="d-inline-flex text-red py-2 md:py-4">
+                  <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                    Find out more
+                  </h5>
+                  <EastIcon style={iconStyle}></EastIcon>
+                </div>
+              </Link>
+            </MDBRow>
+          )}
         </MDBContainer>
       </div>
     </>

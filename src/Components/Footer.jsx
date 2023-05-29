@@ -27,8 +27,8 @@ export default function App() {
               </div>
 
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-3 col-md-2 p-2">Privacy policy</div>
-                <div className="col-4 col-md-2 p-2">Terms of use</div>
+                <div className="col-3 col-md-2 p-2 ps-0">Privacy policy</div>
+                <div className="col-4 col-md-2 p-2 ps-0">Terms of use</div>
               </div>
               <div className="d-flex flex-row mt-3 text-white">
                 © 2022 NX KMUTT

@@ -26,6 +26,7 @@ function Image() {
         setUploadfiles(result.data);
       });
   }, [memberID]);
+
   return (
     <>
       <div className="d-flex justify-content-between py-4" id="tools-flex">
@@ -34,7 +35,8 @@ function Image() {
           <MDBRow>
             {uploadfiles.slice(0, 3).map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">
-                <Link to={`/Member Detail/${member.id}`} target="_blank">
+                {/* <Link to={`/Member Detail/${member.id}`} target="_blank"> */}
+                <Link to={`/Member-Detail/${member.id}`} target="_blank">
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",

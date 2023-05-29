@@ -57,7 +57,7 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Member-Detail/${member.id}`} target="_blank">
+                <Link to={`/Member-Detail/${member.id}`}>
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",
@@ -191,8 +191,7 @@ function Image2({}) {
                     alt="..."
                     style={{
                       height: "350px",
-
-                      objectFit: "cover",
+                      objectFit: "contain",
                       borderRadius: "0px",
                       alignSelf: "center",
                     }}

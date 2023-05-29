@@ -104,7 +104,7 @@ function Image({ members }) {
                       >
                         {/* {member.attributes.position_en}
                          */}
-                        Organiation
+                        Organization
                       </h6>
                     </MDBCardText>
                   </MDBCardBody>

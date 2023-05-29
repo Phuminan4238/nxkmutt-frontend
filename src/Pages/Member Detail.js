@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 /* Routes */
 import { Route, Routes, useParams } from "react-router";
 /* Material UI */
@@ -56,7 +57,10 @@ function Memberdetail({ title }) {
       <section>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="col-2 text-uppercase fw-bold pb-4 sm:pb-0">
+            <MDBCol
+              className="col-2 text-uppercase fw-bold pb-4 sm:pb-0"
+              style={{ width: "-webkit-max-content" }}
+            >
               {/* Team member */}
               {title}
             </MDBCol>
@@ -358,7 +362,9 @@ function Memberdetail({ title }) {
                 <EastIcon
                   style={{ color: "#AE023E", marginRight: "1rem" }}
                 ></EastIcon>
-                All Team Member
+                <Link to={`/team-member`} style={{ color: "#AE023E" }}>
+                  All Team Member
+                </Link>
               </span>
             </div>
           </MDBRow>

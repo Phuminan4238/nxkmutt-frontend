@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 /* */
@@ -234,23 +234,6 @@ export default function HomeNav(props) {
                           onKeyDown={handleKeyDown}
                           className="ms-4"
                         />
-                        {/* <span
-                          className="input-group-text border-0"
-                          id="search-addon"
-                          onClick={handleSearchClick}
-                        ></span> */}
-                        {/* <i className="fas fa-search"></i> */}
-                        {/* {searchResults.length > 0 ? (
-                          <ul>
-                            {searchResults.map((result) => (
-                              <li key={result.id}>
-                                {result.attributes.title_en}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p>No results found.</p>
-                        )} */}
                       </div>
                     )}
 
@@ -320,7 +303,7 @@ export default function HomeNav(props) {
                       "& .MuiDrawer-paper": {
                         width: drawerWidth,
                       },
-                      opacity: "0.7",
+                      opacity: "0.9",
                     }}
                     id="menu-appbar"
                     anchorEl={anchorElUser}
@@ -447,7 +430,22 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <SearchIcon style={{ color: "#AE023E" }}></SearchIcon>
+                  <SearchIcon
+                    style={{ color: "#AE023E" }}
+                    onClick={handleSearchClick}
+                  />
+                  {isSearchOpen && (
+                    <div className="flex">
+                      <input
+                        type="text"
+                        placeholder="  Search.."
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        onKeyDown={handleKeyDown}
+                        className="ms-4"
+                      />
+                    </div>
+                  )}
                   <span>
                     {" "}
                     <LanguageIcon
@@ -465,7 +463,7 @@ export default function HomeNav(props) {
                     </IconButton>
                   </Tooltip>
                   <Menu
-                    style={{ opacity: 0.7 }}
+                    style={{ opacity: 0.9 }}
                     sx={{
                       mt: "60px",
                       left: "30px",
