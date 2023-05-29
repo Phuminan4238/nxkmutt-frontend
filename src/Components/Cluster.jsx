@@ -61,7 +61,7 @@ function Reuse() {
       });
   }, []);
 
-  const colors = ["#AE023E", "#00D26D", "#119ED1", "#FEB832"];
+  const colors = ["#AE023E", "#009B62", "#008CB0", "#FEB832"];
 
   const getImage = (index) => {
     switch (index) {
