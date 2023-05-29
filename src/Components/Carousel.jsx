@@ -28,32 +28,34 @@ function Image() {
 
   return (
     <>
-      <Carousel
-        showIndicators={true}
-        infiniteLoop={true}
-        autoPlay={true}
-        interval={3000}
-        showArrows={false}
-        showStatus={false}
-        showThumbs={false}
-        swipeable={false}
-        stopOnHover={false}
-        emulateTouch={false}
-      >
-        {coverImages.map((image) => (
-          <div
-            key={image.id}
-            className="w-100 d-block xs:h-fit md:h-full "
-            id="carousel-nav"
-          >
-            <img
-              src={`https://10.35.29.186${image.attributes.url}`}
-              alt={`Cover Image ${image.id}`}
-              className="w-100 d-block xs:h-4/5 md:h-full object-cover"
-            />
-          </div>
-        ))}
-      </Carousel>
+      {coverImages.length > 0 && (
+        <Carousel
+          showIndicators={true}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={3000}
+          showArrows={false}
+          showStatus={false}
+          showThumbs={false}
+          swipeable={false}
+          stopOnHover={false}
+          emulateTouch={false}
+        >
+          {coverImages.map((image) => (
+            <div
+              key={image.id}
+              className="w-100 d-block xs:h-fit md:h-full"
+              id="carousel-nav"
+            >
+              <img
+                src={`https://10.35.29.186${image.attributes.url}`}
+                alt={`Cover Image ${image.id}`}
+                className="w-100 d-block xs:h-4/5 md:h-full object-fill"
+              />
+            </div>
+          ))}
+        </Carousel>
+      )}
     </>
   );
 }

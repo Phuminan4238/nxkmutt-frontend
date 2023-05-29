@@ -112,6 +112,7 @@ export default function HomeNav(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [memberResults, setMemberResults] = useState([]);
+  const [eventResults, setEventResults] = useState([]);
   const [toolResults, setToolResults] = useState([]);
 
   const fetchPublicationResults = async () => {
@@ -144,6 +145,21 @@ export default function HomeNav(props) {
     }
   };
 
+  const fetchEventResults = async () => {
+    try {
+      const eventResponse = await fetch(
+        `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
+      );
+      const eventData = await eventResponse.json();
+      setEventResults(eventData.data);
+      console.log("Event data:", eventData.data);
+    } catch (error) {
+      console.error("Error fetching event results:", error);
+    }
+  };
+
   const fetchToolResults = async () => {
     try {
       const toolResponse = await fetch(
@@ -162,6 +178,7 @@ export default function HomeNav(props) {
   useEffect(() => {
     fetchPublicationResults();
     fetchMemberResults();
+    fetchEventResults();
     fetchToolResults();
   }, [searchTerm]);
 

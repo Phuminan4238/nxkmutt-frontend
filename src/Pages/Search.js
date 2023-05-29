@@ -15,6 +15,7 @@ const Searchresult = () => {
   const { term } = useParams();
   const [searchResults, setSearchResults] = useState([]);
   const [memberResults, setMemberResults] = useState([]);
+  const [eventResults, setEventResults] = useState([]);
   const [toolResults, setToolResults] = useState([]);
 
   useEffect(() => {
@@ -37,6 +38,14 @@ const Searchresult = () => {
         const memberData = await memberResponse.json();
         setMemberResults(memberData.data);
         console.log("Member data:", memberData.data);
+
+        // Fetch tool results
+        const eventResponse = await fetch(
+          `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodedTerm}&filters[name_th][$contains]=${encodedTerm}`
+        );
+        const eventData = await eventResponse.json();
+        setEventResults(eventData.data);
+        console.log("Event data:", eventData.data);
 
         // Fetch tool results
         const toolResponse = await fetch(
@@ -73,9 +82,9 @@ const Searchresult = () => {
             <MDBCol md="6" className="p-0">
               <div>
                 {/* Render publication results */}
-                <h2>Publication Results:</h2>
+                <h2 className="ps-4">Publication Results:</h2>
                 {searchResults.length > 0 ? (
-                  <ul>
+                  <ul className="ms-4">
                     {searchResults.map((result) => (
                       <li key={result.id}>
                         {/* Display the relevant data from the search results */}
@@ -94,9 +103,9 @@ const Searchresult = () => {
                 )}
 
                 {/* Render member results */}
-                <h2>Member Results:</h2>
+                <h2 className="ps-4">Member Results:</h2>
                 {memberResults.length > 0 ? (
-                  <ul>
+                  <ul className="ms-4">
                     {memberResults.map((result) => (
                       <li key={result.id}>
                         {/* Display the relevant data from the member results */}
@@ -108,13 +117,36 @@ const Searchresult = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p>No member results found.</p>
+                  <>
+                    <ul className="ms-4">
+                      <li>
+                        <p>No member results found.</p>
+                      </li>
+                    </ul>
+                  </>
+                )}
+
+                {/* Render event results */}
+                <h2 className="ps-4">Event Results:</h2>
+                {eventResults.length > 0 ? (
+                  <ul className="ms-4">
+                    {eventResults.map((result) => (
+                      <li key={result.id}>
+                        {/* Display the relevant data from the tool results */}
+                        <a href={result.attributes.url}>
+                          {result.attributes.name_en}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No tool results found.</p>
                 )}
 
                 {/* Render tool results */}
-                <h2>Tool Results:</h2>
+                <h2 className="ps-4">Tool Results:</h2>
                 {toolResults.length > 0 ? (
-                  <ul>
+                  <ul className="ms-4">
                     {toolResults.map((result) => (
                       <li key={result.id}>
                         {/* Display the relevant data from the tool results */}

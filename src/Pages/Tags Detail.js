@@ -13,6 +13,14 @@ import vr2 from "../Images/vr-2.png";
 import clusterimg1 from "../Images/cluster-1.png";
 
 function TagsDetail({ title }) {
+  window.onload = () => {
+    const scrollPosition = localStorage.getItem("scrollPosition");
+    if (scrollPosition) {
+      window.scrollTo(0, scrollPosition);
+      localStorage.removeItem("scrollPosition");
+    }
+  };
+
   let { id } = useParams();
   console.log(id);
 

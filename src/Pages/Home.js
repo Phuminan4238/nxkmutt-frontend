@@ -15,6 +15,12 @@ import Collaborator from "../Components/Collaborator";
 import Student from "../Components/Student";
 
 function Home(props) {
+  const scrollPosition =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+  localStorage.setItem("scrollPosition", scrollPosition);
+
   const [uploadfiles, setUploadfiles] = useState([]);
   const [hasDataFetched, setHasDataFetched] = useState(false);
 
