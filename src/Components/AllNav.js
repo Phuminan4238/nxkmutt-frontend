@@ -109,6 +109,7 @@ export default function HomeNav(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [memberResults, setMemberResults] = useState([]);
+  const [eventResults, setEventResults] = useState([]);
   const [toolResults, setToolResults] = useState([]);
 
   const fetchPublicationResults = async () => {
@@ -129,15 +130,32 @@ export default function HomeNav(props) {
   const fetchMemberResults = async () => {
     try {
       const memberResponse = await fetch(
-        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
           searchTerm
-        )}&filters[surname_en][$contains]=${encodeURIComponent(searchTerm)}`
+        )}&filters[$or][1][surname_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}`
       );
       const memberData = await memberResponse.json();
       setMemberResults(memberData.data);
       console.log("Member data:", memberData.data);
     } catch (error) {
       console.error("Error fetching member results:", error);
+    }
+  };
+
+  const fetchEventResults = async () => {
+    try {
+      const eventResponse = await fetch(
+        `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+          searchTerm
+        )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
+      );
+      const eventData = await eventResponse.json();
+      setEventResults(eventData.data);
+      console.log("Event data:", eventData.data);
+    } catch (error) {
+      console.error("Error fetching event results:", error);
     }
   };
 
@@ -159,6 +177,7 @@ export default function HomeNav(props) {
   useEffect(() => {
     fetchPublicationResults();
     fetchMemberResults();
+    fetchEventResults();
     fetchToolResults();
   }, [searchTerm]);
 

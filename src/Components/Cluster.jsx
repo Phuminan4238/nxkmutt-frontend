@@ -61,6 +61,24 @@ function Reuse() {
       });
   }, []);
 
+  // // Toggle Accordion
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggleAccordion = () => {
+  //   setIsOpen(!isOpen);
+  // };
+
+  // Add a state variable to track the open/closed state for each tag
+  const [openStates, setOpenStates] = useState(Array(tags.length).fill(false));
+
+  // Function to toggle the accordion for a specific tag
+  const toggleAccordion = (index) => {
+    setOpenStates((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
   const colors = ["#AE023E", "#009B62", "#008CB0", "#FEB832"];
 
   const getImage = (index) => {
@@ -146,7 +164,7 @@ function Reuse() {
   return (
     <>
       {tags.map((tagsData, index) => (
-        <MDBContainer className="fluid p-0" id="cluster-container">
+        <MDBContainer className="fluid p-0" id="cluster-container" key={index}>
           <MDBRow className="p-0 ">
             <MDBCol
               md="8"
@@ -162,29 +180,51 @@ function Reuse() {
               order="1"
               className={`d-flex p-5`}
               style={{ backgroundColor: colors[index] }}
-              key={index}
             >
               <div className="d-flex flex-column w-100">
                 <p className="fw-bold text-white xs:text-xl md:text-2xl">
                   {tagsData.attributes?.name_en || "not found"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
-                  <Link to={`/Tags-Detail/${tagsData.id}`}>
-                    <p
-                      className="fw-normal text-white mt-5 xs:text-base md:text-lg"
-                      sx={{
-                        "&:hover": {
-                          paddingLeft: "12px",
-                        },
-                      }}
-                    >
-                      More Info
-                    </p>
-                  </Link>
+                  <p
+                    className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
+                    onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
+                  >
+                    {openStates[index] ? (
+                      <span>&#x25B2; Hide Info</span>
+                    ) : (
+                      <span>&#x25BC; More Info</span>
+                    )}
+                  </p>
                 </div>
               </div>
             </MDBCol>
           </MDBRow>
+          {openStates[index] && (
+            <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
+              <MDBCol>
+                <p className="text-black px-20">
+                  {tagsData.attributes?.key || "not found"}
+                </p>
+                <Link
+                  to={`/Tags-Detail/${tagsData.id}`}
+                  style={{ color: "#AE023E" }}
+                >
+                  <p
+                    className="fw-normal px-20 mt-5 xs:text-base md:text-lg"
+                    sx={{
+                      colors: "#AE023E",
+                      "&:hover": {
+                        paddingLeft: "12px",
+                      },
+                    }}
+                  >
+                    More Info
+                  </p>
+                </Link>
+              </MDBCol>
+            </MDBRow>
+          )}
         </MDBContainer>
       ))}
     </>
