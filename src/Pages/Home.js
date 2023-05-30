@@ -15,12 +15,6 @@ import Collaborator from "../Components/Collaborator";
 import Student from "../Components/Student";
 
 function Home(props) {
-  const scrollPosition =
-    window.pageYOffset ||
-    document.documentElement.scrollTop ||
-    document.body.scrollTop;
-  localStorage.setItem("scrollPosition", scrollPosition);
-
   const [uploadfiles, setUploadfiles] = useState([]);
   const [hasDataFetched, setHasDataFetched] = useState(false);
 
@@ -78,26 +72,6 @@ function Home(props) {
       <main>
         {/* Section Carousel */}
         <Carousel2></Carousel2>
-
-        {/* <div>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={handleSearch}
-          />
-          {searchResults.length > 0 ? (
-            <ul>
-              {searchResults.map((result) => (
-                <li key={result.id}>
-                  {result.attributes.title_en}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No results found.</p>
-          )}
-        </div> */}
 
         {/* ******************/}
         {/* Paragraph */}

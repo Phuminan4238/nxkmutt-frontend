@@ -54,6 +54,10 @@ function Post({ member }) {
       to={`/News-Detail/${member.id}`}
       style={{ color: "inherit" }}
       rel="noopener noreferrer"
+      onClick={() => {
+        window.scrollTo(0, 0);
+        window.location.replace(`/News-Detail/${member.id}`);
+      }}
     >
       <MDBRow className="pb-4">
         <MDBCol md="4">
@@ -212,9 +216,16 @@ export default function News() {
             <Post key={member.id} member={member} />
           ))}
         <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <Link to={`/news-and-activities`} style={{ color: "inherit" }}>
+          <Link
+            to={`/news-and-activities`}
+            style={{ color: "inherit" }}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              window.location.replace(`/news-and-activities`);
+            }}
+          >
             <div className="d-inline-flex text-red py-2 md:py-4">
-              <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+              <h5 href="#" className="pe-4" style={{ color: "#AE023E" }}>
                 More News & Activity
               </h5>
               <EastIcon style={iconStyle}></EastIcon>

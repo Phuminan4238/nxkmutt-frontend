@@ -56,7 +56,13 @@ function Post() {
           className={`${index % 2 === 0 ? "flex-row-reverse" : ""}`}
         >
           <MDBCol md="6" className={`p-0 order-${order1}`}>
-            <Link to={`/Member-Detail/${member.id}`}>
+            <Link
+              to={`/Member-Detail/${member.id}`}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                window.location.replace(`/Member-Detail/${member.id}`);
+              }}
+            >
               <img
                 src={imgSrc}
                 className="image-fluid"
@@ -146,7 +152,13 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Member-Detail/${member.id}`}>
+                <Link
+                  to={`/Member-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Member-Detail/${member.id}`);
+                  }}
+                >
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",

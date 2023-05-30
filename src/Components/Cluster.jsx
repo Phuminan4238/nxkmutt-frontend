@@ -208,7 +208,11 @@ function Reuse() {
                 </p>
                 <Link
                   to={`/Tags-Detail/${tagsData.id}`}
-                  style={{ color: "#AE023E" }}
+                  style={{ color: "#AE023E", cursor: "pointer" }}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Tags-Detail/${tagsData.id}`);
+                  }}
                 >
                   <p
                     className="fw-normal px-20 mt-5 xs:text-base md:text-lg"

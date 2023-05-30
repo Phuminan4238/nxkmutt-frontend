@@ -57,7 +57,13 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Member-Detail/${member.id}`}>
+                <Link
+                  to={`/Member-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Member-Detail/${member.id}`);
+                  }}
+                >
                   <MDBCard
                     style={{
                       borderBottom: "1px solid black",

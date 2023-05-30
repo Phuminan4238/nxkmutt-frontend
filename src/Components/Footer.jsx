@@ -9,20 +9,47 @@ export default function App() {
       <section className="">
         <MDBContainer className="text-center text-md-start mt-5 xs:max-w-full ">
           <MDBRow className="mt-3">
-            <MDBCol className="my-5 px-4">
+            <MDBCol className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root">
               <div className="d-flex flex-row mt-3 text-white">
                 <div className="col-2 col-md-1">
-                  {" "}
-                  <img
+                  {/* <img
                     src={logokmutt}
                     class="image-fluid pr-6"
                     id="logokmutt-img"
                     style={{ borderRight: "1px solid white" }}
+                  /> */}
+                  <img
+                    src={logokmutt}
+                    height="60"
+                    alt=""
+                    loading="lazy"
+                    // style={{
+                    //   borderRight: "1px solid white",
+                    //   paddingRight: "1rem",
+                    // }}
                   />
                 </div>
-                <div className="col-3 col-md-2 pt-2 ms-4">
-                  {" "}
-                  <img src={logo} class="image-fluid" id="logo-img" />
+                <div
+                  className=""
+                  style={{
+                    borderRight: "1px solid white",
+                  }}
+                ></div>
+                {/* 
+                <div className="col-3 col-md-2 pt-3 ms-4 ms-lg-6">
+                  <img src={logo} height="40" alt="" loading="lazy" />
+                </div> */}
+                <div className="col-3 col-md-2 pt-2 ms-4 ms-lg-0">
+                  <img src={logo} height="40" alt="" loading="lazy" />
+                  <style>
+                    {`
+      @media (min-width: 1201px) {
+        .ms-lg-0 {
+          margin-left: 6rem !important;
+        }
+      }
+    `}
+                  </style>
                 </div>
               </div>
 

@@ -145,7 +145,13 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link to={`/Tools-Detail/${member.id}`}>
+                <Link
+                  to={`/Tools-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Tools-Detail/${member.id}`);
+                  }}
+                >
                   <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
@@ -171,7 +177,14 @@ function Image({ members }) {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <Link to={`/Tools-and-Service`} style={{ color: "inherit" }}>
+              <Link
+                to={`/Tools-and-Service?`}
+                style={{ color: "inherit" }}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  window.location.href = `/Tools-and-Service?`;
+                }}
+              >
                 <div className="d-inline-flex text-red py-2 md:py-4">
                   <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
                     Find out more
