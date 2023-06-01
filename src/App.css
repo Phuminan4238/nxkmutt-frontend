@@ -32,6 +32,15 @@ body {
   color: #61dafb;
 }
 
+.carousel .control-dots .dot {
+  color: gray;
+}
+
+.carousel .control-dots .dot.selected,
+.carousel .control-dots .dot:hover {
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

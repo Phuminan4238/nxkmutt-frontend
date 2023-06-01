@@ -84,10 +84,17 @@ function Post() {
           >
             <Column>
               <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
-                <p className="fw-bold text-white text-center xs:text-lg sm:text-xl">
+                <p
+                  className="fw-bold text-white text-center xs:text-lg sm:text-xl"
+                  style={{
+                    borderBottom: "1px solid white",
+                    paddingBottom: "1rem",
+                  }}
+                >
                   {member.attributes.name_en}&nbsp;
                   {member.attributes.surname_en}
                 </p>
+
                 <p className="fw-normal text-white text-center xs:text-lg sm:text-lg">
                   {member.attributes.position_en}
                 </p>

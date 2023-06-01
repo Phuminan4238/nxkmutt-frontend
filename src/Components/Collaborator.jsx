@@ -9,7 +9,15 @@ function Profile() {
         <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-warning">
           <img src={teamimg5} class="image-fluid" id="cluster-img" />
           <div className="d-flex p-5 align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3
+              className="text-white text-center"
+              style={{
+                borderBottom: "1px solid white",
+                paddingBottom: "1rem",
+              }}
+            >
+              Name Surname
+            </h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -18,7 +26,15 @@ function Profile() {
         <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-primary">
           <img src={teamimg5} class="image-fluid" id="cluster-img" />
           <div className="d-flex p-5 align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3
+              className="text-white text-center"
+              style={{
+                borderBottom: "1px solid white",
+                paddingBottom: "1rem",
+              }}
+            >
+              Name Surname
+            </h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -27,7 +43,15 @@ function Profile() {
         <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-warning">
           <img src={teamimg5} class="image-fluid" id="cluster-img" />
           <div className="d-flex p-5 align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3
+              className="text-white text-center"
+              style={{
+                borderBottom: "1px solid white",
+                paddingBottom: "1rem",
+              }}
+            >
+              Name Surname
+            </h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>
@@ -36,7 +60,15 @@ function Profile() {
         <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-primary">
           <img src={teamimg5} class="image-fluid" id="cluster-img" />
           <div className="d-flex p-5 align-content-center flex-column w-100">
-            <h3 className="text-white text-center ">Name Surname</h3>
+            <h3
+              className="text-white text-center"
+              style={{
+                borderBottom: "1px solid white",
+                paddingBottom: "1rem",
+              }}
+            >
+              Name Surname
+            </h3>
             <h5 className="text-white fw-light text-center">
               Position / Main Interest
             </h5>

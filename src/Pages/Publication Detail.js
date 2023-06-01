@@ -61,25 +61,17 @@ function PublicationsDetail({ title }) {
                 </h1>
               </div>
             </MDBCol>
-            <MDBCol md="7" className="p-0">
+            <MDBCol md="7" className="p-0" style={{ marginLeft: "auto" }}>
               <MDBCardImage
                 className="rounded-0"
-                // src={
-                //   "https://10.35.29.186" +
-                //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                //     .fileupload.data[0]?.attributes.url
-                // }
                 src={clusterimg1}
                 position="top"
                 alt="..."
                 style={{
-                  //   height: "350px",
-                  // width: "100%",
                   height: "400px",
+                  width: "-webkit-fit-content",
                   objectFit: "initial",
                   borderRadius: "0px",
-                  alignSelf: "center",
-                  // objectFit: "contain",
                 }}
               />
             </MDBCol>

@@ -28,9 +28,12 @@ function Home(props) {
         },
       });
       instance
-        .get("contents?populate=id")
+        .get("contents?populate=*&filters[topic][$eq]=who_we_are")
         .then((response) => {
-          setUploadfiles(response.data.data);
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfiles(data);
+          }
           setHasDataFetched(true);
         })
         .catch((error) => {
@@ -39,6 +42,7 @@ function Home(props) {
     }
   }, [hasDataFetched]);
 
+  // Search
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -77,29 +81,25 @@ function Home(props) {
         {/* Paragraph */}
         <section>
           <MDBContainer className="xs:max-w-fit sm:max-w-7xl 2xl:max-w-screen-2xl">
-            {uploadfiles.map((member) => (
+            {uploadfiles[0] && (
               <MDBRow className="pt-5 pb-4 xs:px-5 sm:px-5 md:px-0">
                 <div className="d-inline-flex p-2">
                   <p className="font-black text-uppercase xs:text-xl md:text-3xl">
-                    {member.attributes.header_en}
+                    {uploadfiles[0].attributes.header_en}
                   </p>
                 </div>
                 <div className="d-inline-flex px-5 xs:py-2 md:py-5">
                   <p className="fw-normal xs:text-base md:text-lg ps-4">
-                    {member.attributes.content_en}
+                    {uploadfiles[0].attributes.content_en}
                   </p>
                 </div>
-                <div
-                  className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16"
-                  // style={{ padding: "4rem 0.5rem 0.5rem 0.5rem" }}
-                >
-                  {/* Missing data*/}
+                <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
                   <p className="fw-bold text-uppercase xs:text-xl md:text-3xl">
                     What we do
                   </p>
                 </div>
               </MDBRow>
-            ))}
+            )}
           </MDBContainer>
         </section>
         {/* ***********/}
@@ -155,7 +155,6 @@ function Home(props) {
               </div>
             </MDBRow>
           </MDBContainer>
-
           <Team></Team>
           {/* ******************** */}
 

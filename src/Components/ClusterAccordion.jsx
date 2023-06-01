@@ -1,293 +1,259 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState, useEffect, setIsLoaded } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import EastIcon from "@mui/icons-material/East";
 import clusterimg1 from "../Images/cluster-1.png";
+import clusterimg2 from "../Images/cluster-2.png";
 import clusterimg3 from "../Images/cluster-3.png";
 import clusterimg4 from "../Images/cluster-4.png";
 
-const cluster1 = {
-  name: " Cognitive, Clinical",
-};
-
-function Image() {
-  const [uploadfiles, setUploadfiles] = useState({});
-
+function Reuse() {
+  const [tags, setTags] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/tags/1")
+    fetch("https://10.35.29.186/api/tags")
       .then((res) => res.json())
       .then((result) => {
-        setUploadfiles(result.data);
+        setTags(result.data.slice(0, 4));
       });
-  }, []); // empty dependency array
+  }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [cognitiveimg, setCognitiveimg] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setCognitiveimg(result.data);
+      });
+  }, []);
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
+  const [humanfactorimg, setHumanfactorimg] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setHumanfactorimg(result.data);
+      });
+  }, []);
+
+  const [neurodevimg, setNeurodevimg] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setNeurodevimg(result.data);
+      });
+  }, []);
+
+  const [neuropharmaimg, setNeuropharmaimg] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setNeuropharmaimg(result.data);
+      });
+  }, []);
+
+  // Hovering icon
+  const [iconStyle, setIconStyle] = useState({
+    color: "#AE023E",
+    marginLeft: 0,
+  });
+
+  const handleMouseEnter = () => {
+    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+  };
+
+  const handleMouseLeave = () => {
+    setIconStyle({ color: "#AE023E" });
+  };
+
+  // Add a state variable to track the open/closed state for each tag
+  const [openStates, setOpenStates] = useState(Array(tags.length).fill(false));
+
+  // Function to toggle the accordion for a specific tag
+  const toggleAccordion = (index) => {
+    setOpenStates((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
+  };
+
+  const colors = ["#AE023E", "#009B62", "#008CB0", "#FEB832"];
+
+  const getImage = (index) => {
+    switch (index) {
+      case 0:
+        return (
+          <>
+            {/* <img src={clusterimg1} className="image-fluid" id="cluster-img" /> */}
+            {cognitiveimg.map((member) => (
+              <img
+                className="image-fluid"
+                style={{
+                  width: "-webkit-fill-available",
+                  height: "auto",
+                }}
+                src={
+                  "https://10.35.29.186" +
+                  member.attributes.fileupload.data[0]?.attributes.url
+                }
+              />
+            ))}
+          </>
+        );
+      case 1:
+        return (
+          <>
+            {humanfactorimg.map((member) => (
+              <img
+                className="image-fluid"
+                style={{
+                  width: "-webkit-fill-available",
+                  height: "auto",
+                }}
+                src={
+                  "https://10.35.29.186" +
+                  member.attributes.fileupload.data[0]?.attributes.url
+                }
+              />
+            ))}
+          </>
+        );
+      case 2:
+        return (
+          <>
+            {neurodevimg.map((member) => (
+              <img
+                className="image-fluid"
+                style={{
+                  width: "-webkit-fill-available",
+                  height: "auto",
+                }}
+                src={
+                  "https://10.35.29.186" +
+                  member.attributes.fileupload.data[0]?.attributes.url
+                }
+              />
+            ))}
+          </>
+        );
+      case 3:
+        return (
+          <>
+            {neuropharmaimg.map((member) => (
+              <img
+                className="image-fluid"
+                style={{
+                  width: "-webkit-fill-available",
+                  height: "auto",
+                }}
+                src={
+                  "https://10.35.29.186" +
+                  member.attributes.fileupload.data[0]?.attributes.url
+                }
+              />
+            ))}
+          </>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
-        <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
-          <img src={clusterimg1} class="image-fluid" id="cluster-img" />
-        </MDBCol>
-        <MDBCol
-          order="1"
-          className="d-flex p-5"
-          style={{ background: "#AE023E" }}
-        >
-          <div className="d-flex flex-column w-100">
-            <p className="fw-bold text-white xs:text-xl md:text-3xl">
-              {uploadfiles.attributes?.name_en || "not found"}
-            </p>
-            <div className="d-flex justify-content-between mt-auto align-items-end">
-              <p
-                className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
-                onClick={toggleAccordion}
-              >
-                {isOpen ? (
-                  <span>&#x25B2; Hide Info</span>
-                ) : (
-                  <span>&#x25BC; More Info</span>
-                )}
-              </p>
-            </div>
-          </div>
-        </MDBCol>
-      </MDBRow>
-      {isOpen && (
-        <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
-          <MDBCol>
-            <p className="text-black px-20">
-              The Cognitive, Clinical and Computational neuroscience cluster
-              focuses on investigating neural mechanisms that support human
-              perception, attention, memory, and affective systems across
-              healthy and clinical populations. We employ multiple neuroscience
-              techniques (e.g., EEG, fMRI, and fNIR) as well as non-invasive
-              brain stimulation to study these cognitive functions and come up
-              with new ways to treat and slow the progress of neurodegenerative
-              disorders in aging society like Mild Cognitive Impairment,
-              Alzhiemer’s and Parkinson’s diseases (PD). In addition, we use
-              computational modeling and machine learning methods to map neural
-              activity to brain functions and to develop brain-based diagnostic
-              tools for neurological and psychiatric disorders.
-            </p>
-          </MDBCol>
-        </MDBRow>
-      )}
-    </MDBContainer>
-  );
-}
+    <>
+      {tags.map((tagsData, index) => (
+        <MDBContainer className="fluid p-0" id="cluster-container" key={index}>
+          <MDBRow className="p-0 ">
+            <MDBCol
+              md="8"
+              className={`d-flex p-0 xs:order-2 sm:order-1 ${
+                index === 1 || index === 3 ? "order-md-2" : ""
+              }`}
+            >
+              {getImage(index)}
+            </MDBCol>
 
-function ReverseImage() {
-  const [uploadfiles, setUploadfiles] = useState({});
-
-  useEffect(() => {
-    fetch("https://10.35.29.186/api/tags/2")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
-      });
-  }, []); // empty dependency array
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
-        <MDBCol order="1" className="d-flex p-5 bg-success">
-          <div className="d-flex flex-column w-100">
-            <p className="fw-bold text-white xs:text-xl md:text-3xl">
-              {uploadfiles.attributes?.name_en || "not found"}
-            </p>
-            <div className="d-flex justify-content-between mt-auto align-items-end">
-              <p
-                className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
-                onClick={toggleAccordion}
-              >
-                {isOpen ? (
-                  <span>&#x25B2; Hide Info</span>
-                ) : (
-                  <span>&#x25BC; More Info</span>
-                )}
-              </p>
-            </div>
-          </div>
-        </MDBCol>
-        <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
-          <img src={clusterimg1} class="image-fluid" id="cluster-img" />
-        </MDBCol>
-      </MDBRow>
-      {isOpen && (
-        <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
-          <MDBCol>
-            <p className="text-black px-20">
-              The Cognitive, Clinical and Computational neuroscience cluster
-              focuses on investigating neural mechanisms that support human
-              perception, attention, memory, and affective systems across
-              healthy and clinical populations. We employ multiple neuroscience
-              techniques (e.g., EEG, fMRI, and fNIR) as well as non-invasive
-              brain stimulation to study these cognitive functions and come up
-              with new ways to treat and slow the progress of neurodegenerative
-              disorders in aging society like Mild Cognitive Impairment,
-              Alzhiemer’s and Parkinson’s diseases (PD). In addition, we use
-              computational modeling and machine learning methods to map neural
-              activity to brain functions and to develop brain-based diagnostic
-              tools for neurological and psychiatric disorders.
-            </p>
-          </MDBCol>
-        </MDBRow>
-      )}
-    </MDBContainer>
-  );
-}
-
-function Image2() {
-  const [uploadfiles, setUploadfiles] = useState({});
-
-  useEffect(() => {
-    fetch("https://10.35.29.186/api/tags/3")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
-      });
-  }, []); // empty dependency array
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
-        <MDBCol md="8" className="p-0 xs:order-2 sm:order-1">
-          <img src={clusterimg3} class="image-fluid" id="cluster-img" />
-        </MDBCol>
-        <MDBCol order="1" className="d-flex p-5 bg-primary">
-          <div className="d-flex flex-column w-100">
-            <p className="fw-bold text-white xs:text-xl md:text-3xl">
-              {uploadfiles.attributes?.name_en || "not found"}
-            </p>
-            <div className="d-flex justify-content-between mt-auto align-items-end">
-              <p
-                className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
-                onClick={toggleAccordion}
-              >
-                {isOpen ? (
-                  <span>&#x25B2; Hide Info</span>
-                ) : (
-                  <span>&#x25BC; More Info</span>
-                )}
-              </p>
-            </div>
-          </div>
-        </MDBCol>
-      </MDBRow>
-      {isOpen && (
-        <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
-          <MDBCol>
-            <p className="text-black px-20">
-              The Cognitive, Clinical and Computational neuroscience cluster
-              focuses on investigating neural mechanisms that support human
-              perception, attention, memory, and affective systems across
-              healthy and clinical populations. We employ multiple neuroscience
-              techniques (e.g., EEG, fMRI, and fNIR) as well as non-invasive
-              brain stimulation to study these cognitive functions and come up
-              with new ways to treat and slow the progress of neurodegenerative
-              disorders in aging society like Mild Cognitive Impairment,
-              Alzhiemer’s and Parkinson’s diseases (PD). In addition, we use
-              computational modeling and machine learning methods to map neural
-              activity to brain functions and to develop brain-based diagnostic
-              tools for neurological and psychiatric disorders.
-            </p>
-          </MDBCol>
-        </MDBRow>
-      )}
-    </MDBContainer>
-  );
-}
-
-function ReverseImage2() {
-  const [uploadfiles, setUploadfiles] = useState({});
-
-  useEffect(() => {
-    fetch("https://10.35.29.186/api/tags/4")
-      .then((res) => res.json())
-      .then((result) => {
-        setUploadfiles(result.data);
-      });
-  }, []); // empty dependency array
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <MDBContainer className="fluid p-0" id="cluster-container">
-      <MDBRow className="p-0 ">
-        <MDBCol className="d-flex p-5 bg-warning">
-          <div className="d-flex flex-column w-100">
-            <p className="fw-bold text-white xs:text-xl md:text-3xl">
-              {uploadfiles.attributes?.name_en || "not found"}
-            </p>
-            <div className="d-flex justify-content-between mt-auto align-items-end">
-              <p
-                className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
-                onClick={toggleAccordion}
-              >
-                {isOpen ? (
-                  <span>&#x25B2; Hide Info</span>
-                ) : (
-                  <span>&#x25BC; More Info</span>
-                )}
-              </p>
-            </div>
-          </div>
-        </MDBCol>
-        <MDBCol md="8" className="p-0">
-          <img src={clusterimg4} class="image-fluid" id="cluster-img" />
-        </MDBCol>
-      </MDBRow>
-      {isOpen && (
-        <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
-          <MDBCol>
-            <p className="text-black px-20">
-              The Cognitive, Clinical and Computational neuroscience cluster
-              focuses on investigating neural mechanisms that support human
-              perception, attention, memory, and affective systems across
-              healthy and clinical populations. We employ multiple neuroscience
-              techniques (e.g., EEG, fMRI, and fNIR) as well as non-invasive
-              brain stimulation to study these cognitive functions and come up
-              with new ways to treat and slow the progress of neurodegenerative
-              disorders in aging society like Mild Cognitive Impairment,
-              Alzhiemer’s and Parkinson’s diseases (PD). In addition, we use
-              computational modeling and machine learning methods to map neural
-              activity to brain functions and to develop brain-based diagnostic
-              tools for neurological and psychiatric disorders.
-            </p>
-          </MDBCol>
-        </MDBRow>
-      )}
-    </MDBContainer>
+            <MDBCol
+              md="4"
+              order="1"
+              className={`d-flex p-5`}
+              style={{ backgroundColor: colors[index] }}
+            >
+              <div className="d-flex flex-column w-100">
+                <p className="fw-bold text-white xs:text-xl md:text-2xl">
+                  {tagsData.attributes?.name_en || "not found"}
+                </p>
+                <div className="d-flex justify-content-between mt-auto">
+                  <p
+                    className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
+                    onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
+                  >
+                    {openStates[index] ? (
+                      <span>&#x25B2; Hide Info</span>
+                    ) : (
+                      <span>&#x25BC; More Info</span>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </MDBCol>
+          </MDBRow>
+          {openStates[index] && (
+            <MDBRow
+              className="p-5"
+              style={{ background: "#F5F5F5" }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <MDBCol>
+                <p className="text-black px-20">
+                  {tagsData.attributes?.description_en || "not found"}
+                </p>
+                <Link
+                  to={`/Tags-Detail/${tagsData.id}`}
+                  style={{ color: "#AE023E", cursor: "pointer" }}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Tags-Detail/${tagsData.id}`);
+                  }}
+                >
+                  <p
+                    className="fw-normal px-20 mt-5 text-end xs:text-base md:text-lg"
+                    sx={{
+                      colors: "#AE023E",
+                      "&:hover": {
+                        paddingLeft: "12px",
+                      },
+                    }}
+                  >
+                    More Info
+                    <EastIcon style={iconStyle}></EastIcon>
+                  </p>
+                </Link>
+              </MDBCol>
+            </MDBRow>
+          )}
+        </MDBContainer>
+      ))}
+    </>
   );
 }
 
 export default function ClusterAccordion() {
   return (
     <>
-      <Image />
-      <ReverseImage />
-      <Image2 />
-      <ReverseImage2 />
+      <Reuse />
     </>
   );
 }

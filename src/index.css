@@ -192,6 +192,12 @@ a:hover {
   padding: 0px !important;
 }
 
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  width: -webkit-fit-content !important;
+}
+
 /* #main-container {
   max-width: auto;
 } */

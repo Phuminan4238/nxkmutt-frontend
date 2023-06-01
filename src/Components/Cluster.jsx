@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect, setIsLoaded } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import EastIcon from "@mui/icons-material/East";
 import clusterimg1 from "../Images/cluster-1.png";
 import clusterimg2 from "../Images/cluster-2.png";
 import clusterimg3 from "../Images/cluster-3.png";
@@ -61,11 +62,19 @@ function Reuse() {
       });
   }, []);
 
-  // // Toggle Accordion
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggleAccordion = () => {
-  //   setIsOpen(!isOpen);
-  // };
+  // Hovering icon
+  const [iconStyle, setIconStyle] = useState({
+    color: "#AE023E",
+    marginLeft: 0,
+  });
+
+  const handleMouseEnter = () => {
+    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+  };
+
+  const handleMouseLeave = () => {
+    setIconStyle({ color: "#AE023E" });
+  };
 
   // Add a state variable to track the open/closed state for each tag
   const [openStates, setOpenStates] = useState(Array(tags.length).fill(false));
@@ -201,10 +210,15 @@ function Reuse() {
             </MDBCol>
           </MDBRow>
           {openStates[index] && (
-            <MDBRow className="p-5" style={{ background: "#F5F5F5" }}>
+            <MDBRow
+              className="p-5"
+              style={{ background: "#F5F5F5" }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <MDBCol>
                 <p className="text-black px-20">
-                  {tagsData.attributes?.key || "not found"}
+                  {tagsData.attributes?.description_en || "not found"}
                 </p>
                 <Link
                   to={`/Tags-Detail/${tagsData.id}`}
@@ -215,7 +229,7 @@ function Reuse() {
                   }}
                 >
                   <p
-                    className="fw-normal px-20 mt-5 xs:text-base md:text-lg"
+                    className="fw-normal px-20 mt-5 text-end xs:text-base md:text-lg"
                     sx={{
                       colors: "#AE023E",
                       "&:hover": {
@@ -224,6 +238,7 @@ function Reuse() {
                     }}
                   >
                     More Info
+                    <EastIcon style={iconStyle}></EastIcon>
                   </p>
                 </Link>
               </MDBCol>

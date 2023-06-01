@@ -155,9 +155,10 @@ function Image({ members }) {
                   <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
-                        height: "350px",
+                        height: "400px",
                         objectFit: "cover",
                         alignSelf: "center",
+                        borderRadius: "16px",
                       }}
                       imageUrl={
                         "https://10.35.29.186" +

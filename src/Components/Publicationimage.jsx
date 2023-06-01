@@ -164,7 +164,7 @@ function Menu() {
       });
   }, [allTagsSelected, selectedTag]);
 
-  const colors = ["#AE023E", "#00D26D", "#119ED1", "#FEB832"];
+  const colors = ["#AE023E", "#009B62", "#119ED1", "#FEB832"];
   const tagColors = {
     cognitive: colors[0],
     neuroscience: colors[1],
@@ -239,11 +239,12 @@ function Menu() {
               style={{ color: "black" }}
             >
               <MDBCol md="11" key={publication.id} className="pb-4">
-                <p>
+                <p style={{ verticalAlign: "top" }}>
                   <StyledArticleIcon
                     tag={
                       allTagsSelected ? publication.attributes.tag : selectedTag
                     }
+                    style={{ marginRight: "5px" }}
                   />
                   {publication.attributes.description_en}
                 </p>
@@ -277,6 +278,7 @@ function Menu() {
                         ? colors[index]
                         : "#ccc"
                     }`,
+                    borderRadius: "0.25rem",
                     color: `${
                       allTagsSelected
                         ? colors[index]
