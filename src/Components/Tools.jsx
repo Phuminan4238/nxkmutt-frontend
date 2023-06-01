@@ -155,7 +155,7 @@ function Image({ members }) {
                   <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
-                        height: "400px",
+                        height: "350px",
                         objectFit: "cover",
                         alignSelf: "center",
                         borderRadius: "16px",

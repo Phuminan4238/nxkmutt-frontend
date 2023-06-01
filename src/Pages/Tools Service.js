@@ -102,9 +102,9 @@ const Toolservice = () => {
           <MDBRow className="pt-5">
             <MDBCol>
               <div className="d-inline-flex p-2">
-                <h4 className="fw-bold text-uppercase text-black ps-2">
+                <p className="font-black text-uppercase xs:text-xl md:text-3xl">
                   Service
-                </h4>
+                </p>
               </div>
               <MDBCol className="ps-4 pt-2">
                 <MDBRow className="pt-2">

@@ -198,6 +198,11 @@ a:hover {
   width: -webkit-fit-content !important;
 }
 
+#image-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 /* #main-container {
   max-width: auto;
 } */

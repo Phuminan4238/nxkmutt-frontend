@@ -26,31 +26,56 @@ const cards = [
 ];
 
 const CardList = ({ cards }) => {
+  const visibleCards = cards.slice(0, 5); // Only displa
   return (
-    <div className="row row-cols-md-5 row-cols-2">
-      {cards.map((card, index) => (
-        <MDBCol key={index}>
-          <MDBCard style={{ boxShadow: "unset", borderRadius: "0px" }}>
-            <MDBCardImage
-              className="rounded-2"
-              src={card.img}
-              position="top"
-              alt="..."
-              style={{ height: "150px", objectFit: "contain" }}
-            />
-            <MDBCardBody>
-              <p className="fw-normal text-center text-black xs:text-base md:text-lg ">
-                {card.title}
-              </p>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
+    <div className="row">
+      {visibleCards.map((card, index) => (
+        <div className="col" key={index}>
+          <div className="image-container">
+            {card.img && (
+              <img
+                className="rounded-2"
+                src={card.img}
+                alt="..."
+                style={{ height: "150px", objectFit: "contain" }}
+              />
+            )}
+          </div>
+          {card.title && (
+            <p className="fw-normal text-start text-black xs:text-base md:text-lg mt-3 card-description">
+              {card.title}
+            </p>
+          )}
+        </div>
       ))}
     </div>
   );
 };
 
 export default function App() {
+  const cards = [
+    {
+      title: "Institution",
+      img: vr2,
+    },
+    {
+      title: "Institution",
+      img: vr2,
+    },
+    {
+      title: "Institution",
+      img: vr2,
+    },
+    {
+      title: "Institution",
+      img: vr2,
+    },
+    {
+      title: "Institution",
+      img: vr2,
+    },
+  ];
+
   return (
     <div className="container px-0 mx-0">
       <CardList cards={cards} />

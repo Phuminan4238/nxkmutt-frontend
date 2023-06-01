@@ -239,7 +239,7 @@ function Menu() {
               style={{ color: "black" }}
             >
               <MDBCol md="11" key={publication.id} className="pb-4">
-                <p style={{ verticalAlign: "top" }}>
+                <p style={{ display: "inline-block" }}>
                   <StyledArticleIcon
                     tag={
                       allTagsSelected ? publication.attributes.tag : selectedTag

@@ -32,6 +32,29 @@ const Publications = () => {
       });
   }, []);
 
+  // Scroll Button
+  const [showButton, setShowButton] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  const handleScroll = () => {
+    const currentScrollPos =
+      window.pageYOffset || document.documentElement.scrollTop;
+    setShowButton(currentScrollPos > prevScrollPos && currentScrollPos > 0);
+    setPrevScrollPos(currentScrollPos);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
       <section>
@@ -98,6 +121,32 @@ const Publications = () => {
             </MDBCol>
           </MDBRow>
           <Publicationimage></Publicationimage>
+          <button
+            className={`scroll-to-top ${showButton ? "show" : ""}`}
+            onClick={scrollToTop}
+            style={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              zIndex: "9999",
+              border: "none",
+              backgroundColor: "transparent",
+            }}
+          >
+            <div
+              className="icon-container"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <i className="fas fa-arrow-up" style={{ color: "black" }}></i>
+              <span className="up-text" style={{ color: "#AE023E" }}>
+                UP
+              </span>
+            </div>
+          </button>
           {/* <Publicationreport></Publicationreport> */}
         </MDBContainer>
       </section>

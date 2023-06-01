@@ -72,9 +72,7 @@ const Contactus = () => {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
             <div className="d-inline-flex p-2">
-              <p className="font-black text-uppercase xs:text-xl md:text-2xl">
-                Social Media
-              </p>
+              <p className="font-black  xs:text-xl md:text-2xl">Social Media</p>
             </div>
             <div className="pt-5 py-4 mx-0 md:px-0 ">
               <Contactsocial></Contactsocial>
