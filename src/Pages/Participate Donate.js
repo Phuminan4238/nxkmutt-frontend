@@ -67,7 +67,7 @@ const Participate = () => {
           <MDBRow className="pt-5 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol>
               <MDBRow>
-                <p className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-2xl">
+                <p className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
                   JOB & Internship
                 </p>
               </MDBRow>
@@ -75,7 +75,7 @@ const Participate = () => {
                 <MDBRow className="pt-2">
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <p>-</p>
+                    <li></li>
                   </MDBCol>
                   <MDBCol>
                     <p>
@@ -95,7 +95,7 @@ const Participate = () => {
                 </MDBRow>
               </MDBCol>
               <MDBRow>
-                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-2xl">
+                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl">
                   STUDY participation
                 </h4>
               </MDBRow>
@@ -103,7 +103,7 @@ const Participate = () => {
                 <MDBRow className="pt-2">
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <p>-</p>
+                    <li></li>
                   </MDBCol>
                   <MDBCol>
                     <p>

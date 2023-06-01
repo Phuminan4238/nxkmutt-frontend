@@ -158,7 +158,7 @@ function Memberdetail({ title }) {
           {/* Education */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
-              <h5 className="fw-bold text-uppercase text-black">Education</h5>
+              <h5 className="fw-bold text-capitalize text-black">Education</h5>
 
               <MDBBtn outline className="mx-2" color="danger">
                 <DescriptionIcon style={{ color: "#A02040" }}></DescriptionIcon>
@@ -216,7 +216,7 @@ function Memberdetail({ title }) {
 
             {/* Current Affiliations */}
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
+              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
                 Current Affiliations
               </h5>
             </MDBRow>
@@ -259,7 +259,7 @@ function Memberdetail({ title }) {
             </MDBCol>
             {/*  Recent and on-going projects */}
             <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
+              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
                 Recent and on-going projects
               </h5>
             </MDBRow>
@@ -284,7 +284,7 @@ function Memberdetail({ title }) {
             </MDBCol>
             {/*  Grants */}
             <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
+              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
                 Grants
               </h5>
             </MDBRow>
@@ -311,7 +311,7 @@ function Memberdetail({ title }) {
             </MDBCol>
             {/*  Awards */}
             <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-uppercase text-black ps-2 pt-4">
+              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
                 Awards
               </h5>
             </MDBRow>
