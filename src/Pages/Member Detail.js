@@ -355,7 +355,7 @@ function Memberdetail({ title }) {
           </MDBRow>
           {publicationfiles.map((member) => (
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol size="1">
+              <MDBCol col="1" className="custom-col">
                 <ArticleIcon color="primary" />
               </MDBCol>
 

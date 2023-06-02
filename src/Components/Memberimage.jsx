@@ -81,11 +81,12 @@ function Image({ members }) {
                       position="top"
                       alt="..."
                       style={{
-                        height: "350px",
-
+                        height: "295px",
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
+                        // height: "350px",
+                        // objectPosition: "top"
                       }}
                     />
                     <MDBCardBody>
@@ -196,7 +197,7 @@ function Image2({}) {
                     position="top"
                     alt="..."
                     style={{
-                      height: "350px",
+                      height: "260px",
                       objectFit: "contain",
                       borderRadius: "0px",
                       alignSelf: "center",

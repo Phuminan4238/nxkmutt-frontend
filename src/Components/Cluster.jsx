@@ -187,16 +187,19 @@ function Reuse() {
             <MDBCol
               md="4"
               order="1"
-              className={`d-flex p-5`}
+              className={"d-flex p-6"}
               style={{ backgroundColor: colors[index] }}
             >
               <div className="d-flex flex-column w-100">
-                <p className="fw-bold text-white xs:text-xl md:text-2xl">
+                <p
+                  className="font-normal text-white xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   {tagsData.attributes?.name_en || "not found"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
-                    className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
+                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-lg cursor-pointer"
                     onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
                   >
                     {openStates[index] ? (

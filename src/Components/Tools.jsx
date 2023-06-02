@@ -86,7 +86,9 @@ function Image({ members }) {
   const cardStyle = {
     width: isMobile ? "-webkit-fit-content" : "100%",
     boxShadow: "unset",
-    borderRadius: ".25rem",
+    borderRadius: "8px",
+    width: "340px",
+    height: "444px",
   };
 
   useEffect(() => {
@@ -140,9 +142,9 @@ function Image({ members }) {
 
   return (
     <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow>
+      <div className="d-flex justify-content-between pt-0 " id="tools-flex">
+        <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
+          <MDBRow className="g-6">
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
                 <Link
@@ -152,10 +154,10 @@ function Image({ members }) {
                     window.location.replace(`/Tools-Detail/${member.id}`);
                   }}
                 >
-                  <MDBCard style={cardStyle}>
+                  {/* <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
-                        height: "350px",
+                        height: "444px",
                         objectFit: "cover",
                         alignSelf: "center",
                         borderRadius: "16px",
@@ -167,6 +169,24 @@ function Image({ members }) {
                       }
                       maskText={member.attributes.name_en + " "}
                     />
+                  </MDBCard> */}
+                  <MDBCard>
+                    <div>
+                      <img
+                        className="image-fluid"
+                        style={{
+                          width: "-webkit-fill-available",
+                          objectFit: "cover",
+                          height: "444px",
+                          borderRadius: "8px",
+                        }}
+                        src={
+                          "https://10.35.29.186" +
+                          member.attributes.uploadfiles.data[0]?.attributes
+                            .fileupload.data[0]?.attributes.url
+                        }
+                      />
+                    </div>
                   </MDBCard>
                 </Link>
               </MDBCol>
@@ -179,6 +199,7 @@ function Image({ members }) {
               onMouseLeave={handleMouseLeave}
             >
               <Link
+                className="ps-0"
                 to={`/Tools-and-Service?`}
                 style={{ color: "inherit" }}
                 onClick={() => {
@@ -186,11 +207,15 @@ function Image({ members }) {
                   window.location.href = `/Tools-and-Service?`;
                 }}
               >
-                <div className="d-inline-flex text-red py-2 md:py-4">
-                  <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                <div className="d-inline-flex text-red py-2 md:pt-4 pb-0">
+                  <h5
+                    href="#"
+                    className="p-2 pe-4 "
+                    style={{ color: "#AE023E" }}
+                  >
                     Find out more
                   </h5>
-                  <EastIcon style={iconStyle}></EastIcon>
+                  <EastIcon className="m-2" style={iconStyle}></EastIcon>
                 </div>
               </Link>
             </MDBRow>

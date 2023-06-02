@@ -81,16 +81,16 @@ function Image() {
                         </h4>
                       </MDBCardTitle>
                       <MDBCardText>
-                        <h6
-                          className="fw-light text-center"
-                          style={{ color: "#AE023E", paddingTop: "1rem" }}
+                        <h5
+                          className="fw-normal text-center"
+                          style={{ color: "#AE023E" }}
                         >
                           {member.attributes.position_en}
-                        </h6>
+                        </h5>
                       </MDBCardText>
                       <MDBCardText key={member.attributes}>
                         <p
-                          className="fw-light text-center"
+                          className="fw-normal text-center"
                           style={{ color: "#AE023E" }}
                         >
                           Main Interest, Main <br></br> Interest, Main Interest

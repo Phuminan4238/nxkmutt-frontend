@@ -59,7 +59,7 @@ function Post({ member }) {
         window.location.replace(`/News-Detail/${member.id}`);
       }}
     >
-      <MDBRow className="pb-4">
+      <MDBRow className="pb-2">
         <MDBCol md="4">
           <MDBRipple
             className="bg-image hover-overlay shadow-1-strong rounded"
@@ -106,18 +106,25 @@ function Post({ member }) {
           </div>
         </MDBCol> */}
         <MDBCol
-          className="d-flex ps-4 xs:pt-4 sm:pt-2"
+          className="d-flex p-4 xs:pt-4 "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           // style={colStyle}
         >
           <div className="d-flex flex-column w-100">
-            <p className="fw-bold xs:pt-4 md:pt-0 xs:text-xl md:text-2xl">
+            <p
+              className="font-bold xs:pt-4 md:pt-0 xs:text-xl md:text-2xl"
+              style={{ fontFamily: "MyFont" }}
+            >
               {member.attributes.name_en}
             </p>
-            <p className="mt-2 xs:text-sm sm:text-lg">
+            <p
+              className="font-light mt-2 xs:text-sm sm:text-lg"
+              style={{ fontFamily: "FontLight" }}
+            >
               {member.attributes.name_th}
             </p>
+
             <div
               className="d-flex justify-content-between mt-auto xs:text-base sm:text-lg pt-2"
               id="news-underline"
@@ -126,7 +133,7 @@ function Post({ member }) {
               <p className="mb-0">Content Master</p>
             </div>
 
-            <div className="d-inline-flex py-4 text-red">
+            <div className="d-inline-flex pt-2 text-red">
               <p href="#" className="pe-4 xs:text-base" style={textStyle}>
                 Read more
               </p>
@@ -206,7 +213,7 @@ export default function News() {
   if (isHomePage) {
     // Don't render pagination on the home page
     return (
-      <MDBContainer className="py-4">
+      <MDBContainer className="pt-0 py-4">
         {/* {uploadfiles.slice(offset, offset + PER_PAGE).map((member) => (
         <Post key={member.id} member={member} />
       ))} */}

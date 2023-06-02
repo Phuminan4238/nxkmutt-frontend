@@ -8,7 +8,7 @@ export default function App() {
     <MDBFooter className="text-center text-lg-start text-muted" id="footer-bg">
       <section className="">
         <MDBContainer className="text-center text-md-start mt-5 xs:max-w-full ">
-          <MDBRow className="mt-3">
+          <MDBRow className="px-4 py-4">
             <MDBCol className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root">
               <div className="d-flex flex-row mt-3 text-white">
                 <div className="col-2 col-md-1">

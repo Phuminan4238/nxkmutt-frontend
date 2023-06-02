@@ -198,9 +198,11 @@ export default function HomeNav(props) {
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar
+          className="px-3"
           style={{
             background: "white",
             boxShadow: "unset",
+            top: "15px",
           }}
           position="sticky"
         >

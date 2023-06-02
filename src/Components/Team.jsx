@@ -13,6 +13,7 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 
+// Desktop
 function Post() {
   const [memberfiles, setMemberfiles] = useState([]);
 
@@ -29,7 +30,7 @@ function Post() {
   const Column = ({ color, children }) => {
     return (
       <MDBCol
-        className="p-5 align-content-center"
+        className="align-content-center"
         style={{ backgroundColor: color }}
       >
         {children}
@@ -46,8 +47,8 @@ function Post() {
       "https://10.35.29.186" +
       member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
         ?.attributes.url;
-    const order1 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
-    const order2 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
+    const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
+    const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
@@ -68,7 +69,7 @@ function Post() {
                 className="image-fluid"
                 id="cluster-img"
                 style={{
-                  height: "320px",
+                  height: "-webkit-fit-content",
                   maxWidth: "100%",
                   objectFit: "cover",
                 }}
@@ -85,17 +86,19 @@ function Post() {
             <Column>
               <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                 <p
-                  className="fw-bold text-white text-center xs:text-lg sm:text-xl"
+                  className="fw-bold text-white text-center xs:text-lg sm:text-xl md:text-2xl"
                   style={{
                     borderBottom: "1px solid white",
                     paddingBottom: "1rem",
+                    fontFamily: "MyFont",
                   }}
                 >
                   {member.attributes.name_en}&nbsp;
+                  <br></br>
                   {member.attributes.surname_en}
                 </p>
 
-                <p className="fw-normal text-white text-center xs:text-lg sm:text-lg">
+                <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">
                   {member.attributes.position_en}
                 </p>
               </div>
@@ -108,7 +111,7 @@ function Post() {
 
   return (
     <MDBContainer
-      className="container-fluid py-4 grid grid-cols-2 "
+      className="container-fluid pt-0 pb-4 grid grid-cols-2 "
       id="cluster-container"
     >
       {memberfiles.map((member, index) => getColumns(index))}
@@ -196,7 +199,7 @@ function Image({ members }) {
                           style={{ color: "#AE023E" }}
                         >
                           {member.attributes.name_en}
-                          &nbsp;
+                          <br></br>
                           {member.attributes.surname_en}
                         </p>
                       </MDBCardTitle>
