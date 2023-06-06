@@ -191,7 +191,10 @@ function Reuse() {
               style={{ backgroundColor: colors[index] }}
             >
               <div className="d-flex flex-column w-100">
-                <p className="fw-bold text-white xs:text-xl md:text-2xl">
+                <p
+                  className="font-normal text-white xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   {tagsData.attributes?.name_en || "not found"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
@@ -229,7 +232,7 @@ function Reuse() {
                   }}
                 >
                   <p
-                    className="fw-normal px-20 mt-5 text-end xs:text-base md:text-lg"
+                    className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
                     sx={{
                       colors: "#AE023E",
                       "&:hover": {
@@ -237,7 +240,7 @@ function Reuse() {
                       },
                     }}
                   >
-                    More Info
+                    More Detail
                     <EastIcon style={iconStyle}></EastIcon>
                   </p>
                 </Link>

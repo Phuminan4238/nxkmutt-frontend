@@ -5,7 +5,7 @@
 }
 
 @font-face {
-  font-family: "MyFont";
+  font-family: "FontMedium";
   src: url("./Fonts/Anakotmai-Medium.ttf") format("truetype");
   font-style: medium;
 }
@@ -251,9 +251,63 @@ a:hover {
   max-width: 100% !important;
 }
 
-/* #main-container {
-  max-width: auto;
-} */
+.searchBox {
+  position: absolute;
+  top: 4%;
+  right: 11%;
+  transform: translate(-0%, 20%);
+  background: transparent;
+  height: 60px;
+  border-radius: 40px;
+  padding: 10px;
+  /* transition: 0.4s; */
+}
+
+.searchBox:hover {
+  background: white;
+  /* transition: 0.4s; */
+}
+
+.searchBox:hover > .searchInput {
+  width: 300px;
+  padding-left: 1rem;
+}
+
+.searchBox:hover > .searchButton {
+  /* background: white; */
+  color: #2f3640;
+}
+
+.searchButton {
+  /* color: white; */
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  /* color: white; */
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+  cursor: default;
+}
+
+.searchInput.hovered {
+  cursor: text;
+}
 
 @tailwind components;
 @tailwind utilities;

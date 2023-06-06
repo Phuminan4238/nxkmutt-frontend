@@ -238,7 +238,7 @@ function Menu() {
               target="_blank"
               style={{ color: "black" }}
             >
-              <MDBCol md="11" key={publication.id} className="pb-4">
+              <MDBCol md="11" key={publication.id} className="pb-2">
                 <p style={{ display: "inline-block" }}>
                   <StyledArticleIcon
                     tag={
@@ -257,12 +257,13 @@ function Menu() {
 
   return (
     <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
+      <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {tags.map((tag, index) => (
               <MDBCol md="3" key={tag.id} className="pb-4 col-sm-8">
                 <MDBCardBody
+                  className="p-3 break-all"
                   style={{
                     backgroundColor: `${
                       allTagsSelected
@@ -313,9 +314,12 @@ function Menu() {
                     }
                   }}
                 >
+                  {/* Tags  */}
                   <p
                     className="fw-bold text-start mb-0"
                     style={{
+                      fontFamily: "MyFont",
+
                       color:
                         allTagsSelected || selectedTag === null
                           ? colors[index]
@@ -389,7 +393,7 @@ function Menu() {
                   >
                     <MDBCard className="shadow-0">
                       <MDBCardBody
-                        className="rounded-0"
+                        className="p-3 break-all rounded-0"
                         style={{
                           backgroundColor: allTagsSelected
                             ? colors[index]

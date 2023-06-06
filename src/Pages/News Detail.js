@@ -34,8 +34,8 @@ function TagsDetail({ title }) {
   }, []);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">

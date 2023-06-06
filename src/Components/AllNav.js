@@ -37,7 +37,6 @@ const drawerWidth = 360;
 
 function HideOnScroll(props) {
   const { children, window } = props;
-
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
@@ -51,6 +50,10 @@ function HideOnScroll(props) {
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
   window: PropTypes.func,
 };
 
@@ -193,176 +196,348 @@ export default function HomeNav(props) {
     }
   };
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar
-          className="px-3"
-          style={{
-            background: "white",
-            boxShadow: "unset",
-            top: "15px",
-          }}
-          position="sticky"
-        >
-          <Container maxWidth="xl">
-            <Toolbar disableGutters>
-              <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
-                <Typography
-                  variant="h6"
-                  noWrap
-                  sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
-                  component="div"
+  const inputStyle = {
+    // opacity: isSearchOpen ? 1 : 0,
+    // height: isSearchOpen ? "auto" : 0,
+    marginRight: isSearchOpen ? "12px" : "0px",
+    transition: "margin-right 0.3s ease-out",
+  };
+
+  const renderNavbar1 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            className="px-3"
+            style={{
+              background: "unset",
+              boxShadow: "unset",
+              top: "15px",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/">
+                      <img src={logored} height="60" alt="" loading="lazy" />
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
                 >
-                  <Link to="/">
-                    <img src={logored} height="60" alt="" loading="lazy" />
-                  </Link>
-                </Typography>
-                {/* 👇️ Anchor link
+                  <div className="flex flex-row-reverse">
+                    {/* Search box */} {/* Adjust the width as needed */}
+                    <SearchIcon
+                      style={{ color: "#AE023E" }}
+                      onClick={handleSearchClick}
+                    />
+                    {isSearchOpen && (
+                      <div className="flex">
+                        <input
+                          type="text"
+                          placeholder="Search..."
+                          value={searchTerm}
+                          onChange={handleSearch}
+                          onKeyDown={handleKeyDown}
+                          className="me-4"
+                          style={inputStyle}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <span style={{ color: "#AE023E" }}>
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    EN
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      <MenuIcon style={{ color: "#AE023E" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    // style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "68px",
+                      left: "48px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                      opacity: "0.9",
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page, index) => (
+                      <Link
+                        to={
+                          page === "TOOLS & SERVICE"
+                            ? "/tools-and-service"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
+                        // style={{ color: "black" }}
+                        sx={{
+                          color: "black",
+                          ":hover": {
+                            color: "white",
+                          },
+                        }}
+                        key={page}
+                      >
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          onClick={handleCloseUserMenu}
+                          sx={{
+                            color: "black",
+                            ":hover": {
+                              color: "white",
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
+                            fontWeight: "bold",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                          }}
+                        >
+                          <a
+                            textAlign="center"
+                            to={
+                              page === "TOOLS & SERVICE"
+                                ? "/tools-and-service"
+                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            }
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+                              // color: "inherit",
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  const renderNavbar2 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            className="px-3"
+            style={{
+              background: "white",
+              boxShadow: "unset",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/">
+                      <img src={logored} height="60" alt="" loading="lazy" />
+                    </Link>
+                  </Typography>
+                  {/* 👇️ Anchor link
               <a href="https://google.com" target="_blank" rel="noreferrer">
                 <img
                   src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
                   alt="example"
                 />
               </a> */}
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexGrow: 0,
-                  flexDirection: "initial",
-                  gap: "3rem",
-                }}
-              >
-                <div className="flex flex-row-reverse">
-                  {/* Search box */}
-                  <SearchIcon
-                    style={{ color: "#AE023E" }}
-                    onClick={handleSearchClick}
-                  />
-                  {isSearchOpen && (
-                    <div className="flex">
-                      <input
-                        type="text"
-                        placeholder="  Search.."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        onKeyDown={handleKeyDown}
-                        className="me-4"
-                      />
-                    </div>
-                  )}
-                </div>
-                <span>
-                  {" "}
-                  <LanguageIcon
-                    style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                  ></LanguageIcon>
-                  <span style={{ color: "#AE023E" }}>EN</span>
-                </span>
-                <Tooltip title="Open settings">
-                  <IconButton
-                    color="black"
-                    onClick={handleOpenUserMenu}
-                    sx={{ p: 0 }}
-                  >
-                    <MenuIcon style={{ color: "#AE023E" }} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  style={{ opacity: 0.9 }}
+                </Box>
+                <Box
                   sx={{
-                    mt: "60px",
-                    left: "30px",
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    "& .MuiDrawer-paper": {
-                      width: drawerWidth,
-                    },
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
                   }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
                 >
-                  {pages.map((page, index) => (
-                    <Link
-                      to={
-                        page === "TOOLS & SERVICE"
-                          ? "/tools-and-service"
-                          : page === "NEWS & ACTIVITIES"
-                          ? "/news-and-activities"
-                          : page === "PARTICIPATE & DONATE"
-                          ? "/participate-and-donate"
-                          : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                      }
-                      style={{ color: "inherit" }}
-                      sx={{
-                        ":hover": {
-                          "& a, & > a": {
-                            color: "white",
-                          },
-                        },
-                      }}
-                      key={page}
+                  <div className="flex flex-row-reverse">
+                    {/* Search box */}
+                    <SearchIcon
+                      style={{ color: "#AE023E" }}
+                      onClick={handleSearchClick}
+                    />
+                    {isSearchOpen && (
+                      <div className="flex">
+                        <input
+                          type="text"
+                          placeholder="  Search.."
+                          value={searchTerm}
+                          onChange={handleSearch}
+                          onKeyDown={handleKeyDown}
+                          className="me-4"
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <span>
+                    {" "}
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    <span style={{ color: "#AE023E" }}>EN</span>
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
                     >
-                      <MenuItem
-                        style={{
-                          justifyContent: "center",
-                          width: "300px",
-                          height: "60px",
-                          borderBottom: "1px solid gray",
-                        }}
-                        onClick={handleCloseUserMenu}
-                        sx={{
-                          color: "black",
-                          ":hover": {
-                            color: "white",
-                            bgcolor: "#AE023E",
-                            opacity: "100%",
-                            "& a, & > a": {
-                              color: "white",
-                            },
-                          },
-                          fontWeight: "bold",
-                          padding: "10px 20px 10px 20px",
-                          borderBottom: "1px solid white",
-                          color: "inherit",
-                        }}
+                      <MenuIcon style={{ color: "#AE023E" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    style={{ opacity: 0.9 }}
+                    sx={{
+                      mt: "60px",
+                      left: "30px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page) => (
+                      <Link
+                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                        style={{ color: "inherit" }}
                       >
-                        <a
-                          textAlign="center"
-                          to={
-                            page === "TOOLS & SERVICE"
-                              ? "/tools-and-service"
-                              : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                          }
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          key={page}
+                          onClick={handleCloseUserMenu}
                           sx={{
+                            color: "black",
+                            ":hover": {
+                              color: "white",
+
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
                             fontWeight: "bold",
-                            padding: "20px",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                            color: "inherit", // set default link color to black
                           }}
                         >
-                          {page}
-                        </a>
-                      </MenuItem>
-                    </Link>
-                  ))}
-                </Menu>
-              </Box>
-            </Toolbar>
-          </Container>
-        </AppBar>
-      </HideOnScroll>
-    </React.Fragment>
+                          <a
+                            textAlign="center"
+                            to={`/${page}`}
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+
+                              ":hover": {
+                                "& a, & > a": {
+                                  color: "white",
+                                },
+                              },
+                              // color: "inherit", // set link color to inherit to match parent
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  return (
+    <>
+      {navbarType === "navbar1" && renderNavbar1()}
+      {navbarType === "navbar2" && renderNavbar2()}
+    </>
   );
 }

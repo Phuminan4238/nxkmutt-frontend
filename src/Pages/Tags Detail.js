@@ -37,16 +37,22 @@ function TagsDetail({ title }) {
   }, []);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
+            <MDBCol
+              className="col-1 text-uppercase text-lg fw-bold pb-4 sm:pb-0"
+              style={{ fontFamily: "FontMedium" }}
+            >
               {title}
             </MDBCol>
-            <MDBCol className="col-md-6 col-12">
+            <MDBCol className="col-md-7 col-12">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-              <span className="text-uppercase fw-bold ps-4">
+              <span
+                className="text-uppercase text-lg fw-bold ps-4"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 {tags.attributes?.name_en || "not found"}
               </span>
             </MDBCol>
@@ -56,7 +62,10 @@ function TagsDetail({ title }) {
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bolder" style={{ color: "#AE023E" }}>
+                <h1
+                  className="fw-bolder"
+                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                >
                   {tags.attributes?.name_en || "not found"}
                 </h1>
               </div>
@@ -76,6 +85,7 @@ function TagsDetail({ title }) {
                   //   height: "350px",
                   // width: "100%",
                   height: "400px",
+                  width: "-webkit-fit-content",
                   objectFit: "initial",
                   borderRadius: "0px",
                   alignSelf: "center",
@@ -111,8 +121,8 @@ function TagsDetail({ title }) {
             {/*  Grants */}
             <MDBRow>
               <h5
-                className="fw-bold text-uppercase ps-2 pt-4"
-                style={{ color: "#A02040" }}
+                className="fw-bold text-capitalize ps-2 pt-4"
+                style={{ color: "#A02040", fontFamily: "FontMedium" }}
               >
                 1. Early Detection and Prevention of Mild Cognitive Impairment
               </h5>
@@ -160,14 +170,20 @@ function TagsDetail({ title }) {
 
             {/*  Awards */}
             <MDBRow>
-              <p className="fw-bold text-uppercase text-black pt-4">
+              <p
+                className="fw-bold text-uppercase text-black pt-4"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Relevant PIs: Dr. Sirawaj Itthipuripat, Dr. Chaipat Chunharas
               </p>
             </MDBRow>
 
             {/*  Selected Publications */}
             <MDBRow>
-              <p className="fw-bold text-uppercase text-black pt-4">
+              <p
+                className="fw-bold text-uppercase text-black pt-4"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Relevant publications
               </p>
             </MDBRow>
@@ -186,8 +202,8 @@ function TagsDetail({ title }) {
             {/*   2. Web-based applications */}
             <MDBRow>
               <h5
-                className="fw-bold text-uppercase ps-2 pt-4 pb-2"
-                style={{ color: "#A02040" }}
+                className="fw-bold text-capitalize ps-2 pt-4"
+                style={{ color: "#A02040", fontFamily: "FontMedium" }}
               >
                 2. Web-based applications for monitoring cognitive impairment in
                 aging population
@@ -220,15 +236,18 @@ function TagsDetail({ title }) {
               </MDBCol>
             </MDBRow>
             <MDBRow>
-              <p className="fw-bold  text-black pt-4">
+              <p
+                className="fw-bold  text-black pt-4"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Relevant PIs: Dr. Teerasit Termsaithong, Dr. Kajornvut Ounjai
               </p>
             </MDBRow>
             {/*  3. MRI and Parkinson Disease */}
             <MDBRow>
               <h5
-                className="fw-bold text-uppercase ps-2 pt-4 pb-2"
-                style={{ color: "#A02040" }}
+                className="fw-bold text-capitalize ps-2 pt-4"
+                style={{ color: "#A02040", fontFamily: "FontMedium" }}
               >
                 3. MRI and Parkinson Disease
               </h5>
@@ -260,7 +279,10 @@ function TagsDetail({ title }) {
               </MDBCol>
             </MDBRow>
             <MDBRow>
-              <p className="fw-bold  text-black pt-4">
+              <p
+                className="fw-bold  text-black pt-4"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Relevant PIs: Dr. Teerasit Termsaithong, Dr. Kajornvut Ounjai
               </p>
             </MDBRow>

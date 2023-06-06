@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 /* */
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -196,6 +197,26 @@ export default function HomeNav(props) {
     }
   };
 
+  const inputStyle = {
+    // opacity: isSearchOpen ? 1 : 0,
+    // height: isSearchOpen ? "auto" : 0,
+    marginRight: isSearchOpen ? "12px" : "0px",
+    transition: "margin-right 0.3s ease-in-out",
+  };
+
+  const [isHovered, setIsHovered] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   const renderNavbar1 = () => {
     return (
       <React.Fragment>
@@ -223,13 +244,6 @@ export default function HomeNav(props) {
                       <img src={logo} height="60" alt="" loading="lazy" />
                     </Link>
                   </Typography>
-                  {/* 👇️ Anchor link
-              <a href="https://google.com" target="_blank" rel="noreferrer">
-                <img
-                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
-                  alt="example"
-                />
-              </a> */}
                 </Box>
                 <Box
                   sx={{
@@ -239,67 +253,54 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="flex flex-row-reverse">
-                    {/* Search box */}
+                  {/* <div className="flex flex-row-reverse">
                     <SearchIcon
-                      style={{ color: "white" }}
+                      style={{ color: "white", cursor: "pointer" }}
                       onClick={handleSearchClick}
                     />
                     {isSearchOpen && (
                       <div className="flex">
                         <input
                           type="text"
-                          placeholder="  Search.."
+                          placeholder="Search..."
                           value={searchTerm}
                           onChange={handleSearch}
                           onKeyDown={handleKeyDown}
-                          className="me-4"
+                          style={inputStyle}
                         />
                       </div>
                     )}
+                  </div> */}
+
+                  <div className="searchBox">
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "white",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
                   </div>
 
-                  {/* <input
-                      type="search"
-                      className="form-control rounded"
-                      placeholder="Search"
-                      aria-label="Search"
-                      aria-describedby="search-addon"
-                      value={searchText}
-                      onChange={handleInputChange}
-                      id="form1"
-                    />
-                    <span
-                      className="input-group-text border-0"
-                      id="search-addon"
-                      onClick={() => console.log(searchText)}
-                    ></span>
-                    <i className="fas fa-search"></i> */}
-
-                  {/* Rest of the code */}
-                  {/* <div>
-                      <input
-                        type="text"
-                        placeholder="Search..."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                      />
-                      {searchResults.length > 0 ? (
-                        <ul>
-                          {searchResults.map((result) => (
-                            <li key={result.id}>
-                              {result.attributes.title_en}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p>No results found.</p>
-                      )}
-                    </div>
-                  </div> */}
-                  {/* <LanguageIcon style={{ color: "white" }}></LanguageIcon> */}
                   <span>
-                    {" "}
                     <LanguageIcon
                       style={{ color: "white", marginRight: "0.5rem" }}
                     ></LanguageIcon>
@@ -317,8 +318,8 @@ export default function HomeNav(props) {
                   <Menu
                     // style={{ opacity: 0.7 }}
                     sx={{
-                      mt: "60px",
-                      left: "30px",
+                      mt: "68px",
+                      left: "48px",
                       width: drawerWidth,
                       flexShrink: 0,
                       "& .MuiDrawer-paper": {
@@ -341,26 +342,6 @@ export default function HomeNav(props) {
                     onClose={handleCloseUserMenu}
                   >
                     {pages.map((page, index) => (
-                      // <Link
-                      //   to={
-                      //     page === "TOOLS & SERVICE"
-                      //       ? "/tools-and-service"
-                      //       : page === "NEWS & ACTIVITIES"
-                      //       ? "/news-and-activities"
-                      //       : page === "PARTICIPATE & DONATE"
-                      //       ? "/participate-and-donate"
-                      //       : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                      //   }
-                      //   style={{ color: "black" }}
-                      //   sx={{
-                      //     ":hover": {
-                      //       "& a, & > a": {
-                      //         color: "white",
-                      //       },
-                      //     },
-                      //   }}
-                      //   key={page}
-                      // >
                       <Link
                         to={
                           page === "TOOLS & SERVICE"

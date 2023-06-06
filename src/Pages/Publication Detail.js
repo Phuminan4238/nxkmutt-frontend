@@ -37,8 +37,8 @@ function PublicationsDetail({ title }) {
   }, []);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
@@ -46,7 +46,10 @@ function PublicationsDetail({ title }) {
             </MDBCol>
             <MDBCol className="col-md-6 col-12">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-              <span className="text-uppercase fw-bold ps-4">
+              <span
+                className="text-uppercase fw-bold ps-4"
+                style={{ fontFamily: "MyFont" }}
+              >
                 {tags.attributes?.title || "not found"}
               </span>
             </MDBCol>
@@ -56,7 +59,10 @@ function PublicationsDetail({ title }) {
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bolder" style={{ color: "#AE023E" }}>
+                <h1
+                  className="fw-bolder"
+                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                >
                   {tags.attributes?.title || "not found"}
                 </h1>
               </div>

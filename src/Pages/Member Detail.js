@@ -55,8 +55,8 @@ function Memberdetail({ title }) {
   }, [id]);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
@@ -339,31 +339,48 @@ function Memberdetail({ title }) {
       <section>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           {/* Education */}
-          <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-2 pb-3 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
               <h5 className="fw-bold text-uppercase text-black">
                 Selected Publications
               </h5>
 
-              <MDBBtn outline className="mx-2" color="secondary">
+              <MDBBtn
+                outline
+                className="mx-2"
+                style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
+              >
                 <SchoolIcon style={{ color: "#6A4F94" }}></SchoolIcon>
-                <span className="ps-2" style={{ color: "#6A4F94" }}>
+                <span
+                  className="ps-2 text-capitalize"
+                  style={{ color: "#6A4F94" }}
+                >
                   Google Scholar
                 </span>
               </MDBBtn>
             </div>
           </MDBRow>
-          {publicationfiles.map((member) => (
-            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol col="1" className="custom-col">
-                <ArticleIcon color="primary" />
-              </MDBCol>
 
-              <MDBCol md="11" key={member.id}>
-                <p> {member.attributes.title_en}</p>
-              </MDBCol>
-            </MDBRow>
+          {publicationfiles.map((member) => (
+            <>
+              <Link
+                to={member.attributes.url}
+                target="_blank"
+                style={{ color: "black" }}
+              >
+                <MDBCol md="11" key={member.id} className="pb-2 ps-2 ">
+                  <p style={{ display: "inline-block" }}>
+                    <ArticleIcon
+                      color="primary"
+                      style={{ marginRight: "1rem" }}
+                    />
+                    {member.attributes.title_en}
+                  </p>
+                </MDBCol>
+              </Link>
+            </>
           ))}
+
           {/* 
           {uploadfiles.map((member) => (
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">

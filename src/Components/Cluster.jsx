@@ -65,11 +65,14 @@ function Reuse() {
   // Hovering icon
   const [iconStyle, setIconStyle] = useState({
     color: "#AE023E",
-    marginLeft: 0,
   });
 
   const handleMouseEnter = () => {
-    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+    setIconStyle({
+      ...iconStyle,
+      marginLeft: "12px",
+      transition: "margin-left 0.3s ease-out",
+    });
   };
 
   const handleMouseLeave = () => {
@@ -89,6 +92,22 @@ function Reuse() {
   };
 
   const colors = ["#AE023E", "#009B62", "#008CB0", "#FEB832"];
+
+  // Col Hovering
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter2 = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovered(false);
+  };
+
+  const colStyle = {
+    marginLeft: isHovered ? "12px" : "0px",
+    transition: "margin-right 0.3s ease-out",
+  };
 
   const getImage = (index) => {
     switch (index) {
@@ -215,7 +234,7 @@ function Reuse() {
           {openStates[index] && (
             <MDBRow
               className="p-5"
-              style={{ background: "#F5F5F5" }}
+              style={colStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -232,15 +251,16 @@ function Reuse() {
                   }}
                 >
                   <p
-                    className="fw-normal px-20 mt-5 text-end xs:text-base md:text-lg"
+                    className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
                     sx={{
                       colors: "#AE023E",
                       "&:hover": {
-                        paddingLeft: "12px",
+                        marginLeft: "12px",
+                        transition: "margin-left 0.3s ease-out",
                       },
                     }}
                   >
-                    More Info
+                    More Detail
                     <EastIcon style={iconStyle}></EastIcon>
                   </p>
                 </Link>

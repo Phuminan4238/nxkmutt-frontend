@@ -50,6 +50,9 @@ function Post() {
     const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
     const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
+    // height: 300px;object-fit: cover;object-position: top;border-radius: 0px;width: -webkit-fit-content;align-self: center;
+    // height: 350px;object-fit: cover;border-radius: 0px;align-self: center;object-position: top;
+
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow

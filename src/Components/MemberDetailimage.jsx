@@ -38,12 +38,11 @@ function Image() {
                 {/* <Link to={`/Member Detail/${member.id}`} target="_blank"> */}
                 <Link to={`/Member-Detail/${member.id}`} target="_blank">
                   <MDBCard
+                    className="pt-4"
                     style={{
                       borderBottom: "1px solid black",
                       boxShadow: "unset",
                       borderRadius: "0px",
-                      // width: "400px",
-                      // height: "640px",
                     }}
                   >
                     <MDBCardImage
@@ -56,46 +55,44 @@ function Image() {
                       position="top"
                       alt="..."
                       style={{
-                        // height: "350px",
-                        // width: "100%",
-                        // height: "100%",
+                        height: "310px",
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
-                        // objectFit: "contain",
+                        // height: "350px",
+                        // objectPosition: "top"
                       }}
                     />
-                    <MDBCardBody
-                    // style={{
-                    //   height: "100%",
-                    // }}
-                    >
-                      <MDBCardTitle>
-                        <h4
-                          className="fw-bold text-center"
-                          style={{ color: "#AE023E" }}
+                    <MDBCardBody>
+                      <MDBCardTitle className="m-0 pt-2">
+                        <p
+                          className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
+                          style={{ color: "black", fontFamily: "MyFont" }}
                         >
                           {member.attributes.name_en}
                           &nbsp;
                           {member.attributes.surname_en}
-                        </h4>
+                        </p>
                       </MDBCardTitle>
                       <MDBCardText>
-                        <h5
-                          className="fw-normal text-center"
-                          style={{ color: "#AE023E" }}
+                        <p
+                          className="fw-normal text-center mb-0 xs:text-xl md:text-xl"
+                          style={{ color: "black" }}
                         >
                           {member.attributes.position_en}
-                        </h5>
-                      </MDBCardText>
-                      <MDBCardText key={member.attributes}>
-                        <p
-                          className="fw-normal text-center"
-                          style={{ color: "#AE023E" }}
-                        >
-                          Main Interest, Main <br></br> Interest, Main Interest
                         </p>
                       </MDBCardText>
+                      {/* <MDBCardText
+                        // className="md:text-lg"
+                        key={member.attributes}
+                      > */}
+                      <p
+                        className="fw-normal text-center text-sm md:text-lg"
+                        style={{ color: "#AE023E" }}
+                      >
+                        Main Interest, Main <br></br> Interest, Main Interest
+                      </p>
+                      {/* </MDBCardText> */}
                     </MDBCardBody>
                   </MDBCard>
                 </Link>

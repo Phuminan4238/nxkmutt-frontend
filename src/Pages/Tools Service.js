@@ -25,16 +25,22 @@ const Toolservice = () => {
       });
   }, []);
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Tools
                 </p>
-                <p className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   <span
                     style={{
                       fontSize: "4rem",
@@ -82,7 +88,10 @@ const Toolservice = () => {
           <MDBRow>
             <MDBCol>
               <div className="d-inline-flex p-2">
-                <p className="font-black text-uppercase xs:text-xl md:text-3xl">
+                <p
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Tools
                 </p>
               </div>
@@ -102,7 +111,10 @@ const Toolservice = () => {
           <MDBRow className="pt-5">
             <MDBCol>
               <div className="d-inline-flex p-2">
-                <p className="font-black text-uppercase xs:text-xl md:text-3xl">
+                <p
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Service
                 </p>
               </div>
@@ -116,7 +128,12 @@ const Toolservice = () => {
                     <PeopleIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
-                    <p className="fw-bold">Research consultation</p>
+                    <p
+                      className="fw-bold text-lg"
+                      style={{ fontFamily: "FontMedium" }}
+                    >
+                      Research consultation
+                    </p>
                     <p>
                       We are open to research project consultant or
                       collaboration and sharing tools, etc.
@@ -132,7 +149,9 @@ const Toolservice = () => {
                     <SchoolIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
-                    <p className="fw-bold">Coursework and workshop</p>
+                    <p className="fw-bold" style={{ fontFamily: "FontMedium" }}>
+                      Coursework and workshop
+                    </p>
                     <p>
                       We are open to holding neuroscience seminar and EEG,
                       neuroscience, neurotechnology.

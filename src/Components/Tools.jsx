@@ -19,7 +19,7 @@ import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
 import { useLocation } from "react-router-dom";
 
-const ImageMask = ({ imageUrl, maskText }) => {
+const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseEnter = () => {
@@ -30,14 +30,18 @@ const ImageMask = ({ imageUrl, maskText }) => {
     setIsHovering(false);
   };
 
+  const containerStyle = {
+    position: "relative",
+    width: "100%",
+    height: imageHeight,
+    borderRadius: "8px",
+    overflow: "hidden",
+  };
+
   const imageStyle = {
-    height: "auto",
-    maxWidth: "100%",
-    position: "relative",
-    position: "relative",
-    display: "flex",
-    flexDirection: "column",
-    minWidth: "0",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
   };
 
   const maskStyle = {
@@ -45,15 +49,16 @@ const ImageMask = ({ imageUrl, maskText }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "100%",
-    height: "100%",
-    borderRadius: "50%",
+    width: "85%", // Adjust the width of the mask
+    height: "85%", // Adjust the height of the mask
+    borderRadius: "150px",
     backgroundColor: "rgba(0, 0, 0, 0.4)",
-    opacity: isHovering ? 1 : 0,
+    opacity: isHovering ? "80%" : 0,
     transition: "opacity 0.3s ease-in-out",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    padding: "10%", // Add padding or margin value here
   };
 
   const textStyle = {
@@ -66,11 +71,11 @@ const ImageMask = ({ imageUrl, maskText }) => {
 
   return (
     <div
-      style={imageStyle}
+      style={containerStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img src={imageUrl} alt="" />
+      <img src={imageUrl} alt="" style={imageStyle} />
       <div style={maskStyle}>
         <p style={textStyle}>{maskText}</p>
       </div>
@@ -140,6 +145,22 @@ function Image({ members }) {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
+  // Col Hovering
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter2 = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovered(false);
+  };
+
+  const colStyle = {
+    marginLeft: isHovered ? "12px" : "0px",
+    transition: "margin-left 0.3s ease-out",
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between pt-0 " id="tools-flex">
@@ -156,11 +177,23 @@ function Image({ members }) {
                 >
                   {/* <MDBCard style={cardStyle}>
                     <ImageMask
+                      imageUrl={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      maskText={member.attributes.name_en + " "}
+                      imageHeight="444px" // Adjust the height here
+                    />
+                  </MDBCard> */}
+
+                  <MDBCard style={cardStyle}>
+                    <ImageMask
                       style={{
-                        height: "444px",
+                        width: "-webkit-fill-available",
                         objectFit: "cover",
-                        alignSelf: "center",
-                        borderRadius: "16px",
+                        height: "444px !important",
+                        borderRadius: "8px",
                       }}
                       imageUrl={
                         "https://10.35.29.186" +
@@ -168,9 +201,11 @@ function Image({ members }) {
                           .fileupload.data[0]?.attributes.url
                       }
                       maskText={member.attributes.name_en + " "}
+                      imageHeight="444px" // Adjust the height here
                     />
-                  </MDBCard> */}
-                  <MDBCard>
+                  </MDBCard>
+
+                  {/* <MDBCard>
                     <div>
                       <img
                         className="image-fluid"
@@ -187,7 +222,7 @@ function Image({ members }) {
                         }
                       />
                     </div>
-                  </MDBCard>
+                  </MDBCard> */}
                 </Link>
               </MDBCol>
             ))}
@@ -195,27 +230,23 @@ function Image({ members }) {
 
           {isHomePage && (
             <MDBRow
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={handleMouseEnter2}
+              onMouseLeave={handleMouseLeave2}
+              style={colStyle}
             >
               <Link
-                className="ps-0"
-                to={`/Tools-and-Service?`}
+                to={`/news-and-activities`}
                 style={{ color: "inherit" }}
                 onClick={() => {
                   window.scrollTo(0, 0);
                   window.location.href = `/Tools-and-Service?`;
                 }}
               >
-                <div className="d-inline-flex text-red py-2 md:pt-4 pb-0">
-                  <h5
-                    href="#"
-                    className="p-2 pe-4 "
-                    style={{ color: "#AE023E" }}
-                  >
+                <div className="d-inline-flex text-red py-2 md:py-4">
+                  <h5 href="#" className="pe-4" style={{ color: "#AE023E" }}>
                     Find out more
                   </h5>
-                  <EastIcon className="m-2" style={iconStyle}></EastIcon>
+                  <EastIcon style={iconStyle}></EastIcon>
                 </div>
               </Link>
             </MDBRow>

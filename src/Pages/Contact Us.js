@@ -9,13 +9,16 @@ import Contactsocial from "../Components/Contactsocial";
 
 const Contactus = () => {
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-3xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Contact Us
                 </p>
               </div>
@@ -39,15 +42,24 @@ const Contactus = () => {
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
                 <MDBRow>
-                  <h4 className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-xl md:text-2xl">
+                  <h4
+                    className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
                     E-mail
                   </h4>
-                  <p className="text-black pt-2 xs:text-base md:text-lg">
+                  <p
+                    className="text-black pt-2 xs:text-base md:text-lg"
+                    style={{ fontFamily: "FontLight" }}
+                  >
                     nx.kmutt.@gmail.com
                   </p>
                 </MDBRow>
                 <MDBRow className="pt-4">
-                  <h4 className="fw-bold text-black xs:text-xl md:text-2xl">
+                  <h4
+                    className="fw-bold text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
                     Phone
                   </h4>
                   <p className=" text-black pt-2 xs:text-base md:text-lg ">
@@ -55,8 +67,16 @@ const Contactus = () => {
                   </p>
                 </MDBRow>
                 <MDBRow className="pt-4">
-                  <h4 className="fw-bold text-black">Location</h4>
-                  <p className=" text-black pe-5 pt-2 xs:text-base md:text-lg">
+                  <h4
+                    className="fw-bold text-black"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Location
+                  </h4>
+                  <p
+                    className=" text-black pe-5 pt-2 xs:text-base md:text-lg"
+                    style={{ fontFamily: "FontLight" }}
+                  >
                     Neuroscience Center for Research and Innovation (NX),
                     Learning Institute King Mongkut's University of Technology
                     Thonburi (KMUTT) 126 Pracha Uthit Rd,
@@ -72,17 +92,22 @@ const Contactus = () => {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
             <div className="d-inline-flex p-2">
-              <p className="font-black  xs:text-xl md:text-2xl">Social Media</p>
+              <p
+                className="font-black  xs:text-xl md:text-2xl"
+                style={{ fontFamily: "FontMedium" }}
+              >
+                Social Media
+              </p>
             </div>
-            <div className="pt-5 py-4 mx-0 md:px-0 ">
+            <div className="pt-2 py-4 mx-0 md:px-0 ">
               <Contactsocial></Contactsocial>
             </div>
             <div className="d-inline-flex p-2 pt-5">
-              <p className="fw-bold text-black xs:text-xl md:text-2xl">
+              <p className="fw-bold text-black xs:text-xl md:text-2xl" v>
                 Lab Portal
               </p>
             </div>
-            <div className="pt-5 py-4 mx-0 md:px-0 ">
+            <div className="pt-2 py-4 mx-0 md:px-0 ">
               <Contactlab></Contactlab>
             </div>
           </MDBRow>

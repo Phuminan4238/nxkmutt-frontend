@@ -23,13 +23,16 @@ const Member = () => {
   }, []);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   Meet Our
                 </p>
                 <p
@@ -45,18 +48,12 @@ const Member = () => {
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
-              {/* <img
-                src={vr2}
-                class="image-fluid"
-                id="cluster-img"
-                style={{ height: "350px" }}
-              /> */}
               {memberCover.map((member) => (
                 <img
                   className="image-fluid"
                   style={{
                     width: "-webkit-fill-available",
-                    height: "300px",
+                    height: "320px",
                     // maxWidth: "-webkit-fill-available",
                     // height: "400px",
                     // objectFit: "contain",
@@ -77,27 +74,39 @@ const Member = () => {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
             <div className="d-inline-flex p-2">
-              <p className="font-black text-uppercase xs:text-xl md:text-3xl">
+              <p
+                className="font-black text-uppercase xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont" }}
+              >
                 Member
               </p>
             </div>
             <Memberimage></Memberimage>
             <div className="d-inline-flex p-2 pt-5">
-              <p className="font-black text-uppercase xs:text-xl md:text-3xl">
-                Advisor
+              <p
+                className="font-black text-uppercase xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont" }}
+              >
+                Collaborator
               </p>
             </div>
             <Memberadvisor></Memberadvisor>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
+              <h3
+                className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont" }}
+              >
                 Active Alumni
               </h3>
             </div>
             <Memberalumni></Memberalumni>
             <Memberalumni></Memberalumni>
             <div className="d-inline-flex p-2 pt-5">
-              <h3 className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
-                Collaborator
+              <h3
+                className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont" }}
+              >
+                students & Research Assistants & Alumni
               </h3>
             </div>
             <Membercol></Membercol>

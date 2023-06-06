@@ -18,16 +18,22 @@ const Research = () => {
       });
   }, []);
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-3xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   Research
                 </p>
-                <p className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl">
+                <p
+                  className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl"
+                  style={{ fontFamily: "FontLight" }}
+                >
                   Clusters
                 </p>
                 <div

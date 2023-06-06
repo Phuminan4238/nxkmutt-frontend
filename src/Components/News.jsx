@@ -7,47 +7,46 @@ import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
 
 function Post({ member }) {
+  // Arrow Hovering
   const [iconStyle, setIconStyle] = useState({
     color: "#AE023E",
     marginLeft: 0,
   });
 
-  const handleMouseEnter = () => {
-    setIconStyle((prevState) => ({
-      ...prevState,
-      marginLeft: "12px",
-    }));
-  };
-
-  const handleMouseLeave = () => {
-    setIconStyle((prevState) => ({
-      ...prevState,
-      marginLeft: 0,
-    }));
-  };
-
   const textStyle = {
     color: "#AE023E",
   };
 
-  // const [isHovered, setIsHovered] = useState(false);
-
   // const handleMouseEnter = () => {
-  //   setIsHovered(true);
+  //   setIconStyle((prevState) => ({
+  //     ...prevState,
+  //     marginLeft: "12px",
+  //   }));
   // };
 
   // const handleMouseLeave = () => {
-  //   setIsHovered(false);
+  //   setIconStyle((prevState) => ({
+  //     ...prevState,
+  //     marginLeft: 0,
+  //   }));
   // };
+  // ************* //
 
-  // const colStyle = {
-  //   marginLeft: isHovered ? "12px" : "0px",
-  //   transition: "margin-left 0.3s ease-out",
-  // };
+  // Col Hovering
+  const [isHovered, setIsHovered] = useState(false);
 
-  // const textStyle = { color: "#AE023E" };
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
 
-  // const iconStyle = { color: "#AE023E" };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const colStyle = {
+    marginLeft: isHovered ? "12px" : "0px",
+    transition: "margin-left 0.3s ease-out",
+  };
 
   return (
     <Link
@@ -59,7 +58,7 @@ function Post({ member }) {
         window.location.replace(`/News-Detail/${member.id}`);
       }}
     >
-      <MDBRow className="pb-2">
+      <MDBRow className="pb-4">
         <MDBCol md="4">
           <MDBRipple
             className="bg-image hover-overlay shadow-1-strong rounded"
@@ -76,102 +75,43 @@ function Post({ member }) {
             </a>
           </MDBRipple>
         </MDBCol>
-        {/* <MDBCol className="d-flex ps-4 xs:pt-4 sm:pt-2">
-          <div className="d-flex flex-column w-100">
-            <h4 className="fw-bold xs:text-lg sm:text-2xl">
-              {member.attributes.name_en}
-            </h4>
-            <p className="mt-2 xs:text-sm sm:text-lg">
-              {member.attributes.name_th}
-            </p>
-            <div
-              className="d-flex justify-content-between mt-auto xs:text-base sm:text-lg pt-2" // pt-1
-              id="news-underline"
-            >
-              <p> {member.attributes.createdAt}</p>
-              <p className="mb-0">Content Master</p>
-            </div>
 
-            <div className="d-inline-flex py-4 text-red">
-              <p href="#" className="pe-4 xs:text-base" style={textStyle}>
-                Read more
-              </p>
-
-              <EastIcon
-                style={iconStyle}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              />
-            </div>
-          </div>
-        </MDBCol> */}
         <MDBCol
           className="d-flex p-4 xs:pt-4 "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          // style={colStyle}
+          style={colStyle}
         >
           <div className="d-flex flex-column w-100">
             <p
-              className="font-bold xs:pt-4 md:pt-0 xs:text-xl md:text-2xl"
+              className="font-bold mb-2 xs:pt-4 md:pt-0 xs:text-xl md:text-2xl"
               style={{ fontFamily: "MyFont" }}
             >
               {member.attributes.name_en}
             </p>
             <p
-              className="font-light mt-2 xs:text-sm sm:text-lg"
+              className="font-light mt-auto xs:text-sm sm:text-lg"
               style={{ fontFamily: "FontLight" }}
             >
               {member.attributes.name_th}
             </p>
 
             <div
-              className="d-flex justify-content-between mt-auto xs:text-base sm:text-lg pt-2"
+              className="d-flex justify-content-between mt-auto mb-1 xs:text-base sm:text-lg pt-4"
               id="news-underline"
             >
-              <p> {member.attributes.createdAt}</p>
-              <p className="mb-0">Content Master</p>
+              <p className="mb-2">{member.attributes.createdAt}</p>
+              <p className="mb-2">Content Master</p>
             </div>
 
-            <div className="d-inline-flex pt-2 text-red">
+            <div className="d-inline-flex mt-1 text-red">
               <p href="#" className="pe-4 xs:text-base" style={textStyle}>
                 Read more
               </p>
-
               <EastIcon style={iconStyle} />
             </div>
           </div>
         </MDBCol>
-        {/* <MDBCol
-      className="d-flex ps-4 xs:pt-4 sm:pt-2"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={colStyle}
-    >
-      <div className="d-flex flex-column w-100">
-        <h4 className="fw-bold xs:text-lg sm:text-2xl">
-          {member.attributes.name_en}
-        </h4>
-        <p className="mt-2 xs:text-sm sm:text-lg">
-          {member.attributes.name_th}
-        </p>
-        <div
-          className="d-flex justify-content-between mt-auto xs:text-base sm:text-lg pt-2"
-          id="news-underline"
-        >
-          <p> {member.attributes.createdAt}</p>
-          <p className="mb-0">Content Master</p>
-        </div>
-
-        <div className="d-inline-flex py-4 text-red">
-          <p href="#" className="pe-4 xs:text-base" style={textStyle}>
-            Read more
-          </p>
-
-          <EastIcon style={iconStyle} />
-        </div>
-      </div>
-    </MDBCol> */}
       </MDBRow>
     </Link>
   );
@@ -189,6 +129,22 @@ export default function News() {
 
   const handleMouseLeave = () => {
     setIconStyle({ color: "#AE023E" });
+  };
+
+  // Col Hovering
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter2 = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovered(false);
+  };
+
+  const colStyle = {
+    marginLeft: isHovered ? "12px" : "0px",
+    transition: "margin-left 0.3s ease-out",
   };
 
   const PER_PAGE = 2;
@@ -222,7 +178,11 @@ export default function News() {
           .map((member) => (
             <Post key={member.id} member={member} />
           ))}
-        <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <MDBRow
+          onMouseEnter={handleMouseEnter2}
+          onMouseLeave={handleMouseLeave2}
+          style={colStyle}
+        >
           <Link
             to={`/news-and-activities`}
             style={{ color: "inherit" }}
@@ -245,10 +205,10 @@ export default function News() {
 
   return (
     <>
-      <MDBContainer className="py-4">
-        {/* {uploadfiles.slice(offset, offset + PER_PAGE).map((member) => (
+      {/* {uploadfiles.slice(offset, offset + PER_PAGE).map((member) => (
           <Post key={member.id} member={member} />
         ))} */}
+      <MDBContainer className="py-4">
         {uploadfiles
           .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)
           .map((member) => (

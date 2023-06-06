@@ -39,7 +39,7 @@ const Searchresult = () => {
         setMemberResults(memberData.data);
         console.log("Member data:", memberData.data);
 
-        // Fetch tool results
+        // Fetch event results
         const eventResponse = await fetch(
           `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodedTerm}&filters[name_th][$contains]=${encodedTerm}`
         );
@@ -63,8 +63,8 @@ const Searchresult = () => {
   }, [term]);
 
   return (
-    <div className="App" style={{ borderTop: "1px solid black" }}>
-      <section>
+    <div className="App">
+      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">

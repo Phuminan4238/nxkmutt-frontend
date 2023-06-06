@@ -52,8 +52,8 @@ function Image({ members }) {
 
   return (
     <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+      <div className="d-flex justify-content-between pb-4" id="tools-flex">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
@@ -65,6 +65,7 @@ function Image({ members }) {
                   }}
                 >
                   <MDBCard
+                    className="pt-4"
                     style={{
                       borderBottom: "1px solid black",
                       boxShadow: "unset",
@@ -81,7 +82,7 @@ function Image({ members }) {
                       position="top"
                       alt="..."
                       style={{
-                        height: "295px",
+                        height: "310px",
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
@@ -90,10 +91,10 @@ function Image({ members }) {
                       }}
                     />
                     <MDBCardBody>
-                      <MDBCardTitle className="m-0">
+                      <MDBCardTitle className="m-0 pt-2">
                         <p
-                          className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
-                          style={{ color: "#AE023E" }}
+                          className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
+                          style={{ color: "black", fontFamily: "MyFont" }}
                         >
                           {member.attributes.name_en}
                           &nbsp;
@@ -102,20 +103,23 @@ function Image({ members }) {
                       </MDBCardTitle>
                       <MDBCardText>
                         <p
-                          className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
-                          style={{ color: "#AE023E" }}
+                          className="fw-normal text-center mb-0 xs:text-xl md:text-xl"
+                          style={{ color: "black" }}
                         >
                           {member.attributes.position_en}
                         </p>
                       </MDBCardText>
-                      <MDBCardText key={member.attributes}>
-                        <p
-                          className="fw-normal text-center text-sm md:text-lg"
-                          style={{ color: "#AE023E" }}
-                        >
-                          Main Interest, Main <br></br> Interest, Main Interest
-                        </p>
-                      </MDBCardText>
+                      {/* <MDBCardText
+                        // className="md:text-lg"
+                        key={member.attributes}
+                      > */}
+                      <p
+                        className="fw-normal text-center text-sm md:text-lg"
+                        style={{ color: "#AE023E" }}
+                      >
+                        Main Interest, Main <br></br> Interest, Main Interest
+                      </p>
+                      {/* </MDBCardText> */}
                     </MDBCardBody>
                   </MDBCard>
                 </Link>

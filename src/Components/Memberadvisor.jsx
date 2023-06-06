@@ -87,14 +87,14 @@ function Image({ members }) {
                   >
                     <MDBCardTitle>
                       {/* <Link to="/Member Detail"> */}{" "}
-                      <h4
+                      <h5
                         className="fw-bold text-center"
-                        style={{ color: "#AE023E" }}
+                        style={{ color: "#AE023E", fontFamily: "MyFont" }}
                       >
                         {member.attributes.name_en}
                         &nbsp;
                         {member.attributes.surname_en}
-                      </h4>
+                      </h5>
                       {/* </Link> */}
                     </MDBCardTitle>
                     <MDBCardText>
