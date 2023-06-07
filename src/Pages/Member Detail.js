@@ -57,67 +57,95 @@ function Memberdetail({ title }) {
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
+        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
-              className="col-2 text-uppercase fw-bold pb-4 sm:pb-0"
-              style={{ width: "-webkit-max-content" }}
+              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+              style={{
+                width: "-webkit-max-content",
+                fontFamily: "FontMedium",
+                fontSize: "1.3rem",
+              }}
             >
               {/* Team member */}
               {title}
             </MDBCol>
-            <MDBCol className="col-md-6 col-12">
-              <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-              <span className="text-uppercase fw-bold ps-4">
+            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+              <span>
+                <KeyboardArrowRightIcon
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                    color: "#2F3437 !important",
+                  }}
+                ></KeyboardArrowRightIcon>
+              </span>
+            </MDBCol>
+            <MDBCol className="col-md-6 col-12 ps-0 pt-2">
+              <span
+                className="text-uppercase fw-bold "
+                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+              >
                 {uploadfiles.attributes?.prefix_en || "not found"}
                 {uploadfiles.attributes?.nickname_en || "not found"}
               </span>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
+        <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
           {/* {uploadfiles.map((member) => ( */}
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bold text-uppercase text-black">
+                <h1
+                  className="fw-bold text-uppercase text-black"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   {uploadfiles.attributes?.prefix_en || "not found"}
                   {uploadfiles.attributes?.name_en || "not found"}
                   {/* <span>&nbsp</span> */}
-                  <span>(</span>
+                  <span
+                    style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
+                  >
+                    (
+                  </span>
                   {uploadfiles.attributes?.nickname_en}
                   <span>)</span>
                 </h1>
-                <h1 className="fw-bold text-uppercase text-black">
+                <h1
+                  className="fw-bold text-uppercase text-black"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   {uploadfiles.attributes?.surname_en || "not found"}
                 </h1>
-                <h4
-                  className="fw-normal text-normal"
+                <h3
+                  className="fw-normal text-normal pt-2 mb-1"
                   style={{ color: "#AE023E" }}
                 >
                   {uploadfiles.attributes?.position_en || "not found"}
-                </h4>
-                {/* <span className="fw-bold text-uppercase text-red">
-                  {uploadfiles.attributes?.pasds_en || "not found"}
-                </span> */}
-                <p style={{ color: "#AE023E" }}>
+                </h3>
+
+                <h6 className="" style={{ color: "#AE023E" }}>
                   Neuroscience Center for Research and Innovation (NX), Learning
                   Institute, KMUTT
-                </p>
-                <MDBRow>
+                </h6>
+                <MDBRow className="pt-2">
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     <MailOutlineIcon style={{ color: "#119ED1" }} />
                   </MDBCol>
                   <MDBCol>
                     <span
-                      className="fw-normal text-normal ps-4"
+                      className="fw-normal text-normal ps-2"
                       style={{ color: "#119ED1" }}
                     >
                       {uploadfiles.attributes?.email || "not found"}
                     </span>
                   </MDBCol>
                 </MDBRow>
-                <p className="fw-normal text-normal pt-2">
+                <p
+                  className="fw-normal text-normal pt-3"
+                  style={{ maxWidth: "90%" }}
+                >
                   {uploadfiles.attributes?.bio_en || "not found"}
                 </p>
               </div>
@@ -148,155 +176,162 @@ function Memberdetail({ title }) {
           <MDBRow
             style={{
               borderBottom: "1px solid black",
-              paddingTop: "1.5rem",
+              // paddingTop: "1.5rem",
             }}
           ></MDBRow>
         </MDBContainer>
       </section>
+
       <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
           {/* Education */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
-              <h5 className="fw-bold text-capitalize text-black">Education</h5>
+            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
+              <h5
+                className="fw-bold text-capitalize text-black"
+                style={{ fontFamily: "FontMedium" }}
+              >
+                Education
+              </h5>
 
-              <MDBBtn outline className="mx-2" color="danger">
+              <MDBBtn
+                outline
+                className="mx-2"
+                style={{ borderColor: "#A02040", borderWidth: "1px" }}
+              >
                 <DescriptionIcon style={{ color: "#A02040" }}></DescriptionIcon>
-                <span className="ps-2" style={{ color: "#A02040" }}>
+                <span className="ps-2 text-normal" style={{ color: "#A02040" }}>
                   download CV
                 </span>
               </MDBBtn>
             </div>
           </MDBRow>
-          <MDBCol className="pt-2">
-            <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="10">
-                {uploadfiles.attributes?.education_en ? (
-                  <ul>
-                    {uploadfiles.attributes.education_en.map(
-                      (education, index) => {
-                        const [degree, year] = education.split("–");
-                        return (
-                          <li key={index} className="fw-normal text-normal">
-                            {degree || "not found"}
-                          </li>
-                        );
-                      }
-                    )}
-                  </ul>
-                ) : (
-                  <p className="fw-normal text-normal">not found</p>
-                )}
-              </MDBCol>
-              <MDBCol md="1">
-                <ul>
-                  {uploadfiles.attributes?.education_en?.map(
+
+          {/* Education  */}
+          <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+            <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+              {uploadfiles.attributes?.education_en ? (
+                <ul style={{ paddingLeft: "1rem" }}>
+                  {uploadfiles.attributes.education_en.map(
                     (education, index) => {
                       const [degree, year] = education.split("–");
                       return (
-                        <li
-                          key={index}
-                          className="fw-normal text-normal"
-                          style={{
-                            listStyle: '"- "',
-                            "::before": {
-                              content: '"-"',
-                              marginRight: "0.5rem",
-                            },
-                          }}
-                        >
-                          {year}
+                        <li key={index} className="fw-normal text-normal">
+                          <p className="mb-1">{degree || "not found"} </p>
                         </li>
                       );
                     }
                   )}
                 </ul>
+              ) : (
+                <p className="fw-normal text-normal">not found</p>
+              )}
+            </MDBCol>
+            <MDBCol md="1">
+              <ul>
+                {uploadfiles.attributes?.education_en?.map(
+                  (education, index) => {
+                    const [degree, year] = education.split("–");
+                    return (
+                      <li
+                        key={index}
+                        className="fw-normal text-normal"
+                        style={{
+                          listStyle: '"- "',
+                          "::before": {
+                            content: '"-"',
+                            marginRight: "0.5rem",
+                          },
+                        }}
+                      >
+                        <p className="mb-1">{year} </p>
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
+            </MDBCol>
+          </MDBRow>
+
+          {/* Current Affiliations */}
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+              <h5
+                className="fw-bold text-capitalize text-black"
+                style={{ fontFamily: "FontMedium" }}
+              >
+                Current Affiliations
+              </h5>
+            </div>
+          </MDBRow>
+          <MDBCol className="pt-2">
+            <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                {uploadfiles.attributes?.affiliation_en ? (
+                  <ul style={{ paddingLeft: "1rem" }}>
+                    {uploadfiles.attributes.project_en.map(
+                      (affiliation, index) => (
+                        <li key={index} className="fw-normal text-normal">
+                          {affiliation}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                ) : (
+                  <p className="fw-normal text-normal text-black">not found</p>
+                )}
               </MDBCol>
             </MDBRow>
 
-            {/* Current Affiliations */}
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
-                Current Affiliations
-              </h5>
-            </MDBRow>
-            <MDBCol className="pt-2">
-              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-                <MDBCol md="10">
-                  {uploadfiles.attributes?.affiliation_en ? (
-                    <ul>
-                      {uploadfiles.attributes.project_en.map(
-                        (affiliation, index) => (
-                          <li key={index} className="fw-normal text-normal">
-                            {affiliation}
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  ) : (
-                    <p className="fw-normal text-normal text-black">
-                      not found
-                    </p>
-                  )}
-                  {/* {uploadfiles.attributes?.project_en &&
-                  uploadfiles.attributes.project_en.length > 0 ? (
-                    <ul>
-                      {uploadfiles.attributes.project_en.map(
-                        (affiliation, index) => (
-                          <li key={index} className="fw-normal text-normal">
-                            {affiliation}
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  ) : (
-                    <p className="fw-normal text-normal text-black">
-                      not found
-                    </p>
-                  )} */}
-                </MDBCol>
-              </MDBRow>
-            </MDBCol>
             {/*  Recent and on-going projects */}
-            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
-                Recent and on-going projects
-              </h5>
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                <h5
+                  className="fw-bold text-capitalize text-black"
+                  style={{ fontFamily: "FontMedium" }}
+                >
+                  Recent and on-going projects
+                </h5>
+              </div>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-                <MDBCol md="10">
-                  {uploadfiles.attributes?.project_en ? (
-                    <ul>
+              <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                  {uploadfiles.attributes?.affiliation_en ? (
+                    <ul style={{ paddingLeft: "1rem" }}>
                       {uploadfiles.attributes.project_en.map(
-                        (project, index) => (
+                        (affiliation, index) => (
                           <li key={index} className="fw-normal text-normal">
-                            {project}
+                            {affiliation}
                           </li>
                         )
                       )}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal">not found</p>
+                    <p className="fw-normal text-normal text-black">
+                      not found
+                    </p>
                   )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
-            {/*  Grants */}
-            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
-                Grants
-              </h5>
-            </MDBRow>
 
+            {/*  Grants */}
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                <h5
+                  className="fw-bold text-capitalize text-black"
+                  style={{ fontFamily: "FontMedium" }}
+                >
+                  Grants
+                </h5>
+              </div>
+            </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-                {/* <MDBCol md="1" style={{ width: "3.33%" }}>
-                  <p>*</p>
-                </MDBCol> */}
-                <MDBCol md="10">
+              <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                   {uploadfiles.attributes?.grant_en ? (
-                    <ul>
+                    <ul style={{ paddingLeft: "1rem" }}>
                       {uploadfiles.attributes.grant_en.map((grant, index) => (
                         <li key={index} className="fw-normal text-normal">
                           {grant}
@@ -304,22 +339,30 @@ function Memberdetail({ title }) {
                       ))}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal">not found</p>
+                    <p className="fw-normal text-normal text-black">
+                      not found
+                    </p>
                   )}
                 </MDBCol>
               </MDBRow>
             </MDBCol>
-            {/*  Awards */}
-            <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <h5 className="fw-bold text-capitalize text-black ps-2 pt-4">
-                Awards
-              </h5>
+
+            {/* Awards  */}
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                <h5
+                  className="fw-bold text-capitalize text-black"
+                  style={{ fontFamily: "FontMedium" }}
+                >
+                  Awards
+                </h5>
+              </div>
             </MDBRow>
             <MDBCol className="pt-2">
-              <MDBRow className="pt-2 pb-0 xs:px-5 sm:px-5 md:px-0">
-                <MDBCol md="10">
+              <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                   {uploadfiles.attributes?.award_en ? (
-                    <ul>
+                    <ul style={{ paddingLeft: "1rem" }}>
                       {uploadfiles.attributes.award_en.map((award, index) => (
                         <li key={index} className="fw-normal text-normal">
                           {award}
@@ -335,13 +378,17 @@ function Memberdetail({ title }) {
           </MDBCol>
         </MDBContainer>
       </section>
+
       {/*  Selected Publications */}
       <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 pt-4">
           {/* Education */}
-          <MDBRow className="pt-2 pb-3 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
-              <h5 className="fw-bold text-uppercase text-black">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
+              <h5
+                className="fw-bold text-uppercase text-black"
+                style={{ fontFamily: "MyFont" }}
+              >
                 Selected Publications
               </h5>
 
@@ -360,26 +407,27 @@ function Memberdetail({ title }) {
               </MDBBtn>
             </div>
           </MDBRow>
-
-          {publicationfiles.map((member) => (
-            <>
-              <Link
-                to={member.attributes.url}
-                target="_blank"
-                style={{ color: "black" }}
-              >
-                <MDBCol md="11" key={member.id} className="pb-2 ps-2 ">
-                  <p style={{ display: "inline-block" }}>
-                    <ArticleIcon
-                      color="primary"
-                      style={{ marginRight: "1rem" }}
-                    />
-                    {member.attributes.title_en}
-                  </p>
-                </MDBCol>
-              </Link>
-            </>
-          ))}
+          <MDBRow className="pt-2">
+            {publicationfiles.map((member) => (
+              <>
+                <Link
+                  to={member.attributes.url}
+                  target="_blank"
+                  style={{ color: "black" }}
+                >
+                  <MDBCol md="11" key={member.id} className="pb-2 ">
+                    <p style={{ display: "inline-block" }}>
+                      <ArticleIcon
+                        color="primary"
+                        style={{ marginRight: "1rem" }}
+                      />
+                      {member.attributes.title_en}
+                    </p>
+                  </MDBCol>
+                </Link>
+              </>
+            ))}
+          </MDBRow>
 
           {/* 
           {uploadfiles.map((member) => (
@@ -418,17 +466,26 @@ function Memberdetail({ title }) {
           {/* Other Members */}
           <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
-              <h4 className="fw-bold text-uppercase text-black">
+              <h3
+                className="fw-bold text-uppercase text-black"
+                style={{ fontFamily: "MyFont" }}
+              >
                 Other Members
-              </h4>
+              </h3>
 
-              <span>
+              <span className="flex">
                 {" "}
                 <EastIcon
-                  style={{ color: "#AE023E", marginRight: "1rem" }}
+                  style={{ color: "#AE023E", marginRight: "0.5rem" }}
                 ></EastIcon>
-                <Link to={`/team-member`} style={{ color: "#AE023E" }}>
-                  All Team Member
+                <Link
+                  to={`/team-member`}
+                  style={{ color: "#AE023E" }}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  <p className="text-uppercase"> All Team Member</p>
                 </Link>
               </span>
             </div>

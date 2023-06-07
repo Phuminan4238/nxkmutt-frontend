@@ -82,6 +82,11 @@ export default function HomeNav(props) {
   const [searchText, setSearchText] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const handleLogoClick = () => {
+    navigate("/");
+    window.scrollTo(0, 0);
+  };
+
   const handleSearchClick = () => {
     setIsSearchOpen(!isSearchOpen);
   };
@@ -203,6 +208,19 @@ export default function HomeNav(props) {
     transition: "margin-right 0.3s ease-out",
   };
 
+  const [isHovered, setIsHovered] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   const renderNavbar1 = () => {
     return (
       <React.Fragment>
@@ -211,7 +229,7 @@ export default function HomeNav(props) {
           <AppBar
             className="px-3"
             style={{
-              background: "unset",
+              background: "white",
               boxShadow: "unset",
               top: "15px",
             }}
@@ -226,7 +244,7 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                       <img src={logored} height="60" alt="" loading="lazy" />
                     </Link>
                   </Typography>
@@ -239,25 +257,35 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="flex flex-row-reverse">
-                    {/* Search box */} {/* Adjust the width as needed */}
-                    <SearchIcon
-                      style={{ color: "#AE023E" }}
-                      onClick={handleSearchClick}
+                  <div
+                    className="searchBox"
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
                     />
-                    {isSearchOpen && (
-                      <div className="flex">
-                        <input
-                          type="text"
-                          placeholder="Search..."
-                          value={searchTerm}
-                          onChange={handleSearch}
-                          onKeyDown={handleKeyDown}
-                          className="me-4"
-                          style={inputStyle}
-                        />
-                      </div>
-                    )}
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
                   </div>
                   <span style={{ color: "#AE023E" }}>
                     <LanguageIcon
@@ -393,7 +421,7 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                       <img src={logored} height="60" alt="" loading="lazy" />
                     </Link>
                   </Typography>
@@ -413,24 +441,35 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="flex flex-row-reverse">
-                    {/* Search box */}
-                    <SearchIcon
-                      style={{ color: "#AE023E" }}
-                      onClick={handleSearchClick}
+                  <div
+                    className="searchBox"
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
                     />
-                    {isSearchOpen && (
-                      <div className="flex">
-                        <input
-                          type="text"
-                          placeholder="  Search.."
-                          value={searchTerm}
-                          onChange={handleSearch}
-                          onKeyDown={handleKeyDown}
-                          className="me-4"
-                        />
-                      </div>
-                    )}
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
                   </div>
                   <span>
                     {" "}

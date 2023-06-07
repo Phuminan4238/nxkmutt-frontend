@@ -29,9 +29,12 @@ function Image() {
 
   return (
     <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
+      <div
+        className="d-flex justify-content-between pt-3 pb-4 sm:px-5 md:px-0"
+        id="tools-flex"
+      >
         {/* <Route path="Memberdetail" element={<MemberDetail />} /> */}
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
           <MDBRow>
             {uploadfiles.slice(0, 3).map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4">

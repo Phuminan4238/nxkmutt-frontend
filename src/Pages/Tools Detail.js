@@ -54,24 +54,49 @@ function ToolsDetail({ title }) {
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
-          <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
+        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <MDBCol
+              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+              style={{
+                width: "-webkit-max-content",
+                fontFamily: "FontMedium",
+                fontSize: "1.3rem",
+              }}
+            >
+              {/* Team member */}
               {title}
             </MDBCol>
-            <MDBCol className="col-md-6 col-12">
-              <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-              <span className="text-uppercase fw-bold ps-4">
+            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+              <span>
+                <KeyboardArrowRightIcon
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                    color: "#2F3437 !important",
+                  }}
+                ></KeyboardArrowRightIcon>
+              </span>
+            </MDBCol>
+            <MDBCol className="col-md-8 col-12 ps-0 pt-2">
+              <span
+                className="text-uppercase fw-bold "
+                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+              >
                 {uploadfiles.attributes?.name_en || "not found"}
               </span>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pb-0 pe-5">
+            <MDBCol className="d-flex ps-0 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1 className="fw-bolder" style={{ color: "#AE023E" }}>
+                <h1
+                  className="fw-bolder pt-4"
+                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                >
                   {uploadfiles.attributes?.name_en || "not found"}
                 </h1>
               </div>
@@ -94,7 +119,7 @@ function ToolsDetail({ title }) {
                 style={{
                   //   height: "350px",
                   // width: "100%",
-                  height: "400px",
+                  height: "380px",
                   objectFit: "initial",
                   borderRadius: "0px",
                   alignSelf: "center",
@@ -109,7 +134,7 @@ function ToolsDetail({ title }) {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             {/* Current Affiliations */}
-            <MDBRow className="pt-4">
+            <MDBRow className="pt-4 text-initial">
               <p>More tools detail....</p>
             </MDBRow>
 
@@ -117,7 +142,7 @@ function ToolsDetail({ title }) {
             <MDBRow>
               <h5
                 className="fw-bold text-uppercase ps-2 pt-4"
-                style={{ color: "#A02040" }}
+                style={{ color: "#A02040", fontFamily: "MyFont" }}
               >
                 More tools detail....
               </h5>

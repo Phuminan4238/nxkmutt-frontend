@@ -39,19 +39,34 @@ function TagsDetail({ title }) {
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
-          <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
-              className="col-1 text-uppercase text-lg fw-bold pb-4 sm:pb-0"
-              style={{ fontFamily: "FontMedium" }}
+              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+              style={{
+                width: "-webkit-max-content",
+                fontFamily: "FontMedium",
+                fontSize: "1.3rem",
+              }}
             >
+              {/* Team member */}
               {title}
             </MDBCol>
-            <MDBCol className="col-md-7 col-12">
-              <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
+            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+              <span>
+                <KeyboardArrowRightIcon
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                    color: "#2F3437 !important",
+                  }}
+                ></KeyboardArrowRightIcon>
+              </span>
+            </MDBCol>
+            <MDBCol className="col-md-8 col-12 ps-0 pt-2">
               <span
-                className="text-uppercase text-lg fw-bold ps-4"
-                style={{ fontFamily: "FontMedium" }}
+                className="text-uppercase fw-bold "
+                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
                 {tags.attributes?.name_en || "not found"}
               </span>
@@ -60,11 +75,15 @@ function TagsDetail({ title }) {
         </MDBContainer>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pb-0 pe-5">
+            <MDBCol className="d-flex ps-0 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1
-                  className="fw-bolder"
-                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                  className="fw-bolder pt-4"
+                  style={{
+                    color: "#AE023E",
+                    fontFamily: "MyFont",
+                    lineHeight: "1.6",
+                  }}
                 >
                   {tags.attributes?.name_en || "not found"}
                 </h1>
@@ -84,7 +103,7 @@ function TagsDetail({ title }) {
                 style={{
                   //   height: "350px",
                   // width: "100%",
-                  height: "400px",
+                  height: "380px",
                   width: "-webkit-fit-content",
                   objectFit: "initial",
                   borderRadius: "0px",
@@ -100,7 +119,7 @@ function TagsDetail({ title }) {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             {/* Current Affiliations */}
-            <MDBRow className="pt-4">
+            <MDBRow className="pt-4 px-0">
               <p>
                 The Cognitive, Clinical and Computational neuroscience cluster
                 focuses on investigating neural mechanisms that support human
@@ -121,7 +140,7 @@ function TagsDetail({ title }) {
             {/*  Grants */}
             <MDBRow>
               <h5
-                className="fw-bold text-capitalize ps-2 pt-4"
+                className="fw-bold text-capitalize ps-0 pt-4"
                 style={{ color: "#A02040", fontFamily: "FontMedium" }}
               >
                 1. Early Detection and Prevention of Mild Cognitive Impairment
@@ -141,7 +160,7 @@ function TagsDetail({ title }) {
                 style={{
                   //   height: "350px",
                   // width: "100%",
-                  height: "400px",
+                  height: "300px",
                   objectFit: "initial",
                   borderRadius: "0px",
                   alignSelf: "center",
@@ -150,7 +169,7 @@ function TagsDetail({ title }) {
               />
             </MDBRow>
             {/* Current Affiliations */}
-            <MDBRow className="pt-4 ">
+            <MDBRow className="pt-4 ps-0">
               <p>
                 Mild cognitive impairment (MCI) is a condition characterized by
                 early decline in memory and cognitive skills, experienced in
@@ -171,7 +190,7 @@ function TagsDetail({ title }) {
             {/*  Awards */}
             <MDBRow>
               <p
-                className="fw-bold text-uppercase text-black pt-4"
+                className="fw-bold text-initial text-black ps-0 pt-4"
                 style={{ fontFamily: "FontMedium" }}
               >
                 Relevant PIs: Dr. Sirawaj Itthipuripat, Dr. Chaipat Chunharas
@@ -181,23 +200,33 @@ function TagsDetail({ title }) {
             {/*  Selected Publications */}
             <MDBRow>
               <p
-                className="fw-bold text-uppercase text-black pt-4"
+                className="fw-bold text-initial text-black ps-0 pt-4"
                 style={{ fontFamily: "FontMedium" }}
               >
                 Relevant publications
               </p>
             </MDBRow>
-            {publicationfiles.map((member) => (
-              <MDBRow className="pt-4">
-                <MDBCol size="1">
-                  <ArticleIcon color="primary" />
-                </MDBCol>
-
-                <MDBCol md="11" key={member.id}>
-                  <p> {member.attributes.description}</p>
-                </MDBCol>
-              </MDBRow>
-            ))}
+            <MDBRow className="pt-2">
+              {publicationfiles.map((member) => (
+                <>
+                  <Link
+                    to={member.attributes.url}
+                    target="_blank"
+                    style={{ color: "black" }}
+                  >
+                    <MDBCol md="11" key={member.id} className="pb-2 ">
+                      <p style={{ display: "inline-block" }}>
+                        <ArticleIcon
+                          color="primary"
+                          style={{ marginRight: "1rem" }}
+                        />
+                        {member.attributes.description_en}
+                      </p>
+                    </MDBCol>
+                  </Link>
+                </>
+              ))}
+            </MDBRow>
 
             {/*   2. Web-based applications */}
             <MDBRow>

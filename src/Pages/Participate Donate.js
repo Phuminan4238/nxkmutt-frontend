@@ -25,15 +25,22 @@ const Participate = () => {
           <MDBRow className="pt-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-2xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   PARTICIPATE
                 </p>
-                <p className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   <span
                     style={{
-                      fontSize: "4rem",
+                      fontSize: "6rem",
                       color: "#AE023E",
                       fontWeight: "normal",
+                      fontFamily: "FontLight",
                     }}
                   >
                     &
@@ -64,21 +71,28 @@ const Participate = () => {
             </MDBCol>
           </MDBRow>
 
-          <MDBRow className="pt-5 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-4 pb-3 xs:px-5 sm:px-5 md:px-0">
             <MDBCol>
               <MDBRow>
-                <p className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl">
+                <p
+                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   JOB & Internship
                 </p>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
                 <MDBRow className="pt-2">
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
+                  <MDBCol
+                    size="1"
+                    className="sm:p-2 md:p-0"
+                    style={{ width: "1.33%" }}
+                  >
                     {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <li></li>
+                    <li className="ps-0"></li>
                   </MDBCol>
-                  <MDBCol>
-                    <p>
+                  <MDBCol className="ps-0">
+                    <p className="ps-0" style={{ maxWidth: "90%" }}>
                       We are seeking enthusiastic and motivated students and
                       interns with a Bachelor’s degree (at minimum) to join our
                       research team. As a member of our team, you will have the
@@ -95,27 +109,36 @@ const Participate = () => {
                 </MDBRow>
               </MDBCol>
               <MDBRow>
-                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl">
+                <h4
+                  className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   STUDY participation
                 </h4>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
                 <MDBRow className="pt-2">
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
+                  <MDBCol
+                    size="1"
+                    className="sm:p-2 md:p-0"
+                    style={{ width: "1.33%" }}
+                  >
                     {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <li></li>
+                    <li className="ps-0"></li>
                   </MDBCol>
-                  <MDBCol>
-                    <p>
-                      We are looking for healthy volunteers (age:6-59 yo.) to
-                      participate in our research studies. By participating, you
-                      will play a crucial role in advancing scientific knowledge
-                      about neuroscience and cognitive health. Your
-                      participation is voluntary and you may withdraw from the
-                      study at any time. As a token of our appreciation, you
-                      will also receive financial compensation for your time and
-                      effort. Please see details in the fliers below or contact
-                      nx.kmutt@gmail.com if you’re interested in participating.
+                  <MDBCol className="ps-0">
+                    <p className="ps-0" style={{ maxWidth: "90%" }}>
+                      We are seeking enthusiastic and motivated students and
+                      interns with a Bachelor’s degree (at minimum) to join our
+                      research team. As a member of our team, you will have the
+                      opportunity to work alongside experienced researchers and
+                      gain valuable hands-on experience in Neuroscience
+                      research, as well as contributing to our efforts in
+                      improving cognitive health. If interested in applying,
+                      please send your inquiries to:{" "}
+                      <span style={{ color: "#119ED1" }}>
+                        nx.kmutt@gmail.com.
+                      </span>
                     </p>
                   </MDBCol>
                 </MDBRow>
@@ -123,11 +146,21 @@ const Participate = () => {
               <MDBRow className="xs:px-5 sm:px-5 md:px-0">
                 <Participateimage></Participateimage>
               </MDBRow>
-              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <h4 className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-2xl">
-                  DONATION
-                </h4>
-                <p>Contact Detail</p>
+              <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
+                <p
+                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Donation
+                </p>
+                <p>
+                  Your help matters! Your generous support, no matter the size,
+                  can provide opportunities for talented researchers to join our
+                  team, as well as helping us purchase necessary equipment for
+                  conducting Frontier neuroscience research in Thailand. Please
+                  contact nx.kmutt@gmail.com if you are considering making a
+                  financial contribution to our laboratory.{" "}
+                </p>
               </MDBRow>
             </MDBCol>
           </MDBRow>

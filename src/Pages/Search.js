@@ -69,7 +69,10 @@ const Searchresult = () => {
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <p className="font-black text-uppercase text-black xs:text-3xl md:text-5xl">
+                <p
+                  className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
                   Search Result
                 </p>
               </div>
@@ -82,7 +85,9 @@ const Searchresult = () => {
             <MDBCol md="6" className="p-0">
               <div>
                 {/* Render publication results */}
-                <h2 className="ps-4">Publication Results:</h2>
+                <h2 className="ps-3" style={{ fontFamily: "MyFont" }}>
+                  Publication Results:
+                </h2>
                 {searchResults.length > 0 ? (
                   <ul className="ms-4">
                     {searchResults.map((result) => (
@@ -131,7 +136,9 @@ const Searchresult = () => {
                 )} */}
 
                 {/* Render member results */}
-                <h2 className="ps-4">Member Results:</h2>
+                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                  Member Results:
+                </h2>
                 {memberResults.length > 0 ? (
                   <ul className="ms-4">
                     {memberResults.map((result) => (
@@ -155,7 +162,9 @@ const Searchresult = () => {
                 )}
 
                 {/* Render event results */}
-                <h2 className="ps-4">Event Results:</h2>
+                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                  Event Results:
+                </h2>
                 {eventResults.length > 0 ? (
                   <ul className="ms-4">
                     {eventResults.map((result) => (
@@ -176,7 +185,9 @@ const Searchresult = () => {
                 )}
 
                 {/* Render tool results */}
-                <h2 className="ps-4">Tool Results:</h2>
+                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                  Tool Results:
+                </h2>
                 {toolResults.length > 0 ? (
                   <ul className="ms-4">
                     {toolResults.map((result) => (

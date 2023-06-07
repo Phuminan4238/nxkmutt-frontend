@@ -63,6 +63,10 @@ export default function HomeNav(props) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -240,7 +244,7 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                       <img src={logo} height="60" alt="" loading="lazy" />
                     </Link>
                   </Typography>
@@ -434,7 +438,7 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                       <img src={logored} height="60" alt="" loading="lazy" />
                     </Link>
                   </Typography>
@@ -454,24 +458,35 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="flex flex-row-reverse">
-                    {/* Search box */}
-                    <SearchIcon
-                      style={{ color: "#AE023E" }}
-                      onClick={handleSearchClick}
+                  <div
+                    className="searchBox"
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
                     />
-                    {isSearchOpen && (
-                      <div className="flex">
-                        <input
-                          type="text"
-                          placeholder="  Search.."
-                          value={searchTerm}
-                          onChange={handleSearch}
-                          onKeyDown={handleKeyDown}
-                          className="me-4"
-                        />
-                      </div>
-                    )}
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
                   </div>
                   <span>
                     {" "}

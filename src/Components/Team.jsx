@@ -195,34 +195,43 @@ function Image({ members }) {
                         alignSelf: "center",
                       }}
                     />
-                    <MDBCardBody>
-                      <MDBCardTitle className="m-0">
-                        <p
-                          className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
-                          style={{ color: "#AE023E" }}
-                        >
-                          {member.attributes.name_en}
-                          <br></br>
-                          {member.attributes.surname_en}
-                        </p>
-                      </MDBCardTitle>
-                      <MDBCardText>
-                        <p
-                          className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
-                          style={{ color: "#AE023E" }}
-                        >
-                          {member.attributes.position_en}
-                        </p>
-                      </MDBCardText>
-                      <MDBCardText key={member.attributes}>
-                        <p
-                          className="fw-normal text-center text-sm md:text-lg"
-                          style={{ color: "#AE023E" }}
-                        >
-                          Main Interest, Main <br></br> Interest, Main Interest
-                        </p>
-                      </MDBCardText>
-                    </MDBCardBody>
+                    <Link
+                      to={`/Member-Detail/${member.id}`}
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        window.location.replace(`/Member-Detail/${member.id}`);
+                      }}
+                    >
+                      <MDBCardBody>
+                        <MDBCardTitle className="m-0">
+                          <p
+                            className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                            style={{ color: "#AE023E" }}
+                          >
+                            {member.attributes.name_en}
+                            <br></br>
+                            {member.attributes.surname_en}
+                          </p>
+                        </MDBCardTitle>
+                        <MDBCardText>
+                          <p
+                            className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
+                            style={{ color: "#AE023E" }}
+                          >
+                            {member.attributes.position_en}
+                          </p>
+                        </MDBCardText>
+                        <MDBCardText key={member.attributes}>
+                          <p
+                            className="fw-normal text-center text-sm md:text-lg"
+                            style={{ color: "#AE023E" }}
+                          >
+                            Main Interest, Main <br></br> Interest, Main
+                            Interest
+                          </p>
+                        </MDBCardText>
+                      </MDBCardBody>
+                    </Link>
                   </MDBCard>
                 </Link>
               </MDBCol>

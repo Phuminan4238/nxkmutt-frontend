@@ -32,25 +32,26 @@ const Toolservice = () => {
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   Tools
                 </p>
                 <p
-                  className="font-black text-uppercase pt-2 xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   <span
                     style={{
-                      fontSize: "4rem",
+                      fontSize: "6rem",
                       color: "#AE023E",
                       fontWeight: "normal",
+                      fontFamily: "FontLight",
                     }}
                   >
                     &
                   </span>{" "}
-                  Service
+                  Serivce
                 </p>
                 <div
                   className="d-flex justify-content-between mt-auto"
