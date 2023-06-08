@@ -40,12 +40,12 @@ const CardList = ({ cards }) => {
                 style={{ height: "150px", objectFit: "contain" }}
               />
             )}
+            {card.title && (
+              <p className="fw-normal text-center text-black xs:text-base md:text-lg mt-3 card-description">
+                {card.title}
+              </p>
+            )}
           </div>
-          {card.title && (
-            <p className="fw-normal text-start text-black xs:text-base md:text-lg mt-3 card-description">
-              {card.title}
-            </p>
-          )}
         </div>
       ))}
     </div>

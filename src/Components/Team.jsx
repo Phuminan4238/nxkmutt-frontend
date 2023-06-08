@@ -12,6 +12,7 @@ import {
   MDBRow,
   MDBCol,
 } from "mdb-react-ui-kit";
+import membericon from "../Images/member-icon.png";
 
 // Desktop
 function Post() {
@@ -50,9 +51,6 @@ function Post() {
     const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
     const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
-    // height: 300px;object-fit: cover;object-position: top;border-radius: 0px;width: -webkit-fit-content;align-self: center;
-    // height: 350px;object-fit: cover;border-radius: 0px;align-self: center;object-position: top;
-
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow
@@ -72,9 +70,11 @@ function Post() {
                 className="image-fluid"
                 id="cluster-img"
                 style={{
-                  height: "-webkit-fit-content",
-                  maxWidth: "100%",
                   objectFit: "cover",
+                  borderRadius: "0px",
+                  alignSelf: "center",
+                  height: "350px",
+                  objectPosition: "top",
                 }}
                 alt={`Member ${index + 1} Image`}
               />
@@ -89,16 +89,45 @@ function Post() {
             <Column>
               <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                 <p
-                  className="fw-bold text-white text-center xs:text-lg sm:text-xl md:text-2xl"
+                  className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-2xl"
                   style={{
-                    borderBottom: "1px solid white",
-                    paddingBottom: "1rem",
                     fontFamily: "MyFont",
                   }}
                 >
                   {member.attributes.name_en}&nbsp;
                   <br></br>
                   {member.attributes.surname_en}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <hr
+                      style={{
+                        color: "white",
+                        opacity: "1",
+                        width: "40px",
+                        height: "3px",
+                        margin: "1rem 0",
+                      }}
+                    />
+                    <img
+                      src={membericon}
+                      className="px-3"
+                      style={{ height: "20px" }}
+                    />
+                    <hr
+                      style={{
+                        color: "white",
+                        opacity: "1",
+                        width: "40px",
+                        height: "3px",
+                        margin: "1rem 0",
+                      }}
+                    />
+                  </div>
                 </p>
 
                 <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">

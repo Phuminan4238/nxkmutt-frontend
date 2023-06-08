@@ -58,12 +58,12 @@ function Image() {
                       position="top"
                       alt="..."
                       style={{
-                        height: "310px",
+                        // height: "310px",
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
-                        // height: "350px",
-                        // objectPosition: "top"
+                        height: "350px",
+                        objectPosition: "top",
                       }}
                     />
                     <MDBCardBody>

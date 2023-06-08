@@ -23,6 +23,7 @@ import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
+import { SwitchCamera } from "@material-ui/icons";
 
 const pages = [
   "TEAM MEMBER",
@@ -94,24 +95,6 @@ export default function HomeNav(props) {
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
   };
-
-  const [navbarType, setNavbarType] = useState("navbar1");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setNavbarType("navbar2");
-      } else {
-        setNavbarType("navbar1");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   // Search Result
   const [searchTerm, setSearchTerm] = useState("");
@@ -221,6 +204,199 @@ export default function HomeNav(props) {
     setIsHovered(false);
   };
 
+  // Navbar type
+  const [navbarType, setNavbarType] = useState("navbar1");
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (scrollY > 100) {
+      setNavbarType("navbar2");
+    } else {
+      setNavbarType("navbar1");
+    }
+  }, [scrollY]);
+
+  // Switch navbar
+  const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+
+  if (isMobile) {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            className="px-3"
+            style={{
+              background: "unset",
+              boxShadow: "unset",
+              top: "15px",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/" onClick={handleLogoClick}>
+                      <img src={logo} height="60" alt="" loading="lazy" />
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
+                >
+                  <div className="flex flex-row-reverse">
+                    <SearchIcon
+                      style={{ color: "white", cursor: "pointer" }}
+                      onClick={handleSearchClick}
+                    />
+                    {isSearchOpen && (
+                      <div className="flex">
+                        <input
+                          type="text"
+                          placeholder="Search..."
+                          value={searchTerm}
+                          onChange={handleSearch}
+                          onKeyDown={handleKeyDown}
+                          style={inputStyle}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  <span>
+                    <LanguageIcon
+                      style={{ color: "white", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    EN
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      <MenuIcon style={{ color: "white" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    // style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "68px",
+                      left: "48px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                      opacity: "0.9",
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page, index) => (
+                      <Link
+                        to={
+                          page === "TOOLS & SERVICE"
+                            ? "/tools-and-service"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
+                        // style={{ color: "black" }}
+                        sx={{
+                          color: "black",
+                          ":hover": {
+                            color: "white",
+                          },
+                        }}
+                        key={page}
+                      >
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          onClick={handleCloseUserMenu}
+                          sx={{
+                            color: "black",
+                            ":hover": {
+                              color: "white",
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
+                            fontWeight: "bold",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                          }}
+                        >
+                          <a
+                            textAlign="center"
+                            to={
+                              page === "TOOLS & SERVICE"
+                                ? "/tools-and-service"
+                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            }
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+                              // color: "inherit",
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  }
+
   const renderNavbar1 = () => {
     return (
       <React.Fragment>
@@ -257,25 +433,6 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  {/* <div className="flex flex-row-reverse">
-                    <SearchIcon
-                      style={{ color: "white", cursor: "pointer" }}
-                      onClick={handleSearchClick}
-                    />
-                    {isSearchOpen && (
-                      <div className="flex">
-                        <input
-                          type="text"
-                          placeholder="Search..."
-                          value={searchTerm}
-                          onChange={handleSearch}
-                          onKeyDown={handleKeyDown}
-                          style={inputStyle}
-                        />
-                      </div>
-                    )}
-                  </div> */}
-
                   <div className="searchBox">
                     <input
                       className="searchInput"
@@ -415,6 +572,201 @@ export default function HomeNav(props) {
       </React.Fragment>
     );
   };
+
+  // const renderNavbar1 = () => {
+  //   return (
+  //     <React.Fragment>
+  //       <CssBaseline />
+  //       <HideOnScroll {...props}>
+  //         <AppBar
+  //           className="px-3"
+  //           style={{
+  //             background: "unset",
+  //             boxShadow: "unset",
+  //             top: "15px",
+  //           }}
+  //           position="sticky"
+  //         >
+  //           <Container maxWidth="xl">
+  //             <Toolbar disableGutters>
+  //               <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+  //                 <Typography
+  //                   variant="h6"
+  //                   noWrap
+  //                   sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+  //                   component="div"
+  //                 >
+  //                   <Link to="/" onClick={handleLogoClick}>
+  //                     <img src={logo} height="60" alt="" loading="lazy" />
+  //                   </Link>
+  //                 </Typography>
+  //               </Box>
+  //               <Box
+  //                 sx={{
+  //                   display: "flex",
+  //                   flexGrow: 0,
+  //                   flexDirection: "initial",
+  //                   gap: "3rem",
+  //                 }}
+  //               >
+  //                 <div className="flex flex-row-reverse">
+  //                   <SearchIcon
+  //                     style={{ color: "white", cursor: "pointer" }}
+  //                     onClick={handleSearchClick}
+  //                   />
+  //                   {isSearchOpen && (
+  //                     <div className="flex">
+  //                       <input
+  //                         type="text"
+  //                         placeholder="Search..."
+  //                         value={searchTerm}
+  //                         onChange={handleSearch}
+  //                         onKeyDown={handleKeyDown}
+  //                         style={inputStyle}
+  //                       />
+  //                     </div>
+  //                   )}
+  //                 </div>
+
+  //                 <div className="searchBox">
+  //                   <input
+  //                     className="searchInput"
+  //                     type="text"
+  //                     placeholder="Search..."
+  //                     value={searchTerm}
+  //                     onChange={handleSearch}
+  //                     onKeyDown={handleKeyDown}
+  //                     ref={inputRef}
+  //                     onMouseEnter={handleMouseEnter}
+  //                   />
+
+  //                   <button
+  //                     className="searchButton"
+  //                     href="#"
+  //                     onMouseEnter={handleMouseEnter}
+  //                     onMouseLeave={handleMouseLeave}
+  //                   >
+  //                     <SearchIcon
+  //                       style={{
+  //                         color: isHovered ? "grey" : "white",
+  //                         cursor: "pointer",
+  //                         transition: "color 0.3s ease-in-out",
+  //                       }}
+  //                     />
+  //                   </button>
+  //                 </div>
+
+  //                 <span>
+  //                   <LanguageIcon
+  //                     style={{ color: "white", marginRight: "0.5rem" }}
+  //                   ></LanguageIcon>
+  //                   EN
+  //                 </span>
+  //                 <Tooltip title="Open settings">
+  //                   <IconButton
+  //                     color="black"
+  //                     onClick={handleOpenUserMenu}
+  //                     sx={{ p: 0 }}
+  //                   >
+  //                     <MenuIcon style={{ color: "white" }} />
+  //                   </IconButton>
+  //                 </Tooltip>
+  //                 <Menu
+  //                   // style={{ opacity: 0.7 }}
+  //                   sx={{
+  //                     mt: "68px",
+  //                     left: "48px",
+  //                     width: drawerWidth,
+  //                     flexShrink: 0,
+  //                     "& .MuiDrawer-paper": {
+  //                       width: drawerWidth,
+  //                     },
+  //                     opacity: "0.9",
+  //                   }}
+  //                   id="menu-appbar"
+  //                   anchorEl={anchorElUser}
+  //                   anchorOrigin={{
+  //                     vertical: "top",
+  //                     horizontal: "right",
+  //                   }}
+  //                   keepMounted
+  //                   transformOrigin={{
+  //                     vertical: "top",
+  //                     horizontal: "right",
+  //                   }}
+  //                   open={Boolean(anchorElUser)}
+  //                   onClose={handleCloseUserMenu}
+  //                 >
+  //                   {pages.map((page, index) => (
+  //                     <Link
+  //                       to={
+  //                         page === "TOOLS & SERVICE"
+  //                           ? "/tools-and-service"
+  //                           : page === "NEWS & ACTIVITIES"
+  //                           ? "/news-and-activities"
+  //                           : page === "PARTICIPATE & DONATE"
+  //                           ? "/participate-and-donate"
+  //                           : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+  //                       }
+  //                       // style={{ color: "black" }}
+  //                       sx={{
+  //                         color: "black",
+  //                         ":hover": {
+  //                           color: "white",
+  //                         },
+  //                       }}
+  //                       key={page}
+  //                     >
+  //                       <MenuItem
+  //                         style={{
+  //                           justifyContent: "center",
+  //                           width: "300px",
+  //                           height: "60px",
+  //                           borderBottom: "1px solid gray",
+  //                         }}
+  //                         onClick={handleCloseUserMenu}
+  //                         sx={{
+  //                           color: "black",
+  //                           ":hover": {
+  //                             color: "white",
+  //                             bgcolor: "#AE023E",
+  //                             opacity: "100%",
+  //                             "& a, & > a": {
+  //                               color: "white",
+  //                             },
+  //                           },
+  //                           fontWeight: "bold",
+  //                           padding: "10px 20px 10px 20px",
+  //                           borderBottom: "1px solid white",
+  //                         }}
+  //                       >
+  //                         <a
+  //                           textAlign="center"
+  //                           to={
+  //                             page === "TOOLS & SERVICE"
+  //                               ? "/tools-and-service"
+  //                               : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+  //                           }
+  //                           sx={{
+  //                             fontWeight: "bold",
+  //                             padding: "20px",
+  //                             // color: "inherit",
+  //                           }}
+  //                         >
+  //                           {page}
+  //                         </a>
+  //                       </MenuItem>
+  //                     </Link>
+  //                   ))}
+  //                 </Menu>
+  //               </Box>
+  //             </Toolbar>
+  //           </Container>
+  //         </AppBar>
+  //       </HideOnScroll>
+  //     </React.Fragment>
+  //   );
+  // };
 
   const renderNavbar2 = () => {
     return (

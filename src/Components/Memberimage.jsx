@@ -82,12 +82,13 @@ function Image({ members }) {
                       position="top"
                       alt="..."
                       style={{
-                        height: "310px",
+                        // height: "340px",
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
-                        // height: "350px",
-                        // objectPosition: "top"
+                        height: "350px",
+                        objectPosition: "50% 15%",
+                        // objectPosition: "top",
                       }}
                     />
                     <MDBCardBody>

@@ -17,7 +17,7 @@ const Contactus = () => {
               <div className="d-flex flex-column w-100">
                 <p
                   className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
-                  style={{ fontFamily: "FontMedium" }}
+                  style={{ fontFamily: "MyFont" }}
                 >
                   Contact Us
                 </p>
@@ -62,7 +62,11 @@ const Contactus = () => {
                   >
                     Phone
                   </h4>
-                  <p className=" text-black pt-2 xs:text-base md:text-lg ">
+
+                  <p
+                    className="text-black pt-2 xs:text-base md:text-lg"
+                    style={{ fontFamily: "FontLight" }}
+                  >
                     0123456789
                   </p>
                 </MDBRow>
@@ -90,10 +94,10 @@ const Contactus = () => {
       </section>
       <section>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-2 py-4 xs:px-5 sm:px-5 md:px-0">
             <div className="d-inline-flex p-2">
               <p
-                className="font-black  xs:text-xl md:text-2xl"
+                className="font-black  xs:text-xl md:text-3xl"
                 style={{ fontFamily: "FontMedium" }}
               >
                 Social Media
@@ -103,7 +107,10 @@ const Contactus = () => {
               <Contactsocial></Contactsocial>
             </div>
             <div className="d-inline-flex p-2 pt-5">
-              <p className="fw-bold text-black xs:text-xl md:text-2xl" v>
+              <p
+                className="fw-bold text-black xs:text-xl md:text-3xl"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Lab Portal
               </p>
             </div>

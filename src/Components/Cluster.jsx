@@ -218,13 +218,20 @@ function Reuse() {
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
-                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-lg cursor-pointer"
+                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-xl cursor-pointer"
                     onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
+                    style={{
+                      cursor: "pointer",
+                      transition: "transform 0.3s", // Add transition for transform property
+                    }}
                   >
                     {openStates[index] ? (
-                      <span>&#x25B2; Hide Info</span>
+                      <span style={{ float: "right" }}>
+                        {" "}
+                        Hide Info &#x25B2;
+                      </span> // Move the arrow to the right
                     ) : (
-                      <span>&#x25BC; More Info</span>
+                      <span style={{ float: "right" }}>&#x25BC; More Info</span> // Move the arrow to the right
                     )}
                   </p>
                 </div>
@@ -234,7 +241,11 @@ function Reuse() {
           {openStates[index] && (
             <MDBRow
               className="p-5"
-              style={colStyle}
+              style={{
+                ...colStyle,
+                opacity: openStates[index] ? 1 : 0, // Set opacity based on open/closed state
+                transition: "opacity 0.3s", // Add transition for opacity property
+              }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >

@@ -11,7 +11,7 @@ export default function App() {
           <MDBRow className="px-4 py-4">
             <MDBCol className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root">
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-2 col-md-1">
+                <div className="col-2 col-md-1" style={{ width: "5.33%" }}>
                   {/* <img
                     src={logokmutt}
                     class="image-fluid pr-6"
@@ -30,7 +30,7 @@ export default function App() {
                   />
                 </div>
                 <div
-                  className=""
+                  className="mx-4"
                   style={{
                     borderRight: "1px solid white",
                   }}
@@ -39,13 +39,13 @@ export default function App() {
                 <div className="col-3 col-md-2 pt-3 ms-4 ms-lg-6">
                   <img src={logo} height="40" alt="" loading="lazy" />
                 </div> */}
-                <div className="col-3 col-md-2 pt-2 ms-4 ms-lg-0">
-                  <img src={logo} height="40" alt="" loading="lazy" />
+                <div className="col-3 col-md-2 pt-2 ms-sm-4 ms-lg-0">
+                  <img src={logo} height="50" alt="" loading="lazy" />
                   <style>
                     {`
       @media (min-width: 1201px) {
         .ms-lg-0 {
-          margin-left: 6rem !important;
+          margin-left: 2rem !important;
         }
       }
     `}
@@ -54,8 +54,8 @@ export default function App() {
               </div>
 
               <div className="d-flex flex-row mt-3 text-white">
-                <div className="col-3 col-md-2 p-2 ps-0">Privacy policy</div>
-                <div className="col-4 col-md-2 p-2 ps-0">Terms of use</div>
+                <div className="col-2 col-md-2 p-2 ps-0">Privacy policy</div>
+                <div className="col-2 col-md-2 p-2 ps-0">Terms of use</div>
               </div>
               <div className="d-flex flex-row mt-3 text-white">
                 © 2022 NX KMUTT

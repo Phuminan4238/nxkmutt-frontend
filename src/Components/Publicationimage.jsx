@@ -257,7 +257,10 @@ function Menu() {
 
   return (
     <>
-      <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
+      <div
+        className="d-flex justify-content-between pt-0 pb-4 px-0"
+        id="tools-flex"
+      >
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {tags.map((tag, index) => (

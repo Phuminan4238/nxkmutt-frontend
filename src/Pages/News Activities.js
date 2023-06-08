@@ -131,27 +131,85 @@ const Newsactivities = () => {
                   </span>{" "}
                   Activity
                 </p>
-                <div
-                  className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0"
-                  // style={{ width: "80%" }}
-                >
-                  <div class="input-group rounded">
-                    <span class="input-group-text border-0" id="search-addon">
-                      <i class="fas fa-search"></i>
-                    </span>
+                {/* <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
+                  <div className="input-group rounded">
+                    <div className="input-group-prepend">
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      >
+                        <i className="fas fa-search"></i>
+                      </span>
+                    </div>
                     <input
                       type="text"
-                      placeholder="Search..."
+                      placeholder="Search"
                       value={searchTerm}
                       onChange={handleSearch}
                       onKeyDown={handleKeyDown}
-                      className="me-4"
+                      className="form-control"
                       style={{ width: "640px" }}
-                      // style={inputStyle}
                     />
+                    <div className="input-group-append">
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          backgroundColor: "transparent",
+                          border: "none",
+                          paddingLeft: "10px",
+                          paddingRight: "10px",
+                        }}
+                      >
+                        <i className="fas fa-arrow-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div> */}
+
+                <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
+                  <div className="input-group rounded">
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      className="form-control"
+                      style={{ width: "640px", paddingLeft: "50px" }}
+                    />
+                    <span
+                      className="input-group-text border-0"
+                      id="search-addon"
+                      style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <i className="fas fa-arrow-right"></i>
+                    </span>
+                    <span
+                      className="input-group-text border-0"
+                      id="search-addon"
+                      style={{
+                        position: "absolute",
+                        left: "10px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <i className="fas fa-search"></i>
+                    </span>
                   </div>
                 </div>
-                <div></div>
                 {/* <div className="pt-4">
                   {searchResults.length > 0 && (
                     <div>
