@@ -23,7 +23,6 @@ import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
-import { SwitchCamera } from "@material-ui/icons";
 
 const pages = [
   "TEAM MEMBER",
