@@ -38,7 +38,7 @@ const Toolservice = () => {
                   Tools
                 </p>
                 <p
-                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   <span

@@ -110,7 +110,7 @@ const Newsactivities = () => {
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   News

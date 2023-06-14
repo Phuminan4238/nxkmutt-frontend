@@ -175,18 +175,6 @@ function Image({ members }) {
                     window.location.replace(`/Tools-Detail/${member.id}`);
                   }}
                 >
-                  {/* <MDBCard style={cardStyle}>
-                    <ImageMask
-                      imageUrl={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      maskText={member.attributes.name_en + " "}
-                      imageHeight="444px" // Adjust the height here
-                    />
-                  </MDBCard> */}
-
                   <MDBCard style={cardStyle}>
                     <ImageMask
                       style={{
@@ -204,25 +192,6 @@ function Image({ members }) {
                       imageHeight="444px" // Adjust the height here
                     />
                   </MDBCard>
-
-                  {/* <MDBCard>
-                    <div>
-                      <img
-                        className="image-fluid"
-                        style={{
-                          width: "-webkit-fill-available",
-                          objectFit: "cover",
-                          height: "444px",
-                          borderRadius: "8px",
-                        }}
-                        src={
-                          "https://10.35.29.186" +
-                          member.attributes.uploadfiles.data[0]?.attributes
-                            .fileupload.data[0]?.attributes.url
-                        }
-                      />
-                    </div>
-                  </MDBCard> */}
                 </Link>
               </MDBCol>
             ))}

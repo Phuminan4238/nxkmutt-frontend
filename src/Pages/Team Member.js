@@ -9,8 +9,13 @@ import Memberimage from "../Components/Memberimage";
 import Memberalumni from "../Components/Memberalumni";
 import Memberadvisor from "../Components/Memberadvisor";
 import Membercol from "../Components/Membercol";
+import membericon from "../Images/vr-2.png";
+/* Preloader */
+// import Preloader2 from "../Components/Preloader2";
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
 
-const Member = () => {
+const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
@@ -22,8 +27,54 @@ const Member = () => {
       });
   }, []);
 
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
+
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
@@ -48,24 +99,27 @@ const Member = () => {
               </div>
             </MDBCol>
             <MDBCol md="4" className="p-0">
-              {memberCover.map((member) => (
+              {/* <Preloader2 imageUrl={membericon} /> */}
+              {memberCover.length > 0 && (
                 <img
-                  className="image-fluid"
+                  className={`image-fluid ${
+                    memberCover[0]?.attributes.fileupload.data[0]?.attributes
+                      .url
+                      ? "loaded"
+                      : ""
+                  }`}
                   style={{
                     width: "-webkit-fill-available",
                     height: "320px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
                   }}
-                  // id="cluster-img"
                   src={
                     "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
+                    memberCover[0]?.attributes.fileupload.data[0]?.attributes
+                      .url
                   }
+                  alt="Member Cover"
                 />
-              ))}
+              )}
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -113,8 +167,6 @@ const Member = () => {
           </MDBRow>
         </MDBContainer>
       </section>
-      {/* <Membercluster></Membercluster> */}
-      {/* <Memberimage></Memberimage> */}
     </div>
   );
 };
