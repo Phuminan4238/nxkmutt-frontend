@@ -13,7 +13,7 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   }`;
 
   return (
-    <MDBCol md="1" className={columnClass}>
+    <MDBCol md="1" className={columnClass} style={{ width: "13.333333%" }}>
       <Link
         to={`/Member-Detail/${memberId}`}
         onClick={() => {
