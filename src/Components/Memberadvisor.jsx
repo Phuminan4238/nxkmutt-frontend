@@ -32,7 +32,7 @@ function Post() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);

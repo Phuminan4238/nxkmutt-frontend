@@ -92,6 +92,7 @@ function Memberdetail({ title }) {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+
         <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
           {/* {uploadfiles.map((member) => ( */}
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">

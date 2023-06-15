@@ -101,14 +101,9 @@ function ToolsDetail({ title }) {
                 </h1>
               </div>
             </MDBCol>
-            <MDBCol md="7" className="p-0">
+            <MDBCol md="4" className="p-0">
               <MDBCardImage
                 className="rounded-0"
-                // src={
-                //   "https://10.35.29.186" +
-                //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                //     .fileupload.data[0]?.attributes.url
-                // }
                 src={
                   "https://10.35.29.186" +
                     uploadfiles.attributes?.uploadfiles.data[0]?.attributes
@@ -119,8 +114,9 @@ function ToolsDetail({ title }) {
                 style={{
                   //   height: "350px",
                   // width: "100%",
-                  height: "380px",
-                  objectFit: "initial",
+                  // height: "400px",
+                  objectFit: "fill",
+                  // height: "500px",
                   borderRadius: "0px",
                   alignSelf: "center",
                   // objectFit: "contain",

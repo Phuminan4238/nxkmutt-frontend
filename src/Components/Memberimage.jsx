@@ -51,11 +51,46 @@ function Post() {
     };
   }, [uploadfiles]);
 
+  const [uploadfilesMember, setUploadfilesMember] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
+        );
+        if (isMounted) {
+          setUploadfilesMember(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfilesMember.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfilesMember]);
+
   return (
     <div className="d-flex justify-content-between pb-4" id="tools-flex">
       <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
         <MDBRow>
-          {uploadfiles.map((member) => (
+          {uploadfilesMember.map((member) => (
             <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
               <Link
                 to={`/Member-Detail/${member.id}`}

@@ -19,7 +19,9 @@ function Post() {
   const [memberfiles, setMemberfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+    fetch(
+      "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
+    )
       .then((res) => res.json())
       .then((result) => {
         setMemberfiles(result.data);
