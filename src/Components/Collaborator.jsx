@@ -58,83 +58,88 @@ function Profile() {
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow className="p-0 w-fill">
           {uploadfiles.map((member, index) => (
-            <MDBCol
-              md={3}
-              key={member.id}
-              className="col-md-2 d-flex flex-column p-0"
-            >
-              <Link
-                to={`/Member-Detail/${member.id}`}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  window.location.replace(`/Member-Detail/${member.id}`);
-                }}
+            <React.Fragment key={member.id}>
+              <MDBCol
+                md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
+                key={member.id}
+                className="col-md-2 d-flex flex-column grow p-0"
               >
-                <MDBCard
-                  className=""
-                  style={{
-                    boxShadow: "unset",
-                    borderRadius: "0px",
-                    backgroundColor: colors[index % colors.length],
+                <Link
+                  to={`/Member-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Member-Detail/${member.id}`);
                   }}
                 >
-                  <MDBCardImage
-                    className="rounded-0"
-                    src={
-                      "https://10.35.29.186" +
-                      member.attributes.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url
-                    }
-                    position="top"
-                    alt="..."
+                  <MDBCard
+                    className=""
                     style={{
-                      objectFit: "cover",
+                      boxShadow: "unset",
                       borderRadius: "0px",
-                      alignSelf: "center",
-                      height: "350px",
-                      objectPosition: "50% 15%",
+                      backgroundColor: colors[index % colors.length],
                     }}
-                  />
+                  >
+                    <MDBCardImage
+                      className="rounded-0"
+                      src={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      position="top"
+                      alt="..."
+                      style={{
+                        objectFit: "cover",
+                        borderRadius: "0px",
+                        alignSelf: "center",
+                        height: "350px",
+                        objectPosition: "50% 15%",
+                      }}
+                    />
 
-                  <MDBCardBody>
-                    <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
-                      <p
-                        className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-2xl"
-                        style={{
-                          fontFamily: "MyFont",
-                        }}
-                      >
-                        <span>{member.attributes.prefix_en}</span>{" "}
-                        {member.attributes.name_en}&nbsp;
-                        <br></br>
-                        {member.attributes.surname_en}
-                        <div
+                    <MDBCardBody>
+                      <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
+                        <p
+                          className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-2xl"
                           style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
+                            fontFamily: "MyFont",
                           }}
                         >
-                          <hr
+                          <span>{member.attributes.prefix_en}</span>{" "}
+                          {member.attributes.name_en}&nbsp;
+                          <br></br>
+                          {member.attributes.surname_en}
+                          <div
                             style={{
-                              color: "white",
-                              opacity: "1",
-                              width: "100px",
-                              height: "3px",
-                              margin: "1rem 0",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
                             }}
-                          />
-                        </div>
-                      </p>
+                          >
+                            <hr
+                              style={{
+                                color: "white",
+                                opacity: "1",
+                                width: "30px",
+                                height: "3px",
+                                margin: "1rem 0",
+                              }}
+                            />
+                          </div>
+                        </p>
 
-                      <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">
-                        {member.attributes.position_en}
-                      </p>
-                    </div>
-                  </MDBCardBody>
-                </MDBCard>
-              </Link>
-            </MDBCol>
+                        <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">
+                          {member.attributes.position_en}
+                        </p>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </Link>
+              </MDBCol>
+              {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
+                <div className="w-100"></div>
+              )}
+            </React.Fragment>
           ))}
         </MDBRow>
       </MDBContainer>

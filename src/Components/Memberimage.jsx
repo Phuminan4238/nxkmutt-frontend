@@ -129,8 +129,14 @@ function Post() {
                   <MDBCardBody>
                     <MDBCardTitle className="m-0 pt-2">
                       <p
-                        className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
-                        style={{ color: "black", fontFamily: "MyFont" }}
+                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        style={{
+                          color: "black",
+                          fontFamily: "MyFont",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
                       >
                         {member.attributes.name_en}
                         &nbsp;

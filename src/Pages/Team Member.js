@@ -14,6 +14,8 @@ import membericon from "../Images/vr-2.png";
 // import Preloader2 from "../Components/Preloader2";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import EastIcon from "@mui/icons-material/East";
+import { Link } from "react-router-dom";
 
 const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
@@ -37,6 +39,11 @@ const Member = ({ imageUrl }) => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const [iconStyle, setIconStyle] = useState({
+    color: "#AE023E",
+    marginLeft: 0,
+  });
 
   return (
     <div className="App">
@@ -150,19 +157,34 @@ const Member = ({ imageUrl }) => {
                 className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
                 style={{ fontFamily: "MyFont" }}
               >
-                Active Alumni
+                International Collaborators
               </h3>
             </div>
             <Memberalumni></Memberalumni>
-            <Memberalumni></Memberalumni>
-            <div className="d-inline-flex p-2 pt-5">
+            <div className="d-flex justify-content-between align-items-center p-2 pt-5">
               <h3
-                className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont" }}
+                className="fw-bold text-uppercase text-black xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont", paddingLeft: "0.5rem" }}
               >
                 students & Research Assistants & Alumni
               </h3>
+              <Link
+                to={`/Student-Detail/9`}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  window.location.replace(`/Student-Detail/9`);
+                }}
+                className="image-link"
+              >
+                <div className="d-inline-flex text-red py-2 md:py-4">
+                  <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                    Find out more
+                  </h5>
+                  <EastIcon style={iconStyle}></EastIcon>
+                </div>
+              </Link>
             </div>
+
             <Membercol></Membercol>
           </MDBRow>
         </MDBContainer>

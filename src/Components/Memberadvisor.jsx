@@ -32,7 +32,7 @@ function Post() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -55,19 +55,16 @@ function Post() {
     <div className="d-flex justify-content-between pb-4" id="tools-flex">
       <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
         <MDBRow>
-          {uploadfiles.map((member) => (
-            <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-              <Link
-                to={`/Member-Detail/${member.id}`}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  window.location.replace(`/Member-Detail/${member.id}`);
-                }}
+          {uploadfiles.map((member, index) => (
+            <React.Fragment key={member.id}>
+              <MDBCol
+                md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
+                key={member.id}
+                className="col-md-2 d-flex flex-column grow "
               >
                 <MDBCard
                   className="pt-4"
                   style={{
-                    borderBottom: "1px solid black",
                     boxShadow: "unset",
                     borderRadius: "0px",
                   }}
@@ -86,12 +83,12 @@ function Post() {
                       objectFit: "cover",
                       borderRadius: "0px",
                       alignSelf: "center",
-                      height: "350px",
+                      height: "250px",
                       objectPosition: "50% 15%",
                       // objectPosition: "top",
                     }}
                   />
-                  <MDBCardBody>
+                  <MDBCardBody className="px-0">
                     <MDBCardTitle className="m-0 pt-2">
                       <p
                         className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
@@ -102,18 +99,7 @@ function Post() {
                         {member.attributes.surname_en}
                       </p>
                     </MDBCardTitle>
-                    <MDBCardTitle>
-                      {/* <Link to="/Member Detail"> */}{" "}
-                      <h5
-                        className="fw-bold text-center"
-                        style={{ color: "#AE023E", fontFamily: "MyFont" }}
-                      >
-                        {member.attributes.name_en}
-                        &nbsp;
-                        {member.attributes.surname_en}
-                      </h5>
-                      {/* </Link> */}
-                    </MDBCardTitle>
+
                     <MDBCardText>
                       <h6
                         className="fw-light text-center"
@@ -126,8 +112,11 @@ function Post() {
                     </MDBCardText>
                   </MDBCardBody>
                 </MDBCard>
-              </Link>
-            </MDBCol>
+              </MDBCol>
+              {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
+                <div className="w-100"></div>
+              )}
+            </React.Fragment>
           ))}
         </MDBRow>
       </MDBContainer>
@@ -178,75 +167,59 @@ function Image({ members }) {
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link
-                  to={`/Member-Detail/${member.id}`}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    window.location.replace(`/Member-Detail/${member.id}`);
+                <MDBCard
+                  style={{
+                    borderBottom: "1px solid black",
+                    boxShadow: "unset",
+                    borderRadius: "0px",
                   }}
                 >
-                  <MDBCard
+                  <MDBCardImage
+                    className="rounded-0"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url
+                    }
+                    position="top"
+                    alt="..."
                     style={{
-                      borderBottom: "1px solid black",
-                      boxShadow: "unset",
+                      height: "350px",
+                      objectFit: "contain",
                       borderRadius: "0px",
+                      alignSelf: "center",
                     }}
-                  >
-                    <MDBCardImage
-                      className="rounded-0"
-                      src={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      position="top"
-                      alt="..."
-                      style={{
-                        height: "350px",
-                        objectFit: "contain",
-                        borderRadius: "0px",
-                        alignSelf: "center",
-                      }}
-                    />
-                    <Link
-                      to={`/Member-Detail/${member.id}`}
-                      onClick={() => {
-                        window.scrollTo(0, 0);
-                        window.location.replace(`/Member-Detail/${member.id}`);
-                      }}
-                    >
-                      <MDBCardBody>
-                        <MDBCardTitle className="m-0">
-                          <p
-                            className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
-                            style={{ color: "#AE023E" }}
-                          >
-                            {member.attributes.name_en}
-                            <br></br>
-                            {member.attributes.surname_en}
-                          </p>
-                        </MDBCardTitle>
-                        <MDBCardText>
-                          <p
-                            className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
-                            style={{ color: "#AE023E" }}
-                          >
-                            {member.attributes.position_en}
-                          </p>
-                        </MDBCardText>
-                        <MDBCardText key={member.attributes}>
-                          <p
-                            className="fw-normal text-center text-sm md:text-lg"
-                            style={{ color: "#AE023E" }}
-                          >
-                            Main Interest, Main <br></br> Interest, Main
-                            Interest
-                          </p>
-                        </MDBCardText>
-                      </MDBCardBody>
-                    </Link>
-                  </MDBCard>
-                </Link>
+                  />
+
+                  <MDBCardBody>
+                    <MDBCardTitle className="m-0">
+                      <p
+                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        style={{ color: "#AE023E" }}
+                      >
+                        {member.attributes.name_en}
+                        <br></br>
+                        {member.attributes.surname_en}
+                      </p>
+                    </MDBCardTitle>
+                    <MDBCardText>
+                      <p
+                        className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
+                        style={{ color: "#AE023E" }}
+                      >
+                        {member.attributes.position_en}
+                      </p>
+                    </MDBCardText>
+                    <MDBCardText key={member.attributes}>
+                      <p
+                        className="fw-normal text-center text-sm md:text-lg"
+                        style={{ color: "#AE023E" }}
+                      >
+                        Main Interest, Main <br></br> Interest, Main Interest
+                      </p>
+                    </MDBCardText>
+                  </MDBCardBody>
+                </MDBCard>
               </MDBCol>
             ))}
           </MDBRow>

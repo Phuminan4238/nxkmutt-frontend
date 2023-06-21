@@ -33,7 +33,7 @@ function Image() {
           <Carousel
             showIndicators={true}
             infiniteLoop={true}
-            autoPlay={true}
+            // autoPlay={true}
             interval={3000}
             showArrows={false}
             showStatus={false}

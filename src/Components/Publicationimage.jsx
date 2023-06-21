@@ -20,41 +20,6 @@ import styled from "styled-components";
 import { blue, green, red } from "@mui/material/colors";
 
 function Menu() {
-  // const [uploadfiles, setUploadfiles] = useState([]);
-
-  // useEffect(() => {
-  //   let isMounted = true;
-
-  //   const instance = axios.create({
-  //     baseURL: "https://10.35.29.186/api/",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   });
-
-  //   async function fetchData() {
-  //     try {
-  //       const response = await instance.get(
-  //         "members?populate=uploadfiles.fileupload"
-  //       );
-  //       if (isMounted) {
-  //         setUploadfiles(response.data.data);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-
-  //   if (uploadfiles.length === 0) {
-  //     fetchData();
-  //   }
-
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, [uploadfiles]);
-
   const [tags, setTags] = useState([]);
   useEffect(() => {
     fetch("https://10.35.29.186/api/tags")
@@ -98,33 +63,6 @@ function Menu() {
   };
 
   useEffect(() => {
-    // let endpoint = "";
-
-    // if (allTagsSelected) {
-    //   endpoint = "https://10.35.29.186/api/publications";
-    // } else {
-    //   switch (selectedTag) {
-    //     case "cognitive":
-    //       endpoint =
-    //         "https://10.35.29.186/api/publications?filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
-    //       break;
-    //     case "neuroscience":
-    //       endpoint =
-    //         "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=human_factors_research_and_decision_neuroscience";
-    //       break;
-    //     case "educational":
-    //       endpoint =
-    //         "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=educational_neuroscience_and_neurodevelopment";
-    //       break;
-    //     case "pharmaceutical":
-    //       endpoint =
-    //         "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    // }
-    // Update the endpoint based on the state of allTagsSelected, selectedTag and activeTag
     let endpoint = "";
     if (allTagsSelected) {
       endpoint = "https://10.35.29.186/api/publications";
@@ -174,7 +112,7 @@ function Menu() {
 
   const tagColor = selectedTag !== null ? tagColors[selectedTag] : "#CCCCCC";
 
-  const getTagColor = (tag) => tagColors[tag] || "#CCCCCC";
+  const getTagColor = (tag) => tagColors[tag] || tagColors[selectedTag];
 
   const StyledArticleIcon = styled(ArticleIcon)`
     color: ${({ tag }) => getTagColor(tag)};
@@ -341,47 +279,6 @@ function Menu() {
             ))}
           </MDBRow>
 
-          {/* <MDBRow>
-            {publications.map((publication) => (
-              <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
-                <Link
-                  to={`/Publications-Detail/${publication.id}`}
-                  target="_blank"
-                >
-                  <MDBCard className="shadow-0">
-                    <MDBCardBody
-                      className="rounded-0"
-                      style={{
-                        backgroundColor:
-                          allTagsSelected || selectedTag === null
-                            ? tagColor
-                            : tagColors[selectedTag],
-                        borderColor:
-                          allTagsSelected || selectedTag === null
-                            ? tagColor
-                            : tagColors[selectedTag],
-                      }}
-                    >
-                      <MDBCardTitle className="m-0">
-                        <p
-                          className="fw-bold text-start mb-0 xs:text-xl md:text-lg"
-                          style={{ color: "#fff" }}
-                        >
-                          {publication.attributes.title
-                            ? publication.attributes.title.slice(0, 60) +
-                              (publication.attributes.title.length > 50
-                                ? "..."
-                                : "")
-                            : "not found"}
-                        </p>
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCard>{" "}
-                </Link>
-              </MDBCol>
-            ))}
-          </MDBRow> */}
-
           <MDBRow>
             {publications.map((publication, index) => (
               <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
@@ -409,11 +306,20 @@ function Menu() {
                             style={{ color: "#fff" }}
                           >
                             {publication.attributes.title_en
-                              ? publication.attributes.title_en.slice(0, 60) +
+                              ? publication.attributes.title_en.slice(0, 50) +
                                 (publication.attributes.title_en.length > 50
                                   ? "..."
                                   : "")
                               : "not found"}
+                          </p>
+                        </MDBCardTitle>
+                        <MDBCardTitle className="m-0">
+                          <p
+                            className="font-normal text-start mb-0 pt-4 xs:text-xl md:text-sm"
+                            style={{ color: "#fff" }}
+                          >
+                            {publication.attributes.owner?.data?.attributes
+                              ?.name_en ?? "Unknown Owner"}
                           </p>
                         </MDBCardTitle>
                       </MDBCardBody>
@@ -440,40 +346,3 @@ export default function Publicationimage() {
     </>
   );
 }
-
-// "data": [
-//   {
-//       "id": 1,
-//       "theme": {
-//         "data": {
-//             "id": 1,
-//             "attributes": {
-//                 "name_en": "Cognitive, Clinical & Computational Neuroscience",
-
-//                 "key": "cognitive_clinical_and_computational_neuroscience"
-//             }
-//      }
-// },
-// "id": 2,
-// "theme": {
-//   "data": {
-//       "id": 2,
-//       "attributes": {
-//           "name_th": "Educational Neuroscience & Neurodevelopment  ",
-
-//           "key": "educational_neuroscience_and_neurodevelopment"
-//       }
-//   }
-// },
-
-//   }
-// ]
-
-// if key =  "key": "pharmaceutical_biology_and_neuropharmacology"
-// the color is red
-
-// if key = "key": "human_factors_research_and_decision_neuroscience"
-// the color is green
-
-// if key =  "key": "educational_neuroscience_and_neurodevelopment"
-// the color is blue

@@ -32,7 +32,7 @@ function Profile() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -58,17 +58,11 @@ function Profile() {
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow className="p-0 w-fill">
           {uploadfiles.map((member, index) => (
-            <MDBCol
-              md={3}
-              key={member.id}
-              className="col-md-2 d-flex flex-column p-0"
-            >
-              <Link
-                to={`/Member-Detail/${member.id}`}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  window.location.replace(`/Member-Detail/${member.id}`);
-                }}
+            <React.Fragment key={member.id}>
+              <MDBCol
+                md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
+                key={member.id}
+                className="col-md-2 d-flex flex-column grow p-0"
               >
                 <MDBCard
                   className=""
@@ -118,7 +112,7 @@ function Profile() {
                             style={{
                               color: "white",
                               opacity: "1",
-                              width: "100px",
+                              width: "30px",
                               height: "3px",
                               margin: "1rem 0",
                             }}
@@ -132,11 +126,15 @@ function Profile() {
                     </div>
                   </MDBCardBody>
                 </MDBCard>
-              </Link>
-            </MDBCol>
+              </MDBCol>
+              {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
+                <div className="w-100"></div>
+              )}
+            </React.Fragment>
           ))}
         </MDBRow>
       </MDBContainer>
+
       {/* 
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow className="p-0 w-fill">
