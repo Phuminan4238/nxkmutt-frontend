@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, setIsLoaded } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import EastIcon from "@mui/icons-material/East";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import clusterimg1 from "../Images/cluster-1.png";
 import clusterimg2 from "../Images/cluster-2.png";
 import clusterimg3 from "../Images/cluster-3.png";
@@ -119,8 +121,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -137,8 +140,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -155,8 +159,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -173,8 +178,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -228,10 +234,12 @@ function Reuse() {
                     {openStates[index] ? (
                       <span style={{ float: "right" }}>
                         {" "}
-                        Hide Info &#x25B2;
+                        Hide Info <ExpandLessIcon />
                       </span> // Move the arrow to the right
                     ) : (
-                      <span style={{ float: "right" }}>&#x25BC; More Info</span> // Move the arrow to the right
+                      <span style={{ float: "right" }}>
+                        <ExpandMoreIcon /> More Info
+                      </span> // Move the arrow to the right
                     )}
                   </p>
                 </div>

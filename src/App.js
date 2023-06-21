@@ -19,6 +19,7 @@ import HomeNav from "./Components/HomeNav";
 import AllNav from "./Components/AllNav";
 import Participate from "./Pages/Participate Donate";
 import Memberdetail from "./Pages/Member Detail";
+import Studentdetail from "./Pages/Student Detail";
 import TagsDetail from "./Pages/Tags Detail";
 import NewsDetail from "./Pages/News Detail";
 import ToolsDetail from "./Pages/Tools Detail";
@@ -49,6 +50,10 @@ function App() {
         <Route
           path="/Member-Detail/:id"
           element={<Memberdetail title="TEAM MEMBER" />}
+        />
+        <Route
+          path="/Student-Detail/:id"
+          element={<Studentdetail title="STUDENT MEMBER" />}
         />
         <Route
           path="/Tags-Detail/:id"

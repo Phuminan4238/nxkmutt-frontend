@@ -54,6 +54,10 @@ function Memberdetail({ title }) {
       });
   }, [id]);
 
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
@@ -67,8 +71,10 @@ function Memberdetail({ title }) {
                 fontSize: "1.3rem",
               }}
             >
-              {/* Team member */}
-              {title}
+              {/* color: "#AE023E", */}
+              <Link to="/" onClick={handleLogoClick}>
+                <a style={{ color: "#AE023E" }}>{title}</a>
+              </Link>
             </MDBCol>
             <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
               <span>

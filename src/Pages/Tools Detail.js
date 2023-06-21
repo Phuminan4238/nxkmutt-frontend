@@ -10,6 +10,7 @@ import { MDBCardImage, MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
 import news1 from "../Images/new-1.png";
+import { Link } from "react-router-dom";
 
 function ToolsDetail({ title }) {
   let { id } = useParams();
@@ -51,6 +52,10 @@ function ToolsDetail({ title }) {
       });
   }, []);
 
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
@@ -64,8 +69,9 @@ function ToolsDetail({ title }) {
                 fontSize: "1.3rem",
               }}
             >
-              {/* Team member */}
-              {title}
+              <Link to="/" onClick={handleLogoClick}>
+                <a style={{ color: "#AE023E" }}>{title}</a>
+              </Link>
             </MDBCol>
             <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
               <span>

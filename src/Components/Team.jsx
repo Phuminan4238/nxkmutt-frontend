@@ -76,6 +76,7 @@ function Post() {
                   borderRadius: "0px",
                   alignSelf: "center",
                   height: "350px",
+                  width: "100%",
                   objectPosition: "top",
                 }}
                 alt={`Member ${index + 1} Image`}

@@ -34,43 +34,28 @@ const Publications = () => {
   }, []);
 
   // Scroll Button
-  // const [showButton, setShowButton] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-
+  const [showButton, setShowButton] = useState(false);
   const handleScroll = () => {
-    const currentScrollPos =
-      window.pageYOffset || document.documentElement.scrollTop;
-    setShowButton(currentScrollPos > prevScrollPos && currentScrollPos > 0);
-    setPrevScrollPos(currentScrollPos);
+    const scrollThreshold = 500;
+    const currentPosition = window.pageYOffset;
+
+    setShowButton(currentPosition > scrollThreshold);
   };
 
-  const [showButton, setShowButton] = useState(false);
-
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      setShowButton(scrollTop > 0); // Show button when scrolling down
-    };
-
     window.addEventListener("scroll", handleScroll);
 
+    // Clean up the event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Navigate
   const navigate = useNavigate();
@@ -256,6 +241,9 @@ const Publications = () => {
               zIndex: "9999",
               border: "none",
               backgroundColor: "transparent",
+              opacity: showButton ? 1 : 0,
+              transition: "opacity 0.3s ease",
+              pointerEvents: showButton ? "auto" : "none",
             }}
           >
             <div
@@ -272,6 +260,7 @@ const Publications = () => {
               </span>
             </div>
           </button>
+
           {/* <Publicationreport></Publicationreport> */}
         </MDBContainer>
       </section>

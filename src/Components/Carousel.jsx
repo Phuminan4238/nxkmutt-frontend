@@ -45,7 +45,7 @@ function Image() {
             {coverImages.map((image) => (
               <div
                 key={image.id}
-                className="w-100 d-block xs:h-fit md:h-full"
+                className="w-100 d-block  md:h-full"
                 id="carousel-nav"
               >
                 <img

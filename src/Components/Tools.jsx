@@ -165,9 +165,9 @@ function Image({ members }) {
     <>
       <div className="d-flex justify-content-between pt-0 " id="tools-flex">
         <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="g-6">
+          <MDBRow className="g-6 xs:w-min sm:w-full">
             {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
+              <MDBCol md="4" key={member.id} className="pb-4 px-2 col-sm-8">
                 <Link
                   to={`/Tools-Detail/${member.id}`}
                   onClick={() => {

@@ -9,6 +9,7 @@ import { MDBCardImage, MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images */
 import vr2 from "../Images/vr-2.png";
 import news1 from "../Images/new-1.png";
+import { Link } from "react-router-dom";
 
 function TagsDetail({ title }) {
   let { id } = useParams();
@@ -33,17 +34,52 @@ function TagsDetail({ title }) {
       });
   }, []);
 
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
+            {/* <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
               {title}
             </MDBCol>
             <MDBCol className="col-md-6 col-12">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
               <span className="text-uppercase fw-bold ps-4">
+                {tags.attributes?.name_en || "not found"}
+              </span>
+            </MDBCol> */}
+            <MDBCol
+              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+              style={{
+                width: "-webkit-max-content",
+                fontFamily: "FontMedium",
+                fontSize: "1.3rem",
+              }}
+            >
+              <Link to="/" onClick={handleLogoClick}>
+                <a style={{ color: "#AE023E" }}>{title}</a>
+              </Link>
+            </MDBCol>
+            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+              <span>
+                <KeyboardArrowRightIcon
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                    color: "#2F3437 !important",
+                  }}
+                ></KeyboardArrowRightIcon>
+              </span>
+            </MDBCol>
+            <MDBCol className="col-md-8 col-12 ps-0 pt-2">
+              <span
+                className="text-uppercase fw-bold "
+                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+              >
                 {tags.attributes?.name_en || "not found"}
               </span>
             </MDBCol>

@@ -36,10 +36,15 @@ function TagsDetail({ title }) {
       });
   }, []);
 
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
+          {/* Title */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
               className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
@@ -49,9 +54,12 @@ function TagsDetail({ title }) {
                 fontSize: "1.3rem",
               }}
             >
-              {/* Team member */}
-              {title}
+              {/* color: "#AE023E", */}
+              <Link to="/" onClick={handleLogoClick}>
+                <a style={{ color: "#AE023E" }}>{title}</a>
+              </Link>
             </MDBCol>
+
             <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
               <span>
                 <KeyboardArrowRightIcon
@@ -73,6 +81,7 @@ function TagsDetail({ title }) {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+        {/* Container  */}
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex ps-0 pb-0 pe-5">
@@ -92,23 +101,15 @@ function TagsDetail({ title }) {
             <MDBCol md="7" className="p-0">
               <MDBCardImage
                 className="rounded-0"
-                // src={
-                //   "https://10.35.29.186" +
-                //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                //     .fileupload.data[0]?.attributes.url
-                // }
                 src={clusterimg1}
                 position="top"
                 alt="..."
                 style={{
-                  //   height: "350px",
-                  // width: "100%",
                   height: "380px",
                   width: "-webkit-fit-content",
                   objectFit: "initial",
                   borderRadius: "0px",
                   alignSelf: "center",
-                  // objectFit: "contain",
                 }}
               />
             </MDBCol>

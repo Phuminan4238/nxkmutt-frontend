@@ -15,10 +15,10 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   return (
     <MDBCol md="1" className={columnClass}>
       <Link
-        to={`/Member-Detail/${memberId}`}
+        to={`/Student-Detail/${memberId}`}
         onClick={() => {
           window.scrollTo(0, 0);
-          window.location.replace(`/Member-Detail/${memberId}`);
+          window.location.replace(`/Student-Detail/${memberId}`);
         }}
         className="image-link"
       >
@@ -28,7 +28,7 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
         >
           <img
             src={src}
-            style={{ width: "inherit", height: "140px", objectFit: "cover" }}
+            style={{ width: "inherit", height: "120px", objectFit: "cover" }}
             alt="Team Member"
           />
           <div className="overlay"></div>

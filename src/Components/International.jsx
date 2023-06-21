@@ -32,7 +32,7 @@ function Profile() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -104,7 +104,6 @@ function Profile() {
                           fontFamily: "MyFont",
                         }}
                       >
-                        <span>{member.attributes.prefix_en}</span>{" "}
                         {member.attributes.name_en}&nbsp;
                         <br></br>
                         {member.attributes.surname_en}
@@ -216,7 +215,7 @@ function Profile() {
   );
 }
 
-export default function Collaborator() {
+export default function International() {
   return (
     <>
       <Profile />
