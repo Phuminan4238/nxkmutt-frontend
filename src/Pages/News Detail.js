@@ -60,7 +60,7 @@ function TagsDetail({ title }) {
                 fontSize: "1.3rem",
               }}
             >
-              <Link to="/" onClick={handleLogoClick}>
+              <Link to="/">
                 <a style={{ color: "#AE023E" }}>{title}</a>
               </Link>
             </MDBCol>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, setIsLoaded } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import EastIcon from "@mui/icons-material/East";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import clusterimg1 from "../Images/cluster-1.png";
 import clusterimg2 from "../Images/cluster-2.png";
 import clusterimg3 from "../Images/cluster-3.png";
@@ -65,11 +67,14 @@ function Reuse() {
   // Hovering icon
   const [iconStyle, setIconStyle] = useState({
     color: "#AE023E",
-    marginLeft: 0,
   });
 
   const handleMouseEnter = () => {
-    setIconStyle({ ...iconStyle, marginLeft: "12px" });
+    setIconStyle({
+      ...iconStyle,
+      marginLeft: "12px",
+      transition: "margin-left 0.3s ease-out",
+    });
   };
 
   const handleMouseLeave = () => {
@@ -90,6 +95,22 @@ function Reuse() {
 
   const colors = ["#AE023E", "#009B62", "#008CB0", "#FEB832"];
 
+  // Col Hovering
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter2 = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setIsHovered(false);
+  };
+
+  const colStyle = {
+    marginLeft: isHovered ? "12px" : "0px",
+    transition: "margin-right 0.3s ease-out",
+  };
+
   const getImage = (index) => {
     switch (index) {
       case 0:
@@ -100,8 +121,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -118,8 +140,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -136,8 +159,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -154,8 +178,9 @@ function Reuse() {
               <img
                 className="image-fluid"
                 style={{
-                  width: "-webkit-fill-available",
+                  width: "100%",
                   height: "auto",
+                  objectFit: "cover",
                 }}
                 src={
                   "https://10.35.29.186" +
@@ -187,7 +212,7 @@ function Reuse() {
             <MDBCol
               md="4"
               order="1"
-              className={`d-flex p-5`}
+              className={"d-flex p-6"}
               style={{ backgroundColor: colors[index] }}
             >
               <div className="d-flex flex-column w-100">
@@ -199,13 +224,22 @@ function Reuse() {
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
-                    className="fw-normal text-white mt-5 xs:text-base md:text-lg cursor-pointer"
+                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-xl cursor-pointer"
                     onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
+                    style={{
+                      cursor: "pointer",
+                      transition: "transform 0.3s", // Add transition for transform property
+                    }}
                   >
                     {openStates[index] ? (
-                      <span>&#x25B2; Hide Info</span>
+                      <span style={{ float: "right" }}>
+                        {" "}
+                        Hide Info <ExpandLessIcon />
+                      </span> // Move the arrow to the right
                     ) : (
-                      <span>&#x25BC; More Info</span>
+                      <span style={{ float: "right" }}>
+                        <ExpandMoreIcon /> More Info
+                      </span> // Move the arrow to the right
                     )}
                   </p>
                 </div>
@@ -215,7 +249,11 @@ function Reuse() {
           {openStates[index] && (
             <MDBRow
               className="p-5"
-              style={{ background: "#F5F5F5" }}
+              style={{
+                ...colStyle,
+                opacity: openStates[index] ? 1 : 0, // Set opacity based on open/closed state
+                transition: "opacity 0.3s", // Add transition for opacity property
+              }}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -236,7 +274,8 @@ function Reuse() {
                     sx={{
                       colors: "#AE023E",
                       "&:hover": {
-                        paddingLeft: "12px",
+                        marginLeft: "12px",
+                        transition: "margin-left 0.3s ease-out",
                       },
                     }}
                   >

@@ -91,16 +91,29 @@ function Studentdetail({ title }) {
                 fontSize: "1.3rem",
               }}
             >
-              {/* Team member */}
-              <a
-                style={{
-                  color: "#AE023E",
-                  // borderBottom: "1px solid black",
-                  // marginBottom: "1.5rem",
-                }}
+              <Link to="/">
+                <a style={{ color: "#AE023E" }}>{title}</a>
+              </Link>
+            </MDBCol>
+            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+              <span>
+                <KeyboardArrowRightIcon
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                    color: "#2F3437 !important",
+                  }}
+                ></KeyboardArrowRightIcon>
+              </span>
+            </MDBCol>
+            <MDBCol className="col-md-8 col-12 ps-0 pt-2">
+              <span
+                className="text-uppercase fw-bold "
+                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {title}
-              </a>
+                {/* {tags.attributes?.name_en || "not found"} */}
+                All Student
+              </span>
             </MDBCol>
           </MDBRow>
         </MDBContainer>

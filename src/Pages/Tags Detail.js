@@ -55,7 +55,7 @@ function TagsDetail({ title }) {
               }}
             >
               {/* color: "#AE023E", */}
-              <Link to="/" onClick={handleLogoClick}>
+              <Link to="/">
                 <a style={{ color: "#AE023E" }}>{title}</a>
               </Link>
             </MDBCol>
@@ -104,12 +104,22 @@ function TagsDetail({ title }) {
                 src={clusterimg1}
                 position="top"
                 alt="..."
+                // style={{
+                //   height: "380px",
+                //   width: "-webkit-fit-content",
+                //   objectFit: "initial",
+                //   borderRadius: "0px",
+                //   alignSelf: "center",
+                // }}
                 style={{
-                  height: "380px",
-                  width: "-webkit-fit-content",
-                  objectFit: "initial",
+                  //   height: "350px",
+                  // width: "100%",
+                  // height: "400px",
+                  objectFit: "fill",
+                  // height: "500px",
                   borderRadius: "0px",
                   alignSelf: "center",
+                  // objectFit: "contain",
                 }}
               />
             </MDBCol>

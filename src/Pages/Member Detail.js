@@ -72,7 +72,7 @@ function Memberdetail({ title }) {
               }}
             >
               {/* color: "#AE023E", */}
-              <Link to="/" onClick={handleLogoClick}>
+              <Link to="/">
                 <a style={{ color: "#AE023E" }}>{title}</a>
               </Link>
             </MDBCol>
