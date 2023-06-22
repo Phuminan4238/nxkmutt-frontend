@@ -15,10 +15,10 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   return (
     <MDBCol md="1" className={columnClass} style={{ width: "13.333333%" }}>
       <Link
-        to={`/Member-Detail/${memberId}`}
+        to={`/Student-Detail/${memberId}`}
         onClick={() => {
           window.scrollTo(0, 0);
-          window.location.replace(`/Member-Detail/${memberId}`);
+          window.location.replace(`/Student-Detail/${memberId}`);
         }}
         className="image-link"
       >
