@@ -310,5 +310,21 @@ a:hover {
   cursor: text;
 }
 
+.max-w-screen-1920 {
+  max-width: 1920px !important;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    /* max-width: 1600px !important; */
+  }
+}
+
+.desktop-width {
+  max-width: 1600px !important; /* Adjust this value to match your desired desktop width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @tailwind components;
 @tailwind utilities;

@@ -228,6 +228,22 @@ export default function HomeNav(props) {
   // Switch navbar
   const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
 
+  // Container Fix
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setIsDesktop(window.innerWidth > 1600);
+    };
+
+    handleWindowResize(); // Call the function initially
+
+    window.addEventListener("resize", handleWindowResize); // Add event listener for window resize
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize); // Remove event listener on component unmount
+    };
+  }, []);
+
   if (isMobile) {
     return (
       <React.Fragment>

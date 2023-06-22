@@ -17,6 +17,7 @@ import International from "../Components/International";
 import Preloader from "../Components/Preloader";
 import { useMediaQuery } from "react-responsive";
 import Container from "@mui/material/Container";
+import classNames from "classnames";
 
 function Home(props) {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -74,173 +75,208 @@ function Home(props) {
     setSearchTerm(value);
   };
 
-  const isDesktop = useMediaQuery({ minWidth: 942 }); // Adjust the breakpoint as needed
+  // const isDesktop = useMediaQuery({ minWidth: 940 });
 
-  const containerStyle = {
-    maxWidth: isDesktop ? "7xl" : "fit",
-  };
+  // const containerStyle = {
+  //   maxWidth: isDesktop ? "7xl" : "fit",
+  // };
+
+  const isDesktopWidth = window.innerWidth > 1600;
 
   return (
     <>
-      {/* <Preloader /> */}
+      <Preloader />
       <div className="App">
         {/* ******************/}
         <main>
-          <Container maxWidth="xl" className="px-0">
-            {/* Section Carousel */}
-            <Carousel2></Carousel2>
+          {/* Section Carousel */}
+          <Carousel2></Carousel2>
 
-            {/* ******************/}
-            {/* Paragraph */}
-            <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-              {uploadfiles[0] && (
-                <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
-                  <div className="d-inline-flex p-2">
-                    <p
-                      className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                      style={{ fontFamily: "MyFont" }}
-                    >
-                      {uploadfiles[0].attributes.header_en}
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-center align-items-center xs:py-2 md:py-5">
-                    <p
-                      className="font-normal break-word xs:text-base md:text-lg"
-                      style={{
-                        maxWidth: "85%",
-                      }}
-                    >
-                      {uploadfiles[0].attributes.content_en}
-                    </p>
-                  </div>
+          {/* ******************/}
+          {/* Paragraph */}
 
-                  <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
-                    <p
-                      className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                      style={{ fontFamily: "MyFont" }}
-                    >
-                      What we do
-                    </p>
-                  </div>
-                </MDBRow>
-              )}
-            </MDBContainer>
+          {/* <MDBContainer className={`max-w-${containerStyle.maxWidth}`}> */}
 
-            {/* ***********/}
-
-            {/* Section Clusterimage */}
-            <Clusterimage></Clusterimage>
-            {/* ******************** */}
-
-            {/* Section Tools */}
-            <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            {uploadfiles[0] && (
               <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
+                <div className="d-inline-flex p-2">
+                  <p
+                    className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    {uploadfiles[0].attributes.header_en}
+                  </p>
+                </div>
+                <div className="d-flex justify-content-center align-items-center xs:py-2 md:py-5">
+                  <p
+                    className="font-normal break-word xs:text-base md:text-lg"
+                    style={{
+                      maxWidth: "85%",
+                    }}
+                  >
+                    {uploadfiles[0].attributes.content_en}
+                  </p>
+                </div>
+
                 <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
                   <p
                     className="font-normal text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    TOOLS & SERVICES
+                    What we do
                   </p>
                 </div>
               </MDBRow>
-            </MDBContainer>
-            <section>
-              <MDBContainer className="xs:max-w-fit sm:max-w-7xl">
-                <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                  <Toolsimage></Toolsimage>
-                </MDBRow>
-              </MDBContainer>
-            </section>
-            {/* ******************** */}
+            )}
+          </MDBContainer>
 
-            {/* Section News */}
-            <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
+          {/* ***********/}
+
+          {/* Section Clusterimage */}
+          <Clusterimage></Clusterimage>
+          {/* ******************** */}
+
+          {/* Section Tools */}
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  TOOLS & SERVICES
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <section>
+            <MDBContainer
+              className={classNames("max-w-7xl", {
+                "desktop-width": isDesktopWidth,
+              })}
+            >
               <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-16">
-                  <p
-                    className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    NEW & ACTIVITY
-                  </p>
-                </div>
+                <Toolsimage></Toolsimage>
               </MDBRow>
             </MDBContainer>
-            <section>
-              <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
-                  <News></News>
-                </MDBRow>
-              </MDBContainer>
-            </section>
-            {/* ******************** */}
+          </section>
+          {/* ******************** */}
 
-            {/* Section Team */}
-            <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <div className="d-inline-flex xs:p-1 xs:pt-2 md:p-2 ">
-                  <p
-                    className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    Our Brain Army
-                  </p>
-                </div>
+          {/* Section News */}
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            <MDBRow className="xs:px-5 sm:px-5 md:px-0">
+              <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-16">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  NEW & ACTIVITY
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <section>
+            <MDBContainer
+              className={classNames("max-w-7xl", {
+                "desktop-width": isDesktopWidth,
+              })}
+            >
+              <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
+                <News></News>
               </MDBRow>
             </MDBContainer>
-            <Team></Team>
-            {/* ******************** */}
+          </section>
+          {/* ******************** */}
 
-            {/* Section Collaborators */}
-            <MDBContainer>
-              <MDBRow className="py-4">
-                <div className="d-inline-flex p-2">
-                  <p
-                    className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    Advisors & Collaborators
-                  </p>
-                </div>
-              </MDBRow>
-            </MDBContainer>
-            <Collaborator></Collaborator>
-            {/* ******************** */}
+          {/* Section Team */}
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            <MDBRow className="xs:px-5 sm:px-5 md:px-0">
+              <div className="d-inline-flex xs:p-1 xs:pt-2 md:p-2 ">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Our Brain Army
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <Team></Team>
+          {/* ******************** */}
 
-            {/* Section Student */}
-            <MDBContainer>
-              <MDBRow className="pt-5 pb-4">
-                <div className="d-inline-flex p-2">
-                  <p
-                    className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    Students & Research Assistants{" "}
-                  </p>
-                </div>
-              </MDBRow>
-            </MDBContainer>
-            <Student></Student>
-            {/* <div className="pb-5"></div> */}
-            {/* ******************** */}
+          {/* Section Collaborators */}
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            <MDBRow className="py-4">
+              <div className="d-inline-flex p-2">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Advisors & Collaborators
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <Collaborator></Collaborator>
+          {/* ******************** */}
 
-            {/* Section International */}
-            <MDBContainer>
-              <MDBRow className="pt-5 pb-4">
-                <div className="d-inline-flex p-2 ">
-                  <p
-                    className="font-normal text-uppercase xs:text-xl md:text-3xl "
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    International Collaborators
-                  </p>
-                </div>
-              </MDBRow>
-            </MDBContainer>
-            <International></International>
-            {/* ******************** */}
-          </Container>
+          {/* Section Student */}
+          <MDBContainer>
+            <MDBRow className="pt-5 pb-4">
+              <div className="d-inline-flex p-2">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Students & Research Assistants{" "}
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <Student></Student>
+          {/* <div className="pb-5"></div> */}
+          {/* ******************** */}
+
+          {/* Section International */}
+          <MDBContainer
+            className={classNames("max-w-7xl", {
+              "desktop-width": isDesktopWidth,
+            })}
+          >
+            <MDBRow className="pt-5 pb-4">
+              <div className="d-inline-flex p-2 ">
+                <p
+                  className="font-normal text-uppercase xs:text-xl md:text-3xl "
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  International Collaborators
+                </p>
+              </div>
+            </MDBRow>
+          </MDBContainer>
+          <International></International>
+          {/* ******************** */}
         </main>
       </div>
     </>

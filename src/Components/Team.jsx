@@ -20,12 +20,14 @@ function Post() {
 
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=faculty_member"
+      "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
     )
       .then((res) => res.json())
       .then((result) => {
         setMemberfiles(result.data);
       });
+
+    console.log("Member data 2:", memberfiles);
   }, []);
 
   const colors = ["#B34C66", "#F2B032", "#88BFD2", "#F2B032"];
@@ -46,12 +48,17 @@ function Post() {
     const colorIndex = index % colors.length;
     const isFirstColumn = index % 2 === 0;
     const isFront = Math.floor(index / 2) % 2 === 0;
+    // const imgSrc =
+    //   "https://10.35.29.186" +
+    //   member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
+    //     ?.attributes.url;
+    const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
+    const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
+
     const imgSrc =
       "https://10.35.29.186" +
       member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
         ?.attributes.url;
-    const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
-    const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
@@ -281,7 +288,7 @@ export default function Team() {
   return (
     <>
       {/* Render the Image component when on mobile */}
-      {isMobile && <Image />}
+      {/* {isMobile && <Image />} */}
 
       {/* Hide the Post component when on mobile */}
       {!isMobile && <Post />}
