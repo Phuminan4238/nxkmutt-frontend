@@ -33,44 +33,53 @@ function App() {
   const nav = location.pathname === "/" ? <HomeNav /> : <AllNav />;
 
   return (
-    <div className="app">
-      {nav}
-      <Routes>
-        <Route path="/Search" element={<Searchresult />} />
-        <Route path="/Search/:term" element={<Searchresult />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
-        <Route path="/Research" element={<Research />} />
-        <Route path="/Publications" element={<Publications />} />
-        {/* <Route path="/Tools-Service" element={<Toolservice />} /> */}
-        <Route path="/Tools-and-Service" element={<Toolservice />} />
-        <Route path="/News-and-Activities" element={<Newsactivities />} />
-        <Route path="/Contact-Us" element={<Contactus />} />
-        <Route path="/Participate-and-Donate" element={<Participate />} />
-        <Route
-          path="/Member-Detail/:id"
-          element={<Memberdetail title="TEAM MEMBER" />}
-        />
-        <Route
-          path="/Student-Detail/:id"
-          element={<Studentdetail title="STUDENT MEMBER" />}
-        />
-        <Route
-          path="/Tags-Detail/:id"
-          element={<TagsDetail title="RESEARCH" />}
-        />
-        <Route
-          path="/Publications-Detail/:id"
-          element={<PublicationsDetail title="PUBLICATION" />}
-        />
-        <Route path="/News-Detail/:id" element={<NewsDetail title="NEWS" />} />
-        <Route
-          path="/Tools-Detail/:id"
-          element={<ToolsDetail title="TOOLS" />}
-        />
-      </Routes>
-      <Footer />
-    </div>
+    <Container
+      maxWidth="xl"
+      disableGutters={true}
+      style={{ boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.10)" }}
+    >
+      <div className="app">
+        {nav}
+        <Routes>
+          <Route path="/Search" element={<Searchresult />} />
+          <Route path="/Search/:term" element={<Searchresult />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Team-Member" title="TEAM MEMBER" element={<Member />} />
+          <Route path="/Research" element={<Research />} />
+          <Route path="/Publications" element={<Publications />} />
+          {/* <Route path="/Tools-Service" element={<Toolservice />} /> */}
+          <Route path="/Tools-and-Service" element={<Toolservice />} />
+          <Route path="/News-and-Activities" element={<Newsactivities />} />
+          <Route path="/Contact-Us" element={<Contactus />} />
+          <Route path="/Participate-and-Donate" element={<Participate />} />
+          <Route
+            path="/Member-Detail/:id"
+            element={<Memberdetail title="TEAM MEMBER" />}
+          />
+          <Route
+            path="/Student-Detail/:id"
+            element={<Studentdetail title="STUDENT MEMBER" />}
+          />
+          <Route
+            path="/Tags-Detail/:id"
+            element={<TagsDetail title="RESEARCH" />}
+          />
+          <Route
+            path="/Publications-Detail/:id"
+            element={<PublicationsDetail title="PUBLICATION" />}
+          />
+          <Route
+            path="/News-Detail/:id"
+            element={<NewsDetail title="NEWS" />}
+          />
+          <Route
+            path="/Tools-Detail/:id"
+            element={<ToolsDetail title="TOOLS" />}
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </Container>
   );
 }
 

@@ -56,7 +56,7 @@ function Profile() {
   return (
     <>
       <MDBContainer className="fluid p-0" id="cluster-container">
-        <MDBRow className="p-0 w-fill">
+        <MDBRow className="p-0 w-fill" id="cluster-gutter">
           {uploadfiles.map((member, index) => (
             <React.Fragment key={member.id}>
               <MDBCol

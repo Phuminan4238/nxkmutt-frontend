@@ -199,7 +199,7 @@ function Reuse() {
     <>
       {tags.map((tagsData, index) => (
         <MDBContainer className="fluid p-0" id="cluster-container" key={index}>
-          <MDBRow className="p-0 ">
+          <MDBRow className="p-0" id="cluster-gutter">
             <MDBCol
               md="8"
               className={`d-flex p-0 xs:order-2 sm:order-1 ${

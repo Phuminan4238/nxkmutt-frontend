@@ -126,6 +126,10 @@ text-align {
   width: -webkit-fill-available;
 }
 
+#cluster-gutter {
+  --mdb-gutter-x: "unset !important";
+}
+
 #tools-flex {
   padding: 0.75rem;
 }
@@ -166,7 +170,7 @@ text-align {
 }
 
 #footer-bg {
-  background-color: #1e1e1e;
+  /* background-color: #1e1e1e; */
 }
 
 .css-18sg6k4-MuiPaper-root-MuiDrawer-paper {

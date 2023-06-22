@@ -69,7 +69,7 @@ function Post() {
           <MDBCol
             md="6"
             className={`p-0 order-${order1}`}
-            style={{ maxWidth: "550px" }}
+            // style={{ maxWidth: "550px" }}
           >
             <Link
               to={`/Member-Detail/${member.id}`}
@@ -86,8 +86,8 @@ function Post() {
                   objectFit: "cover",
                   borderRadius: "0px",
                   alignSelf: "center",
-                  // height: "350px",
-                  height: "100%",
+                  height: "350px",
+                  // height: "100%",
                   width: "100%",
                   objectPosition: "top",
                 }}

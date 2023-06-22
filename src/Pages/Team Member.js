@@ -16,6 +16,7 @@ import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import EastIcon from "@mui/icons-material/East";
 import { Link } from "react-router-dom";
+import Container from "@mui/material/Container";
 
 const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
