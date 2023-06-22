@@ -300,7 +300,7 @@ export default function Team() {
   return (
     <>
       {/* Render the Image component when on mobile */}
-      {isMobile && <Image />}
+      {/* {isMobile && <Image />} */}
 
       {/* Hide the Post component when on mobile */}
       {!isMobile && <Post />}

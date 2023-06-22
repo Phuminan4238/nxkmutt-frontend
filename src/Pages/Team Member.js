@@ -105,8 +105,7 @@ const Member = ({ imageUrl }) => {
                 ></div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
-              {/* <Preloader2 imageUrl={membericon} /> */}
+            {/* <MDBCol md="4" className="p-0">
               {memberCover.length > 0 && (
                 <img
                   className={`image-fluid ${
@@ -127,10 +126,11 @@ const Member = ({ imageUrl }) => {
                   alt="Member Cover"
                 />
               )}
-            </MDBCol>
+            </MDBCol> */}
           </MDBRow>
         </MDBContainer>
       </section>
+
       <section>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
@@ -184,7 +184,6 @@ const Member = ({ imageUrl }) => {
                 </div>
               </Link>
             </div>
-
             <Membercol></Membercol>
           </MDBRow>
         </MDBContainer>

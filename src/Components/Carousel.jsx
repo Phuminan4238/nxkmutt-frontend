@@ -51,7 +51,7 @@ function Image() {
                 <img
                   src={`https://10.35.29.186${image.attributes.url}`}
                   alt={`Cover Image ${image.id}`}
-                  className="w-100 d-block xs:h-4/5 md:h-full object-fill"
+                  className="w-100 d-block xs:h-4/5 md:h-full object-cover"
                 />
               </div>
             ))}

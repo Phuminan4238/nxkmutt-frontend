@@ -6,6 +6,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
 /* Components */
 import Participateimage from "../Components/Participateimage";
+import axios from "axios";
 
 const Participate = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -18,6 +19,43 @@ const Participate = () => {
         setMembercover(result.data);
       });
   }, []);
+
+  // image square
+  const [uploadfilesMember, setUploadfilesMember] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+        );
+        if (isMounted) {
+          setUploadfilesMember(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfilesMember.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfilesMember]);
+
   return (
     <div className="App">
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>

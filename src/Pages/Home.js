@@ -75,17 +75,17 @@ function Home(props) {
     setSearchTerm(value);
   };
 
-  // const isDesktop = useMediaQuery({ minWidth: 940 });
+  const isDesktop = useMediaQuery({ minWidth: 940 });
 
-  // const containerStyle = {
-  //   maxWidth: isDesktop ? "7xl" : "fit",
-  // };
+  const containerStyle = {
+    maxWidth: isDesktop ? "7xl" : "fit",
+  };
 
   const isDesktopWidth = window.innerWidth > 1600;
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <div className="App">
         {/* ******************/}
         <main>
@@ -172,11 +172,7 @@ function Home(props) {
           {/* ******************** */}
 
           {/* Section News */}
-          <MDBContainer
-            className={classNames("max-w-7xl", {
-              "desktop-width": isDesktopWidth,
-            })}
-          >
+          <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
             <MDBRow className="xs:px-5 sm:px-5 md:px-0">
               <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-16">
                 <p
@@ -189,11 +185,7 @@ function Home(props) {
             </MDBRow>
           </MDBContainer>
           <section>
-            <MDBContainer
-              className={classNames("max-w-7xl", {
-                "desktop-width": isDesktopWidth,
-              })}
-            >
+            <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
               <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
                 <News></News>
               </MDBRow>
@@ -202,11 +194,7 @@ function Home(props) {
           {/* ******************** */}
 
           {/* Section Team */}
-          <MDBContainer
-            className={classNames("max-w-7xl", {
-              "desktop-width": isDesktopWidth,
-            })}
-          >
+          <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
             <MDBRow className="xs:px-5 sm:px-5 md:px-0">
               <div className="d-inline-flex xs:p-1 xs:pt-2 md:p-2 ">
                 <p
@@ -222,11 +210,7 @@ function Home(props) {
           {/* ******************** */}
 
           {/* Section Collaborators */}
-          <MDBContainer
-            className={classNames("max-w-7xl", {
-              "desktop-width": isDesktopWidth,
-            })}
-          >
+          <MDBContainer>
             <MDBRow className="py-4">
               <div className="d-inline-flex p-2">
                 <p
@@ -259,11 +243,7 @@ function Home(props) {
           {/* ******************** */}
 
           {/* Section International */}
-          <MDBContainer
-            className={classNames("max-w-7xl", {
-              "desktop-width": isDesktopWidth,
-            })}
-          >
+          <MDBContainer>
             <MDBRow className="pt-5 pb-4">
               <div className="d-inline-flex p-2 ">
                 <p

@@ -26,8 +26,6 @@ function Post() {
       .then((result) => {
         setMemberfiles(result.data);
       });
-
-    console.log("Member data 2:", memberfiles);
   }, []);
 
   const colors = ["#B34C66", "#F2B032", "#88BFD2", "#F2B032"];
@@ -48,10 +46,6 @@ function Post() {
     const colorIndex = index % colors.length;
     const isFirstColumn = index % 2 === 0;
     const isFront = Math.floor(index / 2) % 2 === 0;
-    // const imgSrc =
-    //   "https://10.35.29.186" +
-    //   member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
-    //     ?.attributes.url;
     const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
     const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
@@ -60,13 +54,23 @@ function Post() {
       member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
         ?.attributes.url;
 
+    // console.log(
+    //   "Member data 3:",
+    //   member.attributes.uploadfiles.data[0]?.attributes.image_medium.data[0]
+    //     ?.attributes.url || ""
+    // );
+
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow
           key={member.id}
           className={`${index % 2 === 0 ? "flex-row-reverse" : ""}`}
         >
-          <MDBCol md="6" className={`p-0 order-${order1}`}>
+          <MDBCol
+            md="6"
+            className={`p-0 order-${order1}`}
+            style={{ maxWidth: "550px" }}
+          >
             <Link
               to={`/Member-Detail/${member.id}`}
               onClick={() => {
@@ -82,7 +86,8 @@ function Post() {
                   objectFit: "cover",
                   borderRadius: "0px",
                   alignSelf: "center",
-                  height: "350px",
+                  // height: "350px",
+                  height: "100%",
                   width: "100%",
                   objectPosition: "top",
                 }}
@@ -161,126 +166,126 @@ function Post() {
   );
 }
 
-function Image({ members }) {
-  const [uploadfiles, setUploadfiles] = useState([]);
+// function Image({ members }) {
+//   const [uploadfiles, setUploadfiles] = useState([]);
 
-  useEffect(() => {
-    let isMounted = true;
+//   useEffect(() => {
+//     let isMounted = true;
 
-    const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+//     const instance = axios.create({
+//       baseURL: "https://10.35.29.186/api/",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     });
 
-    async function fetchData() {
-      try {
-        const response = await instance.get(
-          "members?populate=uploadfiles.fileupload"
-        );
-        if (isMounted) {
-          setUploadfiles(response.data.data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
+//     async function fetchData() {
+//       try {
+//         const response = await instance.get(
+//           "members?populate=uploadfiles.fileupload"
+//         );
+//         if (isMounted) {
+//           setUploadfiles(response.data.data);
+//         }
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     }
 
-    if (uploadfiles.length === 0) {
-      fetchData();
-    }
+//     if (uploadfiles.length === 0) {
+//       fetchData();
+//     }
 
-    return () => {
-      isMounted = false;
-    };
-  }, [uploadfiles]);
+//     return () => {
+//       isMounted = false;
+//     };
+//   }, [uploadfiles]);
 
-  return (
-    <>
-      <div className="d-flex justify-content-between py-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow>
-            {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
-                <Link
-                  to={`/Member-Detail/${member.id}`}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    window.location.replace(`/Member-Detail/${member.id}`);
-                  }}
-                >
-                  <MDBCard
-                    style={{
-                      borderBottom: "1px solid black",
-                      boxShadow: "unset",
-                      borderRadius: "0px",
-                    }}
-                  >
-                    <MDBCardImage
-                      className="rounded-0"
-                      src={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      position="top"
-                      alt="..."
-                      style={{
-                        height: "350px",
-                        objectFit: "contain",
-                        borderRadius: "0px",
-                        alignSelf: "center",
-                      }}
-                    />
-                    <Link
-                      to={`/Member-Detail/${member.id}`}
-                      onClick={() => {
-                        window.scrollTo(0, 0);
-                        window.location.replace(`/Member-Detail/${member.id}`);
-                      }}
-                    >
-                      <MDBCardBody>
-                        <MDBCardTitle className="m-0">
-                          <p
-                            className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
-                            style={{ color: "#AE023E" }}
-                          >
-                            {member.attributes.name_en}
-                            <br></br>
-                            {member.attributes.surname_en}
-                          </p>
-                        </MDBCardTitle>
-                        <MDBCardText>
-                          <p
-                            className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
-                            style={{ color: "#AE023E" }}
-                          >
-                            {member.attributes.position_en}
-                          </p>
-                        </MDBCardText>
-                        <MDBCardText key={member.attributes}>
-                          <p
-                            className="fw-normal text-center text-sm md:text-lg"
-                            style={{ color: "#AE023E" }}
-                          >
-                            Main Interest, Main <br></br> Interest, Main
-                            Interest
-                          </p>
-                        </MDBCardText>
-                      </MDBCardBody>
-                    </Link>
-                  </MDBCard>
-                </Link>
-              </MDBCol>
-            ))}
-          </MDBRow>
-        </MDBContainer>
-      </div>
-    </>
-  );
-}
+//   return (
+//     <>
+//       <div className="d-flex justify-content-between py-4" id="tools-flex">
+//         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+//           <MDBRow>
+//             {uploadfiles.map((member) => (
+//               <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
+//                 <Link
+//                   to={`/Member-Detail/${member.id}`}
+//                   onClick={() => {
+//                     window.scrollTo(0, 0);
+//                     window.location.replace(`/Member-Detail/${member.id}`);
+//                   }}
+//                 >
+//                   <MDBCard
+//                     style={{
+//                       borderBottom: "1px solid black",
+//                       boxShadow: "unset",
+//                       borderRadius: "0px",
+//                     }}
+//                   >
+//                     <MDBCardImage
+//                       className="rounded-0"
+//                       src={
+//                         "https://10.35.29.186" +
+//                         member.attributes.uploadfiles.data[0]?.attributes
+//                           .fileupload.data[0]?.attributes.url
+//                       }
+//                       position="top"
+//                       alt="..."
+//                       style={{
+//                         height: "350px",
+//                         objectFit: "contain",
+//                         borderRadius: "0px",
+//                         alignSelf: "center",
+//                       }}
+//                     />
+//                     <Link
+//                       to={`/Member-Detail/${member.id}`}
+//                       onClick={() => {
+//                         window.scrollTo(0, 0);
+//                         window.location.replace(`/Member-Detail/${member.id}`);
+//                       }}
+//                     >
+//                       <MDBCardBody>
+//                         <MDBCardTitle className="m-0">
+//                           <p
+//                             className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+//                             style={{ color: "#AE023E" }}
+//                           >
+//                             {member.attributes.name_en}
+//                             <br></br>
+//                             {member.attributes.surname_en}
+//                           </p>
+//                         </MDBCardTitle>
+//                         <MDBCardText>
+//                           <p
+//                             className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
+//                             style={{ color: "#AE023E" }}
+//                           >
+//                             {member.attributes.position_en}
+//                           </p>
+//                         </MDBCardText>
+//                         <MDBCardText key={member.attributes}>
+//                           <p
+//                             className="fw-normal text-center text-sm md:text-lg"
+//                             style={{ color: "#AE023E" }}
+//                           >
+//                             Main Interest, Main <br></br> Interest, Main
+//                             Interest
+//                           </p>
+//                         </MDBCardText>
+//                       </MDBCardBody>
+//                     </Link>
+//                   </MDBCard>
+//                 </Link>
+//               </MDBCol>
+//             ))}
+//           </MDBRow>
+//         </MDBContainer>
+//       </div>
+//     </>
+//   );
+// }
 
 export default function Team() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
