@@ -50,7 +50,7 @@ function PublicationsDetail({ title }) {
                 className="text-uppercase fw-bold ps-4"
                 style={{ fontFamily: "MyFont" }}
               >
-                {tags.attributes?.title || "not found"}
+                {tags.attributes?.title || "-"}
               </span>
             </MDBCol>
           </MDBRow>
@@ -63,7 +63,7 @@ function PublicationsDetail({ title }) {
                   className="fw-bolder"
                   style={{ color: "#AE023E", fontFamily: "MyFont" }}
                 >
-                  {tags.attributes?.title || "not found"}
+                  {tags.attributes?.title || "-"}
                 </h1>
               </div>
             </MDBCol>
@@ -89,7 +89,7 @@ function PublicationsDetail({ title }) {
           <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             {/* Current Affiliations */}
             <MDBRow className="pt-4">
-              {tags.attributes?.description || "not found"}
+              {tags.attributes?.description || "-"}
             </MDBRow>
 
             {/*  Grants */}

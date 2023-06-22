@@ -310,7 +310,7 @@ function Menu() {
                                 (publication.attributes.title_en.length > 50
                                   ? "..."
                                   : "")
-                              : "not found"}
+                              : "-"}
                           </p>
                         </MDBCardTitle>
                         <MDBCardTitle className="m-0">

@@ -76,7 +76,7 @@ function TagsDetail({ title }) {
                 className="text-uppercase fw-bold "
                 style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {tags.attributes?.name_en || "not found"}
+                {tags.attributes?.name_en || "-"}
               </span>
             </MDBCol>
           </MDBRow>
@@ -94,7 +94,7 @@ function TagsDetail({ title }) {
                     lineHeight: "1.6",
                   }}
                 >
-                  {tags.attributes?.name_en || "not found"}
+                  {tags.attributes?.name_en || "-"}
                 </h1>
               </div>
             </MDBCol>

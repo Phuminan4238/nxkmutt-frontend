@@ -220,7 +220,7 @@ function Reuse() {
                   className="font-normal text-white xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {tagsData.attributes?.name_en || "not found"}
+                  {tagsData.attributes?.name_en || "-"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
@@ -259,7 +259,7 @@ function Reuse() {
             >
               <MDBCol>
                 <p className="text-black px-20">
-                  {tagsData.attributes?.description_en || "not found"}
+                  {tagsData.attributes?.description_en || "-"}
                 </p>
                 <Link
                   to={`/Tags-Detail/${tagsData.id}`}

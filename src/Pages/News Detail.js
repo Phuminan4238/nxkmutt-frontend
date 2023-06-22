@@ -49,7 +49,7 @@ function TagsDetail({ title }) {
             <MDBCol className="col-md-6 col-12">
               <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
               <span className="text-uppercase fw-bold ps-4">
-                {tags.attributes?.name_en || "not found"}
+                {tags.attributes?.name_en || "-"}
               </span>
             </MDBCol> */}
             <MDBCol
@@ -80,7 +80,7 @@ function TagsDetail({ title }) {
                 className="text-uppercase fw-bold "
                 style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {tags.attributes?.name_en || "not found"}
+                {tags.attributes?.name_en || "-"}
               </span>
             </MDBCol>
           </MDBRow>
@@ -90,7 +90,7 @@ function TagsDetail({ title }) {
             <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1 className="fw-bolder" style={{ color: "#AE023E" }}>
-                  {tags.attributes?.name_en || "not found"}
+                  {tags.attributes?.name_en || "-"}
                 </h1>
               </div>
             </MDBCol>

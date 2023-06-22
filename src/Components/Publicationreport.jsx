@@ -54,7 +54,7 @@ function Report1() {
                           (publication.attributes.title.length > 50
                             ? "..."
                             : "")
-                        : "not found"}
+                        : "-"}
                     </p>
                   </MDBCardTitle>
                 </MDBCardBody>

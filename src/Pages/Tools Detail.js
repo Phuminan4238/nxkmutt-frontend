@@ -89,7 +89,7 @@ function ToolsDetail({ title }) {
                 className="text-uppercase fw-bold "
                 style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {uploadfiles.attributes?.name_en || "not found"}
+                {uploadfiles.attributes?.name_en || "-"}
               </span>
             </MDBCol>
           </MDBRow>
@@ -103,7 +103,7 @@ function ToolsDetail({ title }) {
                   className="fw-bolder pt-4"
                   style={{ color: "#AE023E", fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.name_en || "not found"}
+                  {uploadfiles.attributes?.name_en || "-"}
                 </h1>
               </div>
             </MDBCol>
@@ -113,7 +113,7 @@ function ToolsDetail({ title }) {
                 src={
                   "https://10.35.29.186" +
                     uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                      .fileupload.data[0]?.attributes.url || "not found"
+                      .fileupload.data[0]?.attributes.url || "-"
                 }
                 position="top"
                 alt="..."

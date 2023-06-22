@@ -92,8 +92,8 @@ function Memberdetail({ title }) {
                 className="text-uppercase fw-bold "
                 style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {uploadfiles.attributes?.prefix_en || "not found"}
-                {uploadfiles.attributes?.nickname_en || "not found"}
+                {uploadfiles.attributes?.prefix_en || "-"}
+                {uploadfiles.attributes?.nickname_en || "-"}
               </span>
             </MDBCol>
           </MDBRow>
@@ -108,8 +108,8 @@ function Memberdetail({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.prefix_en || "not found"}
-                  {uploadfiles.attributes?.name_en || "not found"}
+                  {uploadfiles.attributes?.prefix_en || "-"}
+                  {uploadfiles.attributes?.name_en || "-"}
                   {/* <span>&nbsp</span> */}
                   <span
                     style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
@@ -123,13 +123,13 @@ function Memberdetail({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.surname_en || "not found"}
+                  {uploadfiles.attributes?.surname_en || "-"}
                 </h1>
                 <h3
                   className="fw-normal text-normal pt-2 mb-1"
                   style={{ color: "#AE023E" }}
                 >
-                  {uploadfiles.attributes?.position_en || "not found"}
+                  {uploadfiles.attributes?.position_en || "-"}
                 </h3>
 
                 <h6 className="" style={{ color: "#AE023E" }}>
@@ -145,7 +145,7 @@ function Memberdetail({ title }) {
                       className="fw-normal text-normal ps-2"
                       style={{ color: "#119ED1" }}
                     >
-                      {uploadfiles.attributes?.email || "not found"}
+                      {uploadfiles.attributes?.email || "-"}
                     </span>
                   </MDBCol>
                 </MDBRow>
@@ -153,7 +153,7 @@ function Memberdetail({ title }) {
                   className="fw-normal text-normal pt-3"
                   style={{ maxWidth: "90%" }}
                 >
-                  {uploadfiles.attributes?.bio_en || "not found"}
+                  {uploadfiles.attributes?.bio_en || "-"}
                 </p>
               </div>
             </MDBCol>
@@ -163,7 +163,7 @@ function Memberdetail({ title }) {
                 src={
                   "https://10.35.29.186" +
                     uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                      .fileupload.data[0]?.attributes.url || "not found"
+                      .fileupload.data[0]?.attributes.url || "-"
                 }
                 position="top"
                 alt="..."
@@ -224,14 +224,14 @@ function Memberdetail({ title }) {
                       const [degree, year] = education.split("–");
                       return (
                         <li key={index} className="fw-normal text-normal">
-                          <p className="mb-1">{degree || "not found"} </p>
+                          <p className="mb-1">{degree || "-"} </p>
                         </li>
                       );
                     }
                   )}
                 </ul>
               ) : (
-                <p className="fw-normal text-normal">not found</p>
+                <p className="fw-normal text-normal">-</p>
               )}
             </MDBCol>
             <MDBCol md="1">
@@ -285,7 +285,7 @@ function Memberdetail({ title }) {
                     )}
                   </ul>
                 ) : (
-                  <p className="fw-normal text-normal text-black">not found</p>
+                  <p className="fw-normal text-normal text-black">-</p>
                 )}
               </MDBCol>
             </MDBRow>
@@ -315,9 +315,7 @@ function Memberdetail({ title }) {
                       )}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal text-black">
-                      not found
-                    </p>
+                    <p className="fw-normal text-normal text-black">-</p>
                   )}
                 </MDBCol>
               </MDBRow>
@@ -346,9 +344,7 @@ function Memberdetail({ title }) {
                       ))}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal text-black">
-                      not found
-                    </p>
+                    <p className="fw-normal text-normal text-black">-</p>
                   )}
                 </MDBCol>
               </MDBRow>
@@ -377,7 +373,7 @@ function Memberdetail({ title }) {
                       ))}
                     </ul>
                   ) : (
-                    <p className="fw-normal text-normal">not found</p>
+                    <p className="fw-normal text-normal">-</p>
                   )}
                 </MDBCol>
               </MDBRow>
@@ -455,13 +451,13 @@ function Memberdetail({ title }) {
                 const [degree, year] = education.split("–");
                 return (
                   <li key={index} className="fw-normal text-normal">
-                    {degree || "not found"}
+                    {degree || "-"}
                   </li>
                 );
               })}
             </ul>
           ) : (
-            <p className="fw-normal text-normal">not found</p>
+            <p className="fw-normal text-normal">-</p>
           )} */}
 
           <MDBRow

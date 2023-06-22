@@ -111,7 +111,7 @@ function Studentdetail({ title }) {
                 className="text-uppercase fw-bold "
                 style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
               >
-                {/* {tags.attributes?.name_en || "not found"} */}
+                {/* {tags.attributes?.name_en || "-"} */}
                 All Student
               </span>
             </MDBCol>
@@ -127,7 +127,7 @@ function Studentdetail({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.name_en || "not found"}
+                  {uploadfiles.attributes?.name_en || "-"}
                   {/* <span>&nbsp</span> */}
                   <span
                     style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
@@ -141,13 +141,13 @@ function Studentdetail({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.surname_en || "not found"}
+                  {uploadfiles.attributes?.surname_en || "-"}
                 </h1>
                 <h3
                   className="fw-normal text-normal pt-2 mb-1"
                   style={{ color: "#AE023E" }}
                 >
-                  {/* {uploadfiles.attributes?.position_en || "not found"} */}
+                  {/* {uploadfiles.attributes?.position_en || "-"} */}
                 </h3>
 
                 {/* <h6 className="" style={{ color: "#AE023E" }}>
@@ -163,7 +163,7 @@ function Studentdetail({ title }) {
                       className="fw-normal text-normal ps-2"
                       style={{ color: "#119ED1" }}
                     >
-                      {uploadfiles.attributes?.email || "not found"}
+                      {uploadfiles.attributes?.email || "-"}
                     </span>
                   </MDBCol> */}
                 </MDBRow>
@@ -171,7 +171,7 @@ function Studentdetail({ title }) {
                   className="fw-normal text-normal pt-3"
                   style={{ maxWidth: "90%" }}
                 >
-                  {uploadfiles.attributes?.bio_en || "not found"}
+                  {uploadfiles.attributes?.bio_en || "-"}
                 </p>
               </div>
             </MDBCol>
@@ -182,7 +182,7 @@ function Studentdetail({ title }) {
                   src={
                     "https://10.35.29.186" +
                       uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url || "not found"
+                        .fileupload.data[0]?.attributes.url || "-"
                   }
                   position="top"
                   alt="..."
@@ -227,7 +227,7 @@ function Studentdetail({ title }) {
                         className="fw-bold text-uppercase text-black"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {member.attributes?.name_en || "not found"}
+                        {member.attributes?.name_en || "-"}
                         <span
                           style={{
                             paddingLeft: "0.5rem",
@@ -243,13 +243,13 @@ function Studentdetail({ title }) {
                         className="fw-bold text-uppercase text-black"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {member.attributes?.surname_en || "not found"}
+                        {member.attributes?.surname_en || "-"}
                       </h1>
                       {/* <h3
                         className="fw-normal text-normal pt-2 mb-1"
                         style={{ color: "#AE023E" }}
                       >
-                        {member.attributes?.position_en || "not found"}
+                        {member.attributes?.position_en || "-"}
                       </h3> */}
                       {/* <h6 className="" style={{ color: "#AE023E" }}>
                         Neuroscience Center for Research and Innovation (NX),
@@ -264,7 +264,7 @@ function Studentdetail({ title }) {
                             className="fw-normal text-normal ps-2"
                             style={{ color: "#119ED1" }}
                           >
-                            {member.attributes?.email || "not found"}
+                            {member.attributes?.email || "-"}
                           </span>
                         </MDBCol> */}
                       </MDBRow>
@@ -272,7 +272,7 @@ function Studentdetail({ title }) {
                         className="fw-normal text-normal pt-3"
                         style={{ maxWidth: "90%" }}
                       >
-                        {member.attributes?.bio_en || "not found"}
+                        {member.attributes?.bio_en || "-"}
                       </p>
                     </div>
                   </MDBCol>
@@ -283,7 +283,7 @@ function Studentdetail({ title }) {
                         src={
                           "https://10.35.29.186" +
                             member.attributes?.uploadfiles.data[0]?.attributes
-                              .fileupload.data[0]?.attributes.url || "not found"
+                              .fileupload.data[0]?.attributes.url || "-"
                         }
                         position="top"
                         alt="..."
