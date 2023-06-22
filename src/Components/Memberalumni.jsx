@@ -70,7 +70,7 @@ function Post() {
                   }}
                 >
                   <MDBCardImage
-                    className="rounded-6"
+                    className="rounded-4"
                     src={
                       "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
@@ -182,7 +182,7 @@ function Image({ members }) {
                     }}
                   >
                     <MDBCardImage
-                      className="rounded-0"
+                      className="rounded-4"
                       src={
                         "https://10.35.29.186" +
                         member.attributes.uploadfiles.data[0]?.attributes

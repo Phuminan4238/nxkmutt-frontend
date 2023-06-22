@@ -108,7 +108,7 @@ function Post() {
                   }}
                 >
                   <MDBCardImage
-                    className="rounded-0"
+                    className="rounded-4"
                     src={
                       "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
@@ -119,7 +119,7 @@ function Post() {
                     style={{
                       // height: "340px",
                       objectFit: "cover",
-                      borderRadius: "0px",
+                      borderRadius: "1rem",
                       alignSelf: "center",
                       height: "350px",
                       objectPosition: "50% 15%",
@@ -300,7 +300,7 @@ export default function Team() {
   return (
     <>
       {/* Render the Image component when on mobile */}
-      {/* {isMobile && <Image />} */}
+      {isMobile && <Image />}
 
       {/* Hide the Post component when on mobile */}
       {!isMobile && <Post />}

@@ -73,7 +73,7 @@ function ToolsDetail({ title }) {
                 <a style={{ color: "#AE023E" }}>{title}</a>
               </Link>
             </MDBCol>
-            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+            <MDBCol className="col-2 p-0 me-3" style={{ width: "3.33%" }}>
               <span>
                 <KeyboardArrowRightIcon
                   style={{
