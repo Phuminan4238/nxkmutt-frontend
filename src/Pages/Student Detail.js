@@ -147,26 +147,25 @@ function Studentdetail({ title }) {
                   className="fw-normal text-normal pt-2 mb-1"
                   style={{ color: "#AE023E" }}
                 >
-                  position ?{" "}
-                  {uploadfiles.attributes?.position_en || "not found"}
+                  {/* {uploadfiles.attributes?.position_en || "not found"} */}
                 </h3>
 
-                <h6 className="" style={{ color: "#AE023E" }}>
-                  (from local: ) Neuroscience Center for Research and Innovation
-                  (NX), Learning Institute, KMUTT
-                </h6>
+                {/* <h6 className="" style={{ color: "#AE023E" }}>
+                  Neuroscience Center for Research and Innovation (NX), Learning
+                  Institute, KMUTT
+                </h6> */}
                 <MDBRow className="pt-2">
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
+                  {/* <MDBCol size="1" style={{ width: "3.33%" }}>
                     <MailOutlineIcon style={{ color: "#119ED1" }} />
-                  </MDBCol>
-                  <MDBCol>
+                  </MDBCol> */}
+                  {/* <MDBCol>
                     <span
                       className="fw-normal text-normal ps-2"
                       style={{ color: "#119ED1" }}
                     >
                       {uploadfiles.attributes?.email || "not found"}
                     </span>
-                  </MDBCol>
+                  </MDBCol> */}
                 </MDBRow>
                 <p
                   className="fw-normal text-normal pt-3"
@@ -246,28 +245,28 @@ function Studentdetail({ title }) {
                       >
                         {member.attributes?.surname_en || "not found"}
                       </h1>
-                      <h3
+                      {/* <h3
                         className="fw-normal text-normal pt-2 mb-1"
                         style={{ color: "#AE023E" }}
                       >
                         {member.attributes?.position_en || "not found"}
-                      </h3>
-                      <h6 className="" style={{ color: "#AE023E" }}>
+                      </h3> */}
+                      {/* <h6 className="" style={{ color: "#AE023E" }}>
                         Neuroscience Center for Research and Innovation (NX),
                         Learning Institute, KMUTT
-                      </h6>
+                      </h6> */}
                       <MDBRow className="pt-2">
-                        <MDBCol size="1" style={{ width: "3.33%" }}>
+                        {/* <MDBCol size="1" style={{ width: "3.33%" }}>
                           <MailOutlineIcon style={{ color: "#119ED1" }} />
-                        </MDBCol>
-                        <MDBCol>
+                        </MDBCol> */}
+                        {/* <MDBCol>
                           <span
                             className="fw-normal text-normal ps-2"
                             style={{ color: "#119ED1" }}
                           >
                             {member.attributes?.email || "not found"}
                           </span>
-                        </MDBCol>
+                        </MDBCol> */}
                       </MDBRow>
                       <p
                         className="fw-normal text-normal pt-3"
