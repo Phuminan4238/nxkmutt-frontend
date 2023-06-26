@@ -73,7 +73,7 @@ function Image() {
                           style={{ color: "black", fontFamily: "MyFont" }}
                         >
                           {member.attributes.name_en}
-                          &nbsp;
+
                           {member.attributes.surname_en}
                         </p>
                       </MDBCardTitle>

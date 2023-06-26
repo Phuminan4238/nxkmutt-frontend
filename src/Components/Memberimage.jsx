@@ -139,7 +139,7 @@ function Post() {
                         }}
                       >
                         {member.attributes.name_en}
-                        &nbsp;
+
                         {member.attributes.surname_en}
                       </p>
                     </MDBCardTitle>

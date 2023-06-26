@@ -28,7 +28,7 @@ function Post() {
       });
   }, []);
 
-  const colors = ["#B34C66", "#F2B032", "#88BFD2", "#F2B032"];
+  const colors = ["#B34C66", "#F2B032", "#119ED1", "#F2B032"];
 
   const Column = ({ color, children }) => {
     return (
@@ -109,7 +109,7 @@ function Post() {
                     fontFamily: "MyFont",
                   }}
                 >
-                  {member.attributes.name_en}&nbsp;
+                  {member.attributes.name_en}
                   <br></br>
                   {member.attributes.surname_en}
                   <div

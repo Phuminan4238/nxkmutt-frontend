@@ -1,15 +1,67 @@
 import React from "react";
+import { useState, useEffect, setIsLoaded } from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
+import { Link } from "react-router-dom";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 /* Components */
 import Contactlab from "../Components/Contactlab";
 import Contactsocial from "../Components/Contactsocial";
+import Contactadministration from "../Components/Contactadministration";
+import DataDocument from "./Data Document";
+// Lotties
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 
 const Contactus = () => {
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
@@ -100,6 +152,17 @@ const Contactus = () => {
                 className="font-black  xs:text-xl md:text-3xl"
                 style={{ fontFamily: "FontMedium" }}
               >
+                Administration Staff
+              </p>
+            </div>
+            <div className="pt-2 py-4 mx-0 md:px-0 ">
+              <Contactadministration></Contactadministration>
+            </div>
+            <div className="d-inline-flex p-2">
+              <p
+                className="font-black  xs:text-xl md:text-3xl"
+                style={{ fontFamily: "FontMedium" }}
+              >
                 Social Media
               </p>
             </div>
@@ -116,6 +179,36 @@ const Contactus = () => {
             </div>
             <div className="pt-2 py-4 mx-0 md:px-0 ">
               <Contactlab></Contactlab>
+            </div>
+            <div className="d-inline-flex p-2 pt-5">
+              <p
+                className="fw-bold text-black xs:text-xl md:text-3xl"
+                style={{ fontFamily: "FontMedium" }}
+              >
+                Open Data
+              </p>
+            </div>
+            <div className="pt-2 py-4 mx-0 md:px-0 ">
+              <MDBRow className="pt-2 ps-2">
+                <MDBCol size="1" style={{ width: "3.33%" }}>
+                  <DocumentScannerIcon style={{ color: "#119ED1" }} />
+                </MDBCol>
+                <MDBCol>
+                  <Link
+                    to={`/Data-Document`}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <span
+                      className="fw-normal text-lg ps-2"
+                      style={{ color: "#119ED1" }}
+                    >
+                      Data and Document
+                    </span>
+                  </Link>
+                </MDBCol>
+              </MDBRow>
             </div>
           </MDBRow>
         </MDBContainer>

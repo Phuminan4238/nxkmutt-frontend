@@ -18,6 +18,7 @@ import Contactus from "./Pages/Contact Us";
 import HomeNav from "./Components/HomeNav";
 import AllNav from "./Components/AllNav";
 import Participate from "./Pages/Participate Donate";
+import DataDocument from "./Pages/Data Document";
 import Memberdetail from "./Pages/Member Detail";
 import Studentdetail from "./Pages/Student Detail";
 import TagsDetail from "./Pages/Tags Detail";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/News-and-Activities" element={<Newsactivities />} />
           <Route path="/Contact-Us" element={<Contactus />} />
           <Route path="/Participate-and-Donate" element={<Participate />} />
+          <Route path="/Data-Document" element={<DataDocument />} />
           <Route
             path="/Member-Detail/:id"
             element={<Memberdetail title="TEAM MEMBER" />}

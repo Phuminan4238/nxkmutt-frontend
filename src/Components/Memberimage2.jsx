@@ -82,7 +82,6 @@ function Image() {
                   style={{ color: "#AE023E" }}
                 >
                   {member.attributes.name_en}
-                  &nbsp;
                   {member.attributes.surname_en}
                 </h4>
                 <h6
@@ -132,7 +131,6 @@ function Image() {
                   style={{ color: "#AE023E" }}
                 >
                   {member.attributes.name_en}
-                  &nbsp;
                   {member.attributes.surname_en}
                 </h4>
                 <h6
@@ -181,7 +179,6 @@ function Image() {
             <div class="col-4">
               <h4 className="fw-bold text-center" style={{ color: "#AE023E" }}>
                 {member.attributes.name_en}
-                &nbsp;
                 {member.attributes.surname_en}
               </h4>
               <h6
@@ -223,7 +220,6 @@ function Image() {
             <MDBCardTitle>
               <h4 className="fw-bold text-center" style={{ color: "#AE023E" }}>
                 {member.attributes.name_en}
-                &nbsp;
                 {member.attributes.surname_en}
               </h4>
             </MDBCardTitle>

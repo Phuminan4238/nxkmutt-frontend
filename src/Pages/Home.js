@@ -100,18 +100,14 @@ function Home(props) {
 
   return (
     <>
-      <Preloader />
+      {/* <Preloader /> */}
       <div className="App">
         {/* ******************/}
 
         <main>
           <ThemeProvider theme={theme}>
             {/* Section Carousel */}
-            <Container
-              maxWidth="xl"
-              disableGutters={true}
-              style={{ boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.10)" }}
-            >
+            <Container maxWidth="xl" disableGutters={true}>
               <Carousel2></Carousel2>
 
               {/* ******************/}
@@ -172,8 +168,8 @@ function Home(props) {
             })}
           > */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
-                  <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
+                <MDBRow className="pb-4 xs:px-5 sm:px-5 md:px-0">
+                  <div className="d-inline-flex xs:p-1 xs:pt-12  md:pt-16">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
@@ -185,7 +181,7 @@ function Home(props) {
               </MDBContainer>
               <section>
                 <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                  <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
+                  <MDBRow className="pb-4 xs:px-5 sm:px-5 md:px-0">
                     <Toolsimage></Toolsimage>
                   </MDBRow>
                 </MDBContainer>
@@ -195,7 +191,7 @@ function Home(props) {
               {/* Section News */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
                 <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                  <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-16">
+                  <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-8">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}

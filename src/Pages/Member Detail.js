@@ -22,6 +22,9 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import DescriptionIcon from "@mui/icons-material/Description";
 /* Components */
 import MemberDetailimage from "../Components/MemberDetailimage";
+// Lotties
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
 
 function Memberdetail({ title }) {
   let { id } = useParams();
@@ -58,8 +61,52 @@ function Memberdetail({ title }) {
     window.location.reload();
   };
 
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
+
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
@@ -131,18 +178,18 @@ function Memberdetail({ title }) {
                 >
                   {uploadfiles.attributes?.position_en || "-"}
                 </h3>
-
-                <h6 className="" style={{ color: "#AE023E" }}>
+                {/* local data */}
+                <p className="text-lg" style={{ color: "#AE023E" }}>
                   Neuroscience Center for Research and Innovation (NX), Learning
                   Institute, KMUTT
-                </h6>
+                </p>
                 <MDBRow className="pt-2">
                   <MDBCol size="1" style={{ width: "3.33%" }}>
                     <MailOutlineIcon style={{ color: "#119ED1" }} />
                   </MDBCol>
                   <MDBCol>
                     <span
-                      className="fw-normal text-normal ps-2"
+                      className="fw-normal text-lg ps-2"
                       style={{ color: "#119ED1" }}
                     >
                       {uploadfiles.attributes?.email || "-"}
@@ -150,7 +197,7 @@ function Memberdetail({ title }) {
                   </MDBCol>
                 </MDBRow>
                 <p
-                  className="fw-normal text-normal pt-3"
+                  className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}
                 >
                   {uploadfiles.attributes?.bio_en || "-"}
@@ -168,14 +215,10 @@ function Memberdetail({ title }) {
                 position="top"
                 alt="..."
                 style={{
-                  //   height: "350px",
-                  // width: "100%",
-                  // height: "400px",
-                  objectFit: "fill",
-                  // height: "500px",
+                  objectFit: "cover",
                   borderRadius: "0px",
-                  alignSelf: "center",
-                  // objectFit: "contain",
+                  objectPosition: "50% 15%",
+                  height: "450px",
                 }}
               />
             </MDBCol>
@@ -276,7 +319,7 @@ function Memberdetail({ title }) {
               <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                 {uploadfiles.attributes?.affiliation_en ? (
                   <ul style={{ paddingLeft: "1rem" }}>
-                    {uploadfiles.attributes.project_en.map(
+                    {uploadfiles.attributes.affiliation_en.map(
                       (affiliation, index) => (
                         <li key={index} className="fw-normal text-normal">
                           {affiliation}

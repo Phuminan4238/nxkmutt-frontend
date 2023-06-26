@@ -16,7 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
-import logo from "../Images/logo.png";
+import logo from "../Images/logo.svg";
 import logored from "../Images/logo-red.png";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -268,7 +268,7 @@ export default function HomeNav(props) {
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
-                      <img src={logo} height="60" alt="" loading="lazy" />
+                      <img src={logo} height="80" alt="" loading="lazy" />
                     </Link>
                   </Typography>
                 </Box>
@@ -438,7 +438,7 @@ export default function HomeNav(props) {
                       component="div"
                     >
                       <Link to="/" onClick={handleLogoClick}>
-                        <img src={logo} height="60" alt="" loading="lazy" />
+                        <img src={logo} height="80" alt="" loading="lazy" />
                       </Link>
                     </Typography>
                   </Box>

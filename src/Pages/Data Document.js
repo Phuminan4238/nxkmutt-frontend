@@ -11,7 +11,7 @@ import axios from "axios";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 
-const Participate = () => {
+const DataDocument = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
@@ -113,7 +113,7 @@ const Participate = () => {
                   className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  PARTICIPATE
+                  DATA
                 </p>
                 <p
                   className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
@@ -129,7 +129,7 @@ const Participate = () => {
                   >
                     &
                   </span>{" "}
-                  DONATE
+                  DOCUMENT
                 </p>
               </div>
             </MDBCol>
@@ -162,7 +162,7 @@ const Participate = () => {
                   className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  JOB & Internship
+                  Topic
                 </p>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
@@ -197,7 +197,7 @@ const Participate = () => {
                   className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  STUDY participation
+                  Topic
                 </h4>
               </MDBRow>
               <MDBCol className="ps-4 pt-2">
@@ -235,7 +235,7 @@ const Participate = () => {
                   className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Donation
+                  Topic
                 </p>
                 <p>
                   Your help matters! Your generous support, no matter the size,
@@ -254,4 +254,4 @@ const Participate = () => {
   );
 };
 
-export default Participate;
+export default DataDocument;

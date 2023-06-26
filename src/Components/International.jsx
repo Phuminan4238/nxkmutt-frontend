@@ -51,7 +51,7 @@ function Profile() {
     };
   }, [uploadfiles]);
 
-  const colors = ["#F2B032", "#119ED1"];
+  const colors = ["#F2B032", "#88BFD2"];
 
   return (
     <>
@@ -85,7 +85,7 @@ function Profile() {
                       objectFit: "cover",
                       borderRadius: "0px",
                       alignSelf: "center",
-                      height: "350px",
+                      height: "300px",
                       objectPosition: "50% 15%",
                     }}
                   />
@@ -93,12 +93,12 @@ function Profile() {
                   <MDBCardBody>
                     <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                       <p
-                        className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-2xl"
+                        className="text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
                         style={{
-                          fontFamily: "MyFont",
+                          fontFamily: "FontMedium",
                         }}
                       >
-                        {member.attributes.name_en}&nbsp;
+                        {member.attributes.name_en}
                         <br></br>
                         {member.attributes.surname_en}
                         <div
@@ -120,7 +120,7 @@ function Profile() {
                         </div>
                       </p>
 
-                      <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">
+                      <p className="fw-normal text-white text-center xs:text-md">
                         {member.attributes.position_en}
                       </p>
                     </div>

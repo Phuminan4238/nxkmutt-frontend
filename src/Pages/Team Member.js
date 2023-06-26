@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 /* Images*/
 import vr2 from "../Images/vr-2.png";
 /* Components */
@@ -10,12 +11,11 @@ import Memberalumni from "../Components/Memberalumni";
 import Memberadvisor from "../Components/Memberadvisor";
 import Membercol from "../Components/Membercol";
 import membericon from "../Images/vr-2.png";
-/* Preloader */
-// import Preloader2 from "../Components/Preloader2";
+// Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+// Icon
 import EastIcon from "@mui/icons-material/East";
-import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 
 const Member = ({ imageUrl }) => {
@@ -32,12 +32,10 @@ const Member = ({ imageUrl }) => {
 
   // Lotties
   const [loaded, setLoaded] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
     }, 1000); // Set the delay in milliseconds (3 seconds in this example)
-
     return () => clearTimeout(timer);
   }, []);
 

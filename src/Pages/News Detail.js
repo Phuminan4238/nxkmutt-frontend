@@ -10,12 +10,13 @@ import { MDBCardImage, MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
 import news1 from "../Images/new-1.png";
 import { Link } from "react-router-dom";
+// Lotties
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
 
 function TagsDetail({ title }) {
   let { id } = useParams();
-
   const [tags, setTags] = useState({});
-
   useEffect(() => {
     fetch(`https://10.35.29.186/api/events/${id}?`)
       .then((res) => res.json())
@@ -25,7 +26,6 @@ function TagsDetail({ title }) {
   }, [id]);
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
-
   useEffect(() => {
     fetch("https://10.35.29.186/api/publications?populate=id")
       .then((res) => res.json())
@@ -38,20 +38,55 @@ function TagsDetail({ title }) {
     window.location.reload();
   };
 
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
-          <MDBRow className="flex-sm-row flex-column pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            {/* <MDBCol className="col-1 text-uppercase fw-bold pb-4 sm:pb-0">
-              {title}
-            </MDBCol>
-            <MDBCol className="col-md-6 col-12">
-              <KeyboardArrowRightIcon></KeyboardArrowRightIcon>
-              <span className="text-uppercase fw-bold ps-4">
-                {tags.attributes?.name_en || "-"}
-              </span>
-            </MDBCol> */}
+        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
+          {/* Title  */}
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
               className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
               style={{
@@ -85,16 +120,17 @@ function TagsDetail({ title }) {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
+        {/* Container  */}
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pb-0 pe-5">
+            <MDBCol md="7" className="d-flex ps-0 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <h1 className="fw-bolder" style={{ color: "#AE023E" }}>
                   {tags.attributes?.name_en || "-"}
                 </h1>
               </div>
             </MDBCol>
-            <MDBCol md="7" className="p-0">
+            <MDBCol md="5" className="p-0">
               <MDBCardImage
                 className="rounded-0"
                 // src={

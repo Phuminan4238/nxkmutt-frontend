@@ -80,6 +80,12 @@ body {
   }
 }
 
+@media (min-width: 960px) {
+  #root .md\:text-lg {
+    font-size: 1.25rem !important;
+  }
+}
+
 body {
   margin: 0;
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -94,6 +100,10 @@ code {
 
 .navbar {
   box-shadow: none !important;
+}
+
+.MuiContainer-root {
+  box-shadow: "0px 4px 8px 0px rgba(0, 0, 0, 0.05)" !important;
 }
 
 text-align {
@@ -156,7 +166,7 @@ text-align {
 }
 
 .carousel-root {
-  margin-top: -91px;
+  margin-top: -112px;
   z-index: -1;
 }
 
@@ -258,7 +268,7 @@ a:hover {
 
 .searchBox {
   position: absolute;
-  top: 4%;
+  top: 13%;
   right: 11%;
   transform: translate(-0%, 20%);
   background: transparent;

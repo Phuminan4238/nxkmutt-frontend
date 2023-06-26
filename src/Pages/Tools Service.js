@@ -8,10 +8,11 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
 import PeopleIcon from "@mui/icons-material/People";
 import SchoolIcon from "@mui/icons-material/School";
-
 /* Components */
-
 import Toolsimage from "../Components/Tools";
+// Lotties
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
 
 const Toolservice = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -24,11 +25,55 @@ const Toolservice = () => {
         setMembercover(result.data);
       });
   }, []);
+
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0  xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
@@ -51,7 +96,7 @@ const Toolservice = () => {
                   >
                     &
                   </span>{" "}
-                  Serivce
+                  Service
                 </p>
                 <div
                   className="d-flex justify-content-between mt-auto"
@@ -130,12 +175,12 @@ const Toolservice = () => {
                   </MDBCol>
                   <MDBCol>
                     <p
-                      className="fw-bold text-lg"
+                      className="fw-bold text-xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
                       Research consultation
                     </p>
-                    <p>
+                    <p className="text-lg">
                       We are open to research project consultant or
                       collaboration and sharing tools, etc.
                     </p>
@@ -150,10 +195,13 @@ const Toolservice = () => {
                     <SchoolIcon style={{ color: "#AE023E" }} />
                   </MDBCol>
                   <MDBCol>
-                    <p className="fw-bold" style={{ fontFamily: "FontMedium" }}>
+                    <p
+                      className="fw-bold text-xl"
+                      style={{ fontFamily: "FontMedium" }}
+                    >
                       Coursework and workshop
                     </p>
-                    <p>
+                    <p className="text-lg">
                       We are open to holding neuroscience seminar and EEG,
                       neuroscience, neurotechnology.
                     </p>

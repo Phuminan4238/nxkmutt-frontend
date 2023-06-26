@@ -36,7 +36,7 @@ function Menu() {
   const [activeTag, setActiveTag] = useState(-1);
   const [allTagsSelected, setAllTagsSelected] = useState(true);
 
-  console.log(allTagsSelected);
+  console.log("this is" + allTagsSelected);
 
   const handleCognitiveClick = () => {
     setSelectedTag("cognitive");
@@ -145,6 +145,12 @@ function Menu() {
       color: textColor,
     };
   };
+
+  const moredetailStyle = {
+    fontSize: "smaller",
+  };
+
+  const moredetail = <span style={moredetailStyle}>"more detail"</span>;
 
   // Group publications by year
   const publicationsByYear = Object.entries(
@@ -296,6 +302,10 @@ function Menu() {
                         className="p-3 break-all rounded-0"
                         style={{
                           backgroundColor: allTagsSelected
+                            ? colors["white"]
+                            : tagColors["white"],
+                          border: "2px solid ",
+                          borderColor: allTagsSelected
                             ? colors[index]
                             : tagColors[selectedTag],
                         }}
@@ -303,20 +313,21 @@ function Menu() {
                         <MDBCardTitle className="m-0">
                           <p
                             className="fw-bold text-start mb-0 xs:text-xl md:text-lg"
-                            style={{ color: "#fff" }}
+                            style={{ color: tagColors[selectedTag] }}
                           >
                             {publication.attributes.title_en
-                              ? publication.attributes.title_en.slice(0, 50) +
+                              ? publication.attributes.title_en.slice(0, 30) +
                                 (publication.attributes.title_en.length > 50
-                                  ? "..."
-                                  : "")
+                                  ? "  more detail >>"
+                                  : // ReactDOMServer.renderToString(moredetail)
+                                    "")
                               : "-"}
                           </p>
                         </MDBCardTitle>
                         <MDBCardTitle className="m-0">
                           <p
-                            className="font-normal text-start mb-0 pt-4 xs:text-xl md:text-sm"
-                            style={{ color: "#fff" }}
+                            className="font-normal text-start mb-0 pt-4 xs:text-md md:text-sm"
+                            style={{ color: tagColors[selectedTag] }}
                           >
                             {publication.attributes.owner?.data?.attributes
                               ?.name_en ?? "Unknown Owner"}

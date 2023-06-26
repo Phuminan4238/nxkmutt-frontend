@@ -11,6 +11,9 @@ import { MDBCardImage, MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import vr2 from "../Images/vr-2.png";
 import news1 from "../Images/new-1.png";
 import { Link } from "react-router-dom";
+// Lotties
+import Lottie from "react-lottie-player";
+import Animation from "../Components/Animation.json";
 
 function ToolsDetail({ title }) {
   let { id } = useParams();
@@ -56,8 +59,51 @@ function ToolsDetail({ title }) {
     window.location.reload();
   };
 
+  // Lotties
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000); // Set the delay in milliseconds (3 seconds in this example)
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App">
+      {!loaded && (
+        <div
+          className="loading-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: 9999,
+          }}
+        >
+          <Lottie
+            loop
+            animationData={Animation}
+            play
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            speed={1.5} // Adjust the animation speed as needed
+            onEvent={() => setLoaded(true)} // Set the loaded state when the animation ends
+            eventListeners={[
+              {
+                eventName: "complete",
+                callback: () => setLoaded(true),
+              },
+            ]}
+          />
+        </div>
+      )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">

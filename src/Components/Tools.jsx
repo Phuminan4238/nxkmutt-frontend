@@ -98,7 +98,6 @@ function Image({ members }) {
 
   useEffect(() => {
     let isMounted = true;
-
     const instance = axios.create({
       baseURL: "https://10.35.29.186/api/",
       headers: {
@@ -106,14 +105,14 @@ function Image({ members }) {
         Accept: "application/json",
       },
     });
-
     async function fetchData() {
       try {
         const response = await instance.get(
           "tools?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
-          setUploadfiles(response.data.data);
+          const firstThreeItems = response.data.data.slice(0, 3);
+          setUploadfiles(firstThreeItems);
         }
       } catch (error) {
         console.error(error);
@@ -163,11 +162,11 @@ function Image({ members }) {
 
   return (
     <>
-      <div className="d-flex justify-content-between pt-0 " id="tools-flex">
+      <div className="d-flex justify-content-between pt-0 px-0" id="tools-flex">
         <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="g-6 xs:w-min sm:w-auto">
+          <MDBRow className="g-6 xs:w-min px-5 sm:w-auto sm:px-5 md:px-0">
             {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-4 px-2 col-sm-8">
+              <MDBCol md="4" key={member.id} className="pb-4 px-0 col-sm-8">
                 <Link
                   to={`/Tools-Detail/${member.id}`}
                   onClick={() => {
