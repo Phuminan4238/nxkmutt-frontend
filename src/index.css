@@ -166,7 +166,7 @@ text-align {
 }
 
 .carousel-root {
-  margin-top: -112px;
+  margin-top: -146px;
   z-index: -1;
 }
 
@@ -255,6 +255,12 @@ a:hover {
   padding: 0px !important;
 }
 
+.css-19r6kue-MuiContainer-root {
+  /* padding-left: 1rem !important;
+  padding-right: 1rem !important; */
+  padding: 0px !important;
+}
+
 .card-img,
 .card-img-top,
 .card-img-bottom {
@@ -268,7 +274,7 @@ a:hover {
 
 .searchBox {
   position: absolute;
-  top: 13%;
+  top: 20%;
   right: 11%;
   transform: translate(-0%, 20%);
   background: transparent;
@@ -338,6 +344,10 @@ a:hover {
   max-width: 1600px !important; /* Adjust this value to match your desired desktop width */
   margin-left: auto;
   margin-right: auto;
+}
+
+#footerpadding {
+  padding: 2rem 3rem 2rem 3rem !important;
 }
 
 @tailwind components;

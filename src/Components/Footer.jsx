@@ -11,7 +11,10 @@ export default function App() {
           <MDBRow className="pt-4 pb-0">
             <MDBCol
               className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
-              style={{ background: "#1e1e1e", padding: "2rem 3rem 2rem 3rem" }}
+              id="footerpadding"
+              style={{
+                background: "#1e1e1e",
+              }}
             >
               <div className="d-flex flex-row mt-3 text-white">
                 <div className="col-2 col-md-1" style={{ width: "5.33%" }}>

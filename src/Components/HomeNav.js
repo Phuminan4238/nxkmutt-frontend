@@ -17,7 +17,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Images/logo.svg";
-import logored from "../Images/logo-red.png";
+import logored from "../Images/logored.svg";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -244,13 +244,23 @@ export default function HomeNav(props) {
     };
   }, []);
 
+  // Logo
+  const containerStyle = {
+    width: "250px", // Adjust the width to your desired size
+  };
+
+  const logoStyle = {
+    width: "100%",
+    height: "auto",
+  };
+
   if (isMobile) {
     return (
       <React.Fragment>
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-3"
+            className="px-4"
             style={{
               background: "unset",
               boxShadow: "unset",
@@ -268,7 +278,9 @@ export default function HomeNav(props) {
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
-                      <img src={logo} height="80" alt="" loading="lazy" />
+                      <div style={containerStyle}>
+                        <img src={logo} loading="lazy" style={logoStyle} />
+                      </div>
                     </Link>
                   </Typography>
                 </Box>
@@ -418,7 +430,7 @@ export default function HomeNav(props) {
         <HideOnScroll {...props}>
           <Container maxWidth="xl">
             <AppBar
-              className="px-3"
+              className="px-4"
               style={{
                 background: "unset",
                 boxShadow: "unset",
@@ -438,7 +450,9 @@ export default function HomeNav(props) {
                       component="div"
                     >
                       <Link to="/" onClick={handleLogoClick}>
-                        <img src={logo} height="80" alt="" loading="lazy" />
+                        <div style={containerStyle}>
+                          <img src={logo} loading="lazy" style={logoStyle} />
+                        </div>
                       </Link>
                     </Typography>
                   </Box>
@@ -794,7 +808,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-3"
+            className="px-4"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -811,7 +825,9 @@ export default function HomeNav(props) {
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
-                      <img src={logored} height="60" alt="" loading="lazy" />
+                      <div style={containerStyle}>
+                        <img src={logored} loading="lazy" />
+                      </div>
                     </Link>
                   </Typography>
                   {/* 👇️ Anchor link

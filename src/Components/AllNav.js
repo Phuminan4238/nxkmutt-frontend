@@ -17,7 +17,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../Images/logo.png";
-import logored from "../Images/logo-red.png";
+import logored from "../Images/logored.svg";
 import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -112,6 +112,16 @@ export default function HomeNav(props) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Logo
+  const containerStyle = {
+    width: "250px", // Adjust the width to your desired size
+  };
+
+  const logoStyle = {
+    width: "100%",
+    height: "auto",
+  };
 
   // Search Result
   const [searchTerm, setSearchTerm] = useState("");
@@ -227,7 +237,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-3"
+            className="px-4"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -245,7 +255,9 @@ export default function HomeNav(props) {
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
-                      <img src={logored} height="60" alt="" loading="lazy" />
+                      <div style={containerStyle}>
+                        <img src={logored} loading="lazy" style={logoStyle} />
+                      </div>
                     </Link>
                   </Typography>
                 </Box>
@@ -405,7 +417,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-3"
+            className="px-4"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -421,9 +433,11 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <Link to="/" onClick={handleLogoClick}>
-                      <img src={logored} height="60" alt="" loading="lazy" />
-                    </Link>
+                    <div style={containerStyle}>
+                      <Link to="/" onClick={handleLogoClick}>
+                        <img src={logored} aloading="lazy" style={logoStyle} />
+                      </Link>
+                    </div>
                   </Typography>
                   {/* 👇️ Anchor link
               <a href="https://google.com" target="_blank" rel="noreferrer">

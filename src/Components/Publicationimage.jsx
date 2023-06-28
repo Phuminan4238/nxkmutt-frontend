@@ -285,7 +285,7 @@ function Menu() {
             ))}
           </MDBRow>
 
-          <MDBRow>
+          {/* <MDBRow>
             {publications.map((publication, index) => (
               <MDBCol md="3" key={publication.id} className="pb-4 col-sm-8">
                 {publication.attributes.url ? (
@@ -341,7 +341,7 @@ function Menu() {
                 )}
               </MDBCol>
             ))}
-          </MDBRow>
+          </MDBRow> */}
 
           {publicationsByYear}
         </MDBContainer>

@@ -250,7 +250,7 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      Students & Research Assistants{" "}
+                      Students & Research Assistants
                     </p>
                   </div>
                 </MDBRow>

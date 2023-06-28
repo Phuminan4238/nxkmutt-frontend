@@ -41,6 +41,22 @@ function Image() {
             swipeable={false}
             stopOnHover={false}
             emulateTouch={false}
+            renderIndicator={(onClickHandler, isSelected, index) => (
+              <button
+                onClick={onClickHandler}
+                style={{
+                  background: isSelected ? "#AE023E" : "gray", // Set the selected indicator to red and others to gray
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  border: "none",
+                  margin: "0 4px",
+                  padding: 0,
+                  cursor: "pointer",
+                }}
+                key={index}
+              />
+            )}
           >
             {coverImages.map((image) => (
               <div

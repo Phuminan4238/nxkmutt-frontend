@@ -18,6 +18,9 @@ import new1 from "../Images/new-1.png";
 import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
 import { useLocation } from "react-router-dom";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -85,8 +88,9 @@ const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
 
 function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
-
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   const cardStyle = {
     width: isMobile ? "-webkit-fit-content" : "100%",
@@ -98,35 +102,26 @@ function Image({ members }) {
 
   useEffect(() => {
     let isMounted = true;
-    const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-    async function fetchData() {
+
+    const fetchData = async () => {
       try {
-        const response = await instance.get(
-          "tools?populate=uploadfiles.fileupload"
+        const response = await axios.get(
+          "https://10.35.29.186/api/tools?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
-          const firstThreeItems = response.data.data.slice(0, 3);
-          setUploadfiles(firstThreeItems);
+          setUploadfiles(response.data.data);
         }
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
-    if (uploadfiles.length === 0) {
-      fetchData();
-    }
+    fetchData();
 
     return () => {
       isMounted = false;
     };
-  }, [uploadfiles]);
+  }, []);
 
   const [iconStyle, setIconStyle] = useState({
     color: "#AE023E",
@@ -140,9 +135,6 @@ function Image({ members }) {
   const handleMouseLeave = () => {
     setIconStyle({ color: "#AE023E" });
   };
-
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
   // Col Hovering
   const [isHovered, setIsHovered] = useState(false);
@@ -160,12 +152,72 @@ function Image({ members }) {
     transition: "margin-left 0.3s ease-out",
   };
 
+  // Current index
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0); // Reset current index when upload files change
+  }, [uploadfiles]);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => prevIndex + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => prevIndex - 1);
+  };
+
+  const displayedItems = uploadfiles.slice(currentIndex, currentIndex + 3);
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between pt-0 px-0" id="tools-flex">
         <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="g-6 xs:w-min px-5 sm:w-auto sm:px-5 md:px-0">
-            {uploadfiles.map((member) => (
+          <Carousel
+            responsive={responsive}
+            arrows={true}
+            renderArrowPrev={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  className="carousel-arrow carousel-prev"
+                  onClick={onClickHandler}
+                  aria-label={label}
+                >
+                  <MdKeyboardArrowLeft />
+                </button>
+              )
+            }
+            renderArrowNext={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  className="carousel-arrow carousel-next"
+                  onClick={onClickHandler}
+                  aria-label={label}
+                >
+                  <MdKeyboardArrowRight />
+                </button>
+              )
+            }
+          >
+            {displayedItems.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-4 px-0 col-sm-8">
                 <Link
                   to={`/Tools-Detail/${member.id}`}
@@ -194,8 +246,23 @@ function Image({ members }) {
                 </Link>
               </MDBCol>
             ))}
-          </MDBRow>
-
+          </Carousel>
+          <div className="d-flex justify-content-center">
+            <button
+              className="carousel-arrow carousel-prev"
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+            >
+              <MdKeyboardArrowLeft />
+            </button>
+            <button
+              className="carousel-arrow carousel-next"
+              onClick={handleNext}
+              disabled={currentIndex >= uploadfiles.length - 3}
+            >
+              <MdKeyboardArrowRight />
+            </button>
+          </div>
           {isHomePage && (
             <MDBRow
               onMouseEnter={handleMouseEnter2}
@@ -229,7 +296,6 @@ export default function ToolsImage() {
   return (
     <>
       <Image />
-      {/* <Image2 /> */}
     </>
   );
 }

@@ -165,7 +165,7 @@ const Member = ({ imageUrl }) => {
                 className="fw-bold text-uppercase text-black xs:text-xl md:text-3xl"
                 style={{ fontFamily: "MyFont", paddingLeft: "0.5rem" }}
               >
-                students & Research Assistants & Alumni
+                Students & Research Assistants & Alumni
               </h3>
               <Link
                 to={`/Student-Detail/9`}
