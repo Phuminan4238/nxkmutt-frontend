@@ -153,17 +153,17 @@ const Newsactivities = () => {
 
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 xs:pb-0 sm:pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
+                  className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   News
                 </p>
                 <p
-                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   <span
@@ -178,47 +178,6 @@ const Newsactivities = () => {
                   </span>{" "}
                   Activity
                 </p>
-                {/* <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
-                  <div className="input-group rounded">
-                    <div className="input-group-prepend">
-                      <span
-                        className="input-group-text border-0"
-                        id="search-addon"
-                        style={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                          paddingLeft: "10px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        <i className="fas fa-search"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      onKeyDown={handleKeyDown}
-                      className="form-control"
-                      style={{ width: "640px" }}
-                    />
-                    <div className="input-group-append">
-                      <span
-                        className="input-group-text border-0"
-                        id="search-addon"
-                        style={{
-                          backgroundColor: "transparent",
-                          border: "none",
-                          paddingLeft: "10px",
-                          paddingRight: "10px",
-                        }}
-                      >
-                        <i className="fas fa-arrow-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div> */}
 
                 <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
                   <div className="input-group rounded">
@@ -257,23 +216,7 @@ const Newsactivities = () => {
                     </span>
                   </div>
                 </div>
-                {/* <div className="pt-4">
-                  {searchResults.length > 0 && (
-                    <div>
-                      {searchResults.map((result) => (
-                        <li key={result.id}>
-                          <a
-                            href={result.attributes.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {result.attributes.name_en}
-                          </a>
-                        </li>
-                      ))}
-                    </div>
-                  )}
-                </div> */}
+
                 <div className="pt-4">
                   {searchTerm && (
                     <div>
@@ -293,7 +236,7 @@ const Newsactivities = () => {
                 </div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+            <MDBCol md="4" className="p-0 d-none d-sm-block">
               {memberCover.map((member) => (
                 <img
                   className="image-fluid"
@@ -314,7 +257,7 @@ const Newsactivities = () => {
               ))}
             </MDBCol>
           </MDBRow>
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 pb-5 xs:px-4 sm:px-5 md:px-0">
             <News></News>
           </MDBRow>
         </MDBContainer>

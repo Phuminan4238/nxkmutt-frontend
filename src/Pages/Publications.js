@@ -182,7 +182,7 @@ const Publications = () => {
 
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 xs:pb-0 xs:px-5 sm:pb-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
@@ -256,7 +256,10 @@ const Publications = () => {
                 </div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0">
+            <MDBCol
+              md="4"
+              className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0 d-none d-sm-block"
+            >
               {memberCover.map((member) => (
                 <img
                   className="image-fluid"
@@ -279,10 +282,12 @@ const Publications = () => {
           </MDBRow>
           <MDBRow>
             <MDBCol>
-              <p className="ms-5 pt-4 text-uppercase">Filter By</p>
+              <p className="ms-3 pt-4 text-uppercase">Filter By</p>
             </MDBCol>
           </MDBRow>
-          <Publicationimage></Publicationimage>
+          <MDBRow className="px-4 sm:px-0">
+            <Publicationimage></Publicationimage>
+          </MDBRow>
           <button
             className={`scroll-to-top ${showButton ? "show" : ""}`}
             onClick={scrollToTop}

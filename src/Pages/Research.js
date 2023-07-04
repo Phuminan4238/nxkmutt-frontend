@@ -90,7 +90,7 @@ const Research = () => {
                 ></div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+            <MDBCol md="4" className="p-0 d-none d-sm-block">
               {/* <img
                 src={vr2}
                 class="image-fluid"

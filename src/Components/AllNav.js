@@ -22,6 +22,7 @@ import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
+import { useMediaQuery } from "react-responsive";
 
 const pages = [
   "TEAM MEMBER",
@@ -50,10 +51,7 @@ function HideOnScroll(props) {
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+
   window: PropTypes.func,
 };
 
@@ -114,8 +112,12 @@ export default function HomeNav(props) {
   }, []);
 
   // Logo
-  const containerStyle = {
+  const containerStyle1 = {
     width: "250px", // Adjust the width to your desired size
+  };
+
+  const containerStyle2 = {
+    width: "150px", // Adjust the width to your desired size
   };
 
   const logoStyle = {
@@ -255,7 +257,7 @@ export default function HomeNav(props) {
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
-                      <div style={containerStyle}>
+                      <div style={containerStyle1}>
                         <img src={logored} loading="lazy" style={logoStyle} />
                       </div>
                     </Link>
@@ -433,7 +435,7 @@ export default function HomeNav(props) {
                     sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
                     component="div"
                   >
-                    <div style={containerStyle}>
+                    <div style={containerStyle1}>
                       <Link to="/" onClick={handleLogoClick}>
                         <img src={logored} aloading="lazy" style={logoStyle} />
                       </Link>
@@ -587,10 +589,383 @@ export default function HomeNav(props) {
     );
   };
 
+  const renderNavbar3 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            className="px-4"
+            style={{
+              background: "white",
+              boxShadow: "unset",
+              top: "10px",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <Link to="/" onClick={handleLogoClick}>
+                      <div style={containerStyle2}>
+                        <img src={logored} loading="lazy" style={logoStyle} />
+                      </div>
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
+                >
+                  <div
+                    className="searchBox"
+                    style={{ top: "10%" }}
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
+                  </div>
+                  {/* <span style={{ color: "#AE023E" }}>
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    EN
+                  </span> */}
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      <MenuIcon style={{ color: "#AE023E" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    // style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "76px",
+                      left: "48px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                      opacity: "0.9",
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page, index) => (
+                      <Link
+                        to={
+                          page === "TOOLS & SERVICE"
+                            ? "/tools-and-service"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
+                        // style={{ color: "black" }}
+                        sx={{
+                          color: "black",
+                          ":hover": {
+                            color: "white",
+                          },
+                        }}
+                        key={page}
+                      >
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          onClick={handleCloseUserMenu}
+                          sx={{
+                            color: "black",
+                            ":hover": {
+                              color: "white",
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
+                            fontWeight: "bold",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                          }}
+                        >
+                          <a
+                            textAlign="center"
+                            to={
+                              page === "TOOLS & SERVICE"
+                                ? "/tools-and-service"
+                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            }
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+                              // color: "inherit",
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  const renderNavbar4 = () => {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <HideOnScroll {...props}>
+          <AppBar
+            className="px-4"
+            style={{
+              background: "white",
+              boxShadow: "unset",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    component="div"
+                  >
+                    <div style={containerStyle2}>
+                      <Link to="/" onClick={handleLogoClick}>
+                        <img src={logored} aloading="lazy" style={logoStyle} />
+                      </Link>
+                    </div>
+                  </Typography>
+                  {/* 👇️ Anchor link
+              <a href="https://google.com" target="_blank" rel="noreferrer">
+                <img
+                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
+                  alt="example"
+                />
+              </a> */}
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
+                >
+                  <div
+                    className="searchBox"
+                    // style={{ border: "2px solid #AE023E" }}
+                    style={{ top: "10%" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
+                  </div>
+                  {/* <span>
+                    {" "}
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+                    <span style={{ color: "#AE023E" }}>EN</span>
+                  </span> */}
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
+                    >
+                      <MenuIcon style={{ color: "#AE023E" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    style={{ opacity: 0.9 }}
+                    sx={{
+                      mt: "60px",
+                      left: "30px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page) => (
+                      <Link
+                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                        style={{ color: "inherit" }}
+                      >
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          key={page}
+                          onClick={handleCloseUserMenu}
+                          sx={{
+                            color: "black",
+                            ":hover": {
+                              color: "white",
+
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
+                                color: "white",
+                              },
+                            },
+                            fontWeight: "bold",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                            color: "inherit", // set default link color to black
+                          }}
+                        >
+                          <a
+                            textAlign="center"
+                            to={`/${page}`}
+                            sx={{
+                              fontWeight: "bold",
+                              padding: "20px",
+
+                              ":hover": {
+                                "& a, & > a": {
+                                  color: "white",
+                                },
+                              },
+                              // color: "inherit", // set link color to inherit to match parent
+                            }}
+                          >
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+        </HideOnScroll>
+      </React.Fragment>
+    );
+  };
+
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <>
-      {navbarType === "navbar1" && renderNavbar1()}
-      {navbarType === "navbar2" && renderNavbar2()}
+      {/* Mobile */}
+      {isMobile && (
+        <>
+          {navbarType === "navbar1" && renderNavbar3()}
+          {navbarType === "navbar2" && renderNavbar4()}
+        </>
+      )}
+
+      {/* Desktop */}
+      {!isMobile && (
+        <>
+          {navbarType === "navbar1" && renderNavbar1()}
+          {navbarType === "navbar2" && renderNavbar2()}
+        </>
+      )}
     </>
   );
 }

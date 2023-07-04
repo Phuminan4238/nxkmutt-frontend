@@ -124,6 +124,7 @@ function Post() {
   );
 }
 
+// Mobile
 function Image({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
 
@@ -141,7 +142,7 @@ function Image({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -175,7 +176,7 @@ function Image({ members }) {
                   }}
                 >
                   <MDBCardImage
-                    className="rounded-0"
+                    className="rounded-4 w-75 sm:w-100"
                     src={
                       "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
@@ -184,9 +185,9 @@ function Image({ members }) {
                     position="top"
                     alt="..."
                     style={{
-                      height: "350px",
+                      // height: "350px",
                       objectFit: "contain",
-                      borderRadius: "0px",
+                      // borderRadius: "0px",
                       alignSelf: "center",
                     }}
                   />
@@ -204,7 +205,7 @@ function Image({ members }) {
                     </MDBCardTitle>
                     <MDBCardText>
                       <p
-                        className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
+                        className="fw-normal text-center mb-0 xs:text-md md:text-2xl"
                         style={{ color: "#AE023E" }}
                       >
                         {member.attributes.position_en}
@@ -234,10 +235,10 @@ export default function Team() {
 
   return (
     <>
-      {/* Render the Image component when on mobile */}
-      {/* {isMobile && <Image />} */}
+      {/* Mobile  */}
+      {isMobile && <Image />}
 
-      {/* Hide the Post component when on mobile */}
+      {/* Desktop  */}
       {!isMobile && <Post />}
     </>
   );

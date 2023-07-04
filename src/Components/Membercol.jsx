@@ -1,8 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import teamimg5 from "../Images/team-5.png";
+import { useMediaQuery } from "react-responsive";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+} from "mdb-react-ui-kit";
+import membericon from "../Images/member-icon.png";
 
 const TeamMemberImage = ({ src, index, total, memberId }) => {
   const isFirstImage = index === 0;
@@ -38,6 +48,7 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   );
 };
 
+// Desktop
 const Team = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
 
@@ -47,7 +58,7 @@ const Team = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.imagesquare&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&&filters[usertype][$eq]=research_assistance&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -83,10 +94,137 @@ const Team = () => {
   );
 };
 
-export default function MemberCol() {
+// Mobile
+function Image({ members }) {
+  const [uploadfiles, setUploadfilesMember] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+        );
+        if (isMounted) {
+          setUploadfilesMember(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfiles.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfiles]);
+
   return (
     <>
-      <Team />
+      <div className="d-flex justify-content-between py-4" id="tools-flex">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow>
+            {uploadfiles.map((member) => (
+              <MDBCol md="4" key={member.id} className="pb-4 col-sm-8">
+                <Link
+                  to={`/Member-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Member-Detail/${member.id}`);
+                  }}
+                >
+                  <MDBCard
+                    style={{
+                      borderBottom: "1px solid black",
+                      boxShadow: "unset",
+                      borderRadius: "0px",
+                    }}
+                  >
+                    <MDBCardImage
+                      className="rounded-4 w-75 sm:w-100"
+                      src={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      position="top"
+                      alt="..."
+                      style={{
+                        // height: "350px",
+                        objectFit: "contain",
+                        alignSelf: "center",
+                      }}
+                    />
+                    <Link
+                      to={`/Member-Detail/${member.id}`}
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        window.location.replace(`/Member-Detail/${member.id}`);
+                      }}
+                    >
+                      <MDBCardBody>
+                        <MDBCardTitle className="m-0">
+                          <p
+                            className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                            style={{ color: "#AE023E" }}
+                          >
+                            {member.attributes.name_en}
+                            <br></br>
+                            {member.attributes.surname_en}
+                          </p>
+                        </MDBCardTitle>
+                        <MDBCardText>
+                          <p
+                            className="fw-normal text-center mb-0 xs:text-xl md:text-2xl"
+                            style={{ color: "#AE023E" }}
+                          >
+                            {member.attributes.position_en}
+                          </p>
+                        </MDBCardText>
+                        <MDBCardText key={member.attributes}>
+                          <p
+                            className="fw-normal text-center text-sm md:text-lg"
+                            style={{ color: "#AE023E" }}
+                          >
+                            Main Interest, Main <br></br> Interest, Main
+                            Interest
+                          </p>
+                        </MDBCardText>
+                      </MDBCardBody>
+                    </Link>
+                  </MDBCard>
+                </Link>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer>
+      </div>
+    </>
+  );
+}
+
+export default function MemberCol() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  return (
+    <>
+      {/* Render the Image component when on mobile */}
+      {isMobile && <Image />}
+
+      {/* Hide the Post component when on mobile */}
+      {!isMobile && <Team />}
     </>
   );
 }

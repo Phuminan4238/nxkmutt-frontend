@@ -2,13 +2,13 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import axios from "axios";
-
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useMediaQuery } from "react-responsive";
 
-function Image() {
+// Desktop
+function ImageDesktop() {
   const [coverImages, setCoverImages] = useState([]);
-
   useEffect(() => {
     async function fetchCoverImages() {
       try {
@@ -23,12 +23,13 @@ function Image() {
 
     fetchCoverImages();
   }, []);
-
   // console.log(coverImages);
-
   return (
     <>
-      <div className="slider-container">
+      <div
+        className="slider-container"
+        style={{ marginTop: "-146px", zIndex: "-1" }}
+      >
         {coverImages.length > 0 && (
           <Carousel
             showIndicators={true}
@@ -53,6 +54,7 @@ function Image() {
                   margin: "0 4px",
                   padding: 0,
                   cursor: "pointer",
+                  top: "88%",
                 }}
                 key={index}
               />
@@ -78,8 +80,88 @@ function Image() {
   );
 }
 
+// Mobile
+function ImageMobile({ members }) {
+  const [coverImages, setCoverImages] = useState([]);
+
+  useEffect(() => {
+    async function fetchCoverImages() {
+      try {
+        const response = await axios.get(
+          "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=website_slider_cover_images"
+        );
+        setCoverImages(response.data.data[0]?.attributes.fileupload.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchCoverImages();
+  }, []);
+
+  return (
+    <>
+      <div className="slider-container">
+        {coverImages.length > 0 && (
+          <div className="carousel-wrapper">
+            <Carousel
+              showIndicators={true}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+              showArrows={false}
+              showStatus={false}
+              showThumbs={false}
+              swipeable={false}
+              stopOnHover={false}
+              emulateTouch={false}
+              renderIndicator={(onClickHandler, isSelected, index) => (
+                <button
+                  onClick={onClickHandler}
+                  style={{
+                    background: isSelected ? "#AE023E" : "gray", // Set the selected indicator to red and others to gray
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    border: "none",
+                    margin: "0 4px",
+                    padding: 0,
+                    cursor: "pointer",
+                    top: "260px",
+                  }}
+                  key={index}
+                />
+              )}
+            >
+              {coverImages.map((image) => (
+                <div key={image.id} className="w-100 d-block pb-5 md:h-100">
+                  <img
+                    src={`https://10.35.29.186${image.attributes.url}`}
+                    alt={`Cover Image ${image.id}`}
+                    className="w-100 d-block object-cover"
+                    style={{ height: "250px" }}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
 export default function Carousel2() {
-  return <Image />;
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  return (
+    <>
+      {/* Mobile  */}
+      {isMobile && <ImageMobile />}
+
+      {/* Desktop  */}
+      {!isMobile && <ImageDesktop />}
+    </>
+  );
 }
 
 {

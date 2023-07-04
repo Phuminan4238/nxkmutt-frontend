@@ -64,7 +64,7 @@ const Contactus = () => {
       )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 xs:pb-4 sm:pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
@@ -80,7 +80,7 @@ const Contactus = () => {
 
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol md="6" className="p-0">
+            <MDBCol md="6" className="xs:px-4 sm:p-0">
               <iframe
                 class="image-fluid"
                 id="cluster-img"
@@ -91,7 +91,7 @@ const Contactus = () => {
                 marginwidth="0"
               ></iframe>
             </MDBCol>
-            <MDBCol className="d-flex pb-0 pe-5">
+            <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-5">
               <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
                 <MDBRow>
                   <h4

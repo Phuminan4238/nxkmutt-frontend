@@ -38,6 +38,10 @@ body {
   padding-top: 4rem !important;
 }
 
+.pb-6 {
+  padding-top: 2rem !important;
+}
+
 .g-6 {
   --mdb-gutter-x: 4.5rem !important;
 }
@@ -165,13 +169,27 @@ text-align {
   z-index: -1;
 }
 
-.carousel-root {
+/* .carousel-root {
   margin-top: -146px;
   z-index: -1;
+} */
+
+/* .control-dots {
+  top: 88%;
+} */
+
+.carousel-wrapper {
+  position: relative;
 }
 
-.control-dots {
-  top: 88%;
+.carousel-wrapper .carousel .carousel-status {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #greyscale-img {

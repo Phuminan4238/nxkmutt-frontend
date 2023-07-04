@@ -58,7 +58,7 @@ function Post({ member }) {
         window.location.replace(`/News-Detail/${member.id}`);
       }}
     >
-      <MDBRow className="pb-4">
+      <MDBRow className="xs:pb-3 md:pb-8 xs:px-4 md:px-0">
         <MDBCol md="4">
           <MDBRipple
             className="bg-image hover-overlay shadow-1-strong rounded"
@@ -77,14 +77,14 @@ function Post({ member }) {
         </MDBCol>
 
         <MDBCol
-          className="d-flex p-4 xs:pt-4 "
+          className="d-flex xs:px-3 md:p-4 xs:pt-4 "
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={colStyle}
         >
           <div className="d-flex flex-column w-100">
             <p
-              className="font-bold mb-2 xs:pt-4 md:pt-0 xs:text-xl md:text-2xl"
+              className="font-bold mb-2 xs:pt-0 md:pt-0 xs:text-lg md:text-2xl"
               style={{ fontFamily: "MyFont" }}
             >
               {member.attributes.name_en}
@@ -97,11 +97,13 @@ function Post({ member }) {
             </p>
 
             <div
-              className="d-flex justify-content-between mt-auto mb-1 xs:text-base sm:text-lg pt-4"
+              className="d-flex justify-content-between mt-auto mb-1 xs:text-base sm:text-lg xs:pt-0 sm:pt-5"
               id="news-underline"
             >
-              <p className="mb-2">{member.attributes.createdAt}</p>
-              <p className="mb-2">Content Master</p>
+              <p className="mb-2 xs:text-sm sm:text-lg">
+                {member.attributes.createdAt}
+              </p>
+              <p className="mb-2 xs:text-sm sm:text-lg">Content Master</p>
             </div>
 
             <div className="d-inline-flex mt-1 text-red">
@@ -120,7 +122,6 @@ function Post({ member }) {
 export default function News() {
   const [uploadfiles, setUploadfiles] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-
   const [iconStyle, setIconStyle] = useState({ color: "#AE023E" });
 
   const handleMouseEnter = () => {
@@ -169,7 +170,7 @@ export default function News() {
   if (isHomePage) {
     // Don't render pagination on the home page
     return (
-      <MDBContainer className="pt-0 py-4">
+      <MDBContainer className="px-0 pt-0 xs:pb-2 md:py-4">
         {/* {uploadfiles.slice(offset, offset + PER_PAGE).map((member) => (
         <Post key={member.id} member={member} />
       ))} */}
@@ -185,14 +186,19 @@ export default function News() {
         >
           <Link
             to={`/news-and-activities`}
+            className="ps-0"
             style={{ color: "inherit" }}
             onClick={() => {
               window.scrollTo(0, 0);
               window.location.replace(`/news-and-activities`);
             }}
           >
-            <div className="d-inline-flex text-red py-2 md:py-4">
-              <h5 href="#" className="pe-4" style={{ color: "#AE023E" }}>
+            <div className="d-inline-flex text-red ps-0 py-2 md:py-4">
+              <h5
+                href="#"
+                className="pe-4 ps-1 xs:text-base sm:text-lg"
+                style={{ color: "#AE023E" }}
+              >
                 More News & Activity
               </h5>
               <EastIcon style={iconStyle}></EastIcon>
@@ -217,7 +223,7 @@ export default function News() {
       </MDBContainer>
 
       <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <div className="d-inline-flex justify-center py-4 text-red">
+        <div className="d-inline-flex justify-center pt-4 pb-0 text-red">
           <ReactPaginate
             previousLabel={"Prev"}
             nextLabel={"Next"}

@@ -143,7 +143,7 @@ function Home(props) {
                       </p>
                     </div>
 
-                    <div className="d-inline-flex xs:p-1 xs:pt-12 md:p-2 md:pt-16">
+                    <div className="d-inline-flex xs:p-1 xs:pt-10 md:p-2 md:pt-16">
                       <p
                         className="font-normal text-uppercase xs:text-xl md:text-3xl"
                         style={{ fontFamily: "MyFont" }}
@@ -154,7 +154,6 @@ function Home(props) {
                   </MDBRow>
                 )}
               </MDBContainer>
-
               {/* ***********/}
 
               {/* Section Clusterimage */}
@@ -162,13 +161,8 @@ function Home(props) {
               {/* ******************** */}
 
               {/* Section Tools */}
-              {/* <MDBContainer
-            className={classNames("max-w-7xl", {
-              "desktop-width": isDesktopWidth,
-            })}
-          > */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="pb-4 xs:px-5 sm:px-5 md:px-0">
+                <MDBRow className="xs:pb-2 md:pb-4 xs:px-5 sm:px-5 md:px-0">
                   <div className="d-inline-flex xs:p-1 xs:pt-12  md:pt-16">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
@@ -181,7 +175,7 @@ function Home(props) {
               </MDBContainer>
               <section>
                 <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                  <MDBRow className="pb-4 xs:px-5 sm:px-5 md:px-0">
+                  <MDBRow className="pb-4 xs:px-4 sm:px-5 md:px-0">
                     <Toolsimage></Toolsimage>
                   </MDBRow>
                 </MDBContainer>
@@ -191,7 +185,7 @@ function Home(props) {
               {/* Section News */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
                 <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                  <div className="d-inline-flex xs:p-1 xs:pt-6 md:p-2 md:pt-8">
+                  <div className="d-inline-flex xs:p-1 xs:pt-0 md:p-2 md:pt-8">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
@@ -228,8 +222,8 @@ function Home(props) {
 
               {/* Section Collaborators */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="py-4">
-                  <div className="d-inline-flex p-2">
+                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4 pb-4">
+                  <div className="d-inline-flex xs:p-1 xs:pt-2 md:p-2 ">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
@@ -244,7 +238,7 @@ function Home(props) {
 
               {/* Section Student */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="pt-5 pb-4">
+                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-5 pb-4">
                   <div className="d-inline-flex p-2">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
@@ -261,10 +255,10 @@ function Home(props) {
 
               {/* Section International */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="pt-5 pb-4">
+                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-5 pb-4">
                   <div className="d-inline-flex p-2 ">
                     <p
-                      className="font-normal text-uppercase xs:text-xl md:text-3xl "
+                      className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
                       International Collaborators

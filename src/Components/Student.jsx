@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import teamimg5 from "../Images/team-5.png";
+import { useMediaQuery } from "react-responsive";
 
 const TeamMemberImage = ({ src, index, total, memberId }) => {
   const isFirstImage = index === 0;
@@ -38,12 +39,11 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   );
 };
 
-const Team = () => {
+// Desktop
+const ImageDesktop = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
-
   useEffect(() => {
     let isMounted = true;
-
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -83,10 +83,93 @@ const Team = () => {
   );
 };
 
+const TeamMemberImage2 = ({ src, index, total, memberId }) => {
+  const isFirstImage = index === 0;
+  const isLastImage = index === total - 1;
+
+  const columnClass = `col-md-1 p-1 bg-white ${isFirstImage ? "pl-0" : ""} ${
+    isLastImage ? "pr-0" : ""
+  }`;
+
+  return (
+    <MDBCol md="auto" className={columnClass}>
+      <Link
+        to={`/Student-Detail/${memberId}`}
+        onClick={() => {
+          window.scrollTo(0, 0);
+          window.location.replace(`/Student-Detail/${memberId}`);
+        }}
+        className="image-link"
+      >
+        <div
+          className="image-container"
+          style={{ width: "120px", height: "120px" }}
+        >
+          <img
+            src={src}
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            alt="Team Member"
+          />
+          <div className="overlay"></div>
+        </div>
+      </Link>
+    </MDBCol>
+  );
+};
+
+// Mobile
+const ImageMobile = () => {
+  const [uploadfiles, setUploadfiles] = useState([]);
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+        );
+        if (isMounted) {
+          setUploadfiles(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (uploadfiles.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfiles]);
+
+  return (
+    <MDBContainer fluid className="p-0 d-flex flex-wrap" id="cluster-container">
+      {uploadfiles.map((member, index) => (
+        <TeamMemberImage2
+          key={index}
+          src={`https://10.35.29.186${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
+          index={index}
+          total={uploadfiles.length}
+          memberId={member.id} // Pass the member ID as a prop
+        />
+      ))}
+    </MDBContainer>
+  );
+};
+
 export default function Student() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <>
-      <Team />
+      {/* Mobile  */}
+      {isMobile && <ImageMobile />}
+
+      {/* Desktop  */}
+      {!isMobile && <ImageDesktop />}
     </>
   );
 }

@@ -73,7 +73,7 @@ const Toolservice = () => {
       )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0  xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 xs:pb-5 xs:px-5 sm:px-5 sm:pb-0 md:px-0">
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
@@ -104,7 +104,7 @@ const Toolservice = () => {
                 ></div>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+            <MDBCol md="4" className="p-0 d-none d-sm-block">
               {/* <img
                 src={vr2}
                 class="image-fluid"
@@ -131,7 +131,8 @@ const Toolservice = () => {
               ))}
             </MDBCol>
           </MDBRow>
-          <MDBRow>
+
+          <MDBRow className="xs:px-4 sm:px-0">
             <MDBCol>
               <div className="d-inline-flex p-2">
                 <p
@@ -144,7 +145,9 @@ const Toolservice = () => {
             </MDBCol>
           </MDBRow>
           {/* Tools image */}
-          <Toolsimage></Toolsimage>
+          <MDBRow className="px-4 sm:px-0">
+            <Toolsimage></Toolsimage>
+          </MDBRow>
           <MDBRow className="mt-4">
             <MDBCol>
               <div className="text-center">
@@ -154,7 +157,7 @@ const Toolservice = () => {
               </div>
             </MDBCol>
           </MDBRow>
-          <MDBRow className="pt-5">
+          <MDBRow className="pt-5 xs:px-4 sm:px-0">
             <MDBCol>
               <div className="d-inline-flex p-2">
                 <p
@@ -164,7 +167,7 @@ const Toolservice = () => {
                   Service
                 </p>
               </div>
-              <MDBCol className="ps-4 pt-2">
+              <MDBCol className="xs:px-2 sm:ps-4 pt-2">
                 <MDBRow className="pt-2">
                   <MDBCol
                     size="1"

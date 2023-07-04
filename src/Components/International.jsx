@@ -15,7 +15,7 @@ import {
 import membericon from "../Images/member-icon.png";
 import teamimg5 from "../Images/team-5.png";
 
-function Profile() {
+function ImageDesktop() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
@@ -85,12 +85,13 @@ function Profile() {
                       objectFit: "cover",
                       borderRadius: "0px",
                       alignSelf: "center",
-                      height: "300px",
+                      // height: "300px",
+                      height: "50%",
                       objectPosition: "50% 15%",
                     }}
                   />
 
-                  <MDBCardBody>
+                  <MDBCardBody style={{ padding: "0px" }}>
                     <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                       <p
                         className="text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
@@ -134,89 +135,126 @@ function Profile() {
           ))}
         </MDBRow>
       </MDBContainer>
+    </>
+  );
+}
 
-      {/* 
-      <MDBContainer className="fluid p-0" id="cluster-container">
-        <MDBRow className="p-0 w-fill">
-          <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-warning">
-            <img src={teamimg5} class="image-fluid" id="cluster-img" />
-            <div className="d-flex p-5 align-content-center flex-column w-100">
-              <h3
-                className="text-white text-center"
-                style={{
-                  borderBottom: "1px solid white",
-                  paddingBottom: "1rem",
-                }}
-              >
-                Name Surname
-              </h3>
-              <h5 className="text-white fw-light text-center">
-                Position / Main Interest
-              </h5>
-            </div>
-          </MDBCol>
+// Mobile
+function ImageMobile({ members }) {
+  const [uploadfiles, setUploadfiles] = useState([]);
 
-          <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-primary">
-            <img src={teamimg5} class="image-fluid" id="cluster-img" />
-            <div className="d-flex p-5 align-content-center flex-column w-100">
-              <h3
-                className="text-white text-center"
-                style={{
-                  borderBottom: "1px solid white",
-                  paddingBottom: "1rem",
-                }}
-              >
-                Name Surname
-              </h3>
-              <h5 className="text-white fw-light text-center">
-                Position / Main Interest
-              </h5>
-            </div>
-          </MDBCol>
-          <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-warning">
-            <img src={teamimg5} class="image-fluid" id="cluster-img" />
-            <div className="d-flex p-5 align-content-center flex-column w-100">
-              <h3
-                className="text-white text-center"
-                style={{
-                  borderBottom: "1px solid white",
-                  paddingBottom: "1rem",
-                }}
-              >
-                Name Surname
-              </h3>
-              <h5 className="text-white fw-light text-center">
-                Position / Main Interest
-              </h5>
-            </div>
-          </MDBCol>
-          <MDBCol md="3" className="col-md-3 d-flex flex-column p-0 bg-primary">
-            <img src={teamimg5} class="image-fluid" id="cluster-img" />
-            <div className="d-flex p-5 align-content-center flex-column w-100">
-              <h3
-                className="text-white text-center"
-                style={{
-                  borderBottom: "1px solid white",
-                  paddingBottom: "1rem",
-                }}
-              >
-                Name Surname
-              </h3>
-              <h5 className="text-white fw-light text-center">
-                Position / Main Interest
-              </h5>
-            </div>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer> */}
+  useEffect(() => {
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "https://10.35.29.186/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator"
+        );
+        if (isMounted) {
+          setUploadfiles(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfiles.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfiles]);
+
+  return (
+    <>
+      <div className="d-flex justify-content-between py-0" id="tools-flex">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+          <MDBRow>
+            {uploadfiles.map((member) => (
+              <MDBCol md="4" key={member.id} className="pb-0 col-sm-8">
+                <MDBCard
+                  style={{
+                    // borderBottom: "1px solid black",
+                    boxShadow: "unset",
+                    borderRadius: "0px",
+                  }}
+                >
+                  <MDBCardImage
+                    className="rounded-4 w-75 sm:w-100"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url
+                    }
+                    position="top"
+                    alt="..."
+                    style={{
+                      // height: "350px",
+                      objectFit: "contain",
+                      // borderRadius: "0px",
+                      alignSelf: "center",
+                    }}
+                  />
+
+                  <MDBCardBody>
+                    <MDBCardTitle className="m-0">
+                      <p
+                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        style={{ color: "#AE023E" }}
+                      >
+                        {member.attributes.name_en}
+                        <br></br>
+                        {member.attributes.surname_en}
+                      </p>
+                    </MDBCardTitle>
+                    <MDBCardText>
+                      <p
+                        className="fw-normal text-center mb-0 xs:text-md md:text-2xl"
+                        style={{ color: "#AE023E" }}
+                      >
+                        {member.attributes.position_en}
+                      </p>
+                    </MDBCardText>
+                    <MDBCardText key={member.attributes}>
+                      <p
+                        className="fw-normal text-center text-sm md:text-lg"
+                        style={{ color: "#AE023E" }}
+                      >
+                        Main Interest, Main <br></br> Interest, Main Interest
+                      </p>
+                    </MDBCardText>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer>
+      </div>
     </>
   );
 }
 
 export default function International() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <>
-      <Profile />
+      {/* Mobile  */}
+      {isMobile && <ImageMobile />}
+
+      {/* Desktop  */}
+      {!isMobile && <ImageDesktop />}
     </>
   );
 }

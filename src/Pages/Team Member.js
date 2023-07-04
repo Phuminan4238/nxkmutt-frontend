@@ -133,7 +133,7 @@ const Member = ({ imageUrl }) => {
       <section>
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-inline-flex p-2">
+            <div className="d-inline-flex xs:px-4 sm:p-2">
               <p
                 className="font-black text-uppercase xs:text-xl md:text-3xl"
                 style={{ fontFamily: "MyFont" }}
@@ -142,31 +142,31 @@ const Member = ({ imageUrl }) => {
               </p>
             </div>
             <Memberimage></Memberimage>
-            <div className="d-inline-flex p-2 pt-5">
+            <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
               <p
                 className="font-black text-uppercase xs:text-xl md:text-3xl"
                 style={{ fontFamily: "MyFont" }}
               >
-                Collaborator
+                Advisor & Collaborator
               </p>
             </div>
             <Memberadvisor></Memberadvisor>
-            <div className="d-inline-flex p-2 pt-5">
+            <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
               <h3
-                className="fw-bold text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                className="font-black text-uppercase xs:text-xl md:text-3xl"
                 style={{ fontFamily: "MyFont" }}
               >
                 International Collaborators
               </h3>
             </div>
             <Memberalumni></Memberalumni>
-            <div className="d-flex justify-content-between align-items-center p-2 pt-5">
-              <h3
-                className="fw-bold text-uppercase text-black xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont", paddingLeft: "0.5rem" }}
+            <div className="d-flex justify-content-between align-items-center pt-5 xs:px-4 sm:p-2">
+              <p
+                className="font-black text-uppercase xs:text-xl md:text-3xl"
+                style={{ fontFamily: "MyFont" }}
               >
                 Students & Research Assistants & Alumni
-              </h3>
+              </p>
               <Link
                 to={`/Student-Detail/9`}
                 onClick={() => {

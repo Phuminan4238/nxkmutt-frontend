@@ -110,13 +110,13 @@ const Participate = () => {
             <MDBCol className="d-flex pt-5 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
+                  className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   PARTICIPATE
                 </p>
                 <p
-                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
+                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   <span
@@ -133,7 +133,7 @@ const Participate = () => {
                 </p>
               </div>
             </MDBCol>
-            <MDBCol md="4" className="p-0">
+            <MDBCol md="4" className="p-0 d-none d-sm-block">
               {memberCover.map((member) => (
                 <img
                   className="image-fluid"
@@ -153,6 +153,26 @@ const Participate = () => {
                 />
               ))}
             </MDBCol>
+            {/* <MDBCol md="4" className="p-0">
+              {memberCover.map((member) => (
+                <img
+                  className="image-fluid"
+                  style={{
+                    width: "-webkit-fill-available",
+                    height: "300px",
+                    // maxWidth: "-webkit-fill-available",
+                    // height: "400px",
+                    // objectFit: "contain",
+                    // verticalAlign: "top",
+                  }}
+                  id="cluster-img"
+                  src={
+                    "https://10.35.29.186" +
+                    member.attributes.fileupload.data[0]?.attributes.url
+                  }
+                />
+              ))}
+            </MDBCol> */}
           </MDBRow>
 
           <MDBRow className="pt-4 pb-3 xs:px-5 sm:px-5 md:px-0">

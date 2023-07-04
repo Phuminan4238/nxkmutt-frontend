@@ -95,15 +95,19 @@ function TagsDetail({ title }) {
               style={{
                 width: "-webkit-max-content",
                 fontFamily: "FontMedium",
-                fontSize: "1.3rem",
+                // fontSize: "1.3rem",
               }}
             >
               {/* color: "#AE023E", */}
               <Link to="/">
-                <a style={{ color: "#AE023E" }}>{title}</a>
+                <a
+                  style={{ color: "#AE023E" }}
+                  className="xs:text-lg sm:text-xl"
+                >
+                  {title}
+                </a>
               </Link>
             </MDBCol>
-
             <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
               <span>
                 <KeyboardArrowRightIcon
@@ -115,10 +119,10 @@ function TagsDetail({ title }) {
                 ></KeyboardArrowRightIcon>
               </span>
             </MDBCol>
-            <MDBCol className="col-md-8 col-12 ps-0 pt-2">
+            <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-2">
               <span
-                className="text-uppercase fw-bold "
-                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+                className="text-uppercase fw-bold xs:text-lg sm:text-xl"
+                style={{ fontFamily: "FontMedium" }}
               >
                 {tags.attributes?.name_en || "-"}
               </span>
@@ -126,12 +130,12 @@ function TagsDetail({ title }) {
           </MDBRow>
         </MDBContainer>
         {/* Container  */}
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5">
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5 xs:px-5 sm:px-1">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
             <MDBCol className="d-flex ps-0 pb-0 pe-5">
               <div className="d-flex flex-column w-100">
-                <h1
-                  className="fw-bolder pt-4"
+                <p
+                  className="fw-bolder pt-4 xs:text-xl sm:text-4xl"
                   style={{
                     color: "#AE023E",
                     fontFamily: "MyFont",
@@ -139,7 +143,7 @@ function TagsDetail({ title }) {
                   }}
                 >
                   {tags.attributes?.name_en || "-"}
-                </h1>
+                </p>
               </div>
             </MDBCol>
             <MDBCol md="7" className="p-0">
@@ -171,8 +175,8 @@ function TagsDetail({ title }) {
         </MDBContainer>
       </section>
       <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5 xs:px-5 sm:px-1">
+          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
             {/* Current Affiliations */}
             <MDBRow className="pt-4 px-0">
               <p>

@@ -67,7 +67,7 @@ function Post() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+          "members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
         );
         if (isMounted) {
           setUploadfilesMember(response.data.data);
@@ -107,12 +107,13 @@ function Post() {
                     borderRadius: "0px",
                   }}
                 >
+                  {/* image_mediium  */}
                   <MDBCardImage
                     className="rounded-4"
                     src={
                       "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url
+                        .image_square.data[0]?.attributes.url
                     }
                     position="top"
                     alt="..."
@@ -145,7 +146,7 @@ function Post() {
                     </MDBCardTitle>
                     <MDBCardText>
                       <p
-                        className="fw-normal text-center mb-0 xs:text-xl md:text-xl"
+                        className="fw-normal text-center mb-0 xs:text-md md:text-xl"
                         style={{ color: "black" }}
                       >
                         {member.attributes.position_en}
@@ -173,8 +174,9 @@ function Post() {
   );
 }
 
+// Mobile
 function Image({ members }) {
-  const [uploadfiles, setUploadfiles] = useState([]);
+  const [uploadfiles, setUploadfilesMember] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -190,10 +192,10 @@ function Image({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload"
+          "members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
         );
         if (isMounted) {
-          setUploadfiles(response.data.data);
+          setUploadfilesMember(response.data.data);
         }
       } catch (error) {
         console.error(error);
@@ -231,16 +233,16 @@ function Image({ members }) {
                     }}
                   >
                     <MDBCardImage
-                      className="rounded-0"
+                      className="rounded-4 w-75 sm:w-100"
                       src={
                         "https://10.35.29.186" +
                         member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
+                          .image_square.data[0]?.attributes.url
                       }
                       position="top"
                       alt="..."
                       style={{
-                        height: "350px",
+                        // height: "350px",
                         objectFit: "contain",
                         borderRadius: "0px",
                         alignSelf: "center",
