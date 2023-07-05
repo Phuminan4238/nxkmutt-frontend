@@ -179,7 +179,7 @@ const Participate = () => {
             <MDBCol>
               <MDBRow>
                 <p
-                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                  className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   JOB & Internship
@@ -214,7 +214,7 @@ const Participate = () => {
               </MDBCol>
               <MDBRow>
                 <h4
-                  className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl"
+                  className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-lg md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   STUDY participation
@@ -252,7 +252,7 @@ const Participate = () => {
               </MDBRow>
               <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
                 <p
-                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                  className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   Donation

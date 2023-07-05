@@ -51,7 +51,7 @@ function ImageDesktop() {
     };
   }, [uploadfiles]);
 
-  const colors = ["#F2B032", "#88BFD2"];
+  const colors = ["#E0B054", "#88BFD2"];
 
   return (
     <>
