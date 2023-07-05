@@ -225,13 +225,17 @@ function ImageDesktop({ title }) {
                 >
                   {uploadfiles.attributes?.bio_en || "-"}
                 </p> */}
-                <div
-                  className="fw-normal text-normal pt-3"
-                  style={{ maxWidth: "90%" }}
-                  dangerouslySetInnerHTML={{
-                    __html: uploadfiles.attributes.bio_en,
-                  }}
-                />
+                {uploadfiles.attributes?.bio_en ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                    dangerouslySetInnerHTML={{
+                      __html: uploadfiles.attributes.bio_en,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </div>
             </MDBCol>
             <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
@@ -327,12 +331,17 @@ function ImageDesktop({ title }) {
                           </span>
                         </MDBCol> */}
                       </MDBRow>
-                      <p
-                        className="fw-normal text-normal pt-3"
-                        style={{ maxWidth: "90%" }}
-                      >
-                        {member.attributes?.bio_en || "-"}
-                      </p>
+                      {member.attributes?.bio_en ? (
+                        <p
+                          className="fw-normal text-md pt-3"
+                          style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                          dangerouslySetInnerHTML={{
+                            __html: member.attributes.bio_en,
+                          }}
+                        />
+                      ) : (
+                        <p className="fw-normal text-md pt-3">-</p>
+                      )}
                     </div>
                   </MDBCol>
                   <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
@@ -567,12 +576,17 @@ function ImageMobile({ title }) {
                     </span>
                   </MDBCol> */}
                 </MDBRow>
-                <p
-                  className="fw-normal text-normal pt-0"
-                  style={{ maxWidth: "90%" }}
-                >
-                  {uploadfiles.attributes?.bio_en || "-"}
-                </p>
+                {uploadfiles.attributes?.bio_en ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{ wordBreak: "break-word" }}
+                    dangerouslySetInnerHTML={{
+                      __html: uploadfiles.attributes.bio_en,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </div>
             </MDBCol>
           </MDBRow>{" "}
@@ -646,12 +660,24 @@ function ImageMobile({ title }) {
                         {member.attributes?.surname_en || "-"}
                       </h1>
 
-                      <p
+                      {/* <p
                         className="fw-normal text-normal pt-3"
                         style={{ maxWidth: "90%" }}
                       >
                         {member.attributes?.bio_en || "-"}
-                      </p>
+                      </p> */}
+
+                      {member.attributes?.bio_en ? (
+                        <p
+                          className="fw-normal text-md pt-3"
+                          style={{ wordBreak: "break-word" }}
+                          dangerouslySetInnerHTML={{
+                            __html: member.attributes.bio_en,
+                          }}
+                        />
+                      ) : (
+                        <p className="fw-normal text-md pt-3">-</p>
+                      )}
                     </div>
                   </MDBCol>
                 </MDBRow>

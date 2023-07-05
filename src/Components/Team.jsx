@@ -28,7 +28,7 @@ function ImageDesktop() {
       });
   }, []);
 
-  const colors = ["#B34C66", "#F2B032", "#119ED1", "#F2B032"];
+  const colors = ["#B34C66", "#F2B032", "#F2B032", "#119ED1"];
 
   const Column = ({ color, children }) => {
     return (

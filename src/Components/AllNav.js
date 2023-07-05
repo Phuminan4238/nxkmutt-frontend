@@ -117,7 +117,7 @@ export default function HomeNav(props) {
   };
 
   const containerStyle2 = {
-    width: "150px", // Adjust the width to your desired size
+    width: "180px", // Adjust the width to your desired size
   };
 
   const logoStyle = {
@@ -595,7 +595,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-4"
+            className="px-3"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -776,7 +776,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-4"
+            className="px-3"
             style={{
               background: "white",
               boxShadow: "unset",

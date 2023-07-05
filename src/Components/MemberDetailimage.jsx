@@ -62,7 +62,7 @@ function Image() {
                         objectFit: "cover",
                         borderRadius: "0px",
                         alignSelf: "center",
-                        height: "350px",
+                        height: "300px",
                         objectPosition: "top",
                       }}
                     />

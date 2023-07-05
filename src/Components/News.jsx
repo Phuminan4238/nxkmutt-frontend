@@ -107,7 +107,11 @@ function Post({ member }) {
             </div>
 
             <div className="d-inline-flex mt-1 text-red">
-              <p href="#" className="pe-4 xs:text-base" style={textStyle}>
+              <p
+                href="#"
+                className="pe-4 xs:text-sm sm:text-lg"
+                style={textStyle}
+              >
                 Read more
               </p>
               <EastIcon style={iconStyle} />

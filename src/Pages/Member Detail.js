@@ -204,31 +204,18 @@ function ImageDesktop({ title }) {
                     </span>
                   </MDBCol>
                 </MDBRow>
-                <div>
-                  {/* Render the content */}
-                  {uploadfiles.attributes?.bio_en ? (
-                    <div
-                      className="fw-normal text-lg pt-3"
-                      style={{
-                        backgroundColor: "#fffffe",
-                        color: "#000000",
-                        fontSize: "12px",
-                        fontWeight: "normal",
-                        lineHeight: "18px",
-                        maxWidth: "90%",
-                      }}
-                    >
-                      <div
-                        style={{ whiteSpace: "" }}
-                        dangerouslySetInnerHTML={{
-                          __html: uploadfiles.attributes.bio_en,
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div className="fw-normal text-lg pt-3">-</div>
-                  )}
-                </div>
+                {/* Render the content */}
+                {uploadfiles.attributes?.bio_en ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                    dangerouslySetInnerHTML={{
+                      __html: uploadfiles.attributes.bio_en,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
                 {/* <p
                   className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}
@@ -240,6 +227,7 @@ function ImageDesktop({ title }) {
                     }}
                   ></div>
                 </p> */}
+
                 {/* Text Editor  */}
                 {/* <MDBCol>
                   <span
@@ -734,7 +722,7 @@ function ImageMobile({ title }) {
                 position="top"
                 alt="..."
                 style={{
-                  height: "380px",
+                  height: "300px",
                   width: "300px",
                   objectFit: "initial",
                   borderRadius: "0px",
@@ -789,12 +777,23 @@ function ImageMobile({ title }) {
                     </span>
                   </MDBCol>
                 </MDBRow>
-                <p
+                {uploadfiles.attributes?.bio_en ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{ wordBreak: "break-word" }}
+                    dangerouslySetInnerHTML={{
+                      __html: uploadfiles.attributes.bio_en,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
+                {/* <p
                   className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}
                 >
                   {uploadfiles.attributes?.bio_en || "-"}
-                </p>
+                </p> */}
               </div>
             </MDBCol>
           </MDBRow>{" "}
