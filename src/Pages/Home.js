@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 import axios from "axios";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* MDBootstrap */
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
+import LanguageContext from "../Components/LanguageContext";
 /* Components */
 import Clusterimage from "../Components/Cluster";
 import Carousel2 from "../Components/Carousel";
@@ -40,25 +41,22 @@ function Home(props) {
 
   useEffect(() => {
     if (!hasDataFetched) {
-      const instance = axios.create({
-        baseURL: "https://10.35.29.186/api/",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      instance
-        .get("contents?populate=*&filters[topic][$eq]=who_we_are")
-        .then((response) => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=who_we_are"
+          );
           const data = response.data.data;
           if (data && data.length > 0) {
             setUploadfiles(data);
           }
           setHasDataFetched(true);
-        })
-        .catch((error) => {
-          // console.log(error);
-        });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
     }
   }, [hasDataFetched]);
 
@@ -98,6 +96,9 @@ function Home(props) {
 
   const isDesktopWidth = window.innerWidth > 1600;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       {/* <Preloader /> */}
@@ -120,6 +121,31 @@ function Home(props) {
               "desktop-width": isDesktopWidth,
             })}
           > */}
+
+              {/* <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
+                {uploadfiles[0] && (
+                  <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
+                    <div className="d-inline-flex p-2">
+                      <p
+                        className="font-normal text-uppercase xs:text-xl md:text-3xl"
+                        style={{ fontFamily: "MyFont" }}
+                      >
+                        {selectedLanguage === "en"
+                          ? uploadfiles[0].attributes.header_en
+                          : uploadfiles[0].attributes.content_th}
+                      </p>
+                    </div>
+                  </MDBRow>
+                )}
+                <div>
+                  <button onClick={() => handleLanguageSwitch("en")}>
+                    English
+                  </button>
+                  <button onClick={() => handleLanguageSwitch("th")}>
+                    Thai
+                  </button>
+                </div>
+              </MDBContainer> */}
 
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
                 {uploadfiles[0] && (

@@ -26,6 +26,7 @@ import MemberDetailimage from "../Components/MemberDetailimage";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import { useMediaQuery } from "react-responsive";
+import ReactMarkdown from "react-markdown";
 
 function ImageDesktop({ title }) {
   let { id } = useParams();
@@ -203,6 +204,31 @@ function ImageDesktop({ title }) {
                     </span>
                   </MDBCol>
                 </MDBRow>
+                <div>
+                  {/* Render the content */}
+                  {uploadfiles.attributes?.bio_en ? (
+                    <div
+                      className="fw-normal text-lg pt-3"
+                      style={{
+                        backgroundColor: "#fffffe",
+                        color: "#000000",
+                        fontSize: "12px",
+                        fontWeight: "normal",
+                        lineHeight: "18px",
+                        maxWidth: "90%",
+                      }}
+                    >
+                      <div
+                        style={{ whiteSpace: "" }}
+                        dangerouslySetInnerHTML={{
+                          __html: uploadfiles.attributes.bio_en,
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="fw-normal text-lg pt-3">-</div>
+                  )}
+                </div>
                 {/* <p
                   className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}

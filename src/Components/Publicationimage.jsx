@@ -213,9 +213,9 @@ function Menu() {
         id="tools-flex"
       >
         <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
-          <MDBRow>
+          <MDBRow className="mb-4" style={{ border: "1px solid grey" }}>
             {tags.map((tag, index) => (
-              <MDBCol md="3" key={tag.id} className="pb-4 col-sm-8">
+              <MDBCol md="3" key={tag.id} className="py-4 col-sm-8">
                 <MDBCardBody
                   className="p-3 break-all"
                   style={{

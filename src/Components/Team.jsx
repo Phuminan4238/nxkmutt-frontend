@@ -15,7 +15,7 @@ import {
 import membericon from "../Images/member-icon.png";
 
 // Desktop
-function Post() {
+function ImageDesktop() {
   const [memberfiles, setMemberfiles] = useState([]);
 
   useEffect(() => {
@@ -162,7 +162,7 @@ function Post() {
 }
 
 // Mobile
-function Image({ members }) {
+function ImageMobile({ members }) {
   const colors = ["#B34C66", "#F2B032", "#119ED1", "#F2B032"];
   const [uploadfiles, setUploadfilesMember] = useState([]);
 
@@ -304,10 +304,10 @@ export default function Team() {
   return (
     <>
       {/* Mobile  */}
-      {isMobile && <Image />}
+      {isMobile && <ImageMobile />}
 
       {/* Desktop  */}
-      {!isMobile && <Post />}
+      {!isMobile && <ImageDesktop />}
     </>
   );
 }

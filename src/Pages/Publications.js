@@ -288,6 +288,7 @@ const Publications = () => {
           <MDBRow className="px-4 sm:px-0">
             <Publicationimage></Publicationimage>
           </MDBRow>
+
           <button
             className={`scroll-to-top ${showButton ? "show" : ""}`}
             onClick={scrollToTop}

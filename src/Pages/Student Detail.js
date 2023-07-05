@@ -219,12 +219,19 @@ function ImageDesktop({ title }) {
                     </span>
                   </MDBCol> */}
                 </MDBRow>
-                <p
+                {/* <p
                   className="fw-normal text-normal pt-3"
                   style={{ maxWidth: "90%" }}
                 >
                   {uploadfiles.attributes?.bio_en || "-"}
-                </p>
+                </p> */}
+                <div
+                  className="fw-normal text-normal pt-3"
+                  style={{ maxWidth: "90%" }}
+                  dangerouslySetInnerHTML={{
+                    __html: uploadfiles.attributes.bio_en,
+                  }}
+                />
               </div>
             </MDBCol>
             <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
@@ -511,7 +518,7 @@ function ImageMobile({ title }) {
                   position="top"
                   alt="..."
                   style={{
-                    height: "380px",
+                    height: "300px",
                     width: "300px",
                     objectFit: "initial",
                     borderRadius: "0px",
@@ -605,7 +612,7 @@ function ImageMobile({ title }) {
                         position="top"
                         alt="..."
                         style={{
-                          height: "380px",
+                          height: "300px",
                           width: "300px",
                           objectFit: "initial",
                           borderRadius: "0px",
