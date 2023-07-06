@@ -68,8 +68,11 @@ function ToolsDetail({ title }) {
     return () => clearTimeout(timer);
   }, []);
 
+  const isDesktopWidth = window.innerWidth > 1600;
+  const isMobileWidth = window.innerWidth < 420;
+
   return (
-    <div className="App">
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
       {!loaded && (
         <div
           className="loading-overlay"

@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+/* Routes */
+import { Link } from "react-router-dom";
 /* Images */
 import vr2 from "../Images/vr-2.png";
 /* Components */
@@ -10,6 +12,10 @@ import axios from "axios";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import logo from "../Images/logo.png";
+import image1 from "../Images/participate-img1.png";
+import image2 from "../Images/participate-img2.png";
+import image3 from "../Images/participate-img3.png";
 
 const Participate = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -67,8 +73,11 @@ const Participate = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const isDesktopWidth = window.innerWidth > 1600;
+  const isMobileWidth = window.innerWidth < 420;
+
   return (
-    <div className="App">
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -150,6 +159,7 @@ const Participate = () => {
                     "https://10.35.29.186" +
                     member.attributes.fileupload.data[0]?.attributes.url
                   }
+                  // src={image1}
                 />
               ))}
             </MDBCol>
@@ -175,9 +185,20 @@ const Participate = () => {
             </MDBCol> */}
           </MDBRow>
 
-          <MDBRow className="pt-4 pb-3 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 pb-3 xs:px-5 sm:px-5 md:px-0">
             <MDBCol>
-              <MDBRow>
+              <MDBRow className="xs:px-5 sm:px-5 md:px-0 pb-4">
+                <Link
+                  to={`/Participate-Detail/`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    // window.location.replace(`/Tools-Detail/${member.id}`);
+                  }}
+                >
+                  <Participateimage></Participateimage>
+                </Link>
+              </MDBRow>
+              <MDBRow className="pt-4">
                 <p
                   className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
@@ -247,9 +268,9 @@ const Participate = () => {
                   </MDBCol>
                 </MDBRow>
               </MDBCol>
-              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
+              {/* <MDBRow className="xs:px-5 sm:px-5 md:px-0">
                 <Participateimage></Participateimage>
-              </MDBRow>
+              </MDBRow> */}
               <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
                 <p
                   className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"

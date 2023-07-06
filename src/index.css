@@ -46,6 +46,11 @@ body {
   --mdb-gutter-x: 4.5rem !important;
 }
 
+.px-7 {
+  padding-left: 5.5rem;
+  padding-right: 5.5rem;
+}
+
 @media (min-width: 376px) {
   #tools-flex {
     flex-direction: column;
@@ -350,6 +355,45 @@ a:hover {
 
 .max-w-screen-1920 {
   max-width: 1920px !important;
+}
+
+/* Mobile Searchbox  */
+.searchBox2 {
+  position: absolute;
+  top: 20%;
+  right: 11%;
+  transform: translate(-0%, 169%);
+  background: transparent;
+  height: 60px;
+  border-radius: 40px;
+  padding: 10px;
+  /* transition: 0.4s; */
+}
+
+/* Tool Carousel Icon  */
+.react-multiple-carousel__arrow--left {
+  left: calc(45% + 1px) !important;
+  padding-top: 0.4rem;
+  padding-left: 0.8rem;
+}
+
+.react-multiple-carousel__arrow--left > svg {
+  display: none;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(45% + 1px) !important;
+  padding-top: 0.4rem;
+  padding-left: 1rem;
+}
+
+.react-multiple-carousel__arrow--right > svg {
+  display: none;
+}
+
+.react-multiple-carousel__arrow {
+  /* padding-top: 0.4rem;
+  padding-left: 0.8rem; */
 }
 
 @media (min-width: 1400px) {

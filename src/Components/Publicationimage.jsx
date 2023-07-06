@@ -195,10 +195,10 @@ function Menu() {
                   />
                   {publication.attributes.description_en}
                 </p>
-                <p style={{ display: "inline-block", color: "red" }}>
+                {/* <p style={{ display: "inline-block", color: "red" }}>
                   TAG TEST
                   {publication.attributes.createdAt}
-                </p>
+                </p> */}
               </MDBCol>
             </Link>
           </>
@@ -213,7 +213,7 @@ function Menu() {
         id="tools-flex"
       >
         <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
-          <MDBRow className="mb-4" style={{ border: "1px solid grey" }}>
+          <MDBRow className="mb-4">
             {tags.map((tag, index) => (
               <MDBCol md="3" key={tag.id} className="py-4 col-sm-8">
                 <MDBCardBody
@@ -224,7 +224,7 @@ function Menu() {
                         ? "#fff"
                         : activeTag === index
                         ? colors[index]
-                        : "#ccc"
+                        : "white"
                     }`,
                     border: `2px solid ${
                       allTagsSelected
@@ -303,6 +303,7 @@ export default function Publicationimage() {
   );
 }
 
+// // Second
 // import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
@@ -521,209 +522,210 @@ export default function Publicationimage() {
 //     </div>
 //   );
 // }
-
 // export default function PublicationImage() {
 //   return <Menu />;
 // }
 
-// // import React, { useState, useEffect } from "react";
-// // import { Link } from "react-router-dom";
-// // import axios from "axios";
-// // import {
-// //   MDBCard,
-// //   MDBCardBody,
-// //   MDBCardTitle,
-// //   MDBCardText,
-// //   MDBCardImage,
-// //   MDBContainer,
-// //   MDBRow,
-// //   MDBCol,
-// // } from "mdb-react-ui-kit";
-// // import ArticleIcon from "@mui/icons-material/Article";
-// // import styled from "styled-components";
-// // import { blue, green, red } from "@mui/material/colors";
+// Third
 
-// // function Menu() {
-// //   const [tags, setTags] = useState([]);
+// import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// import {
+//   MDBCard,
+//   MDBCardBody,
+//   MDBCardTitle,
+//   MDBCardText,
+//   MDBCardImage,
+//   MDBContainer,
+//   MDBRow,
+//   MDBCol,
+// } from "mdb-react-ui-kit";
+// import ArticleIcon from "@mui/icons-material/Article";
+// import styled from "styled-components";
+// import { blue, green, red } from "@mui/material/colors";
 
-// //   useEffect(() => {
-// //     fetch("https://10.35.29.186/api/tags")
-// //       .then((res) => res.json())
-// //       .then((result) => {
-// //         setTags(result.data.slice(0, 4));
-// //       });
-// //   }, []);
+// function Menu() {
+//   const [tags, setTags] = useState([]);
 
-// //   const [selectedTag, setSelectedTag] = useState("cognitive");
-// //   const [publications, setPublications] = useState([]);
-// //   const [allPublications, setAllPublications] = useState([]);
-// //   const [activeTag, setActiveTag] = useState(0);
+//   useEffect(() => {
+//     fetch("https://10.35.29.186/api/tags")
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setTags(result.data.slice(0, 4));
+//       });
+//   }, []);
 
-// //   const tagColors = {
-// //     cognitive: "#AE023E",
-// //     humanfactor: "#009B62",
-// //     neuroscience: "#119ED1",
-// //     pharmaceutical: "#FEB832",
-// //   };
+//   const [selectedTag, setSelectedTag] = useState("cognitive");
+//   const [publications, setPublications] = useState([]);
+//   const [allPublications, setAllPublications] = useState([]);
+//   const [activeTag, setActiveTag] = useState(0);
 
-// //   useEffect(() => {
-// //     const fetchPublications = async () => {
-// //       let endpoint = "";
+//   const tagColors = {
+//     cognitive: "#AE023E",
+//     humanfactor: "#009B62",
+//     neuroscience: "#119ED1",
+//     pharmaceutical: "#FEB832",
+//   };
 
-// //       if (activeTag === -1) {
-// //         endpoint = "https://10.35.29.186/api/publications";
-// //       } else {
-// //         switch (activeTag) {
-// //           case 0:
-// //             endpoint =
-// //               "https://10.35.29.186/api/publications?filters[theme][key][$eq]=cognitive_clinical_and_computational_neuroscience";
-// //             break;
-// //           case 1:
-// //             endpoint =
-// //               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=human_factors_research_and_decision_neuroscience";
-// //             break;
-// //           case 2:
-// //             endpoint =
-// //               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=educational_neuroscience_and_neurodevelopment";
-// //             break;
-// //           case 3:
-// //             endpoint =
-// //               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
-// //             break;
-// //           default:
-// //             endpoint = `https://10.35.29.186/api/publications?filters[theme][key][$eq]=${selectedTag}`;
-// //             break;
-// //         }
-// //       }
+//   useEffect(() => {
+//     const fetchPublications = async () => {
+//       let endpoint = "";
 
-// //       const res = await fetch(endpoint);
-// //       const result = await res.json();
-// //       const filteredPublications = result.data.filter(
-// //         (publication) =>
-// //           new Date(publication.attributes.published_date) < new Date()
-// //       );
-// //       setPublications(filteredPublications.slice(0, 4));
-// //       setAllPublications(filteredPublications);
-// //     };
+//       if (activeTag === -1) {
+//         endpoint = "https://10.35.29.186/api/publications";
+//       } else {
+//         switch (activeTag) {
+//           case 0:
+//             endpoint =
+//               "https://10.35.29.186/api/publications?filters[theme][key][$eq]=cognitive_clinical_and_computational_neuroscience";
+//             break;
+//           case 1:
+//             endpoint =
+//               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=human_factors_research_and_decision_neuroscience";
+//             break;
+//           case 2:
+//             endpoint =
+//               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=educational_neuroscience_and_neurodevelopment";
+//             break;
+//           case 3:
+//             endpoint =
+//               "https://10.35.29.186/api/publications?populate=*&filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
+//             break;
+//           default:
+//             endpoint = `https://10.35.29.186/api/publications?filters[theme][key][$eq]=${selectedTag}`;
+//             break;
+//         }
+//       }
 
-// //     fetchPublications();
-// //   }, [selectedTag, activeTag]);
+//       const res = await fetch(endpoint);
+//       const result = await res.json();
+//       const filteredPublications = result.data.filter(
+//         (publication) =>
+//           new Date(publication.attributes.published_date) < new Date()
+//       );
+//       setPublications(filteredPublications.slice(0, 4));
+//       setAllPublications(filteredPublications);
+//     };
 
-// //   const colors = ["#AE023E", "#009B62", "#119ED1", "#FEB832"];
+//     fetchPublications();
+//   }, [selectedTag, activeTag]);
 
-// //   const tagColor = selectedTag !== null ? tagColors[selectedTag] : "#CCCCCC";
+//   const colors = ["#AE023E", "#009B62", "#119ED1", "#FEB832"];
 
-// //   const getTagColor = (tag) => {
-// //     const tagColors = {
-// //       cognitive: "#AE023E",
-// //       humanfactor: "#009B62",
-// //       neuroscience: "#119ED1",
-// //       pharmaceutical: "#FEB832",
-// //     };
+//   const tagColor = selectedTag !== null ? tagColors[selectedTag] : "#CCCCCC";
 
-// //     return tagColors[tag] || "#CCCCCC";
-// //   };
+//   const getTagColor = (tag) => {
+//     const tagColors = {
+//       cognitive: "#AE023E",
+//       humanfactor: "#009B62",
+//       neuroscience: "#119ED1",
+//       pharmaceutical: "#FEB832",
+//     };
 
-// //   const StyledArticleIcon = styled(ArticleIcon)`
-// //     color: ${({ tag }) => getTagColor(tag)};
-// //   `;
+//     return tagColors[tag] || "#CCCCCC";
+//   };
 
-// //   const handleTagClick = (tag, index) => {
-// //     setSelectedTag(tag);
-// //     setActiveTag(index);
-// //   };
+//   const StyledArticleIcon = styled(ArticleIcon)`
+//     color: ${({ tag }) => getTagColor(tag)};
+//   `;
 
-// //   const publicationsByYear = Object.entries(
-// //     allPublications.reduce((acc, publication) => {
-// //       const year = publication.attributes.published_date.substring(0, 4);
-// //       if (!acc[year]) {
-// //         acc[year] = [];
-// //       }
-// //       acc[year].push(publication);
-// //       return acc;
-// //     }, {})
-// //   )
-// //     .sort(([yearA], [yearB]) => yearB - yearA)
-// //     .map(([year, publications]) => (
-// //       <MDBRow key={year}>
-// //         <MDBCol size="1">
-// //           <p className="text-2xl fw-bold text-uppercase text-black">{year}</p>
-// //         </MDBCol>
-// //         <MDBCol
-// //           style={{
-// //             borderBottom: "1px solid black",
-// //             marginBottom: "1.4rem",
-// //           }}
-// //         ></MDBCol>
-// //         {publications.map((publication) => (
-// //           <Link
-// //             to={publication.attributes.url}
-// //             target="_blank"
-// //             style={{ color: "black" }}
-// //             key={publication.id}
-// //           >
-// //             <MDBCol md="11" className="pb-2">
-// //               <p style={{ display: "inline-block" }}>
-// //                 <StyledArticleIcon
-// //                   tag={selectedTag}
-// //                   style={{ marginRight: "5px" }}
-// //                 />
+//   const handleTagClick = (tag, index) => {
+//     setSelectedTag(tag);
+//     setActiveTag(index);
+//   };
 
-// //                 {publication.attributes.description_en}
-// //               </p>
-// //             </MDBCol>
-// //           </Link>
-// //         ))}
-// //       </MDBRow>
-// //     ));
+//   const publicationsByYear = Object.entries(
+//     allPublications.reduce((acc, publication) => {
+//       const year = publication.attributes.published_date.substring(0, 4);
+//       if (!acc[year]) {
+//         acc[year] = [];
+//       }
+//       acc[year].push(publication);
+//       return acc;
+//     }, {})
+//   )
+//     .sort(([yearA], [yearB]) => yearB - yearA)
+//     .map(([year, publications]) => (
+//       <MDBRow key={year}>
+//         <MDBCol size="1">
+//           <p className="text-2xl fw-bold text-uppercase text-black">{year}</p>
+//         </MDBCol>
+//         <MDBCol
+//           style={{
+//             borderBottom: "1px solid black",
+//             marginBottom: "1.4rem",
+//           }}
+//         ></MDBCol>
+//         {publications.map((publication) => (
+//           <Link
+//             to={publication.attributes.url}
+//             target="_blank"
+//             style={{ color: "black" }}
+//             key={publication.id}
+//           >
+//             <MDBCol md="11" className="pb-2">
+//               <p style={{ display: "inline-block" }}>
+//                 <StyledArticleIcon
+//                   tag={selectedTag}
+//                   style={{ marginRight: "5px" }}
+//                 />
 
-// //   return (
-// //     <div
-// //       className="d-flex justify-content-between pt-0 pb-4 px-0"
-// //       id="tools-flex"
-// //     >
-// //       <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-// //         <MDBRow>
-// //           {tags.map((tag, index) => (
-// //             <MDBCol md="3" key={tag.id} className="pb-4 col-sm-8">
-// //               <MDBCardBody
-// //                 className="p-3 break-all"
-// //                 style={{
-// //                   backgroundColor:
-// //                     activeTag === -1 || activeTag === index
-// //                       ? colors[index]
-// //                       : "#ccc",
-// //                   border: `2px solid ${
-// //                     activeTag === -1 || activeTag === index
-// //                       ? colors[index]
-// //                       : "#ccc"
-// //                   }`,
-// //                   borderRadius: "0.25rem",
-// //                   color:
-// //                     activeTag === -1 || activeTag === index ? "#FFF" : "gray",
-// //                 }}
-// //                 onClick={() => handleTagClick(tag.attributes.name_en, index)}
-// //               >
-// //                 <p
-// //                   className="fw-bold text-start mb-0"
-// //                   style={{
-// //                     fontFamily: "MyFont",
-// //                     color:
-// //                       activeTag === -1 || activeTag === index ? "#FFF" : "gray",
-// //                   }}
-// //                 >
-// //                   {tag.attributes.name_en}
-// //                 </p>
-// //               </MDBCardBody>
-// //             </MDBCol>
-// //           ))}
-// //         </MDBRow>
-// //         {publicationsByYear}
-// //       </MDBContainer>
-// //     </div>
-// //   );
-// // }
+//                 {publication.attributes.description_en}
+//               </p>
+//             </MDBCol>
+//           </Link>
+//         ))}
+//       </MDBRow>
+//     ));
 
-// // export default function PublicationImage() {
-// //   return <Menu />;
-// // }
+//   return (
+//     <div
+//       className="d-flex justify-content-between pt-0 pb-4 px-0"
+//       id="tools-flex"
+//     >
+//       <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+//         <MDBRow>
+//           {tags.map((tag, index) => (
+//             <MDBCol md="3" key={tag.id} className="pb-4 col-sm-8">
+//               <MDBCardBody
+//                 className="p-3 break-all"
+//                 style={{
+//                   backgroundColor:
+//                     activeTag === -1 || activeTag === index
+//                       ? colors[index]
+//                       : "#ccc",
+//                   border: `2px solid ${
+//                     activeTag === -1 || activeTag === index
+//                       ? colors[index]
+//                       : "#ccc"
+//                   }`,
+//                   borderRadius: "0.25rem",
+//                   color:
+//                     activeTag === -1 || activeTag === index ? "#FFF" : "gray",
+//                 }}
+//                 onClick={() => handleTagClick(tag.attributes.name_en, index)}
+//               >
+//                 <p
+//                   className="fw-bold text-start mb-0"
+//                   style={{
+//                     fontFamily: "MyFont",
+//                     color:
+//                       activeTag === -1 || activeTag === index ? "#FFF" : "gray",
+//                   }}
+//                 >
+//                   {tag.attributes.name_en}
+//                 </p>
+//               </MDBCardBody>
+//             </MDBCol>
+//           ))}
+//         </MDBRow>
+//         {publicationsByYear}
+//       </MDBContainer>
+//     </div>
+//   );
+// }
+
+// export default function PublicationImage() {
+//   return <Menu />;
+// }

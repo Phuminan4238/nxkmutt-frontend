@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Preloader.css";
 import { preLoaderAnim } from "../Animations";
 import logored from "../Images/logored.svg";
+import logobrain from "../Images/logobrain.svg";
 
 const Preloader = () => {
   useEffect(() => {
@@ -11,19 +12,22 @@ const Preloader = () => {
   }, []);
 
   const logoStyle = {
-    width: "100%",
+    width: "60%",
     height: "auto",
+    // marginLeft: "auto",
+    // marginRight: "4rem",
   };
 
   return (
     <div className="preloader">
       <div className="texts-container">
-        <span>
-          <img src={logored} loading="lazy" style={logoStyle} />
+        <span className="w-50 items-center">
+          <img src={logobrain} loading="lazy" style={logoStyle} />
         </span>
-        <span className="pe-3">Neuroscience Center</span>
+        <span className="pe-4">Neuroscience</span>
         {/* <span className="pe-3">for Research and Innovation</span> */}
-        <span>KMUTT</span>
+        <span className="pe-4">Center</span>
+        <span className="">KMUTT</span>
       </div>
     </div>
   );

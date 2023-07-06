@@ -35,8 +35,11 @@ const Toolservice = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const isDesktopWidth = window.innerWidth > 1600;
+  const isMobileWidth = window.innerWidth < 420;
+
   return (
-    <div className="App">
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -148,7 +151,7 @@ const Toolservice = () => {
           <MDBRow className="px-4 sm:px-0">
             <Toolsimage></Toolsimage>
           </MDBRow>
-          <MDBRow className="mt-4">
+          {/* <MDBRow className="mt-4">
             <MDBCol>
               <div className="text-center">
                 <MDBBtn outline className="mx-2" color="secondary">
@@ -156,7 +159,7 @@ const Toolservice = () => {
                 </MDBBtn>
               </div>
             </MDBCol>
-          </MDBRow>
+          </MDBRow> */}
           <MDBRow className="pt-5 xs:px-4 sm:px-0">
             <MDBCol>
               <div className="d-inline-flex p-2">

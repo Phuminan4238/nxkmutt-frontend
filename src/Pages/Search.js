@@ -73,8 +73,11 @@ const Searchresult = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const isDesktopWidth = window.innerWidth > 1600;
+  const isMobileWidth = window.innerWidth < 420;
+
   return (
-    <div className="App">
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -130,9 +133,12 @@ const Searchresult = () => {
             <MDBCol md="6" className="p-0">
               <div>
                 {/* Render publication results */}
-                <h2 className="ps-3" style={{ fontFamily: "MyFont" }}>
+                <h4
+                  className="xs:pt-5 sm:pt-0 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Publication Results:
-                </h2>
+                </h4>
                 {searchResults.length > 0 ? (
                   <ul className="ms-4">
                     {searchResults.map((result) => (
@@ -181,9 +187,12 @@ const Searchresult = () => {
                 )} */}
 
                 {/* Render member results */}
-                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                <h4
+                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Member Results:
-                </h2>
+                </h4>
                 {memberResults.length > 0 ? (
                   <ul className="ms-4">
                     {memberResults.map((result) => (
@@ -207,9 +216,12 @@ const Searchresult = () => {
                 )}
 
                 {/* Render event results */}
-                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                <h4
+                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Event Results:
-                </h2>
+                </h4>
                 {eventResults.length > 0 ? (
                   <ul className="ms-4">
                     {eventResults.map((result) => (
@@ -230,9 +242,12 @@ const Searchresult = () => {
                 )}
 
                 {/* Render tool results */}
-                <h2 className="pt-4 ps-3" style={{ fontFamily: "MyFont" }}>
+                <h4
+                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                  style={{ fontFamily: "FontMedium" }}
+                >
                   Tool Results:
-                </h2>
+                </h4>
                 {toolResults.length > 0 ? (
                   <ul className="ms-4">
                     {toolResults.map((result) => (

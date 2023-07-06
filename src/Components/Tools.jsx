@@ -194,28 +194,28 @@ function ImageDesktop({ members }) {
           <Carousel
             responsive={responsive}
             arrows={true}
-            renderArrowPrev={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-prev"
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowLeft />
-                </button>
-              )
-            }
-            renderArrowNext={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-next"
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowRight />
-                </button>
-              )
-            }
+            // renderArrowPrev={(onClickHandler, hasNext, label) =>
+            //   hasNext && (
+            //     <button
+            //       className="carousel-arrow carousel-prev"
+            //       onClick={onClickHandler}
+            //       aria-label={label}
+            //     >
+            //       <MdKeyboardArrowLeft />
+            //     </button>
+            //   )
+            // }
+            // renderArrowNext={(onClickHandler, hasNext, label) =>
+            //   hasNext && (
+            //     <button
+            //       className="carousel-arrow carousel-next"
+            //       onClick={onClickHandler}
+            //       aria-label={label}
+            //     >
+            //       <MdKeyboardArrowRight />
+            //     </button>
+            //   )
+            // }
           >
             {displayedItems.map((member) => (
               <MDBCol md="4" key={member.id} className="pb-2 px-0 col-sm-8">
@@ -249,7 +249,7 @@ function ImageDesktop({ members }) {
           </Carousel>
           <div className="d-flex justify-content-center">
             <button
-              className={`carousel-arrow carousel-prev ${
+              className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left  ${
                 window.matchMedia("(max-width: 768px)").matches
                   ? "d-none"
                   : "d-flex"
@@ -260,7 +260,7 @@ function ImageDesktop({ members }) {
               <MdKeyboardArrowLeft />
             </button>
             <button
-              className={`carousel-arrow carousel-next ${
+              className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right  ${
                 window.matchMedia("(max-width: 768px)").matches
                   ? "d-none"
                   : "d-flex"
@@ -413,6 +413,10 @@ function ImageMobile({ members }) {
               hasNext && (
                 <button
                   className="carousel-arrow carousel-prev"
+                  style={{
+                    padding: "unset",
+                    left: "calc(4% + 1px) !important",
+                  }}
                   onClick={onClickHandler}
                   aria-label={label}
                 >
@@ -424,6 +428,10 @@ function ImageMobile({ members }) {
               hasNext && (
                 <button
                   className="carousel-arrow carousel-next"
+                  style={{
+                    padding: "unset",
+                    right: "calc(4% + 1px) !important",
+                  }}
                   onClick={onClickHandler}
                   aria-label={label}
                 >

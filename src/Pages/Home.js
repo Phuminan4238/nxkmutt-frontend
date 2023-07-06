@@ -95,20 +95,25 @@ function Home(props) {
   };
 
   const isDesktopWidth = window.innerWidth > 1600;
+  const isMobileWidth = window.innerWidth < 420;
 
   const { selectedLanguage, handleLanguageSwitch } =
     useContext(LanguageContext);
 
   return (
     <>
-      <Preloader />
-      <div className="App">
+      {/* <Preloader /> */}
+      <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
         {/* ******************/}
 
         <main>
           <ThemeProvider theme={theme}>
             {/* Section Carousel */}
-            <Container maxWidth="xl" disableGutters={true}>
+            <Container
+              maxWidth="xl"
+              disableGutters={true}
+              style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+            >
               <Carousel2></Carousel2>
 
               {/* ******************/}

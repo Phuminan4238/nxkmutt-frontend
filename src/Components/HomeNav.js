@@ -238,7 +238,7 @@ export default function HomeNav(props) {
         <HideOnScroll {...props}>
           <Container maxWidth="xl">
             <AppBar
-              className="px-4"
+              className="px-20"
               style={{
                 background: "unset",
                 boxShadow: "unset",
@@ -319,7 +319,7 @@ export default function HomeNav(props) {
                       // style={{ opacity: 0.7 }}
                       sx={{
                         mt: "68px",
-                        left: "48px",
+                        left: "32px",
                         width: drawerWidth,
                         flexShrink: 0,
                         "& .MuiDrawer-paper": {
@@ -421,7 +421,7 @@ export default function HomeNav(props) {
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-4"
+            className="px-20"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -508,8 +508,8 @@ export default function HomeNav(props) {
                   <Menu
                     style={{ opacity: 0.9 }}
                     sx={{
-                      mt: "60px",
-                      left: "30px",
+                      mt: "68px",
+                      left: "32px",
                       width: drawerWidth,
                       flexShrink: 0,
                       "& .MuiDrawer-paper": {

@@ -30,6 +30,7 @@ import ToolsDetail from "./Pages/Tools Detail";
 import PublicationsDetail from "./Pages/Publication Detail";
 import Search from "./Pages/Search";
 import Searchresult from "./Pages/Search";
+import ParticipateDetail from "./Pages/Participate Detail";
 
 function App() {
   const location = useLocation();
@@ -87,6 +88,10 @@ function App() {
               <Route
                 path="/Publications-Detail/:id"
                 element={<PublicationsDetail title="PUBLICATION" />}
+              />
+              <Route
+                path="/Participate-Detail/"
+                element={<ParticipateDetail title="PARTICIPATE" />}
               />
               <Route
                 path="/News-Detail/:id"

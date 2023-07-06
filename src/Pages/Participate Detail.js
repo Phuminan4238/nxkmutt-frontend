@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
+import axios from "axios";
 /* Routes */
 import { Route, Routes, useParams } from "react-router";
 /* Material UI */
@@ -13,24 +14,47 @@ import { Link } from "react-router-dom";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import image1 from "../Images/participate-img1.png";
+import image2 from "../Images/participate-img2.png";
+import image3 from "../Images/participate-img3.png";
 
-function TagsDetail({ title }) {
+function ParticipateDetail({ title }) {
   let { id } = useParams();
-  const [tags, setTags] = useState({});
+  const [uploadfiles, setUploadfiles] = useState({});
+  const [publicationfiles, setPublicationfiles] = useState([]);
+
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/events/${id}?`)
-      .then((res) => res.json())
-      .then((result) => {
-        setTags(result.data);
+    axios
+      .get(
+        `https://10.35.29.186/api/tools/${id}?populate=uploadfiles.fileupload`
+      )
+      .then((response) => {
+        setUploadfiles(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, [id]);
 
-  const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    axios
+      .get("https://10.35.29.186/api/publications?populate=id")
+      .then((response) => {
+        setPublicationfiles(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const [memberCover, setMembercover] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+    )
       .then((res) => res.json())
       .then((result) => {
-        setPuplicataionfiles(result.data);
+        setMembercover(result.data);
       });
   }, []);
 
@@ -88,7 +112,6 @@ function TagsDetail({ title }) {
       )}
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
         <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
-          {/* Title */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
               className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
@@ -98,6 +121,7 @@ function TagsDetail({ title }) {
                 // fontSize: "1.3rem",
               }}
             >
+              {/* color: "#AE023E", */}
               <Link to="/">
                 <a
                   style={{ color: "#AE023E" }}
@@ -107,7 +131,7 @@ function TagsDetail({ title }) {
                 </a>
               </Link>
             </MDBCol>
-            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+            <MDBCol className="col-2 p-0 me-3" style={{ width: "3.33%" }}>
               <span>
                 <KeyboardArrowRightIcon
                   style={{
@@ -123,51 +147,46 @@ function TagsDetail({ title }) {
                 className="text-uppercase fw-bold xs:text-lg sm:text-xl"
                 style={{ fontFamily: "FontMedium" }}
               >
-                {tags.attributes?.name_en || "-"}
+                {uploadfiles.attributes?.name_en || "-"}
               </span>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-        {/* Container  */}
+
         <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5 xs:px-5 sm:px-1">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-            <MDBCol className="d-flex ps-0 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="fw-bolder pt-4 xs:text-xl sm:text-4xl"
-                  style={{
-                    color: "#AE023E",
-                    fontFamily: "MyFont",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {tags.attributes?.name_en || "-"}
-                </p>
-              </div>
-            </MDBCol>
-            <MDBCol md="5" className="p-0">
+            <MDBCol md="4" className="p-0">
               <MDBCardImage
                 className="rounded-0"
-                src={news1}
+                // src={
+                //   "https://10.35.29.186" +
+                //     uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                //       .fileupload.data[0]?.attributes.url || "-"
+                // }
+                src={image1}
                 position="top"
                 alt="..."
-                // style={{
-                //   height: "380px",
-                //   width: "-webkit-fit-content",
-                //   objectFit: "initial",
-                //   borderRadius: "0px",
-                //   alignSelf: "center",
-                // }}
                 style={{
                   //   height: "350px",
                   // width: "100%",
-                  height: "300px",
-                  objectFit: "initial",
+                  // height: "400px",
+                  objectFit: "fill",
+                  // height: "500px",
                   borderRadius: "0px",
                   alignSelf: "center",
                   // objectFit: "contain",
                 }}
               />
+            </MDBCol>
+            <MDBCol className="d-flex ps-0 pb-0 ps-5">
+              <div className="d-flex flex-column w-100">
+                <h1
+                  className="fw-bolder pt-4"
+                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                >
+                  {uploadfiles.attributes?.name_en || "-"}
+                </h1>
+              </div>
             </MDBCol>
           </MDBRow>
         </MDBContainer>
@@ -176,20 +195,20 @@ function TagsDetail({ title }) {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
             {/* Current Affiliations */}
-            <MDBRow className="pt-4">
-              <p>More news detail....</p>
+            <MDBRow className="pt-4 text-initial">
+              <p>More tools detail....</p>
             </MDBRow>
 
             {/*  Grants */}
             <MDBRow>
               <h5
                 className="fw-bold text-uppercase ps-2 pt-4"
-                style={{ color: "#A02040" }}
+                style={{ color: "#A02040", fontFamily: "MyFont" }}
               >
-                More news detail....
+                {uploadfiles.attributes?.content_en || "-"}
               </h5>
             </MDBRow>
-            <MDBRow className="pt-0 pb-0">
+            {/* <MDBRow className="pt-0 pb-0">
               <MDBCardImage
                 className="rounded-0"
                 // src={
@@ -212,9 +231,9 @@ function TagsDetail({ title }) {
               />
             </MDBRow>
             {/* Current Affiliations */}
-            <MDBRow className="pt-4 ">
-              <p>More news detail....</p>
-            </MDBRow>
+            {/* <MDBRow className="pt-4 ">
+              <p>More tools detail....</p>
+            </MDBRow> */}
           </MDBRow>
         </MDBContainer>
       </section>
@@ -222,4 +241,4 @@ function TagsDetail({ title }) {
   );
 }
 
-export default TagsDetail;
+export default ParticipateDetail;
