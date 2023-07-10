@@ -14,6 +14,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const Publications = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -147,7 +148,7 @@ const Publications = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -182,149 +183,154 @@ const Publications = () => {
           />
         </div>
       )}
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 xs:pb-0 xs:px-5 sm:pb-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className=" font-black fw-light text-uppercase text-black xs:text-2xl md:text-5xl"
+                    style={{ fontFamily: "FontLight" }}
+                  >
+                    Our
+                  </p>
+                  <p
+                    className="font-black  text-uppercase pt-2 xs:text-3xl md:text-5xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Publications
+                  </p>
 
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 xs:pb-0 xs:px-5 sm:pb-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className=" font-black fw-light text-uppercase text-black xs:text-2xl md:text-5xl"
-                  style={{ fontFamily: "FontLight" }}
-                >
-                  Our
-                </p>
-                <p
-                  className="font-black  text-uppercase pt-2 xs:text-3xl md:text-5xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Publications
-                </p>
+                  <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:pt-5">
+                    <div className="input-group rounded">
+                      <input
+                        type="text"
+                        placeholder="Search"
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        onKeyDown={handleKeyDown}
+                        className="form-control"
+                        style={{ width: "640px", paddingLeft: "50px" }}
+                      />
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          position: "absolute",
+                          right: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <i className="fas fa-arrow-right"></i>
+                      </span>
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          position: "absolute",
+                          left: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <i className="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
 
-                <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
-                  <div className="input-group rounded">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      onKeyDown={handleKeyDown}
-                      className="form-control"
-                      style={{ width: "640px", paddingLeft: "50px" }}
-                    />
-                    <span
-                      className="input-group-text border-0"
-                      id="search-addon"
-                      style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                    >
-                      <i className="fas fa-arrow-right"></i>
-                    </span>
-                    <span
-                      className="input-group-text border-0"
-                      id="search-addon"
-                      style={{
-                        position: "absolute",
-                        left: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                    >
-                      <i className="fas fa-search"></i>
-                    </span>
+                  <div className="pt-4">
+                    {searchTerm && (
+                      <div>
+                        {searchResults.map((result) => (
+                          <li key={result.id}>
+                            {/* Display the relevant data from the search results */}
+                            <a
+                              href={result.attributes.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {result.attributes.title_en}
+                            </a>
+                          </li>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
+              </MDBCol>
+              <MDBCol
+                md="3"
+                className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0 d-none d-sm-block"
+              >
+                {memberCover.map((member) => (
+                  <img
+                    className="image-fluid"
+                    style={{
+                      width: "-webkit-fill-available",
+                      height: "300px",
+                    }}
+                    id="cluster-img"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.fileupload.data[0]?.attributes.url
+                    }
+                  />
+                ))}
+              </MDBCol>
+              {/* maxWidth: "-webkit-fill-available",
+                      height: "400px",
+                      objectFit: "contain",
+                      verticalAlign: "top", */}
+            </MDBRow>
+            <MDBRow>
+              <MDBCol>
+                <p className="ms-3  text-uppercase">Filter By</p>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow className="xs:px-4 sm:px-0">
+              <Publicationimage></Publicationimage>
+            </MDBRow>
 
-                <div className="pt-4">
-                  {searchTerm && (
-                    <div>
-                      {searchResults.map((result) => (
-                        <li key={result.id}>
-                          {/* Display the relevant data from the search results */}
-                          <a
-                            href={result.attributes.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {result.attributes.title_en}
-                          </a>
-                        </li>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </MDBCol>
-            <MDBCol
-              md="4"
-              className="xs:px-0 xs:pb-0 xs:pt-5 sm:pt-5 md:p-0 d-none d-sm-block"
-            >
-              {memberCover.map((member) => (
-                <img
-                  className="image-fluid"
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "300px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
-                  }}
-                  id="cluster-img"
-                  src={
-                    "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
-                  }
-                />
-              ))}
-            </MDBCol>
-          </MDBRow>
-          <MDBRow>
-            <MDBCol>
-              <p className="ms-3 pt-4 text-uppercase">Filter By</p>
-            </MDBCol>
-          </MDBRow>
-          <MDBRow className="px-4 sm:px-0">
-            <Publicationimage></Publicationimage>
-          </MDBRow>
-
-          <button
-            className={`scroll-to-top ${showButton ? "show" : ""}`}
-            onClick={scrollToTop}
-            style={{
-              position: "fixed",
-              bottom: "40px",
-              right: "140px",
-              zIndex: "9999",
-              border: "none",
-              backgroundColor: "transparent",
-              opacity: showButton ? 1 : 0,
-              transition: "opacity 0.3s ease",
-              pointerEvents: showButton ? "auto" : "none",
-            }}
-          >
-            <div
-              className="icon-container"
+            <button
+              className={`scroll-to-top ${showButton ? "show" : ""}`}
+              onClick={scrollToTop}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
+                position: "fixed",
+                bottom: "40px",
+                right: "140px",
+                zIndex: "9999",
+                border: "none",
+                backgroundColor: "transparent",
+                opacity: showButton ? 1 : 0,
+                transition: "opacity 0.3s ease",
+                pointerEvents: showButton ? "auto" : "none",
               }}
             >
-              <KeyboardArrowUpIcon style={{ color: "black" }} />
-              <span className="up-text" style={{ color: "#AE023E" }}>
-                UP
-              </span>
-            </div>
-          </button>
+              <div
+                className="icon-container"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <KeyboardArrowUpIcon style={{ color: "black" }} />
+                <span className="up-text" style={{ color: "#AE023E" }}>
+                  UP
+                </span>
+              </div>
+            </button>
 
-          {/* <Publicationreport></Publicationreport> */}
-        </MDBContainer>
-      </section>
+            {/* <Publicationreport></Publicationreport> */}
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

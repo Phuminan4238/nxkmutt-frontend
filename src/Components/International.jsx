@@ -55,7 +55,7 @@ function ImageDesktop() {
 
   return (
     <>
-      <MDBContainer className="fluid p-0" id="cluster-container">
+      <MDBContainer className="fluid p-0 pb-4" id="cluster-container">
         <MDBRow className="p-0 w-fill" id="cluster-gutter">
           {uploadfiles.map((member, index) => (
             <React.Fragment key={member.id}>
@@ -94,7 +94,7 @@ function ImageDesktop() {
                   <MDBCardBody style={{ padding: "0px" }}>
                     <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                       <p
-                        className="text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
+                        className="text-white text-center mt-2 mb-2 xs:text-md sm:text-md"
                         style={{
                           fontFamily: "FontMedium",
                         }}
@@ -178,7 +178,7 @@ function ImageMobile({ members }) {
 
   return (
     <>
-      <div className="d-flex justify-content-between py-0" id="tools-flex">
+      <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (

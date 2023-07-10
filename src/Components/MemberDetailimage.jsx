@@ -69,8 +69,14 @@ function Image() {
                     <MDBCardBody>
                       <MDBCardTitle className="m-0 pt-2">
                         <p
-                          className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
-                          style={{ color: "black", fontFamily: "MyFont" }}
+                          className="fw-bold text-center mb-0 xs:text-md md:text-md"
+                          style={{
+                            color: "black",
+                            fontFamily: "MyFont",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
                         >
                           {member.attributes.name_en}
 
@@ -79,7 +85,7 @@ function Image() {
                       </MDBCardTitle>
                       <MDBCardText>
                         <p
-                          className="fw-normal text-center mb-0 xs:text-xl md:text-xl"
+                          className="fw-normal text-center mb-0 xs:text-md md:text-md"
                           style={{ color: "black" }}
                         >
                           {member.attributes.position_en}

@@ -10,6 +10,7 @@ import axios from "axios";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const DataDocument = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -71,7 +72,7 @@ const DataDocument = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -106,153 +107,159 @@ const DataDocument = () => {
           />
         </div>
       )}
-
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  DATA
-                </p>
-                <p
-                  className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  <span
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    DATA
+                  </p>
+                  <p
+                    className="font-black text-uppercase pt-0 xs:text-2xl md:text-5xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "6rem",
+                        color: "#AE023E",
+                        fontWeight: "normal",
+                        fontFamily: "FontLight",
+                      }}
+                    >
+                      &
+                    </span>{" "}
+                    DOCUMENT
+                  </p>
+                </div>
+              </MDBCol>
+              <MDBCol md="4" className="p-0">
+                {memberCover.map((member) => (
+                  <img
+                    className="image-fluid"
                     style={{
-                      fontSize: "6rem",
-                      color: "#AE023E",
-                      fontWeight: "normal",
-                      fontFamily: "FontLight",
+                      width: "-webkit-fill-available",
+                      height: "300px",
+                      // maxWidth: "-webkit-fill-available",
+                      // height: "400px",
+                      // objectFit: "contain",
+                      // verticalAlign: "top",
                     }}
-                  >
-                    &
-                  </span>{" "}
-                  DOCUMENT
-                </p>
-              </div>
-            </MDBCol>
-            <MDBCol md="4" className="p-0">
-              {memberCover.map((member) => (
-                <img
-                  className="image-fluid"
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "300px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
-                  }}
-                  id="cluster-img"
-                  src={
-                    "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
-                  }
-                />
-              ))}
-            </MDBCol>
-          </MDBRow>
+                    id="cluster-img"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.fileupload.data[0]?.attributes.url
+                    }
+                  />
+                ))}
+              </MDBCol>
+            </MDBRow>
 
-          <MDBRow className="pt-4 pb-3 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol>
-              <MDBRow>
-                <p
-                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Topic
-                </p>
-              </MDBRow>
-              <MDBCol className="ps-4 pt-2">
-                <MDBRow className="pt-2">
-                  <MDBCol
-                    size="1"
-                    className="sm:p-2 md:p-0"
-                    style={{ width: "1.33%" }}
+            <MDBRow className="pt-4 pb-3 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol>
+                <MDBRow>
+                  <p
+                    className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "MyFont" }}
                   >
-                    {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <li className="ps-0"></li>
-                  </MDBCol>
-                  <MDBCol className="ps-0">
-                    <p className="ps-0" style={{ maxWidth: "90%" }}>
-                      We are seeking enthusiastic and motivated students and
-                      interns with a Bachelor’s degree (at minimum) to join our
-                      research team. As a member of our team, you will have the
-                      opportunity to work alongside experienced researchers and
-                      gain valuable hands-on experience in Neuroscience
-                      research, as well as contributing to our efforts in
-                      improving cognitive health. If interested in applying,
-                      please send your inquiries to:{" "}
-                      <span style={{ color: "#119ED1" }}>
-                        nx.kmutt@gmail.com.
-                      </span>
-                    </p>
-                  </MDBCol>
+                    Topic
+                  </p>
+                </MDBRow>
+                <MDBCol className="ps-4 pt-2">
+                  <MDBRow className="pt-2">
+                    <MDBCol
+                      size="1"
+                      className="sm:p-2 md:p-0"
+                      style={{ width: "1.33%" }}
+                    >
+                      {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                      <li className="ps-0"></li>
+                    </MDBCol>
+                    <MDBCol className="ps-0">
+                      <p className="ps-0" style={{ maxWidth: "90%" }}>
+                        We are seeking enthusiastic and motivated students and
+                        interns with a Bachelor’s degree (at minimum) to join
+                        our research team. As a member of our team, you will
+                        have the opportunity to work alongside experienced
+                        researchers and gain valuable hands-on experience in
+                        Neuroscience research, as well as contributing to our
+                        efforts in improving cognitive health. If interested in
+                        applying, please send your inquiries to:{" "}
+                        <span style={{ color: "#119ED1" }}>
+                          nx.kmutt@gmail.com.
+                        </span>
+                      </p>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCol>
+                <MDBRow>
+                  <h4
+                    className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Topic
+                  </h4>
+                </MDBRow>
+                <MDBCol className="ps-4 pt-2">
+                  <MDBRow className="pt-2">
+                    <MDBCol
+                      size="1"
+                      className="sm:p-2 md:p-0"
+                      style={{ width: "1.33%" }}
+                    >
+                      {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                      <li className="ps-0"></li>
+                    </MDBCol>
+                    <MDBCol className="ps-0">
+                      <p className="ps-0" style={{ maxWidth: "90%" }}>
+                        We are seeking enthusiastic and motivated students and
+                        interns with a Bachelor’s degree (at minimum) to join
+                        our research team. As a member of our team, you will
+                        have the opportunity to work alongside experienced
+                        researchers and gain valuable hands-on experience in
+                        Neuroscience research, as well as contributing to our
+                        efforts in improving cognitive health. If interested in
+                        applying, please send your inquiries to:{" "}
+                        <span style={{ color: "#119ED1" }}>
+                          nx.kmutt@gmail.com.
+                        </span>
+                      </p>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCol>
+                <MDBRow className="xs:px-5 sm:px-5 md:px-0">
+                  <Participateimage></Participateimage>
+                </MDBRow>
+                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
+                  <p
+                    className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Topic
+                  </p>
+                  <p>
+                    Your help matters! Your generous support, no matter the
+                    size, can provide opportunities for talented researchers to
+                    join our team, as well as helping us purchase necessary
+                    equipment for conducting Frontier neuroscience research in
+                    Thailand. Please contact nx.kmutt@gmail.com if you are
+                    considering making a financial contribution to our
+                    laboratory.{" "}
+                  </p>
                 </MDBRow>
               </MDBCol>
-              <MDBRow>
-                <h4
-                  className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-xl md:text-3xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Topic
-                </h4>
-              </MDBRow>
-              <MDBCol className="ps-4 pt-2">
-                <MDBRow className="pt-2">
-                  <MDBCol
-                    size="1"
-                    className="sm:p-2 md:p-0"
-                    style={{ width: "1.33%" }}
-                  >
-                    {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                    <li className="ps-0"></li>
-                  </MDBCol>
-                  <MDBCol className="ps-0">
-                    <p className="ps-0" style={{ maxWidth: "90%" }}>
-                      We are seeking enthusiastic and motivated students and
-                      interns with a Bachelor’s degree (at minimum) to join our
-                      research team. As a member of our team, you will have the
-                      opportunity to work alongside experienced researchers and
-                      gain valuable hands-on experience in Neuroscience
-                      research, as well as contributing to our efforts in
-                      improving cognitive health. If interested in applying,
-                      please send your inquiries to:{" "}
-                      <span style={{ color: "#119ED1" }}>
-                        nx.kmutt@gmail.com.
-                      </span>
-                    </p>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCol>
-              <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <Participateimage></Participateimage>
-              </MDBRow>
-              <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
-                <p
-                  className="fw-bolder text-uppercase text-black ps-2 xs:text-xl md:text-3xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Topic
-                </p>
-                <p>
-                  Your help matters! Your generous support, no matter the size,
-                  can provide opportunities for talented researchers to join our
-                  team, as well as helping us purchase necessary equipment for
-                  conducting Frontier neuroscience research in Thailand. Please
-                  contact nx.kmutt@gmail.com if you are considering making a
-                  financial contribution to our laboratory.{" "}
-                </p>
-              </MDBRow>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

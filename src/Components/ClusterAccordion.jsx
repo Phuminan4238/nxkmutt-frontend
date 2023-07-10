@@ -214,7 +214,7 @@ function ImageDesktop() {
             >
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-normal text-white xs:text-xl md:text-3xl"
+                  className="font-normal text-white xs:text-xl md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   {tagsData.attributes?.name_en || "-"}

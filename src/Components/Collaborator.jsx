@@ -95,7 +95,7 @@ function ImageDesktop() {
                   <MDBCardBody style={{ padding: "0px" }}>
                     <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                       <p
-                        className="text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
+                        className="text-white text-center mt-2 mb-2 xs:text-md sm:text-md"
                         style={{
                           fontFamily: "FontMedium",
                         }}

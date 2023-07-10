@@ -7,6 +7,7 @@ import vr2 from "../Images/vr-2.png";
 import ClusterAccordion from "../Components/ClusterAccordion";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const Research = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -35,7 +36,7 @@ const Research = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -70,59 +71,66 @@ const Research = () => {
           />
         </div>
       )}
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Research
-                </p>
-                <p
-                  className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl"
-                  style={{ fontFamily: "FontLight" }}
-                >
-                  Clusters
-                </p>
-                <div
-                  className="d-flex justify-content-between mt-auto"
-                  style={{ width: "80%" }}
-                ></div>
-              </div>
-            </MDBCol>
-            <MDBCol md="4" className="p-0 d-none d-sm-block">
-              {/* <img
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Research
+                  </p>
+                  <p
+                    className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl"
+                    style={{ fontFamily: "FontLight" }}
+                  >
+                    Clusters
+                  </p>
+                  <div
+                    className="d-flex justify-content-between mt-auto"
+                    style={{ width: "80%" }}
+                  ></div>
+                </div>
+              </MDBCol>
+              <MDBCol md="4" className="p-0 d-none d-sm-block">
+                {/* <img
                 src={vr2}
                 class="image-fluid"
                 id="cluster-img"
                 style={{ height: "350px" }}
               /> */}
-              {memberCover.map((member) => (
-                <img
-                  className="image-fluid"
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "300px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
-                  }}
-                  id="cluster-img"
-                  src={
-                    "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
-                  }
-                />
-              ))}
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
-      <ClusterAccordion></ClusterAccordion>
+                {memberCover.map((member) => (
+                  <img
+                    className="image-fluid"
+                    style={{
+                      width: "-webkit-fill-available",
+                      height: "300px",
+                      // maxWidth: "-webkit-fill-available",
+                      // height: "400px",
+                      // objectFit: "contain",
+                      // verticalAlign: "top",
+                    }}
+                    id="cluster-img"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.fileupload.data[0]?.attributes.url
+                    }
+                  />
+                ))}
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+
+        <ClusterAccordion></ClusterAccordion>
+      </Container>
     </div>
   );
 };

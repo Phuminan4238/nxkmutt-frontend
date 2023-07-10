@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol, MDBRipple } from "mdb-react-ui-kit";
 import new1 from "../Images/new-1.png";
 import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 function Post({ member }) {
   // Arrow Hovering
@@ -48,6 +50,9 @@ function Post({ member }) {
     transition: "margin-left 0.3s ease-out",
   };
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <Link
       to={`/News-Detail/${member.id}`}
@@ -58,7 +63,7 @@ function Post({ member }) {
         window.location.replace(`/News-Detail/${member.id}`);
       }}
     >
-      <MDBRow className="xs:pb-3 md:pb-8 xs:px-4 md:px-0">
+      <MDBRow className="xs:pb-3 md:pb-0 xs:px-4 md:px-0">
         <MDBCol md="4">
           <MDBRipple
             className="bg-image hover-overlay shadow-1-strong rounded"
@@ -84,16 +89,20 @@ function Post({ member }) {
         >
           <div className="d-flex flex-column w-100">
             <p
-              className="font-bold mb-2 xs:pt-0 md:pt-0 xs:text-lg md:text-2xl"
+              className="font-bold mb-2 xs:pt-0 md:pt-0 xs:text-lg md:text-xl"
               style={{ fontFamily: "MyFont" }}
             >
-              {member.attributes.name_en}
+              {selectedLanguage === "en"
+                ? member.attributes.name_en || "Not found"
+                : member.attributes.name_th2 || "ภาษาไทย"}
             </p>
             <p
               className="font-light mt-auto xs:text-sm sm:text-lg"
               style={{ fontFamily: "FontLight" }}
             >
-              {member.attributes.name_th}
+              {selectedLanguage === "en"
+                ? member.attributes.name_th || "Not found"
+                : member.attributes.name_th2 || "ภาษาไทย"}
             </p>
 
             <div
@@ -101,7 +110,7 @@ function Post({ member }) {
               id="news-underline"
             >
               <p className="mb-2 xs:text-sm sm:text-lg">
-                {member.attributes.createdAt}
+                {member.attributes.date}
               </p>
               <p className="mb-2 xs:text-sm sm:text-lg">Content Master</p>
             </div>

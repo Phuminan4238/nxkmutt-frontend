@@ -48,7 +48,7 @@ const Member = ({ imageUrl }) => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -83,31 +83,35 @@ const Member = ({ imageUrl }) => {
           />
         </div>
       )}
-
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Meet Our
-                </p>
-                <p
-                  className="font-black text-uppercase pt-2 xs:text-3xl md:text-6xl"
-                  style={{ color: "#AE023E" }}
-                >
-                  Team
-                </p>
-                <div
-                  className="d-flex justify-content-between mt-auto"
-                  style={{ width: "80%" }}
-                ></div>
-              </div>
-            </MDBCol>
-            {/* <MDBCol md="4" className="p-0">
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Meet Our
+                  </p>
+                  <p
+                    className="font-black text-uppercase pt-2 xs:text-3xl md:text-6xl"
+                    style={{ color: "#AE023E" }}
+                  >
+                    Team
+                  </p>
+                  <div
+                    className="d-flex justify-content-between mt-auto"
+                    style={{ width: "80%" }}
+                  ></div>
+                </div>
+              </MDBCol>
+              {/* <MDBCol md="4" className="p-0">
               {memberCover.length > 0 && (
                 <img
                   className={`image-fluid ${
@@ -129,67 +133,68 @@ const Member = ({ imageUrl }) => {
                 />
               )}
             </MDBCol> */}
-          </MDBRow>
-        </MDBContainer>
-      </section>
+            </MDBRow>
+          </MDBContainer>
+        </section>
 
-      <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-inline-flex xs:px-4 sm:p-2">
-              <p
-                className="font-black text-uppercase xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont" }}
-              >
-                Member
-              </p>
-            </div>
-            <Memberimage></Memberimage>
-            <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
-              <p
-                className="font-black text-uppercase xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont" }}
-              >
-                Advisor & Collaborator
-              </p>
-            </div>
-            <Memberadvisor></Memberadvisor>
-            <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
-              <h3
-                className="font-black text-uppercase xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont" }}
-              >
-                International Collaborators
-              </h3>
-            </div>
-            <Memberalumni></Memberalumni>
-            <div className="d-flex justify-content-between align-items-center pt-5 xs:px-4 sm:p-2">
-              <p
-                className="font-black text-uppercase xs:text-xl md:text-3xl"
-                style={{ fontFamily: "MyFont" }}
-              >
-                Students & Research Assistants & Alumni
-              </p>
-              <Link
-                to={`/Student-Detail/9`}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  window.location.replace(`/Student-Detail/9`);
-                }}
-                className="image-link"
-              >
-                <div className="d-inline-flex text-red py-2 md:py-4">
-                  <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
-                    Find out more
-                  </h5>
-                  <EastIcon style={iconStyle}></EastIcon>
-                </div>
-              </Link>
-            </div>
-            <Membercol></Membercol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+        <section>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-inline-flex xs:px-4 sm:p-2">
+                <p
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Member
+                </p>
+              </div>
+              <Memberimage></Memberimage>
+              <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
+                <p
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Advisor & Collaborator
+                </p>
+              </div>
+              <Memberadvisor></Memberadvisor>
+              <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
+                <h3
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  International Collaborators
+                </h3>
+              </div>
+              <Memberalumni></Memberalumni>
+              <div className="d-flex justify-content-between align-items-center pt-5 xs:px-4 sm:p-2">
+                <p
+                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  style={{ fontFamily: "MyFont" }}
+                >
+                  Students & Research Assistants & Alumni
+                </p>
+                <Link
+                  to={`/Student-Detail/9`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Student-Detail/9`);
+                  }}
+                  className="image-link"
+                >
+                  <div className="d-inline-flex text-red py-2 md:py-4">
+                    <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                      Find out more
+                    </h5>
+                    <EastIcon style={iconStyle}></EastIcon>
+                  </div>
+                </Link>
+              </div>
+              <Membercol></Membercol>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

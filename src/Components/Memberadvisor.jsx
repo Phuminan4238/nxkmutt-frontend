@@ -83,15 +83,15 @@ function Post() {
                       objectFit: "cover",
                       borderRadius: "0px",
                       alignSelf: "center",
-                      height: "250px",
+                      // height: "250px",
                       objectPosition: "50% 15%",
                       // objectPosition: "top",
                     }}
                   />
                   <MDBCardBody className="px-0">
-                    <MDBCardTitle className="m-0 pt-2">
+                    <MDBCardTitle className="m-0 pt-2 xs:text-md md:text-md">
                       <p
-                        className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
+                        className="fw-bold text-center mb-0 xs:text-md md:text-md"
                         style={{ color: "black", fontFamily: "MyFont" }}
                       >
                         {member.attributes.name_en}
@@ -195,7 +195,7 @@ function Image({ members }) {
                   <MDBCardBody>
                     <MDBCardTitle className="m-0">
                       <p
-                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
                         style={{ color: "#AE023E" }}
                       >
                         {member.attributes.name_en}

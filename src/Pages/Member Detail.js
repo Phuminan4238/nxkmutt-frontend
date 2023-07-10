@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 /* Routes */
@@ -27,10 +27,12 @@ import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import { useMediaQuery } from "react-responsive";
 import ReactMarkdown from "react-markdown";
+import Container from "@mui/material/Container";
+import { LanguageContext } from "../Components/LanguageContext";
 
 function ImageDesktop({ title }) {
   let { id } = useParams();
-  const [uploadfiles, setUploadfiles] = useState({});
+  const [uploadfiles, setUploadfiles] = useState([]);
   const [publicationfiles, setPublicationfiles] = useState([]);
 
   useEffect(() => {
@@ -75,8 +77,11 @@ function ImageDesktop({ title }) {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -112,114 +117,158 @@ function ImageDesktop({ title }) {
         </div>
       )}
 
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
-          {/* Title */}
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol
-              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
-              style={{
-                width: "-webkit-max-content",
-                fontFamily: "FontMedium",
-                // fontSize: "1.3rem",
-              }}
-            >
-              {/* color: "#AE023E", */}
-              <Link to="/">
-                <a
-                  style={{ color: "#AE023E" }}
-                  className="xs:text-lg sm:text-xl"
-                >
-                  TEAM MEMBER
-                </a>
-              </Link>
-            </MDBCol>
-            <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
-              <span>
-                <KeyboardArrowRightIcon
-                  style={{
-                    width: "2em",
-                    height: "2em",
-                    color: "#2F3437 !important",
-                  }}
-                ></KeyboardArrowRightIcon>
-              </span>
-            </MDBCol>
-            <MDBCol className="col-md-6 col-12 xs:ps-4 sm:ps-0 pt-2">
-              <span
-                className="text-uppercase fw-bold "
-                style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            {/* Title */}
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol
+                className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+                style={{
+                  width: "-webkit-max-content",
+                  fontFamily: "FontMedium",
+                  // fontSize: "1.3rem",
+                }}
               >
-                {uploadfiles.attributes?.prefix_en || "-"}
-                {uploadfiles.attributes?.nickname_en || "-"}
-              </span>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-
-        <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
-          {/* {uploadfiles.map((member) => ( */}
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <h1
-                  className="fw-bold text-uppercase text-black"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  {uploadfiles.attributes?.prefix_en || "-"}
-                  {uploadfiles.attributes?.name_en || "-"}
-                  {/* <span>&nbsp</span> */}
-                  <span
-                    style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
+                {/* color: "#AE023E", */}
+                <Link to="/">
+                  <a
+                    style={{ color: "#AE023E" }}
+                    className="xs:text-lg sm:text-xl"
                   >
-                    (
-                  </span>
-                  {uploadfiles.attributes?.nickname_en}
-                  <span>)</span>
-                </h1>
-                <h1
-                  className="fw-bold text-uppercase text-black"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  {uploadfiles.attributes?.surname_en || "-"}
-                </h1>
-                <h3
-                  className="fw-normal text-normal pt-2 mb-1"
-                  style={{ color: "#AE023E" }}
-                >
-                  {uploadfiles.attributes?.position_en || "-"}
-                </h3>
-                {/* local data */}
-                <p className="text-lg" style={{ color: "#AE023E" }}>
-                  Neuroscience Center for Research and Innovation (NX), Learning
-                  Institute, KMUTT
-                </p>
-                <MDBRow className="pt-2">
-                  <MDBCol size="1" style={{ width: "3.33%" }}>
-                    <MailOutlineIcon style={{ color: "#119ED1" }} />
-                  </MDBCol>
-                  <MDBCol>
-                    <span
-                      className="fw-normal text-lg ps-2"
-                      style={{ color: "#119ED1" }}
-                    >
-                      {uploadfiles.attributes?.email || "-"}
-                    </span>
-                  </MDBCol>
-                </MDBRow>
-                {/* Render the content */}
-                {uploadfiles.attributes?.bio_en ? (
-                  <p
-                    className="fw-normal text-md pt-3"
-                    style={{ wordBreak: "break-word", maxWidth: "80%" }}
-                    dangerouslySetInnerHTML={{
-                      __html: uploadfiles.attributes.bio_en,
+                    TEAM MEMBER
+                  </a>
+                </Link>
+              </MDBCol>
+              <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
+                <span>
+                  <KeyboardArrowRightIcon
+                    style={{
+                      width: "2em",
+                      height: "2em",
+                      color: "#2F3437 !important",
                     }}
-                  />
-                ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
-                )}
-                {/* <p
+                  ></KeyboardArrowRightIcon>
+                </span>
+              </MDBCol>
+              <MDBCol className="col-md-6 col-12 xs:ps-4 sm:ps-0 pt-2">
+                <span
+                  className="text-uppercase fw-bold "
+                  style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+                >
+                  {/* {uploadfiles.attributes?.prefix_en || "-"}
+                  {uploadfiles.attributes?.nickname_en || "-"} */}
+
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.prefix_en || ""} ${
+                        uploadfiles.attributes?.nickname_en || ""
+                      }`
+                    : `${uploadfiles.attributes?.prefix_th || ""} ${
+                        uploadfiles.attributes?.nickname_th || ""
+                      }`}
+                </span>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
+
+          <MDBContainer className="pt-4 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
+            {/* {uploadfiles.map((member) => ( */}
+            <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <h1
+                    className="fw-bold text-uppercase text-black"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.prefix_en || ""} ${
+                          uploadfiles.attributes?.name_en || ""
+                        }`
+                      : `${uploadfiles.attributes?.prefix_th || ""} ${
+                          uploadfiles.attributes?.name_th || ""
+                        }`}
+
+                    {/* <span>&nbsp</span> */}
+                    <span
+                      style={{
+                        paddingLeft: "0.5rem",
+                        fontFamily: "FontMedium",
+                      }}
+                    >
+                      (
+                    </span>
+                    {/* {uploadfiles.attributes?.nickname_en} */}
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.nickname_en || ""} `
+                      : `${uploadfiles.attributes?.nickname_th || ""} `}
+                    <span>)</span>
+                  </h1>
+                  <h1
+                    className="fw-bold text-uppercase text-black"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.surname_en || ""} `
+                      : `${uploadfiles.attributes?.surname_th || ""} `}
+                  </h1>
+                  <h3
+                    className="fw-normal text-normal pt-2 mb-1"
+                    style={{ color: "#AE023E" }}
+                  >
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.position_en || ""} `
+                      : `${uploadfiles.attributes?.position_th || ""} `}
+                  </h3>
+                  {/* local data */}
+                  <p className="text-lg" style={{ color: "#AE023E" }}>
+                    Neuroscience Center for Research and Innovation (NX),
+                    Learning Institute, KMUTT
+                  </p>
+                  <MDBRow className="pt-2">
+                    <MDBCol size="1" style={{ width: "3.33%" }}>
+                      <MailOutlineIcon style={{ color: "#119ED1" }} />
+                    </MDBCol>
+                    <MDBCol>
+                      <span
+                        className="fw-normal text-lg ps-2"
+                        style={{ color: "#119ED1" }}
+                      >
+                        {uploadfiles.attributes?.email || "-"}
+                      </span>
+                    </MDBCol>
+                  </MDBRow>
+                  {/* Render the content */}
+                  {/* {uploadfiles.attributes?.bio_en ? (
+                    <p
+                      className="fw-normal text-md pt-3"
+                      style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                      dangerouslySetInnerHTML={{
+                        __html: uploadfiles.attributes.bio_en,
+                      }}
+                    />
+                  ) : (
+                    <p className="fw-normal text-md pt-3">-</p>
+                  )} */}
+                  {uploadfiles.attributes?.bio_en ? (
+                    <p
+                      className="fw-normal text-md pt-3"
+                      style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          selectedLanguage === "en"
+                            ? uploadfiles.attributes.bio_en
+                            : uploadfiles.attributes.bio_th,
+                      }}
+                    />
+                  ) : (
+                    <p className="fw-normal text-md pt-3">-</p>
+                  )}
+
+                  {/* <p
                   className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}
                 >
@@ -231,8 +280,8 @@ function ImageDesktop({ title }) {
                   ></div>
                 </p> */}
 
-                {/* Text Editor  */}
-                {/* <MDBCol>
+                  {/* Text Editor  */}
+                  {/* <MDBCol>
                   <span
                     className="fw-normal text-lg ps-2"
                     style={{ color: "#119ED1" }}
@@ -244,145 +293,147 @@ function ImageDesktop({ title }) {
                     ></div>
                   </span>
                 </MDBCol> */}
+                </div>
+              </MDBCol>
+              <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
+                <MDBCardImage
+                  className="rounded-4"
+                  src={
+                    "https://10.35.29.186" +
+                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                        .image_original.data[0]?.attributes.url || "-"
+                  }
+                  position="top"
+                  alt="..."
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "0px",
+                    objectPosition: "50% 15%",
+                    height: "450px",
+                  }}
+                />
+              </MDBCol>
+            </MDBRow>{" "}
+            <MDBRow
+              style={{
+                borderBottom: "1px solid black",
+                // paddingTop: "1.5rem",
+              }}
+            ></MDBRow>
+          </MDBContainer>
+        </section>
+
+        <section>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
+            {/* Education */}
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                <h5
+                  className="fw-bold text-capitalize text-black"
+                  style={{ fontFamily: "FontMedium" }}
+                >
+                  Education
+                </h5>
+
+                <MDBBtn
+                  outline
+                  className="mx-2"
+                  style={{ borderColor: "#A02040", borderWidth: "1px" }}
+                >
+                  <DescriptionIcon
+                    style={{ color: "#A02040" }}
+                  ></DescriptionIcon>
+                  <span
+                    className="ps-2 text-normal"
+                    style={{ color: "#A02040" }}
+                  >
+                    download CV
+                  </span>
+                </MDBBtn>
               </div>
-            </MDBCol>
-            <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
-              <MDBCardImage
-                className="rounded-4"
-                src={
-                  "https://10.35.29.186" +
-                    uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                      .image_original.data[0]?.attributes.url || "-"
-                }
-                position="top"
-                alt="..."
-                style={{
-                  objectFit: "cover",
-                  borderRadius: "0px",
-                  objectPosition: "50% 15%",
-                  height: "450px",
-                }}
-              />
-            </MDBCol>
-          </MDBRow>{" "}
-          <MDBRow
-            style={{
-              borderBottom: "1px solid black",
-              // paddingTop: "1.5rem",
-            }}
-          ></MDBRow>
-        </MDBContainer>
-      </section>
+            </MDBRow>
 
-      <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
-          {/* Education */}
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
-              <h5
-                className="fw-bold text-capitalize text-black"
-                style={{ fontFamily: "FontMedium" }}
-              >
-                Education
-              </h5>
-
-              <MDBBtn
-                outline
-                className="mx-2"
-                style={{ borderColor: "#A02040", borderWidth: "1px" }}
-              >
-                <DescriptionIcon style={{ color: "#A02040" }}></DescriptionIcon>
-                <span className="ps-2 text-normal" style={{ color: "#A02040" }}>
-                  download CV
-                </span>
-              </MDBBtn>
-            </div>
-          </MDBRow>
-
-          {/* Education  */}
-          <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-              {uploadfiles.attributes?.education_en ? (
-                <ul style={{ paddingLeft: "1rem" }}>
-                  {uploadfiles.attributes.education_en.map(
+            {/* Education  */}
+            <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                {/* {uploadfiles.attributes?.education_en ? (
+                  <ul style={{ paddingLeft: "1rem" }}>
+                    {uploadfiles.attributes.education_en.map(
+                      (education, index) => {
+                        const [degree, year] = education.split("–");
+                        return (
+                          <li key={index} className="fw-normal text-normal">
+                            <p className="mb-1">{degree || "-"} </p>
+                          </li>
+                        );
+                      }
+                    )}
+                  </ul>
+                ) : (
+                  <p className="fw-normal text-normal">-</p>
+                )} */}
+                {uploadfiles.attributes?.education_en ? (
+                  <ul style={{ paddingLeft: "1rem" }}>
+                    {selectedLanguage === "en"
+                      ? uploadfiles.attributes.education_en.map(
+                          (education, index) => {
+                            const [degree, year] = education.split("–");
+                            return (
+                              <li key={index} className="fw-normal text-normal">
+                                <p className="mb-1">{degree || "-"}</p>
+                              </li>
+                            );
+                          }
+                        )
+                      : uploadfiles.attributes.education_th.map(
+                          (education, index) => {
+                            const [degree, year] = education.split("–");
+                            return (
+                              <li key={index} className="fw-normal text-normal">
+                                <p className="mb-1">{degree || "-"}</p>
+                              </li>
+                            );
+                          }
+                        )}
+                  </ul>
+                ) : (
+                  <p className="fw-normal text-normal">-</p>
+                )}
+              </MDBCol>
+              <MDBCol md="1">
+                <ul>
+                  {uploadfiles.attributes?.education_en?.map(
                     (education, index) => {
                       const [degree, year] = education.split("–");
                       return (
-                        <li key={index} className="fw-normal text-normal">
-                          <p className="mb-1">{degree || "-"} </p>
+                        <li
+                          key={index}
+                          className="fw-normal text-normal"
+                          style={{
+                            listStyle: '"- "',
+                            "::before": {
+                              content: '"-"',
+                              marginRight: "0.5rem",
+                            },
+                          }}
+                        >
+                          <p className="mb-1">{year} </p>
                         </li>
                       );
                     }
                   )}
                 </ul>
-              ) : (
-                <p className="fw-normal text-normal">-</p>
-              )}
-            </MDBCol>
-            <MDBCol md="1">
-              <ul>
-                {uploadfiles.attributes?.education_en?.map(
-                  (education, index) => {
-                    const [degree, year] = education.split("–");
-                    return (
-                      <li
-                        key={index}
-                        className="fw-normal text-normal"
-                        style={{
-                          listStyle: '"- "',
-                          "::before": {
-                            content: '"-"',
-                            marginRight: "0.5rem",
-                          },
-                        }}
-                      >
-                        <p className="mb-1">{year} </p>
-                      </li>
-                    );
-                  }
-                )}
-              </ul>
-            </MDBCol>
-          </MDBRow>
-
-          {/* Current Affiliations */}
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
-              <h5
-                className="fw-bold text-capitalize text-black"
-                style={{ fontFamily: "FontMedium" }}
-              >
-                Current Affiliations
-              </h5>
-            </div>
-          </MDBRow>
-          <MDBCol className="pt-2">
-            <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-                {uploadfiles.attributes?.affiliation_en ? (
-                  <ul style={{ paddingLeft: "1rem" }}>
-                    {uploadfiles.attributes.affiliation_en.map(
-                      (affiliation, index) => (
-                        <li key={index} className="fw-normal text-normal">
-                          {affiliation}
-                        </li>
-                      )
-                    )}
-                  </ul>
-                ) : (
-                  <p className="fw-normal text-normal text-black">-</p>
-                )}
               </MDBCol>
             </MDBRow>
 
-            {/*  Recent and on-going projects */}
+            {/* Current Affiliations */}
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
               <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
                 <h5
                   className="fw-bold text-capitalize text-black"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Recent and on-going projects
+                  Current Affiliations
                 </h5>
               </div>
             </MDBRow>
@@ -391,7 +442,40 @@ function ImageDesktop({ title }) {
                 <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                   {uploadfiles.attributes?.affiliation_en ? (
                     <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.project_en.map(
+                      {selectedLanguage === "en"
+                        ? uploadfiles.attributes.affiliation_en.map(
+                            (education, index) => {
+                              const [degree, year] = education.split("–");
+                              return (
+                                <li
+                                  key={index}
+                                  className="fw-normal text-normal"
+                                >
+                                  <p className="mb-1">{degree || "-"}</p>
+                                </li>
+                              );
+                            }
+                          )
+                        : uploadfiles.attributes.affiliation_th.map(
+                            (education, index) => {
+                              const [degree, year] = education.split("–");
+                              return (
+                                <li
+                                  key={index}
+                                  className="fw-normal text-normal"
+                                >
+                                  <p className="mb-1">{degree || "-"}</p>
+                                </li>
+                              );
+                            }
+                          )}
+                    </ul>
+                  ) : (
+                    <p className="fw-normal text-normal">-</p>
+                  )}
+                  {/* {uploadfiles.attributes?.affiliation_en ? (
+                    <ul style={{ paddingLeft: "1rem" }}>
+                      {uploadfiles.attributes.affiliation_en.map(
                         (affiliation, index) => (
                           <li key={index} className="fw-normal text-normal">
                             {affiliation}
@@ -401,123 +485,251 @@ function ImageDesktop({ title }) {
                     </ul>
                   ) : (
                     <p className="fw-normal text-normal text-black">-</p>
-                  )}
-                </MDBCol>
-              </MDBRow>
-            </MDBCol>
-
-            {/*  Grants */}
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
-                <h5
-                  className="fw-bold text-capitalize text-black"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Grants
-                </h5>
-              </div>
-            </MDBRow>
-            <MDBCol className="pt-2">
-              <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-                <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-                  {uploadfiles.attributes?.grant_en ? (
+                  )} */}
+                  {/* // New  */}
+                  {/* {uploadfiles.attributes?.affiliation_en ? (
                     <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.grant_en.map((grant, index) => (
-                        <li key={index} className="fw-normal text-normal">
-                          {grant}
-                        </li>
-                      ))}
+                      {uploadfiles.attributes.affiliation_en.map(
+                        (affiliation, index) => (
+                          <li className="fw-normal text-normal">
+                            {selectedLanguage === "en"
+                              ? `${
+                                  uploadfiles.attributes?.affiliation_en || ""
+                                } `
+                              : `${
+                                  uploadfiles.attributes?.affiliation_th || ""
+                                } `}
+                          </li>
+                        )
+                      )}
                     </ul>
                   ) : (
                     <p className="fw-normal text-normal text-black">-</p>
-                  )}
+                  )} */}
                 </MDBCol>
               </MDBRow>
-            </MDBCol>
 
-            {/* Awards  */}
+              {/*  Recent and on-going projects */}
+              <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+                <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                  <h5
+                    className="fw-bold text-capitalize text-black"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Recent and on-going projects
+                  </h5>
+                </div>
+              </MDBRow>
+              <MDBCol className="pt-2">
+                <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                  <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                    {/* {uploadfiles.attributes?.affiliation_en ? (
+                      <ul style={{ paddingLeft: "1rem" }}>
+                        {uploadfiles.attributes.project_en.map(
+                          (affiliation, index) => (
+                            <li key={index} className="fw-normal text-normal">
+                              {affiliation}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    ) : (
+                      <p className="fw-normal text-normal text-black">-</p>
+                    )} */}
+
+                    {uploadfiles.attributes?.project_en ? (
+                      <ul style={{ paddingLeft: "1rem" }}>
+                        {selectedLanguage === "en"
+                          ? uploadfiles.attributes.project_en.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )
+                          : uploadfiles.attributes.project_th.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )}
+                      </ul>
+                    ) : (
+                      <p className="fw-normal text-normal">-</p>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+              </MDBCol>
+
+              {/*  Grants */}
+              <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+                <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                  <h5
+                    className="fw-bold text-capitalize text-black"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Grants
+                  </h5>
+                </div>
+              </MDBRow>
+              <MDBCol className="pt-2">
+                <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                  <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                    {uploadfiles.attributes?.grant_en ? (
+                      <ul style={{ paddingLeft: "1rem" }}>
+                        {selectedLanguage === "en"
+                          ? uploadfiles.attributes.grant_en.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )
+                          : uploadfiles.attributes.grant_th.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )}
+                      </ul>
+                    ) : (
+                      <p className="fw-normal text-normal">-</p>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+              </MDBCol>
+
+              {/* Awards  */}
+              <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+                <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+                  <h5
+                    className="fw-bold text-capitalize text-black"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Awards
+                  </h5>
+                </div>
+              </MDBRow>
+              <MDBCol className="pt-2">
+                <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
+                  <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+                    {uploadfiles.attributes?.award_en ? (
+                      <ul style={{ paddingLeft: "1rem" }}>
+                        {selectedLanguage === "en"
+                          ? uploadfiles.attributes.award_en.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )
+                          : uploadfiles.attributes.award_th.map(
+                              (education, index) => {
+                                const [degree, year] = education.split("–");
+                                return (
+                                  <li
+                                    key={index}
+                                    className="fw-normal text-normal"
+                                  >
+                                    <p className="mb-1">{degree || "-"}</p>
+                                  </li>
+                                );
+                              }
+                            )}
+                      </ul>
+                    ) : (
+                      <p className="fw-normal text-normal">-</p>
+                    )}
+                  </MDBCol>
+                </MDBRow>
+              </MDBCol>
+            </MDBCol>
+          </MDBContainer>
+        </section>
+
+        {/*  Selected Publications */}
+        <section>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 pt-4">
+            {/* Education */}
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-              <div className="d-flex justify-content-between pt-3 xs:text-base sm:text-lg sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
                 <h5
-                  className="fw-bold text-capitalize text-black"
-                  style={{ fontFamily: "FontMedium" }}
+                  className="fw-bold text-uppercase text-black"
+                  style={{ fontFamily: "MyFont" }}
                 >
-                  Awards
+                  Selected Publications
                 </h5>
+
+                <MDBBtn
+                  outline
+                  className="mx-2"
+                  style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
+                >
+                  <SchoolIcon style={{ color: "#6A4F94" }}></SchoolIcon>
+                  <span
+                    className="ps-2 text-capitalize"
+                    style={{ color: "#6A4F94" }}
+                  >
+                    Google Scholar
+                  </span>
+                </MDBBtn>
               </div>
             </MDBRow>
-            <MDBCol className="pt-2">
-              <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-                <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-                  {uploadfiles.attributes?.award_en ? (
-                    <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.award_en.map((award, index) => (
-                        <li key={index} className="fw-normal text-normal">
-                          {award}
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="fw-normal text-normal">-</p>
-                  )}
-                </MDBCol>
-              </MDBRow>
-            </MDBCol>
-          </MDBCol>
-        </MDBContainer>
-      </section>
+            <MDBRow className="pt-2">
+              {publicationfiles.map((member) => (
+                <>
+                  <Link
+                    to={member.attributes.url}
+                    target="_blank"
+                    style={{ color: "black" }}
+                  >
+                    <MDBCol md="11" key={member.id} className="pb-2 ">
+                      <p style={{ display: "inline-block" }}>
+                        <ArticleIcon
+                          color="primary"
+                          style={{ marginRight: "1rem" }}
+                        />
+                        {member.attributes.title_en}
+                      </p>
+                    </MDBCol>
+                  </Link>
+                </>
+              ))}
+            </MDBRow>
 
-      {/*  Selected Publications */}
-      <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 pt-4">
-          {/* Education */}
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
-              <h5
-                className="fw-bold text-uppercase text-black"
-                style={{ fontFamily: "MyFont" }}
-              >
-                Selected Publications
-              </h5>
-
-              <MDBBtn
-                outline
-                className="mx-2"
-                style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
-              >
-                <SchoolIcon style={{ color: "#6A4F94" }}></SchoolIcon>
-                <span
-                  className="ps-2 text-capitalize"
-                  style={{ color: "#6A4F94" }}
-                >
-                  Google Scholar
-                </span>
-              </MDBBtn>
-            </div>
-          </MDBRow>
-          <MDBRow className="pt-2">
-            {publicationfiles.map((member) => (
-              <>
-                <Link
-                  to={member.attributes.url}
-                  target="_blank"
-                  style={{ color: "black" }}
-                >
-                  <MDBCol md="11" key={member.id} className="pb-2 ">
-                    <p style={{ display: "inline-block" }}>
-                      <ArticleIcon
-                        color="primary"
-                        style={{ marginRight: "1rem" }}
-                      />
-                      {member.attributes.title_en}
-                    </p>
-                  </MDBCol>
-                </Link>
-              </>
-            ))}
-          </MDBRow>
-
-          {/* 
+            {/* 
           {uploadfiles.map((member) => (
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               <MDBCol size="1">
@@ -529,7 +741,7 @@ function ImageDesktop({ title }) {
               </MDBCol>
             </MDBRow>
           ))} */}
-          {/* 
+            {/* 
           {uploadfiles.attributes?.grant_en ? (
             <ul>
               {uploadfiles.attributes.education_en.map((education, index) => {
@@ -545,42 +757,43 @@ function ImageDesktop({ title }) {
             <p className="fw-normal text-normal">-</p>
           )} */}
 
-          <MDBRow
-            style={{
-              borderBottom: "1px solid black",
-              paddingTop: "1.5rem",
-            }}
-          ></MDBRow>
-          {/* Other Members */}
-          <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
-              <h3
-                className="fw-bold text-uppercase text-black"
-                style={{ fontFamily: "MyFont" }}
-              >
-                Other Members
-              </h3>
-
-              <span className="flex">
-                {" "}
-                <EastIcon
-                  style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                ></EastIcon>
-                <Link
-                  to={`/team-member`}
-                  style={{ color: "#AE023E" }}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                  }}
+            <MDBRow
+              style={{
+                borderBottom: "1px solid black",
+                paddingTop: "1.5rem",
+              }}
+            ></MDBRow>
+            {/* Other Members */}
+            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg">
+                <h3
+                  className="fw-bold text-uppercase text-black"
+                  style={{ fontFamily: "MyFont" }}
                 >
-                  <p className="text-uppercase"> All Team Member</p>
-                </Link>
-              </span>
-            </div>
-          </MDBRow>
-          <MemberDetailimage></MemberDetailimage>
-        </MDBContainer>
-      </section>
+                  Other Members
+                </h3>
+
+                <span className="flex">
+                  {" "}
+                  <EastIcon
+                    style={{ color: "#AE023E", marginRight: "0.5rem" }}
+                  ></EastIcon>
+                  <Link
+                    to={`/team-member`}
+                    style={{ color: "#AE023E" }}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <p className="text-uppercase"> All Team Member</p>
+                  </Link>
+                </span>
+              </div>
+            </MDBRow>
+            <MemberDetailimage></MemberDetailimage>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 }
@@ -667,7 +880,7 @@ function ImageMobile({ title }) {
       )}
 
       <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
+        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
           {/* Title */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
@@ -711,7 +924,7 @@ function ImageMobile({ title }) {
           </MDBRow>
         </MDBContainer>
 
-        <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
+        <MDBContainer className="pt-4 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
           {/* {uploadfiles.map((member) => ( */}
           <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
             <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0 pb-4">
@@ -810,7 +1023,7 @@ function ImageMobile({ title }) {
       </section>
 
       <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
+        <MDBContainer className="xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
           {/* Education */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
@@ -1004,7 +1217,7 @@ function ImageMobile({ title }) {
 
       {/*  Selected Publications */}
       <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 pt-4">
+        <MDBContainer className="xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 pt-4">
           {/* Education */}
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">

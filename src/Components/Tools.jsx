@@ -96,8 +96,8 @@ function ImageDesktop({ members }) {
     width: isMobile ? "-webkit-fit-content" : "100%",
     boxShadow: "unset",
     borderRadius: "8px",
-    width: "340px",
-    height: "444px",
+    width: "300px",
+    height: "420px",
   };
 
   useEffect(() => {
@@ -231,7 +231,7 @@ function ImageDesktop({ members }) {
                       style={{
                         width: "-webkit-fill-available",
                         objectFit: "cover",
-                        height: "420px !important",
+                        height: "400px !important",
                         borderRadius: "8px",
                       }}
                       imageUrl={
@@ -240,7 +240,7 @@ function ImageDesktop({ members }) {
                           .fileupload.data[0]?.attributes.url
                       }
                       maskText={member.attributes.name_en + " "}
-                      imageHeight="420px" // Adjust the height here
+                      imageHeight="400px" // Adjust the height here
                     />
                   </MDBCard>
                 </Link>

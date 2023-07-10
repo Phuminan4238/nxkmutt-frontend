@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -13,6 +13,7 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import membericon from "../Images/member-icon.png";
+import { LanguageContext } from "./LanguageContext";
 
 // Desktop
 function Post() {
@@ -67,7 +68,7 @@ function Post() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+          "members?populate=tags&populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
         );
         if (isMounted) {
           setUploadfilesMember(response.data.data);
@@ -85,6 +86,9 @@ function Post() {
       isMounted = false;
     };
   }, [uploadfilesMember]);
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className="d-flex justify-content-between pb-4" id="tools-flex">
@@ -113,7 +117,7 @@ function Post() {
                     src={
                       "https://10.35.29.186" +
                       member.attributes.uploadfiles.data[0]?.attributes
-                        .image_square.data[0]?.attributes.url
+                        .image_original.data[0]?.attributes.url
                     }
                     position="top"
                     alt="..."
@@ -122,7 +126,7 @@ function Post() {
                       objectFit: "cover",
                       borderRadius: "1rem",
                       alignSelf: "center",
-                      height: "350px",
+                      height: "300px",
                       objectPosition: "50% 15%",
                       // objectPosition: "top",
                     }}
@@ -130,7 +134,7 @@ function Post() {
                   <MDBCardBody>
                     <MDBCardTitle className="m-0 pt-2">
                       <p
-                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        className="fw-bold text-center mb-0 xs:text-xl md:text-xl"
                         style={{
                           color: "black",
                           fontFamily: "MyFont",
@@ -139,29 +143,39 @@ function Post() {
                           textOverflow: "ellipsis",
                         }}
                       >
-                        {member.attributes.name_en}
+                        {/* {member.attributes.name_en}
 
-                        {member.attributes.surname_en}
+                        {member.attributes.surname_en} */}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.name_en} ${member.attributes.surname_en}`
+                          : `${member.attributes.name_th} ${member.attributes.surname_th}`}
                       </p>
                     </MDBCardTitle>
                     <MDBCardText>
                       <p
-                        className="fw-normal text-center mb-0 xs:text-md md:text-xl"
+                        className="fw-normal text-center mb-0 xs:text-md md:text-lg"
                         style={{ color: "black" }}
                       >
-                        {member.attributes.position_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.position_en} `
+                          : `${member.attributes.position_th}`}
                       </p>
                     </MDBCardText>
-                    {/* <MDBCardText
-                        // className="md:text-lg"
-                        key={member.attributes}
-                      > */}
+
                     <p
-                      className="fw-normal text-center text-sm md:text-lg"
+                      className="fw-normal text-center text-sm md:text-sm"
                       style={{ color: "#AE023E" }}
                     >
-                      Main Interest, Main <br></br> Interest, Main Interest
+                      {/* Handle  */}
+                      {member.attributes.tags?.data.map((tag, index) => (
+                        <li key={index}>
+                          {selectedLanguage === "en"
+                            ? tag.attributes.name_en
+                            : tag.attributes.name_th}
+                        </li>
+                      ))}
                     </p>
+
                     {/* </MDBCardText> */}
                   </MDBCardBody>
                 </MDBCard>

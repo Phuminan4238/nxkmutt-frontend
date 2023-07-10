@@ -1,7 +1,6 @@
-// LanguageContext.js
 import React, { createContext, useState } from "react";
 
-const LanguageContext = createContext();
+export const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
@@ -18,5 +17,3 @@ export const LanguageProvider = ({ children }) => {
     </LanguageContext.Provider>
   );
 };
-
-export default LanguageContext;

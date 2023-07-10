@@ -5,7 +5,6 @@ import axios from "axios";
 import { Route, Routes } from "react-router";
 /* MDBootstrap */
 import { MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import LanguageContext from "../Components/LanguageContext";
 /* Components */
 import Clusterimage from "../Components/Cluster";
 import Carousel2 from "../Components/Carousel";
@@ -20,6 +19,8 @@ import { useMediaQuery } from "react-responsive";
 import Container from "@mui/material/Container";
 import classNames from "classnames";
 import { createTheme, ThemeProvider } from "@mui/material";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 function Home(props) {
   // Theme
@@ -91,7 +92,7 @@ function Home(props) {
   const isDesktop = useMediaQuery({ minWidth: 940 });
 
   const containerStyle = {
-    maxWidth: isDesktop ? "7xl" : "fit",
+    maxWidth: isDesktop ? "5xl" : "fit",
   };
 
   const isDesktopWidth = window.innerWidth > 1600;
@@ -102,15 +103,15 @@ function Home(props) {
 
   return (
     <>
-      <Preloader />
-      <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+      {/* <Preloader /> */}
+      <div className="App">
         {/* ******************/}
 
         <main>
           <ThemeProvider theme={theme}>
             {/* Section Carousel */}
             <Container
-              maxWidth="xl"
+              maxWidth="lg"
               disableGutters={true}
               style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
             >
@@ -127,7 +128,8 @@ function Home(props) {
             })}
           > */}
 
-              {/* <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
+              {/* <MDBContainer className={`max-w-${containerStyle.maxWidth}`}> */}
+              <MDBContainer className="max-w-5xl">
                 {uploadfiles[0] && (
                   <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
                     <div className="d-inline-flex p-2">
@@ -136,41 +138,20 @@ function Home(props) {
                         style={{ fontFamily: "MyFont" }}
                       >
                         {selectedLanguage === "en"
-                          ? uploadfiles[0].attributes.header_en
-                          : uploadfiles[0].attributes.content_th}
-                      </p>
-                    </div>
-                  </MDBRow>
-                )}
-                <div>
-                  <button onClick={() => handleLanguageSwitch("en")}>
-                    English
-                  </button>
-                  <button onClick={() => handleLanguageSwitch("th")}>
-                    Thai
-                  </button>
-                </div>
-              </MDBContainer> */}
-
-              <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                {uploadfiles[0] && (
-                  <MDBRow className="pb-4 pt-3 xs:px-5 sm:px-5 md:px-0">
-                    <div className="d-inline-flex p-2">
-                      <p
-                        className="font-normal text-uppercase xs:text-xl md:text-3xl"
-                        style={{ fontFamily: "MyFont" }}
-                      >
-                        {uploadfiles[0].attributes.header_en}
+                          ? uploadfiles[0].attributes.header_en || "Not found"
+                          : uploadfiles[0].attributes.header_th || "Not found"}
                       </p>
                     </div>
                     <div className="d-flex justify-content-center align-items-center xs:py-2 md:py-5">
                       <p
-                        className="font-normal break-word xs:text-base md:text-lg"
+                        className="font-normal break-word xs:text-base md:text-lg xs:ps-0 md:ps-4"
                         style={{
                           maxWidth: "85%",
                         }}
                       >
-                        {uploadfiles[0].attributes.content_en}
+                        {selectedLanguage === "en"
+                          ? uploadfiles[0].attributes.content_en || "Not found"
+                          : uploadfiles[0].attributes.content_th2 || "ภาษาไทย"}
                       </p>
                     </div>
 

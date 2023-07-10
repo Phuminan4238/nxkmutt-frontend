@@ -9,8 +9,8 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
   const isFirstImage = index === 0;
   const isLastImage = index === total - 1;
 
-  const columnClass = `col-md-1 p-1 bg-white ${isFirstImage ? "pl-0" : ""} ${
-    isLastImage ? "pr-0" : ""
+  const columnClass = `col-md-1 p-1 bg-white ${isFirstImage ? "ps-0" : ""} ${
+    isLastImage ? "pe-0" : ""
   }`;
 
   return (
@@ -29,7 +29,7 @@ const TeamMemberImage = ({ src, index, total, memberId }) => {
         >
           <img
             src={src}
-            style={{ width: "inherit", height: "120px", objectFit: "cover" }}
+            style={{ width: "inherit", height: "100px", objectFit: "cover" }}
             alt="Team Member"
           />
           <div className="overlay"></div>

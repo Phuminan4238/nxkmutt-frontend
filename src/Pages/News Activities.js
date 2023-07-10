@@ -11,6 +11,7 @@ import News from "../Components/News";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const Newsactivities = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -118,7 +119,7 @@ const Newsactivities = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -153,118 +154,123 @@ const Newsactivities = () => {
           />
         </div>
       )}
-
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 xs:pb-0 sm:pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  News
-                </p>
-                <p
-                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  <span
-                    style={{
-                      fontSize: "6rem",
-                      color: "#AE023E",
-                      fontWeight: "normal",
-                      fontFamily: "FontLight",
-                    }}
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 xs:pb-0 sm:pb-5 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
+                    style={{ fontFamily: "FontMedium" }}
                   >
-                    &
-                  </span>{" "}
-                  Activity
-                </p>
+                    News
+                  </p>
+                  <p
+                    className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "6rem",
+                        color: "#AE023E",
+                        fontWeight: "normal",
+                        fontFamily: "FontLight",
+                      }}
+                    >
+                      &
+                    </span>{" "}
+                    Activity
+                  </p>
 
-                <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
-                  <div className="input-group rounded">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      onKeyDown={handleKeyDown}
-                      className="form-control"
-                      style={{ width: "640px", paddingLeft: "50px" }}
-                    />
-                    <span
-                      className="input-group-text border-0"
-                      id="search-addon"
-                      style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                    >
-                      <i className="fas fa-arrow-right"></i>
-                    </span>
-                    <span
-                      className="input-group-text border-0"
-                      id="search-addon"
-                      style={{
-                        position: "absolute",
-                        left: "10px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                    >
-                      <i className="fas fa-search"></i>
-                    </span>
+                  <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
+                    <div className="input-group rounded">
+                      <input
+                        type="text"
+                        placeholder="Search"
+                        value={searchTerm}
+                        onChange={handleSearch}
+                        onKeyDown={handleKeyDown}
+                        className="form-control"
+                        style={{ width: "640px", paddingLeft: "50px" }}
+                      />
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          position: "absolute",
+                          right: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <i className="fas fa-arrow-right"></i>
+                      </span>
+                      <span
+                        className="input-group-text border-0"
+                        id="search-addon"
+                        style={{
+                          position: "absolute",
+                          left: "10px",
+                          top: "50%",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <i className="fas fa-search"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    {searchTerm && (
+                      <div>
+                        {searchResults.map((result) => (
+                          <li key={result.id}>
+                            <a
+                              href={result.attributes.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {result.attributes.name_en}
+                            </a>
+                          </li>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                <div className="pt-4">
-                  {searchTerm && (
-                    <div>
-                      {searchResults.map((result) => (
-                        <li key={result.id}>
-                          <a
-                            href={result.attributes.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {result.attributes.name_en}
-                          </a>
-                        </li>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </MDBCol>
-            <MDBCol md="4" className="p-0 d-none d-sm-block">
-              {memberCover.map((member) => (
-                <img
-                  className="image-fluid"
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "300px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
-                  }}
-                  id="cluster-img"
-                  src={
-                    "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
-                  }
-                />
-              ))}
-            </MDBCol>
-          </MDBRow>
-          <MDBRow className="pt-0 pb-5 xs:px-4 sm:px-5 md:px-0">
-            <News></News>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+              </MDBCol>
+              {/* <MDBCol md="4" className="p-0 d-none d-sm-block">
+                {memberCover.map((member) => (
+                  <img
+                    className="image-fluid"
+                    style={{
+                      width: "-webkit-fill-available",
+                      height: "300px",
+                      // maxWidth: "-webkit-fill-available",
+                      // height: "400px",
+                      // objectFit: "contain",
+                      // verticalAlign: "top",
+                    }}
+                    id="cluster-img"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.fileupload.data[0]?.attributes.url
+                    }
+                  />
+                ))}
+              </MDBCol> */}
+            </MDBRow>
+            <MDBRow className="pt-0 pb-5 xs:px-4 sm:px-5 md:px-0">
+              <News></News>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

@@ -24,10 +24,12 @@ const Preloader = () => {
         <span className="w-50 items-center">
           <img src={logobrain} loading="lazy" style={logoStyle} />
         </span>
-        <span className="pe-4">Neuroscience</span>
+        <span className="pe-4 align-middle">
+          Neuroscience Center for Research and Innovation
+        </span>
         {/* <span className="pe-3">for Research and Innovation</span> */}
-        <span className="pe-4">Center</span>
-        <span className="">KMUTT</span>
+        {/* <span className="pe-4">for Research and Innovation</span> */}
+        <span className="ps-2 align-middle">KMUTT</span>
       </div>
     </div>
   );

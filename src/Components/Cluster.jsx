@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import EastIcon from "@mui/icons-material/East";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useMediaQuery } from "react-responsive";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 function ImageDesktop() {
   const [tags, setTags] = useState([]);
@@ -76,6 +78,35 @@ function ImageDesktop() {
 
   const handleMouseLeave = () => {
     setIconStyle({ color: "#AE023E" });
+  };
+
+  const [iconStyle3, setIconStyles] = useState(
+    Array(tags.length).fill({
+      // color: "#AE023E",
+    })
+  );
+
+  const handleMouseEnter3 = (index) => {
+    setIconStyles((prevState) => {
+      const newState = [...prevState];
+      newState[index] = {
+        ...newState[index],
+        marginLeft: "12px",
+        transition: "margin-left 0.3s ease-out",
+      };
+      return newState;
+    });
+  };
+
+  const handleMouseLeave3 = (index) => {
+    setIconStyles((prevState) => {
+      const newState = [...prevState];
+      newState[index] = {
+        transition: "0.3s ease-out",
+        // color: "#AE023E",
+      };
+      return newState;
+    });
   };
 
   // Add a state variable to track the open/closed state for each tag
@@ -192,6 +223,9 @@ function ImageDesktop() {
     }
   };
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       {tags.map((tagsData, index) => (
@@ -214,14 +248,17 @@ function ImageDesktop() {
             >
               <div className="d-flex flex-column w-100">
                 <p
-                  className="font-normal text-white xs:text-xl md:text-3xl"
+                  className="font-normal text-white xs:text-xl md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {tagsData.attributes?.name_en || "-"}
+                  {/* {tagsData.attributes?.name_en || "-"} */}
+                  {selectedLanguage === "en"
+                    ? tagsData.attributes?.name_en || "Not found"
+                    : tagsData.attributes?.name_th2 || "ภาษาไทย"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
-                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-xl cursor-pointer"
+                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-lg cursor-pointer"
                     onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
                     style={{
                       cursor: "pointer",
@@ -260,16 +297,16 @@ function ImageDesktop() {
                 </p>
                 <Link
                   to={`/Tags-Detail/${tagsData.id}`}
-                  style={{ color: "#AE023E", cursor: "pointer" }}
+                  style={{ color: colors[index], cursor: "pointer" }}
                   onClick={() => {
                     window.scrollTo(0, 0);
                     window.location.replace(`/Tags-Detail/${tagsData.id}`);
                   }}
                 >
-                  <p
+                  {/* <p
                     className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
                     sx={{
-                      colors: "#AE023E",
+                      color: colors[index], // Map the color based on the index
                       "&:hover": {
                         marginLeft: "12px",
                         transition: "margin-left 0.3s ease-out",
@@ -278,6 +315,15 @@ function ImageDesktop() {
                   >
                     More Detail
                     <EastIcon style={iconStyle}></EastIcon>
+                  </p> */}
+                  <p
+                    className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
+                    style={iconStyle3[index]} // Use iconStyles[index] for the specific index
+                    onMouseEnter={() => handleMouseEnter3(index)} // Pass the index to handleMouseEnter2
+                    onMouseLeave={() => handleMouseLeave3(index)} // Pass the index to handleMouseLeave2
+                  >
+                    More Detail
+                    <EastIcon style={iconStyle3[index]}></EastIcon>
                   </p>
                 </Link>
               </MDBCol>

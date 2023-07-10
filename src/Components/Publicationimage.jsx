@@ -215,9 +215,9 @@ function Menu() {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
           <MDBRow className="mb-4">
             {tags.map((tag, index) => (
-              <MDBCol md="3" key={tag.id} className="py-4 col-sm-8">
+              <MDBCol md="3" key={tag.id} className="pt-2 pb-4 col-sm-8">
                 <MDBCardBody
-                  className="p-3 break-all"
+                  className="p-3"
                   style={{
                     backgroundColor: `${
                       allTagsSelected
@@ -270,7 +270,7 @@ function Menu() {
                 >
                   {/* Tags  */}
                   <p
-                    className="fw-bold text-start mb-0"
+                    className="fw-bold text-start mb-0 text-md"
                     style={{
                       fontFamily: "MyFont",
                       color:
@@ -281,13 +281,24 @@ function Menu() {
                           : "gray",
                     }}
                   >
-                    {tag.attributes.name_en}
+                    {tag.attributes.name_en
+                      .split("&")
+                      .map((part, index, arr) => (
+                        <span key={index}>
+                          {part.trim()}
+                          {index !== arr.length - 1 && (
+                            <>
+                              &nbsp;&amp;
+                              <br />
+                            </>
+                          )}
+                        </span>
+                      ))}
                   </p>
                 </MDBCardBody>
               </MDBCol>
             ))}
           </MDBRow>
-
           {publicationsByYear}
         </MDBContainer>
       </div>

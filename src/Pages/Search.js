@@ -13,6 +13,7 @@ import Contactsocial from "../Components/Contactsocial";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const Searchresult = () => {
   const { term } = useParams();
@@ -77,7 +78,7 @@ const Searchresult = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -112,59 +113,64 @@ const Searchresult = () => {
           />
         </div>
       )}
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl 2xl:max-w-screen-2xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  Search Result
-                </p>
-              </div>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl 2xl:max-w-screen-2xl">
+            <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
+                    style={{ fontFamily: "MyFont" }}
+                  >
+                    Search Result
+                  </p>
+                </div>
+              </MDBCol>
+            </MDBRow>
+          </MDBContainer>
 
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol md="6" className="p-0">
-              <div>
-                {/* Render publication results */}
-                <h4
-                  className="xs:pt-5 sm:pt-0 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Publication Results:
-                </h4>
-                {searchResults.length > 0 ? (
-                  <ul className="ms-4">
-                    {searchResults.map((result) => (
-                      <li key={result.id}>
-                        {/* Display the relevant data from the search results */}
-                        <a
-                          href={result.attributes.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {result.attributes.title_en}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol md="6" className="p-0">
+                <div>
+                  {/* Render publication results */}
+                  <h4
+                    className="xs:pt-5 sm:pt-0 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Publication Results:
+                  </h4>
+                  {searchResults.length > 0 ? (
                     <ul className="ms-4">
-                      <li>
-                        <p>No member results found.</p>
-                      </li>
+                      {searchResults.map((result) => (
+                        <li key={result.id}>
+                          {/* Display the relevant data from the search results */}
+                          <a
+                            href={result.attributes.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {result.attributes.title_en}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
-                  </>
-                )}
+                  ) : (
+                    <>
+                      <ul className="ms-4">
+                        <li>
+                          <p>No member results found.</p>
+                        </li>
+                      </ul>
+                    </>
+                  )}
 
-                {/* <h2 className="ps-4">Member Results:</h2>
+                  {/* <h2 className="ps-4">Member Results:</h2>
                 {memberResults.length > 0 ? (
                   <ul className="ms-4">
                     {memberResults.map((result) => (
@@ -186,91 +192,91 @@ const Searchresult = () => {
                   </>
                 )} */}
 
-                {/* Render member results */}
-                <h4
-                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Member Results:
-                </h4>
-                {memberResults.length > 0 ? (
-                  <ul className="ms-4">
-                    {memberResults.map((result) => (
-                      <li key={result.id}>
-                        {/* Display the relevant data from the member results */}
-                        <a
-                          href={`https://10.35.29.186/Member-Detail/${result.id}`}
-                        >
-                          {result.attributes.name_en}{" "}
-                          {result.attributes.surname_en}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <ul className="ms-4">
-                    <li>
-                      <p>No member results found.</p>
-                    </li>
-                  </ul>
-                )}
-
-                {/* Render event results */}
-                <h4
-                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Event Results:
-                </h4>
-                {eventResults.length > 0 ? (
-                  <ul className="ms-4">
-                    {eventResults.map((result) => (
-                      <li key={result.id}>
-                        {/* Display the relevant data from the tool results */}
-                        <a href={result.attributes.url}>
-                          {result.attributes.name_en}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <ul className="ms-4">
-                    <li>
-                      <p>No member results found.</p>
-                    </li>
-                  </ul>
-                )}
-
-                {/* Render tool results */}
-                <h4
-                  className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Tool Results:
-                </h4>
-                {toolResults.length > 0 ? (
-                  <ul className="ms-4">
-                    {toolResults.map((result) => (
-                      <li key={result.id}>
-                        {/* Display the relevant data from the tool results */}
-                        <a href={result.attributes.url}>
-                          {result.attributes.name_en}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <>
+                  {/* Render member results */}
+                  <h4
+                    className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Member Results:
+                  </h4>
+                  {memberResults.length > 0 ? (
+                    <ul className="ms-4">
+                      {memberResults.map((result) => (
+                        <li key={result.id}>
+                          {/* Display the relevant data from the member results */}
+                          <a
+                            href={`https://10.35.29.186/Member-Detail/${result.id}`}
+                          >
+                            {result.attributes.name_en}{" "}
+                            {result.attributes.surname_en}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
                     <ul className="ms-4">
                       <li>
                         <p>No member results found.</p>
                       </li>
                     </ul>
-                  </>
-                )}
-              </div>
-            </MDBCol>
-            {/* <MDBCol className="d-flex pb-0 pe-5">
+                  )}
+
+                  {/* Render event results */}
+                  <h4
+                    className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Event Results:
+                  </h4>
+                  {eventResults.length > 0 ? (
+                    <ul className="ms-4">
+                      {eventResults.map((result) => (
+                        <li key={result.id}>
+                          {/* Display the relevant data from the tool results */}
+                          <a href={result.attributes.url}>
+                            {result.attributes.name_en}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul className="ms-4">
+                      <li>
+                        <p>No member results found.</p>
+                      </li>
+                    </ul>
+                  )}
+
+                  {/* Render tool results */}
+                  <h4
+                    className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Tool Results:
+                  </h4>
+                  {toolResults.length > 0 ? (
+                    <ul className="ms-4">
+                      {toolResults.map((result) => (
+                        <li key={result.id}>
+                          {/* Display the relevant data from the tool results */}
+                          <a href={result.attributes.url}>
+                            {result.attributes.name_en}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <>
+                      <ul className="ms-4">
+                        <li>
+                          <p>No member results found.</p>
+                        </li>
+                      </ul>
+                    </>
+                  )}
+                </div>
+              </MDBCol>
+              {/* <MDBCol className="d-flex pb-0 pe-5">
               <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
                 <MDBRow>
                   <h4 className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-xl md:text-2xl">
@@ -299,9 +305,10 @@ const Searchresult = () => {
                 </MDBRow>
               </div>
             </MDBCol> */}
-          </MDBRow>
-        </MDBContainer>
-      </section>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

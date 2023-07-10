@@ -13,6 +13,7 @@ import Toolsimage from "../Components/Tools";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 const Toolservice = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -39,7 +40,7 @@ const Toolservice = () => {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -74,84 +75,89 @@ const Toolservice = () => {
           />
         </div>
       )}
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-0 xs:pb-5 xs:px-5 sm:px-5 sm:pb-0 md:px-0">
-            <MDBCol className="d-flex pt-5 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <p
-                  className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Tools
-                </p>
-                <p
-                  className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  <span
-                    style={{
-                      fontSize: "6rem",
-                      color: "#AE023E",
-                      fontWeight: "normal",
-                      fontFamily: "FontLight",
-                    }}
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-0 xs:pb-5 xs:px-5 sm:px-5 sm:pb-0 md:px-0">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <p
+                    className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
+                    style={{ fontFamily: "FontMedium" }}
                   >
-                    &
-                  </span>{" "}
-                  Service
-                </p>
-                <div
-                  className="d-flex justify-content-between mt-auto"
-                  style={{ width: "80%" }}
-                ></div>
-              </div>
-            </MDBCol>
-            <MDBCol md="4" className="p-0 d-none d-sm-block">
-              {/* <img
+                    Tools
+                  </p>
+                  <p
+                    className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "6rem",
+                        color: "#AE023E",
+                        fontWeight: "normal",
+                        fontFamily: "FontLight",
+                      }}
+                    >
+                      &
+                    </span>{" "}
+                    Service
+                  </p>
+                  <div
+                    className="d-flex justify-content-between mt-auto"
+                    style={{ width: "80%" }}
+                  ></div>
+                </div>
+              </MDBCol>
+              <MDBCol md="4" className="p-0 d-none d-sm-block">
+                {/* <img
                 src={vr2}
                 class="image-fluid"
                 id="cluster-img"
                 style={{ height: "350px" }}
               /> */}
-              {memberCover.map((member) => (
-                <img
-                  className="image-fluid"
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "300px",
-                    // maxWidth: "-webkit-fill-available",
-                    // height: "400px",
-                    // objectFit: "contain",
-                    // verticalAlign: "top",
-                  }}
-                  id="cluster-img"
-                  src={
-                    "https://10.35.29.186" +
-                    member.attributes.fileupload.data[0]?.attributes.url
-                  }
-                />
-              ))}
-            </MDBCol>
-          </MDBRow>
+                {memberCover.map((member) => (
+                  <img
+                    className="image-fluid"
+                    style={{
+                      width: "-webkit-fill-available",
+                      height: "300px",
+                      // maxWidth: "-webkit-fill-available",
+                      // height: "400px",
+                      // objectFit: "contain",
+                      // verticalAlign: "top",
+                    }}
+                    id="cluster-img"
+                    src={
+                      "https://10.35.29.186" +
+                      member.attributes.fileupload.data[0]?.attributes.url
+                    }
+                  />
+                ))}
+              </MDBCol>
+            </MDBRow>
 
-          <MDBRow className="xs:px-4 sm:px-0">
-            <MDBCol>
-              <div className="d-inline-flex p-2">
-                <p
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Tools
-                </p>
-              </div>
-            </MDBCol>
-          </MDBRow>
-          {/* Tools image */}
-          <MDBRow className="px-4 sm:px-0">
-            <Toolsimage></Toolsimage>
-          </MDBRow>
-          {/* <MDBRow className="mt-4">
+            <MDBRow className="xs:px-4 sm:px-0">
+              <MDBCol>
+                <div className="d-inline-flex p-2">
+                  <p
+                    className="font-black text-uppercase xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "FontMedium" }}
+                  >
+                    Tools
+                  </p>
+                </div>
+              </MDBCol>
+            </MDBRow>
+            {/* Tools image */}
+            <MDBRow className="px-4 sm:px-0">
+              <Toolsimage></Toolsimage>
+            </MDBRow>
+            {/* <MDBRow className="mt-4">
             <MDBCol>
               <div className="text-center">
                 <MDBBtn outline className="mx-2" color="secondary">
@@ -160,64 +166,65 @@ const Toolservice = () => {
               </div>
             </MDBCol>
           </MDBRow> */}
-          <MDBRow className="pt-5 xs:px-4 sm:px-0">
-            <MDBCol>
-              <div className="d-inline-flex p-2">
-                <p
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
-                  style={{ fontFamily: "FontMedium" }}
-                >
-                  Service
-                </p>
-              </div>
-              <MDBCol className="xs:px-2 sm:ps-4 pt-2">
-                <MDBRow className="pt-2">
-                  <MDBCol
-                    size="1"
-                    style={{ width: "3.33%" }}
-                    className="me-4 md:me-0"
+            <MDBRow className="py-5 xs:px-4 sm:px-0">
+              <MDBCol>
+                <div className="d-inline-flex p-2">
+                  <p
+                    className="font-black text-uppercase xs:text-xl md:text-3xl"
+                    style={{ fontFamily: "FontMedium" }}
                   >
-                    <PeopleIcon style={{ color: "#AE023E" }} />
-                  </MDBCol>
-                  <MDBCol>
-                    <p
-                      className="fw-bold text-xl"
-                      style={{ fontFamily: "FontMedium" }}
+                    Service
+                  </p>
+                </div>
+                <MDBCol className="xs:px-2 sm:ps-4 pt-2">
+                  <MDBRow className="pt-2">
+                    <MDBCol
+                      size="1"
+                      style={{ width: "3.33%" }}
+                      className="me-4 md:me-0"
                     >
-                      Research consultation
-                    </p>
-                    <p className="text-lg">
-                      We are open to research project consultant or
-                      collaboration and sharing tools, etc.
-                    </p>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol
-                    size="1"
-                    style={{ width: "3.33%" }}
-                    className="me-4 md:me-0"
-                  >
-                    <SchoolIcon style={{ color: "#AE023E" }} />
-                  </MDBCol>
-                  <MDBCol>
-                    <p
-                      className="fw-bold text-xl"
-                      style={{ fontFamily: "FontMedium" }}
+                      <PeopleIcon style={{ color: "#AE023E" }} />
+                    </MDBCol>
+                    <MDBCol>
+                      <p
+                        className="fw-bold text-xl"
+                        style={{ fontFamily: "FontMedium" }}
+                      >
+                        Research consultation
+                      </p>
+                      <p className="text-lg">
+                        We are open to research project consultant or
+                        collaboration and sharing tools, etc.
+                      </p>
+                    </MDBCol>
+                  </MDBRow>
+                  <MDBRow>
+                    <MDBCol
+                      size="1"
+                      style={{ width: "3.33%" }}
+                      className="me-4 md:me-0"
                     >
-                      Coursework and workshop
-                    </p>
-                    <p className="text-lg">
-                      We are open to holding neuroscience seminar and EEG,
-                      neuroscience, neurotechnology.
-                    </p>
-                  </MDBCol>
-                </MDBRow>
+                      <SchoolIcon style={{ color: "#AE023E" }} />
+                    </MDBCol>
+                    <MDBCol>
+                      <p
+                        className="fw-bold text-xl"
+                        style={{ fontFamily: "FontMedium" }}
+                      >
+                        Coursework and workshop
+                      </p>
+                      <p className="text-lg">
+                        We are open to holding neuroscience seminar and EEG,
+                        neuroscience, neurotechnology.
+                      </p>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCol>
               </MDBCol>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+            </MDBRow>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 };

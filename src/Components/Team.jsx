@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -13,6 +13,8 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import membericon from "../Images/member-icon.png";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 // Desktop
 function ImageDesktop() {
@@ -41,7 +43,7 @@ function ImageDesktop() {
     );
   };
 
-  const getColumns = (index) => {
+  const GetColumns = (index) => {
     const member = memberfiles[index];
     const colorIndex = index % colors.length;
     const isFirstColumn = index % 2 === 0;
@@ -54,6 +56,9 @@ function ImageDesktop() {
       "https://10.35.29.186" +
       member.attributes.uploadfiles.data[0]?.attributes.image_original.data[0]
         ?.attributes.url;
+
+    const { selectedLanguage, handleLanguageSwitch } =
+      useContext(LanguageContext);
 
     return (
       <MDBContainer className="fluid p-0" id="cluster-container">
@@ -81,7 +86,7 @@ function ImageDesktop() {
                   objectFit: "cover",
                   borderRadius: "0px",
                   alignSelf: "center",
-                  height: "350px",
+                  height: "320px",
                   // height: "100%",
                   width: "100%",
                   objectPosition: "top",
@@ -99,14 +104,14 @@ function ImageDesktop() {
             <Column>
               <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
                 <p
-                  className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-2xl"
+                  className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
                   style={{
                     fontFamily: "MyFont",
                   }}
                 >
-                  {member.attributes.name_en}
-                  <br></br>
-                  {member.attributes.surname_en}
+                  {selectedLanguage === "en"
+                    ? `${member.attributes.name_en} ${member.attributes.surname_en}`
+                    : `${member.attributes.name_th} ${member.attributes.surname_th}`}
                   <div
                     style={{
                       display: "flex",
@@ -140,8 +145,10 @@ function ImageDesktop() {
                   </div>
                 </p>
 
-                <p className="fw-normal text-white text-center xs:text-lg sm:text-xl">
-                  {member.attributes.position_en}
+                <p className="fw-normal text-white text-center xs:text-lg sm:text-lg">
+                  {selectedLanguage === "en"
+                    ? `${member.attributes.position_en} `
+                    : `${member.attributes.position_th}`}
                 </p>
               </div>
             </Column>
@@ -156,7 +163,7 @@ function ImageDesktop() {
       className="container-fluid pt-0 pb-4 grid grid-cols-2 "
       id="cluster-container"
     >
-      {memberfiles.map((member, index) => getColumns(index))}
+      {memberfiles.map((member, index) => GetColumns(index))}
     </MDBContainer>
   );
 }

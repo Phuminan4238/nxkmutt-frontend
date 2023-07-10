@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
+import Container from "@mui/material/Container";
 
 function ToolsDetail({ title }) {
   let { id } = useParams();
@@ -72,7 +73,7 @@ function ToolsDetail({ title }) {
   const isMobileWidth = window.innerWidth < 420;
 
   return (
-    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-5"}`}>
+    <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
         <div
           className="loading-overlay"
@@ -107,132 +108,138 @@ function ToolsDetail({ title }) {
           />
         </div>
       )}
-      <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-        <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol
-              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
-              style={{
-                width: "-webkit-max-content",
-                fontFamily: "FontMedium",
-                // fontSize: "1.3rem",
-              }}
-            >
-              {/* color: "#AE023E", */}
-              <Link to="/">
-                <a
-                  style={{ color: "#AE023E" }}
-                  className="xs:text-lg sm:text-xl"
-                >
-                  {title}
-                </a>
-              </Link>
-            </MDBCol>
-            <MDBCol className="col-2 p-0 me-3" style={{ width: "3.33%" }}>
-              <span>
-                <KeyboardArrowRightIcon
-                  style={{
-                    width: "2em",
-                    height: "2em",
-                    color: "#2F3437 !important",
-                  }}
-                ></KeyboardArrowRightIcon>
-              </span>
-            </MDBCol>
-            <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-2">
-              <span
-                className="text-uppercase fw-bold xs:text-lg sm:text-xl"
-                style={{ fontFamily: "FontMedium" }}
+      <Container
+        maxWidth="lg"
+        disableGutters={true}
+        style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
+      >
+        <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol
+                className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+                style={{
+                  width: "-webkit-max-content",
+                  fontFamily: "FontMedium",
+                  // fontSize: "1.3rem",
+                }}
               >
-                {uploadfiles.attributes?.name_en || "-"}
-              </span>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl pt-5 xs:px-5 sm:px-1">
-          <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-            <MDBCol className="d-flex ps-0 pb-0 pe-5">
-              <div className="d-flex flex-column w-100">
-                <h1
-                  className="fw-bolder pt-4"
-                  style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                {/* color: "#AE023E", */}
+                <Link to="/">
+                  <a
+                    style={{ color: "#AE023E" }}
+                    className="xs:text-lg sm:text-xl"
+                  >
+                    {title}
+                  </a>
+                </Link>
+              </MDBCol>
+              <MDBCol className="col-2 p-0 me-3" style={{ width: "3.33%" }}>
+                <span>
+                  <KeyboardArrowRightIcon
+                    style={{
+                      width: "2em",
+                      height: "2em",
+                      color: "#2F3437 !important",
+                    }}
+                  ></KeyboardArrowRightIcon>
+                </span>
+              </MDBCol>
+              <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-2">
+                <span
+                  className="text-uppercase fw-bold xs:text-lg sm:text-xl"
+                  style={{ fontFamily: "FontMedium" }}
                 >
                   {uploadfiles.attributes?.name_en || "-"}
-                </h1>
-              </div>
-            </MDBCol>
-            <MDBCol md="4" className="p-0">
-              <MDBCardImage
-                className="rounded-0"
-                src={
-                  "https://10.35.29.186" +
-                    uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                      .fileupload.data[0]?.attributes.url || "-"
-                }
-                position="top"
-                alt="..."
-                style={{
-                  //   height: "350px",
-                  // width: "100%",
-                  // height: "400px",
-                  objectFit: "fill",
-                  // height: "500px",
-                  borderRadius: "0px",
-                  alignSelf: "center",
-                  // objectFit: "contain",
-                }}
-              />
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </section>
-      <section>
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
-          <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
-            {/* Current Affiliations */}
-            <MDBRow className="pt-4 text-initial">
-              <p>More tools detail....</p>
+                </span>
+              </MDBCol>
             </MDBRow>
+          </MDBContainer>
 
-            {/*  Grants */}
-            <MDBRow>
-              <h5
-                className="fw-bold text-uppercase ps-2 pt-4"
-                style={{ color: "#A02040", fontFamily: "MyFont" }}
-              >
-                {uploadfiles.attributes?.content_en || "-"}
-              </h5>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
+            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
+              <MDBCol className="d-flex ps-0 pb-0 pe-5">
+                <div className="d-flex flex-column w-100">
+                  <h1
+                    className="fw-bolder pt-4"
+                    style={{ color: "#AE023E", fontFamily: "MyFont" }}
+                  >
+                    {uploadfiles.attributes?.name_en || "-"}
+                  </h1>
+                </div>
+              </MDBCol>
+              <MDBCol md="4" className="p-0">
+                <MDBCardImage
+                  className="rounded-0"
+                  src={
+                    "https://10.35.29.186" +
+                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url || "-"
+                  }
+                  position="top"
+                  alt="..."
+                  style={{
+                    //   height: "350px",
+                    // width: "100%",
+                    // height: "400px",
+                    objectFit: "fill",
+                    // height: "500px",
+                    borderRadius: "0px",
+                    alignSelf: "center",
+                    // objectFit: "contain",
+                  }}
+                />
+              </MDBCol>
             </MDBRow>
-            <MDBRow className="pt-0 pb-0">
-              <MDBCardImage
-                className="rounded-0"
-                // src={
-                //   "https://10.35.29.186" +
-                //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                //     .fileupload.data[0]?.attributes.url
-                // }
-                src={vr2}
-                position="top"
-                alt="..."
-                style={{
-                  //   height: "350px",
-                  // width: "100%",
-                  height: "400px",
-                  objectFit: "initial",
-                  borderRadius: "0px",
-                  alignSelf: "center",
-                  // objectFit: "contain",
-                }}
-              />
+          </MDBContainer>
+        </section>
+        <section>
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+              {/* Current Affiliations */}
+              <MDBRow className="pt-4 text-initial">
+                <p>More tools detail....</p>
+              </MDBRow>
+
+              {/*  Grants */}
+              <MDBRow>
+                <h5
+                  className="fw-bold text-uppercase ps-2 pt-4"
+                  style={{ color: "#A02040", fontFamily: "MyFont" }}
+                >
+                  {uploadfiles.attributes?.content_en || "-"}
+                </h5>
+              </MDBRow>
+              <MDBRow className="pt-0 pb-0">
+                <MDBCardImage
+                  className="rounded-0"
+                  // src={
+                  //   "https://10.35.29.186" +
+                  //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                  //     .fileupload.data[0]?.attributes.url
+                  // }
+                  src={vr2}
+                  position="top"
+                  alt="..."
+                  style={{
+                    //   height: "350px",
+                    // width: "100%",
+                    height: "400px",
+                    objectFit: "initial",
+                    borderRadius: "0px",
+                    alignSelf: "center",
+                    // objectFit: "contain",
+                  }}
+                />
+              </MDBRow>
+              {/* Current Affiliations */}
+              <MDBRow className="pt-4 ">
+                <p>More tools detail....</p>
+              </MDBRow>
             </MDBRow>
-            {/* Current Affiliations */}
-            <MDBRow className="pt-4 ">
-              <p>More tools detail....</p>
-            </MDBRow>
-          </MDBRow>
-        </MDBContainer>
-      </section>
+          </MDBContainer>
+        </section>
+      </Container>
     </div>
   );
 }

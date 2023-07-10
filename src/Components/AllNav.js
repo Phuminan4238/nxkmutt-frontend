@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 /* */
@@ -23,6 +23,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import { useMediaQuery } from "react-responsive";
+import { LanguageContext } from "./LanguageContext";
 
 const pages = [
   "TEAM MEMBER",
@@ -233,13 +234,15 @@ export default function HomeNav(props) {
     setIsHovered(false);
   };
 
-  const renderNavbar1 = () => {
+  const RenderNavbar1 = () => {
+    const { selectedLanguage, handleLanguageSwitch } =
+      useContext(LanguageContext);
     return (
       <React.Fragment>
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-20"
+            // className="px-24"
             style={{
               background: "white",
               boxShadow: "unset",
@@ -247,7 +250,7 @@ export default function HomeNav(props) {
             }}
             position="sticky"
           >
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
               <Toolbar disableGutters>
                 <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
                   <Typography
@@ -301,11 +304,26 @@ export default function HomeNav(props) {
                       />
                     </button>
                   </div>
-                  <span style={{ color: "#AE023E" }}>
+                  <span>
                     <LanguageIcon
                       style={{ color: "#AE023E", marginRight: "0.5rem" }}
                     ></LanguageIcon>
-                    EN
+                    {/* EN */}
+                    {selectedLanguage === "en" ? (
+                      <span
+                        onClick={() => handleLanguageSwitch("th")}
+                        style={{ color: "#AE023E", cursor: "pointer" }}
+                      >
+                        TH
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => handleLanguageSwitch("en")}
+                        style={{ color: "#AE023E", cursor: "pointer" }}
+                      >
+                        EN
+                      </span>
+                    )}
                   </span>
                   <Tooltip title="Open settings">
                     <IconButton
@@ -413,20 +431,22 @@ export default function HomeNav(props) {
     );
   };
 
-  const renderNavbar2 = () => {
+  const RenderNavbar2 = () => {
+    const { selectedLanguage, handleLanguageSwitch } =
+      useContext(LanguageContext);
     return (
       <React.Fragment>
         <CssBaseline />
         <HideOnScroll {...props}>
           <AppBar
-            className="px-20"
+            // className="px-24"
             style={{
               background: "white",
               boxShadow: "unset",
             }}
             position="sticky"
           >
-            <Container maxWidth="xl">
+            <Container maxWidth="lg">
               <Toolbar disableGutters>
                 <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
                   <Typography
@@ -488,11 +508,25 @@ export default function HomeNav(props) {
                     </button>
                   </div>
                   <span>
-                    {" "}
                     <LanguageIcon
                       style={{ color: "#AE023E", marginRight: "0.5rem" }}
                     ></LanguageIcon>
-                    <span style={{ color: "#AE023E" }}>EN</span>
+                    {/* EN */}
+                    {selectedLanguage === "en" ? (
+                      <span
+                        onClick={() => handleLanguageSwitch("th")}
+                        style={{ color: "#AE023E", cursor: "pointer" }}
+                      >
+                        TH
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => handleLanguageSwitch("en")}
+                        style={{ color: "#AE023E", cursor: "pointer" }}
+                      >
+                        EN
+                      </span>
+                    )}
                   </span>
                   <Tooltip title="Open settings">
                     <IconButton
@@ -589,7 +623,9 @@ export default function HomeNav(props) {
     );
   };
 
-  const renderNavbar3 = () => {
+  const RenderNavbar3 = () => {
+    const { selectedLanguage, handleLanguageSwitch } =
+      useContext(LanguageContext);
     return (
       <React.Fragment>
         <CssBaseline />
@@ -770,7 +806,9 @@ export default function HomeNav(props) {
     );
   };
 
-  const renderNavbar4 = () => {
+  const RenderNavbar4 = () => {
+    const { selectedLanguage, handleLanguageSwitch } =
+      useContext(LanguageContext);
     return (
       <React.Fragment>
         <CssBaseline />
@@ -954,16 +992,16 @@ export default function HomeNav(props) {
       {/* Mobile */}
       {isMobile && (
         <>
-          {navbarType === "navbar1" && renderNavbar3()}
-          {navbarType === "navbar2" && renderNavbar4()}
+          {navbarType === "navbar1" && RenderNavbar3()}
+          {navbarType === "navbar2" && RenderNavbar4()}
         </>
       )}
 
       {/* Desktop */}
       {!isMobile && (
         <>
-          {navbarType === "navbar1" && renderNavbar1()}
-          {navbarType === "navbar2" && renderNavbar2()}
+          {navbarType === "navbar1" && RenderNavbar1()}
+          {navbarType === "navbar2" && RenderNavbar2()}
         </>
       )}
     </>
