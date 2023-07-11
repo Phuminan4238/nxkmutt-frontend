@@ -103,7 +103,7 @@ function Home(props) {
 
   return (
     <>
-      {/* <Preloader /> */}
+      <Preloader />
       <div className="App">
         {/* ******************/}
 

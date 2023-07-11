@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, setIsLoaded } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* MDBootstrap */
@@ -15,6 +16,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
+import ArticleIcon from "@mui/icons-material/Article";
+import styled from "styled-components";
 
 const Publications = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -144,6 +147,10 @@ const Publications = () => {
     marginLeft: 0,
   });
 
+  const StyledArticleIcon = styled(ArticleIcon)`
+    color: #cccccc;
+  `;
+
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
@@ -243,25 +250,6 @@ const Publications = () => {
                       </span>
                     </div>
                   </div>
-
-                  <div className="pt-4">
-                    {searchTerm && (
-                      <div>
-                        {searchResults.map((result) => (
-                          <li key={result.id}>
-                            {/* Display the relevant data from the search results */}
-                            <a
-                              href={result.attributes.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {result.attributes.title_en}
-                            </a>
-                          </li>
-                        ))}
-                      </div>
-                    )}
-                  </div>
                 </div>
               </MDBCol>
               <MDBCol
@@ -287,6 +275,51 @@ const Publications = () => {
                       height: "400px",
                       objectFit: "contain",
                       verticalAlign: "top", */}
+            </MDBRow>
+            <MDBRow className="pb-4">
+              <div
+              // className="px-0"
+              // style={{ borderBottom: "1px solid black" }}
+              >
+                {searchTerm && (
+                  <div>
+                    {searchResults.map((result) => (
+                      <>
+                        <Link
+                          to={result.attributes.url}
+                          target="_blank"
+                          style={{ color: "black" }}
+                        >
+                          <MDBCol md="12" key={result.id} className="pb-2">
+                            <p style={{ display: "inline-block" }}>
+                              <StyledArticleIcon
+                                style={{ marginRight: "5px" }}
+                              />
+                              {/* {publication.attributes.description_en} */}
+                              {result.attributes.title_en}
+                            </p>
+                          </MDBCol>
+                        </Link>
+                      </>
+                    ))}
+                  </div>
+                )}
+                {/* {searchTerm && (
+                      <div>
+                        {searchResults.map((result) => (
+                          <li key={result.id}>
+                            <a
+                              href={result.attributes.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {result.attributes.title_en}
+                            </a>
+                          </li>
+                        ))}
+                      </div>
+                    )} */}
+              </div>
             </MDBRow>
             <MDBRow>
               <MDBCol>

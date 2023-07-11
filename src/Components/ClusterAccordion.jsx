@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import EastIcon from "@mui/icons-material/East";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { useMediaQuery } from "react-responsive";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 function ImageDesktop() {
   const [tags, setTags] = useState([]);
@@ -76,6 +78,35 @@ function ImageDesktop() {
 
   const handleMouseLeave = () => {
     setIconStyle({ color: "#AE023E" });
+  };
+
+  const [iconStyle3, setIconStyles] = useState(
+    Array(tags.length).fill({
+      // color: "#AE023E",
+    })
+  );
+
+  const handleMouseEnter3 = (index) => {
+    setIconStyles((prevState) => {
+      const newState = [...prevState];
+      newState[index] = {
+        ...newState[index],
+        marginLeft: "12px",
+        transition: "margin-left 0.3s ease-out",
+      };
+      return newState;
+    });
+  };
+
+  const handleMouseLeave3 = (index) => {
+    setIconStyles((prevState) => {
+      const newState = [...prevState];
+      newState[index] = {
+        transition: "0.3s ease-out",
+        // color: "#AE023E",
+      };
+      return newState;
+    });
   };
 
   // Add a state variable to track the open/closed state for each tag
@@ -192,6 +223,9 @@ function ImageDesktop() {
     }
   };
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       {tags.map((tagsData, index) => (
@@ -199,7 +233,7 @@ function ImageDesktop() {
           <MDBRow className="p-0" id="cluster-gutter">
             <MDBCol
               md="8"
-              className={`d-flex p-0 d-none d-sm-block xs:order-2 sm:order-1 ${
+              className={`d-flex p-0 xs:order-2 sm:order-1 ${
                 index === 1 || index === 3 ? "order-md-2" : ""
               }`}
             >
@@ -217,11 +251,14 @@ function ImageDesktop() {
                   className="font-normal text-white xs:text-xl md:text-2xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {tagsData.attributes?.name_en || "-"}
+                  {/* {tagsData.attributes?.name_en || "-"} */}
+                  {selectedLanguage === "en"
+                    ? tagsData.attributes?.name_en || "Not found"
+                    : tagsData.attributes?.name_th2 || "ภาษาไทย"}
                 </p>
                 <div className="d-flex justify-content-between mt-auto">
                   <p
-                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-xl cursor-pointer"
+                    className="font-medium text-white mt-5 mb-0 xs:text-base md:text-lg cursor-pointer"
                     onClick={() => toggleAccordion(index)} // Pass the index to toggleAccordion
                     style={{
                       cursor: "pointer",
@@ -260,16 +297,16 @@ function ImageDesktop() {
                 </p>
                 <Link
                   to={`/Tags-Detail/${tagsData.id}`}
-                  style={{ color: "#AE023E", cursor: "pointer" }}
+                  style={{ color: colors[index], cursor: "pointer" }}
                   onClick={() => {
                     window.scrollTo(0, 0);
                     window.location.replace(`/Tags-Detail/${tagsData.id}`);
                   }}
                 >
-                  <p
+                  {/* <p
                     className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
                     sx={{
-                      colors: "#AE023E",
+                      color: colors[index], // Map the color based on the index
                       "&:hover": {
                         marginLeft: "12px",
                         transition: "margin-left 0.3s ease-out",
@@ -278,6 +315,15 @@ function ImageDesktop() {
                   >
                     More Detail
                     <EastIcon style={iconStyle}></EastIcon>
+                  </p> */}
+                  <p
+                    className="fw-bold px-20 mt-5 text-end xs:text-base md:text-lg"
+                    style={iconStyle3[index]} // Use iconStyles[index] for the specific index
+                    onMouseEnter={() => handleMouseEnter3(index)} // Pass the index to handleMouseEnter2
+                    onMouseLeave={() => handleMouseLeave3(index)} // Pass the index to handleMouseLeave2
+                  >
+                    More Detail
+                    <EastIcon style={iconStyle3[index]}></EastIcon>
                   </p>
                 </Link>
               </MDBCol>
@@ -401,7 +447,7 @@ function ImageMobile() {
                 className="image-fluid"
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "250px",
                   objectFit: "cover",
                 }}
                 src={
@@ -420,7 +466,7 @@ function ImageMobile() {
                 className="image-fluid"
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "250px",
                   objectFit: "cover",
                 }}
                 src={
@@ -439,7 +485,7 @@ function ImageMobile() {
                 className="image-fluid"
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "250px",
                   objectFit: "cover",
                 }}
                 src={
@@ -458,7 +504,7 @@ function ImageMobile() {
                 className="image-fluid"
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "250px",
                   objectFit: "cover",
                 }}
                 src={
@@ -481,7 +527,7 @@ function ImageMobile() {
           <MDBRow className="p-0" id="cluster-gutter">
             <MDBCol
               md="8"
-              className={`d-flex p-0 d-none d-sm-block xs:order-2 sm:order-1 ${
+              className={`d-flex p-0 xs:order-2 sm:order-1 ${
                 index === 1 || index === 3 ? "order-md-2" : ""
               }`}
             >
@@ -537,7 +583,7 @@ function ImageMobile() {
               onMouseLeave={handleMouseLeave}
             >
               <MDBCol>
-                <p className="text-black ">
+                <p className="text-black">
                   {tagsData.attributes?.description_en || "-"}
                 </p>
                 <Link
@@ -549,7 +595,7 @@ function ImageMobile() {
                   }}
                 >
                   <p
-                    className="fw-bold  mt-5 text-end xs:text-base md:text-lg"
+                    className="fw-bold mt-5 text-start xs:text-base md:text-lg"
                     sx={{
                       colors: "#AE023E",
                       "&:hover": {
@@ -584,49 +630,122 @@ export default function ClusterAccordion() {
   );
 }
 
-{
-  /* <MDBContainer className='mw-100 p-0'>
-      <MDBRow className='p-0 ' > 
-        <MDBCol md='8' className='p-0'>
-        <img src='https://picsum.photos/900/400' class='image-fluid mw-100' />
-        </MDBCol>
-        <MDBCol md='4' className='p-4 bg-danger'>
-        <h4 className='text-white align-self-end'>
-            Cognitive, Clinical & Computational
-            Neuroscience 
-          </h4>
-          <p className="text-white d-flex flex-column mt-4">
-            More Info
-          </p>
-      </MDBCol>
-      </MDBRow>
-    </MDBContainer> */
-}
-{
-  /*   
+// function Reuse() {
+//   const [tags, setTags] = useState([]);
+//   useEffect(() => {
+//     fetch("https://10.35.29.186/api/tags")
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setTags(result.data.slice(0, 4));
+//       });
+//   }, []);
 
-    <MDBContainer className='mw-100 p-0' style={{height: 300}}>
-      <MDBRow class="d-flex flex-row">
-        <MDBCol md='8' className='p-0'  style={{height: 300}}>
-        <div className='bg-image hover-overlay' style={{padding: 0}}>
-          <img src='https://mdbootstrap.com/img/new/standard/city/053.webp' class='image-fluid w-100' />
-          <div
-            className='mask'
-            style={{
-              background: 'linear-gradient(45deg, rgba(29, 236, 197, 0.5), rgba(91, 14, 214, 0.5) 100%)',
-            }}
-          ></div>
-        </div>
-        </MDBCol>
-        <MDBCol md='4' className='p-4 bg-danger'>
-          <h4 className='text-white align-self-start'>
-            Cognitive, Clinical & Computational
-            Neuroscience 
-          </h4>
-          <p className="text-white d-flex flex-column mt-4">
-            More Info
-          </p>
-      </MDBCol>
-      </MDBRow>
-    </MDBContainer> */
-}
+//   const [cognitiveimg, setCognitiveimg] = useState([]);
+//   useEffect(() => {
+//     fetch(
+//       "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
+//     )
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setCognitiveimg(result.data);
+//       });
+//   }, []);
+
+//   const [humanfactorimg, setHumanfactorimg] = useState([]);
+//   useEffect(() => {
+//     fetch(
+//       "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
+//     )
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setHumanfactorimg(result.data);
+//       });
+//   }, []);
+
+//   const [neurodevimg, setNeurodevimg] = useState([]);
+//   useEffect(() => {
+//     fetch(
+//       "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
+//     )
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setNeurodevimg(result.data);
+//       });
+//   }, []);
+
+//   const [neuropharmaimg, setNeuropharmaimg] = useState([]);
+//   useEffect(() => {
+//     fetch(
+//       "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
+//     )
+//       .then((res) => res.json())
+//       .then((result) => {
+//         setNeuropharmaimg(result.data);
+//       });
+//   }, []);
+
+//   const colors = ["#AE023E", "#00D26D", "#119ED1", "#FEB832"];
+
+//   const getImage = (index) => {
+//     switch (index) {
+//       case 0:
+//         return <img src={clusterimg1} class="image-fluid" id="cluster-img" />;
+//       case 1:
+//         return <img src={clusterimg2} class="image-fluid" id="cluster-img" />;
+//       case 2:
+//         return <img src={clusterimg3} class="image-fluid" id="cluster-img" />;
+//       case 3:
+//         return <img src={clusterimg4} class="image-fluid" id="cluster-img" />;
+//       default:
+//         return null;
+//     }
+//   };
+
+//   return (
+//     <>
+//       {tags.map((tagsData, index) => (
+//         <MDBContainer className="fluid p-0" id="cluster-container">
+//           <MDBRow className="p-0 ">
+//             <MDBCol
+//               md="8"
+//               className={`d-flex p-0 xs:order-2 sm:order-1 ${
+//                 index === 1 || index === 3 ? "order-md-2" : ""
+//               }`}
+//             >
+//               {getImage(index)}
+//             </MDBCol>
+
+//             <MDBCol
+//               md="4"
+//               order="1"
+//               className={`d-flex p-5`}
+//               style={{ backgroundColor: colors[index] }}
+//               key={index}
+//             >
+//               <div className="d-flex flex-column w-100">
+//                 <p className="fw-bold text-white xs:text-xl md:text-3xl">
+//                   {tagsData.attributes?.name_en || "-"}
+//                 </p>
+//                 <div className="d-flex justify-content-between mt-auto">
+//                   <Link to={`/Tags Detail/${tagsData.id}`} target="_blank">
+//                     <p className="fw-normal text-white mt-5 xs:text-base md:text-lg">
+//                       More Info
+//                     </p>
+//                   </Link>
+//                 </div>
+//               </div>
+//             </MDBCol>
+//           </MDBRow>
+//         </MDBContainer>
+//       ))}
+//     </>
+//   );
+// }
+
+// export default function Clusterimage() {
+//   return (
+//     <>
+//       <Reuse></Reuse>
+//     </>
+//   );
+// }

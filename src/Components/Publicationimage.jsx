@@ -102,7 +102,7 @@ function Menu() {
       });
   }, [allTagsSelected, selectedTag]);
 
-  const colors = ["#AE023E", "#009B62", "#119ED1", "#FEB832"];
+  const colors = ["#AE023E", "#009B62", "#119ED1", "#ED9C00"];
   const tagColors = {
     cognitive: colors[0],
     neuroscience: colors[1],
@@ -112,7 +112,18 @@ function Menu() {
 
   const tagColor = selectedTag !== null ? tagColors[selectedTag] : "#CCCCCC";
 
-  const getTagColor = (tag) => tagColors[tag] || tagColors[selectedTag];
+  // const getTagColor = (tag) => tagColors[tag] || tagColors[selectedTag];
+
+  const getTagColor = (tag) => {
+    if (selectedTag === null || allTagsSelected) {
+      return "#CCCCCC"; // Set gray color when all tags are selected or no tag is selected
+    }
+    return tagColors[tag] || tagColors[selectedTag];
+  };
+
+  // const StyledArticleIcon = styled(ArticleIcon)`
+  //   color: ${({ tag }) => getTagColor(tag)};
+  // `;
 
   const StyledArticleIcon = styled(ArticleIcon)`
     color: ${({ tag }) => getTagColor(tag)};

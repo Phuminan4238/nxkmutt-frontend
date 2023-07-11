@@ -232,6 +232,11 @@ export default function HomeNav(props) {
     setIsHovered(false);
   };
 
+  const [showSearchBox, setShowSearchBox] = useState(false);
+  const handleSearchIconClick = () => {
+    setShowSearchBox(true);
+  };
+
   const RenderNavbar1 = () => {
     const { selectedLanguage, handleLanguageSwitch } =
       useContext(LanguageContext);
@@ -258,7 +263,7 @@ export default function HomeNav(props) {
                     <Typography
                       variant="h6"
                       noWrap
-                      sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                      sx={{ flexGrow: 1 }}
                       component="div"
                     >
                       <Link to="/" onClick={handleLogoClick}>
@@ -337,8 +342,8 @@ export default function HomeNav(props) {
                     <Menu
                       // style={{ opacity: 0.7 }}
                       sx={{
-                        mt: "68px",
-                        left: "32px",
+                        mt: "70px",
+                        left: "25px",
                         width: drawerWidth,
                         flexShrink: 0,
                         "& .MuiDrawer-paper": {
@@ -455,7 +460,7 @@ export default function HomeNav(props) {
                   <Typography
                     variant="h6"
                     noWrap
-                    sx={{ flexGrow: 1, marginTop: 2, marginBottom: 2 }}
+                    sx={{ flexGrow: 1 }}
                     component="div"
                   >
                     <Link to="/" onClick={handleLogoClick}>
@@ -543,8 +548,8 @@ export default function HomeNav(props) {
                   <Menu
                     style={{ opacity: 0.9 }}
                     sx={{
-                      mt: "68px",
-                      left: "32px",
+                      mt: "70px",
+                      left: "25px",
                       width: drawerWidth,
                       flexShrink: 0,
                       "& .MuiDrawer-paper": {
@@ -664,7 +669,7 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div
+                  {/* <div
                     className="searchBox"
                     style={{ top: "10%" }}
                     // style={{ border: "2px solid #AE023E" }}
@@ -689,6 +694,33 @@ export default function HomeNav(props) {
                       <SearchIcon
                         style={{
                           color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
+                  </div> */}
+                  <div className="searchBox" style={{ top: "12%" }}>
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      style={{ display: showSearchBox ? "block" : "none" }}
+                    />
+                    {/* Other search box content here */}
+                    <button
+                      className="searchButton"
+                      onClick={handleSearchIconClick}
+                      style={{
+                        position: showSearchBox ? "absolute" : "static",
+                        right: "3%",
+                      }}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: "#AE023E",
                           cursor: "pointer",
                           transition: "color 0.3s ease-in-out",
                         }}
@@ -851,31 +883,27 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div
-                    className="searchBox"
-                    // style={{ border: "2px solid #AE023E" }}
-                    style={{ top: "10%" }}
-                  >
+                  <div className="searchBox" style={{ top: "12%" }}>
                     <input
                       className="searchInput"
                       type="text"
                       placeholder="Search..."
                       value={searchTerm}
                       onChange={handleSearch}
-                      onKeyDown={handleKeyDown}
-                      ref={inputRef}
-                      onMouseEnter={handleMouseEnter}
+                      style={{ display: showSearchBox ? "block" : "none" }}
                     />
-
+                    {/* Other search box content here */}
                     <button
                       className="searchButton"
-                      href="#"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                      onClick={handleSearchIconClick}
+                      style={{
+                        position: showSearchBox ? "absolute" : "static",
+                        right: "3%",
+                      }}
                     >
                       <SearchIcon
                         style={{
-                          color: isHovered ? "grey" : "#AE023E",
+                          color: "#AE023E",
                           cursor: "pointer",
                           transition: "color 0.3s ease-in-out",
                         }}
