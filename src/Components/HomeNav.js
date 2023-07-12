@@ -245,195 +245,191 @@ export default function HomeNav(props) {
       <React.Fragment>
         <CssBaseline />
         <HideOnScroll {...props}>
-          <Container maxWidth="xl">
-            <AppBar
-              // className="px-2"
-              style={{
-                background: "unset",
-                boxShadow: "unset",
-                top: "15px",
-              }}
-              position="sticky"
-            >
-              <Container maxWidth="lg">
-                <Toolbar disableGutters>
-                  <Box
-                    sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}
+          {/* <Container maxWidth="xl"> */}
+          <AppBar
+            // className="px-2"
+            style={{
+              background: "unset",
+              boxShadow: "unset",
+              top: "15px",
+            }}
+            position="sticky"
+          >
+            <Container maxWidth="lg">
+              <Toolbar disableGutters>
+                <Box sx={{ flexGrow: 1, display: { xs: "block", md: "flex" } }}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{ flexGrow: 1 }}
+                    component="div"
                   >
-                    <Typography
-                      variant="h6"
-                      noWrap
-                      sx={{ flexGrow: 1 }}
-                      component="div"
+                    <Link to="/" onClick={handleLogoClick}>
+                      <div style={containerStyle1}>
+                        <img src={logo} loading="lazy" style={logoStyle} />
+                      </div>
+                    </Link>
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexGrow: 0,
+                    flexDirection: "initial",
+                    gap: "3rem",
+                  }}
+                >
+                  <div className="searchBox">
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <Link to="/" onClick={handleLogoClick}>
-                        <div style={containerStyle1}>
-                          <img src={logo} loading="lazy" style={logoStyle} />
-                        </div>
-                      </Link>
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexGrow: 0,
-                      flexDirection: "initial",
-                      gap: "3rem",
-                    }}
-                  >
-                    <div className="searchBox">
-                      <input
-                        className="searchInput"
-                        type="text"
-                        placeholder="Search..."
-                        value={searchTerm}
-                        onChange={handleSearch}
-                        onKeyDown={handleKeyDown}
-                        ref={inputRef}
-                        onMouseEnter={handleMouseEnter}
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "white",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
                       />
+                    </button>
+                  </div>
 
-                      <button
-                        className="searchButton"
-                        href="#"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
+                  <span>
+                    <LanguageIcon
+                      style={{ color: "white", marginRight: "0.5rem" }}
+                    ></LanguageIcon>
+
+                    {selectedLanguage === "en" ? (
+                      <span
+                        onClick={() => handleLanguageSwitch("th")}
+                        style={{ cursor: "pointer" }}
                       >
-                        <SearchIcon
-                          style={{
-                            color: isHovered ? "grey" : "white",
-                            cursor: "pointer",
-                            transition: "color 0.3s ease-in-out",
-                          }}
-                        />
-                      </button>
-                    </div>
-
-                    <span>
-                      <LanguageIcon
-                        style={{ color: "white", marginRight: "0.5rem" }}
-                      ></LanguageIcon>
-
-                      {selectedLanguage === "en" ? (
-                        <span
-                          onClick={() => handleLanguageSwitch("th")}
-                          style={{ cursor: "pointer" }}
-                        >
-                          TH
-                        </span>
-                      ) : (
-                        <span
-                          onClick={() => handleLanguageSwitch("en")}
-                          style={{ cursor: "pointer" }}
-                        >
-                          EN
-                        </span>
-                      )}
-                    </span>
-                    <Tooltip title="Open settings">
-                      <IconButton
-                        color="black"
-                        onClick={handleOpenUserMenu}
-                        sx={{ p: 0 }}
+                        TH
+                      </span>
+                    ) : (
+                      <span
+                        onClick={() => handleLanguageSwitch("en")}
+                        style={{ cursor: "pointer" }}
                       >
-                        <MenuIcon style={{ color: "white" }} />
-                      </IconButton>
-                    </Tooltip>
-                    <Menu
-                      // style={{ opacity: 0.7 }}
-                      sx={{
-                        mt: "70px",
-                        left: "25px",
-                        width: drawerWidth,
-                        flexShrink: 0,
-                        "& .MuiDrawer-paper": {
-                          width: drawerWidth,
-                        },
-                        opacity: "0.9",
-                      }}
-                      id="menu-appbar"
-                      anchorEl={anchorElUser}
-                      anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      keepMounted
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      open={Boolean(anchorElUser)}
-                      onClose={handleCloseUserMenu}
+                        EN
+                      </span>
+                    )}
+                  </span>
+                  <Tooltip title="Open settings">
+                    <IconButton
+                      color="black"
+                      onClick={handleOpenUserMenu}
+                      sx={{ p: 0 }}
                     >
-                      {pages.map((page, index) => (
-                        <Link
-                          to={
-                            page === "TOOLS & SERVICE"
-                              ? "/tools-and-service"
-                              : page === "NEWS & ACTIVITIES"
-                              ? "/news-and-activities"
-                              : page === "PARTICIPATE & DONATE"
-                              ? "/participate-and-donate"
-                              : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                          }
-                          // style={{ color: "black" }}
+                      <MenuIcon style={{ color: "white" }} />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    // style={{ opacity: 0.7 }}
+                    sx={{
+                      mt: "70px",
+                      left: "25px",
+                      width: drawerWidth,
+                      flexShrink: 0,
+                      "& .MuiDrawer-paper": {
+                        width: drawerWidth,
+                      },
+                      opacity: "0.9",
+                    }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {pages.map((page, index) => (
+                      <Link
+                        to={
+                          page === "TOOLS & SERVICE"
+                            ? "/tools-and-service"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
+                        // style={{ color: "black" }}
+                        sx={{
+                          color: "black",
+                          ":hover": {
+                            color: "white",
+                          },
+                        }}
+                        key={page}
+                      >
+                        <MenuItem
+                          style={{
+                            justifyContent: "center",
+                            width: "300px",
+                            height: "60px",
+                            borderBottom: "1px solid gray",
+                          }}
+                          onClick={handleCloseUserMenu}
                           sx={{
                             color: "black",
                             ":hover": {
                               color: "white",
-                            },
-                          }}
-                          key={page}
-                        >
-                          <MenuItem
-                            style={{
-                              justifyContent: "center",
-                              width: "300px",
-                              height: "60px",
-                              borderBottom: "1px solid gray",
-                            }}
-                            onClick={handleCloseUserMenu}
-                            sx={{
-                              color: "black",
-                              ":hover": {
+                              bgcolor: "#AE023E",
+                              opacity: "100%",
+                              "& a, & > a": {
                                 color: "white",
-                                bgcolor: "#AE023E",
-                                opacity: "100%",
-                                "& a, & > a": {
-                                  color: "white",
-                                },
                               },
+                            },
+                            fontWeight: "bold",
+                            padding: "10px 20px 10px 20px",
+                            borderBottom: "1px solid white",
+                          }}
+                        >
+                          <a
+                            textAlign="center"
+                            to={
+                              page === "TOOLS & SERVICE"
+                                ? "/tools-and-service"
+                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            }
+                            sx={{
                               fontWeight: "bold",
-                              padding: "10px 20px 10px 20px",
-                              borderBottom: "1px solid white",
+                              padding: "20px",
+                              // color: "inherit",
                             }}
                           >
-                            <a
-                              textAlign="center"
-                              to={
-                                page === "TOOLS & SERVICE"
-                                  ? "/tools-and-service"
-                                  : `/${page
-                                      .replace(/\s+/g, "-")
-                                      .toLowerCase()}`
-                              }
-                              sx={{
-                                fontWeight: "bold",
-                                padding: "20px",
-                                // color: "inherit",
-                              }}
-                            >
-                              {page}
-                            </a>
-                          </MenuItem>
-                        </Link>
-                      ))}
-                    </Menu>
-                  </Box>
-                </Toolbar>
-              </Container>
-            </AppBar>
-          </Container>
+                            {page}
+                          </a>
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </Menu>
+                </Box>
+              </Toolbar>
+            </Container>
+          </AppBar>
+          {/* </Container> */}
         </HideOnScroll>
       </React.Fragment>
     );
