@@ -134,6 +134,8 @@ text-align {
 
 #cluster-container {
   max-width: -webkit-fill-available;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 #contact-container {

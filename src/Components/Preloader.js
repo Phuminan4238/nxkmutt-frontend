@@ -49,8 +49,6 @@ const Preloader = () => {
         {/* <span className="pe-4 align-middle">
           Neuroscience Center for Research and Innovation
         </span> */}
-        {/* <span className="pe-3">for Research and Innovation</span> */}
-        {/* <span className="pe-4">for Research and Innovation</span> */}
         {/* <span className="ps-5 align-middle">KMUTT</span> */}
       </div>
     </div>

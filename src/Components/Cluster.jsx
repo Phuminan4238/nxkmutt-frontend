@@ -229,7 +229,11 @@ function ImageDesktop() {
   return (
     <>
       {tags.map((tagsData, index) => (
-        <MDBContainer className="fluid p-0" id="cluster-container" key={index}>
+        <MDBContainer
+          className="fluid p-0 px-0"
+          id="cluster-container"
+          key={index}
+        >
           <MDBRow className="p-0" id="cluster-gutter">
             <MDBCol
               md="8"
@@ -523,7 +527,11 @@ function ImageMobile() {
   return (
     <>
       {tags.map((tagsData, index) => (
-        <MDBContainer className="fluid p-0" id="cluster-container" key={index}>
+        <MDBContainer
+          className="fluid p-0 px-0"
+          id="cluster-container"
+          key={index}
+        >
           <MDBRow className="p-0" id="cluster-gutter">
             <MDBCol
               md="8"

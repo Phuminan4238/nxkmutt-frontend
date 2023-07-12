@@ -64,6 +64,7 @@ function ImageDesktop() {
       <MDBContainer className="fluid p-0" id="cluster-container">
         <MDBRow
           key={member.id}
+          id="cluster-gutter"
           className={`${index % 2 === 0 ? "flex-row-reverse" : ""}`}
         >
           <MDBCol
