@@ -1,7 +1,16 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 /* MDBootstrap */
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardImage,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+} from "mdb-react-ui-kit";
 /* Routes */
 import { Link } from "react-router-dom";
 /* Images */
@@ -18,6 +27,9 @@ import logo from "../Images/logo.png";
 import image1 from "../Images/participate-img1.png";
 import image2 from "../Images/participate-img2.png";
 import image3 from "../Images/participate-img3.png";
+import ReactMarkdown from "react-markdown";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const Participate = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -30,6 +42,9 @@ const Participate = () => {
         setMembercover(result.data);
       });
   }, []);
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   // image square
   const [uploadfilesMember, setUploadfilesMember] = useState([]);
@@ -77,6 +92,112 @@ const Participate = () => {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  // Who we are
+  const [uploadfilesJob, setUploadfilesJob] = useState([]);
+  const [uploadfilesStudy, setUploadfilesStudy] = useState([]);
+  const [uploadfilesDonation, setUploadfilesDonation] = useState([]);
+  const [uploadfilesAll, setUploadfilesAll] = useState([]);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesAll(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesJob(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=study_participation"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesStudy(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=donation"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesDonation(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
+  const [uploadfiles, setUploadfiles] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
+      )
+      .then((response) => {
+        setUploadfiles(response.data.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -193,107 +314,227 @@ const Participate = () => {
 
             <MDBRow className="pt-0 pb-4 xs:px-5 sm:px-5 md:px-0">
               <MDBCol>
-                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pb-4">
-                  <Link
-                    to={`/Participate-Detail/`}
-                    onClick={() => {
-                      window.scrollTo(0, 0);
-                      // window.location.replace(`/Tools-Detail/${member.id}`);
-                    }}
-                  >
-                    <Participateimage></Participateimage>
-                  </Link>
-                </MDBRow>
-                <MDBRow className="pt-4">
-                  <p
-                    className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    JOB & Internship
-                  </p>
-                </MDBRow>
-                <MDBCol className="ps-4 pt-2">
-                  <MDBRow className="pt-2">
-                    <MDBCol
-                      size="1"
-                      className="sm:p-2 md:p-0"
-                      style={{ width: "1.33%" }}
-                    >
-                      {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                      <li className="ps-0"></li>
-                    </MDBCol>
-                    <MDBCol className="ps-0">
-                      <p className="ps-0" style={{ maxWidth: "90%" }}>
-                        We are seeking enthusiastic and motivated students and
-                        interns with a Bachelor’s degree (at minimum) to join
-                        our research team. As a member of our team, you will
-                        have the opportunity to work alongside experienced
-                        researchers and gain valuable hands-on experience in
-                        Neuroscience research, as well as contributing to our
-                        efforts in improving cognitive health. If interested in
-                        applying, please send your inquiries to:{" "}
-                        <span style={{ color: "#119ED1" }}>
-                          nx.kmutt@gmail.com.
-                        </span>
+                {uploadfilesAll.map((member) => (
+                  <MDBRow>
+                    <MDBRow className="pt-4">
+                      <p
+                        className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
+                        style={{ fontFamily: "MyFont" }}
+                      >
+                        {selectedLanguage === "en"
+                          ? uploadfilesAll[0].attributes.name_en || "Not found"
+                          : uploadfilesAll[0].attributes.name_th || "Not found"}
                       </p>
+                    </MDBRow>
+                    <MDBCardImage
+                      className="rounded-4"
+                      src={
+                        "https://10.35.29.186" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      position="top"
+                      alt="..."
+                      style={{
+                        // height: "340px",
+                        objectFit: "cover",
+                        borderRadius: "1rem",
+                        alignSelf: "center",
+                        height: "300px",
+                        objectPosition: "50% 15%",
+                        // objectPosition: "top",
+                      }}
+                    />
+                    <MDBCol className="ps-4 pt-2">
+                      <MDBRow className="pt-2">
+                        <MDBCol
+                          size="1"
+                          className="sm:p-2 md:p-0"
+                          style={{ width: "1.33%" }}
+                        >
+                          {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                          <li className="ps-0"></li>
+                        </MDBCol>
+                        <MDBCol className="ps-0">
+                          {/* // Member  */}
+                          {member.attributes?.content_en ? (
+                            <p
+                              className="fw-normal text-md"
+                              style={{
+                                wordBreak: "break-word",
+                                maxWidth: "80%",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  selectedLanguage === "en"
+                                    ? member.attributes.content_en
+                                    : member.attributes.content_th,
+                              }}
+                            />
+                          ) : (
+                            <p className="fw-normal text-md pt-3">-</p>
+                          )}
+                        </MDBCol>
+                      </MDBRow>
                     </MDBCol>
                   </MDBRow>
-                </MDBCol>
-                <MDBRow>
-                  <h4
-                    className="fw-bold text-uppercase text-black ps-2 pt-4 xs:text-lg md:text-2xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    STUDY participation
-                  </h4>
-                </MDBRow>
-                <MDBCol className="ps-4 pt-2">
-                  <MDBRow className="pt-2">
-                    <MDBCol
-                      size="1"
-                      className="sm:p-2 md:p-0"
-                      style={{ width: "1.33%" }}
-                    >
-                      {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
-                      <li className="ps-0"></li>
-                    </MDBCol>
-                    <MDBCol className="ps-0">
-                      <p className="ps-0" style={{ maxWidth: "90%" }}>
-                        We are seeking enthusiastic and motivated students and
-                        interns with a Bachelor’s degree (at minimum) to join
-                        our research team. As a member of our team, you will
-                        have the opportunity to work alongside experienced
-                        researchers and gain valuable hands-on experience in
-                        Neuroscience research, as well as contributing to our
-                        efforts in improving cognitive health. If interested in
-                        applying, please send your inquiries to:{" "}
-                        <span style={{ color: "#119ED1" }}>
-                          nx.kmutt@gmail.com.
-                        </span>
+                ))}
+              </MDBCol>
+            </MDBRow>
+
+            <MDBRow className="pt-0 pb-4 xs:px-5 sm:px-5 md:px-0">
+              <MDBCol>
+                {uploadfilesJob.map((member) => (
+                  <MDBRow>
+                    <MDBRow className="pt-4">
+                      <p
+                        className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
+                        style={{ fontFamily: "MyFont" }}
+                      >
+                        {selectedLanguage === "en"
+                          ? uploadfilesJob[0].attributes.header_en ||
+                            "Not found"
+                          : uploadfilesJob[0].attributes.header_th ||
+                            "Not found"}
                       </p>
+                    </MDBRow>
+                    <MDBCol className="ps-4 pt-2">
+                      <MDBRow className="pt-2">
+                        <MDBCol
+                          size="1"
+                          className="sm:p-2 md:p-0"
+                          style={{ width: "1.33%" }}
+                        >
+                          {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                          <li className="ps-0"></li>
+                        </MDBCol>
+                        <MDBCol className="ps-0">
+                          {/* // Member  */}
+                          {member.attributes?.content_en2 ? (
+                            <p
+                              className="fw-normal text-md"
+                              style={{
+                                wordBreak: "break-word",
+                                maxWidth: "80%",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  selectedLanguage === "en"
+                                    ? member.attributes.content_en2
+                                    : member.attributes.content_th2,
+                              }}
+                            />
+                          ) : (
+                            <p className="fw-normal text-md pt-3">-</p>
+                          )}
+                        </MDBCol>
+                      </MDBRow>
                     </MDBCol>
                   </MDBRow>
-                </MDBCol>
-                {/* <MDBRow className="xs:px-5 sm:px-5 md:px-0">
-                <Participateimage></Participateimage>
-              </MDBRow> */}
-                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
-                  <p
-                    className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    Donation
-                  </p>
-                  <p>
-                    Your help matters! Your generous support, no matter the
-                    size, can provide opportunities for talented researchers to
-                    join our team, as well as helping us purchase necessary
-                    equipment for conducting Frontier neuroscience research in
-                    Thailand. Please contact nx.kmutt@gmail.com if you are
-                    considering making a financial contribution to our
-                    laboratory.{" "}
-                  </p>
-                </MDBRow>
+                ))}
+
+                {uploadfilesStudy.map((member) => (
+                  <MDBRow>
+                    <MDBRow className="pt-4">
+                      <p
+                        className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
+                        style={{ fontFamily: "MyFont" }}
+                      >
+                        {selectedLanguage === "en"
+                          ? uploadfilesStudy[0].attributes.header_en ||
+                            "Not found"
+                          : uploadfilesStudy[0].attributes.header_th ||
+                            "Not found"}
+                      </p>
+                    </MDBRow>
+                    <MDBCol className="ps-4 pt-2">
+                      <MDBRow className="pt-2">
+                        <MDBCol
+                          size="1"
+                          className="sm:p-2 md:p-0"
+                          style={{ width: "1.33%" }}
+                        >
+                          {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                          <li className="ps-0"></li>
+                        </MDBCol>
+                        <MDBCol className="ps-0">
+                          {/* // Member  */}
+                          {member.attributes?.content_en2 ? (
+                            <p
+                              className="fw-normal text-md"
+                              style={{
+                                wordBreak: "break-word",
+                                maxWidth: "80%",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  selectedLanguage === "en"
+                                    ? member.attributes.content_en2
+                                    : member.attributes.content_th2,
+                              }}
+                            />
+                          ) : (
+                            <p className="fw-normal text-md pt-3">-</p>
+                          )}
+                        </MDBCol>
+                      </MDBRow>
+                      <Participateimage></Participateimage>
+                    </MDBCol>
+
+                    {/* <MDBRow className="xs:px-5 sm:px-5 md:px-0 pb-4">
+                      <Participateimage></Participateimage>
+                    </MDBRow> */}
+                  </MDBRow>
+                ))}
+
+                {uploadfilesDonation.map((member) => (
+                  <MDBRow>
+                    <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">
+                      <p
+                        className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
+                        style={{ fontFamily: "MyFont" }}
+                      >
+                        {selectedLanguage === "en"
+                          ? uploadfilesDonation[0].attributes.header_en ||
+                            "Not found"
+                          : uploadfilesDonation[0].attributes.header_th ||
+                            "Not found"}
+                      </p>
+                    </MDBRow>
+                    <MDBCol className="ps-4 pt-2">
+                      <MDBRow className="pt-2">
+                        <MDBCol
+                          size="1"
+                          className="sm:p-2 md:p-0"
+                          style={{ width: "1.33%" }}
+                        >
+                          {/* <PeopleIcon style={{ color: "#AE023E" }} /> */}
+                          <li className="ps-0"></li>
+                        </MDBCol>
+                        <MDBCol className="ps-0">
+                          {/* // Member  */}
+                          {member.attributes?.content_en2 ? (
+                            <p
+                              className="fw-normal text-md"
+                              style={{
+                                wordBreak: "break-word",
+                                maxWidth: "80%",
+                              }}
+                              dangerouslySetInnerHTML={{
+                                __html:
+                                  selectedLanguage === "en"
+                                    ? member.attributes.content_en2
+                                    : member.attributes.content_th2,
+                              }}
+                            />
+                          ) : (
+                            <p className="fw-normal text-md pt-3">-</p>
+                          )}
+                        </MDBCol>
+                      </MDBRow>
+                    </MDBCol>
+                  </MDBRow>
+                ))}
               </MDBCol>
             </MDBRow>
           </MDBContainer>

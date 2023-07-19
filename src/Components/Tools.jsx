@@ -12,6 +12,7 @@ import {
   MDBContainer,
   MDBRow,
   MDBCol,
+  MDBBtn,
 } from "mdb-react-ui-kit";
 import { useState, useEffect, setIsLoaded } from "react";
 import new1 from "../Images/new-1.png";
@@ -88,6 +89,7 @@ const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
 
 function ImageDesktop({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -152,13 +154,6 @@ function ImageDesktop({ members }) {
     transition: "margin-left 0.3s ease-out",
   };
 
-  // Current index
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    setCurrentIndex(0); // Reset current index when upload files change
-  }, [uploadfiles]);
-
   const handleNext = () => {
     setCurrentIndex((prevIndex) => prevIndex + 1);
   };
@@ -167,7 +162,8 @@ function ImageDesktop({ members }) {
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
-  const displayedItems = uploadfiles.slice(currentIndex, currentIndex + 3);
+  const displayedItems = uploadfiles.slice(0, currentIndex + 3);
+  const remainingItems = uploadfiles.slice(currentIndex + 3);
 
   const responsive = {
     desktop: {
@@ -187,90 +183,75 @@ function ImageDesktop({ members }) {
     },
   };
 
+  const renderItemsPerRow = (items, perRow) => {
+    const rows = Math.ceil(items.length / perRow);
+    const renderedItems = [];
+
+    for (let i = 0; i < rows; i++) {
+      const rowItems = items.slice(i * perRow, (i + 1) * perRow);
+      const row = (
+        <MDBRow key={i}>
+          {rowItems.map((member) => (
+            <MDBCol md="4" key={member.id} className="pb-2 px-0 col-sm-8">
+              <Link
+                to={`/Tools-Detail/${member.id}`}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  window.location.replace(`/Tools-Detail/${member.id}`);
+                }}
+              >
+                <MDBCard style={cardStyle}>
+                  <ImageMask
+                    style={{
+                      width: "-webkit-fill-available",
+                      objectFit: "cover",
+                      height: "400px !important",
+                      borderRadius: "8px",
+                    }}
+                    imageUrl={
+                      "https://10.35.29.186" +
+                      member.attributes.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url
+                    }
+                    maskText={member.attributes.name_en + " "}
+                    imageHeight="400px" // Adjust the height here
+                  />
+                </MDBCard>
+              </Link>
+            </MDBCol>
+          ))}
+        </MDBRow>
+      );
+
+      renderedItems.push(row);
+    }
+
+    return renderedItems;
+  };
+
   return (
     <>
       <div className="d-flex justify-content-between pt-0 px-0" id="tools-flex">
         <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
-          <Carousel
-            responsive={responsive}
-            arrows={true}
-            // renderArrowPrev={(onClickHandler, hasNext, label) =>
-            //   hasNext && (
-            //     <button
-            //       className="carousel-arrow carousel-prev"
-            //       onClick={onClickHandler}
-            //       aria-label={label}
-            //     >
-            //       <MdKeyboardArrowLeft />
-            //     </button>
-            //   )
-            // }
-            // renderArrowNext={(onClickHandler, hasNext, label) =>
-            //   hasNext && (
-            //     <button
-            //       className="carousel-arrow carousel-next"
-            //       onClick={onClickHandler}
-            //       aria-label={label}
-            //     >
-            //       <MdKeyboardArrowRight />
-            //     </button>
-            //   )
-            // }
-          >
-            {displayedItems.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-2 px-0 col-sm-8">
-                <Link
-                  to={`/Tools-Detail/${member.id}`}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    window.location.replace(`/Tools-Detail/${member.id}`);
-                  }}
-                >
-                  <MDBCard style={cardStyle}>
-                    <ImageMask
-                      style={{
-                        width: "-webkit-fill-available",
-                        objectFit: "cover",
-                        height: "400px !important",
-                        borderRadius: "8px",
-                      }}
-                      imageUrl={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      maskText={member.attributes.name_en + " "}
-                      imageHeight="400px" // Adjust the height here
-                    />
-                  </MDBCard>
-                </Link>
+          {renderItemsPerRow(displayedItems, 3)}
+
+          {currentIndex >= uploadfiles.length || isHomePage ? null : (
+            <MDBRow className="mt-4">
+              <MDBCol>
+                <div className="text-center">
+                  <MDBBtn
+                    outline
+                    className="mx-2"
+                    color="secondary"
+                    onClick={handleNext}
+                  >
+                    LOAD MORE
+                  </MDBBtn>
+                </div>
               </MDBCol>
-            ))}
-          </Carousel>
-          <div className="d-flex justify-content-center">
-            <button
-              className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--left  ${
-                window.matchMedia("(max-width: 768px)").matches
-                  ? "d-none"
-                  : "d-flex"
-              }`}
-              onClick={handlePrev}
-              disabled={currentIndex === 0}
-            >
-              <MdKeyboardArrowLeft />
-            </button>
-            <button
-              className={`react-multiple-carousel__arrow react-multiple-carousel__arrow--right  ${
-                window.matchMedia("(max-width: 768px)").matches
-                  ? "d-none"
-                  : "d-flex"
-              }`}
-              onClick={handleNext}
-              disabled={currentIndex >= uploadfiles.length - 3}
-            >
-              <MdKeyboardArrowRight />
-            </button>
-          </div>
+            </MDBRow>
+          )}
+
           {isHomePage && (
             <MDBRow
               onMouseEnter={handleMouseEnter2}

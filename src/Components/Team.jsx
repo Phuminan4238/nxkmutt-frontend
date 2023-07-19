@@ -218,18 +218,10 @@ function ImageMobile({ members }) {
                 <MDBCol
                   md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
                   key={member.id}
-                  // className="col-md-2 d-flex flex-column grow px-4 sm:p-0 "
-                  className="col-md-2 d-flex flex-column grow p-0 px-0"
+                  className="col-6 d-flex flex-column p-0 px-0" // Adjust styling as needed
                 >
-                  {/* <Link
-                  to={`/Member-Detail/${member.id}`}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    window.location.replace(`/Member-Detail/${member.id}`);
-                  }}
-                > */}
                   <MDBCard
-                    className=""
+                    className="h-100"
                     style={{
                       boxShadow: "unset",
                       borderRadius: "0px",
@@ -257,9 +249,9 @@ function ImageMobile({ members }) {
                     />
 
                     <MDBCardBody style={{ padding: "0px" }}>
-                      <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
+                      <div className="d-flex align-items-center justify-content-center flex-column  h-100">
                         <p
-                          className="text-white text-center mt-2 mb-2 xs:text-xl sm:text-xl md:text-xl"
+                          className="text-white text-center mt-2 mb-2 xs:text-md sm:text-xl md:text-xl"
                           style={{
                             fontFamily: "FontMedium",
                           }}
@@ -295,9 +287,9 @@ function ImageMobile({ members }) {
                   </MDBCard>
                   {/* </Link> */}
                 </MDBCol>
-                {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
+                {/* {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
                   <div className="w-100"></div>
-                )}
+                )} */}
               </React.Fragment>
             ))}
           </MDBRow>

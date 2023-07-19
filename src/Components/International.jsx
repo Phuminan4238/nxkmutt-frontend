@@ -182,7 +182,11 @@ function ImageMobile({ members }) {
         <MDBContainer className="xs:max-w-full sm:max-w-7xl">
           <MDBRow>
             {uploadfiles.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-0 col-sm-8">
+              <MDBCol
+                md="4"
+                key={member.id}
+                className="col-6 d-flex flex-column p-0 px-0"
+              >
                 <MDBCard
                   style={{
                     // borderBottom: "1px solid black",
@@ -210,7 +214,7 @@ function ImageMobile({ members }) {
                   <MDBCardBody>
                     <MDBCardTitle className="m-0">
                       <p
-                        className="fw-bold text-center mb-0 xs:text-xl md:text-2xl"
+                        className="fw-bold text-center mb-0 xs:text-sm md:text-2xl"
                         style={{ color: "#AE023E" }}
                       >
                         {member.attributes.name_en}
@@ -218,9 +222,9 @@ function ImageMobile({ members }) {
                         {member.attributes.surname_en}
                       </p>
                     </MDBCardTitle>
-                    <MDBCardText>
+                    <MDBCardText className="mb-2">
                       <p
-                        className="fw-normal text-center mb-0 xs:text-md md:text-2xl"
+                        className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
                         style={{ color: "#AE023E" }}
                       >
                         {member.attributes.position_en}
@@ -228,7 +232,7 @@ function ImageMobile({ members }) {
                     </MDBCardText>
                     <MDBCardText key={member.attributes}>
                       <p
-                        className="fw-normal text-center text-sm md:text-lg"
+                        className="fw-normal text-center text-xs md:text-lg"
                         style={{ color: "#AE023E" }}
                       >
                         Main Interest, Main <br></br> Interest, Main Interest

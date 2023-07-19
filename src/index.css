@@ -398,6 +398,15 @@ a:hover {
   padding-left: 0.8rem; */
 }
 
+@media (max-width: 468px) {
+  .react-multiple-carousel__arrow--left {
+    display: none !important;
+  }
+  .react-multiple-carousel__arrow--right {
+    display: none !important;
+  }
+}
+
 @media (min-width: 1400px) {
   .container {
     /* max-width: 1600px !important; */
@@ -412,6 +421,19 @@ a:hover {
 
 #footerpadding {
   padding: 2rem 3rem 2rem 3rem !important;
+}
+
+@media (max-width: 768px) {
+  .flex-mobile-column {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
 }
 
 @tailwind components;

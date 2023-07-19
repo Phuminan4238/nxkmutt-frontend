@@ -8,6 +8,7 @@ import { Route, Routes, useParams } from "react-router";
 import ArticleIcon from "@mui/icons-material/Article";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import EastIcon from "@mui/icons-material/East";
+
 /* MDBootstrap */
 import {
   MDBCardImage,
@@ -241,18 +242,7 @@ function ImageDesktop({ title }) {
                       </span>
                     </MDBCol>
                   </MDBRow>
-                  {/* Render the content */}
-                  {/* {uploadfiles.attributes?.bio_en ? (
-                    <p
-                      className="fw-normal text-md pt-3"
-                      style={{ wordBreak: "break-word", maxWidth: "80%" }}
-                      dangerouslySetInnerHTML={{
-                        __html: uploadfiles.attributes.bio_en,
-                      }}
-                    />
-                  ) : (
-                    <p className="fw-normal text-md pt-3">-</p>
-                  )} */}
+
                   {uploadfiles.attributes?.bio_en ? (
                     <p
                       className="fw-normal text-md pt-3"
@@ -267,32 +257,6 @@ function ImageDesktop({ title }) {
                   ) : (
                     <p className="fw-normal text-md pt-3">-</p>
                   )}
-
-                  {/* <p
-                  className="fw-normal text-lg pt-3"
-                  style={{ maxWidth: "90%" }}
-                >
-                  {uploadfiles.attributes?.bio_en || "-"}
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: uploadfiles.attributes?.bio_en || "-",
-                    }}
-                  ></div>
-                </p> */}
-
-                  {/* Text Editor  */}
-                  {/* <MDBCol>
-                  <span
-                    className="fw-normal text-lg ps-2"
-                    style={{ color: "#119ED1" }}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: uploadfiles.attributes?.bio_en || "-",
-                      }}
-                    ></div>
-                  </span>
-                </MDBCol> */}
                 </div>
               </MDBCol>
               <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">

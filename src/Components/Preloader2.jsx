@@ -31,7 +31,7 @@ const Animation = ({ imageUrl }) => {
     <div className={`preloader ${loaded ? "loaded" : ""}`}>
       <div className="preloader-inner">
         <div className="spinner"></div>
-        <img src={imageUrl} alt="Your Image" />
+        <img src={imageUrl} alt="" />
       </div>
     </div>
   );

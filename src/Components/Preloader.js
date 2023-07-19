@@ -43,16 +43,23 @@ const Preloader = () => {
         <span className="w-100 items-center">
           <img src={logored} loading="lazy" style={logobrainStyle} />
         </span>
-        {/* <span className="w-100 items-center">
-          <img src={logotext} loading="lazy" style={logotextStyle} />
-        </span> */}
-        {/* <span className="pe-4 align-middle">
-          Neuroscience Center for Research and Innovation
-        </span> */}
-        {/* <span className="ps-5 align-middle">KMUTT</span> */}
       </div>
     </div>
   );
 };
 
 export default Preloader;
+
+{
+  /* <span className="w-100 items-center">
+          <img src={logotext} loading="lazy" style={logotextStyle} />
+        </span> */
+}
+{
+  /* <span className="pe-4 align-middle">
+          Neuroscience Center for Research and Innovation
+        </span> */
+}
+{
+  /* <span className="ps-5 align-middle">KMUTT</span> */
+}

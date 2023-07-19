@@ -17,7 +17,7 @@ function FooterDesktop() {
       <MDBFooter id="footer-bg">
         <section>
           <MDBContainer className="text-center text-md-start xs:max-w-full">
-            <MDBRow className="pt-4 pb-0">
+            <MDBRow className="pt-0 pb-0">
               <MDBCol
                 className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
                 id="footerpadding"
@@ -45,7 +45,7 @@ function FooterDesktop() {
                     />
                   </div>
                   <div
-                    className="mx-4"
+                    className="mx-4 ps-4 sm:ps-0"
                     style={{
                       borderRight: "1px solid white",
                     }}
@@ -74,7 +74,7 @@ function FooterDesktop() {
                   </div>
                   <div className="col-5 col-md-2 p-2 ps-0"></div>
                 </div>
-                <div className="d-flex flex-row mt-3 text-white">
+                <div className="d-flex flex-row mt-3 text-white text-sm text-start">
                   Copyright © 2023 King Mongkut’s University of Technology
                   Thonburi, All rights reserved.
                 </div>

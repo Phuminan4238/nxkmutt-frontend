@@ -149,7 +149,7 @@ const Member = ({ imageUrl }) => {
                 </p>
               </div>
               <Memberimage></Memberimage>
-              <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
+              <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
                 <p
                   className="font-black text-uppercase xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
@@ -158,7 +158,7 @@ const Member = ({ imageUrl }) => {
                 </p>
               </div>
               <Memberadvisor></Memberadvisor>
-              <div className="d-inline-flex pt-5 xs:px-4 sm:p-2">
+              <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
                 <h3
                   className="font-black text-uppercase xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
@@ -167,7 +167,7 @@ const Member = ({ imageUrl }) => {
                 </h3>
               </div>
               <Memberalumni></Memberalumni>
-              <div className="d-flex justify-content-between align-items-center pt-5 xs:px-4 sm:p-2">
+              <div className="d-flex justify-content-between align-items-center xs:pt-0 sm:pt-5 xs:px-4 sm:p-2 flex-mobile-column">
                 <p
                   className="font-black text-uppercase xs:text-xl md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
@@ -182,11 +182,18 @@ const Member = ({ imageUrl }) => {
                   }}
                   className="image-link"
                 >
-                  <div className="d-inline-flex text-red py-2 md:py-4">
-                    <h5 href="#" className="pe-4 " style={{ color: "#AE023E" }}>
+                  <div className="sm:d-inline-flex text-red py-2 md:py-4 hide-on-mobile">
+                    <h5
+                      href="#"
+                      className="pe-4 hide-on-mobile"
+                      style={{ color: "#AE023E" }}
+                    >
                       Find out more
                     </h5>
-                    <EastIcon style={iconStyle}></EastIcon>
+                    <EastIcon
+                      style={iconStyle}
+                      className="hide-on-mobile"
+                    ></EastIcon>
                   </div>
                 </Link>
               </div>

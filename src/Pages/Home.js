@@ -39,7 +39,6 @@ function Home(props) {
   // Who we are
   const [uploadfiles, setUploadfiles] = useState([]);
   const [hasDataFetched, setHasDataFetched] = useState(false);
-
   useEffect(() => {
     if (!hasDataFetched) {
       const fetchData = async () => {
@@ -103,6 +102,7 @@ function Home(props) {
 
   return (
     <>
+      {/* {!isMobileWidth && <Preloader />} */}
       <Preloader />
       <div className="App">
         {/* ******************/}
@@ -250,7 +250,7 @@ function Home(props) {
 
               {/* Section Student */}
               <MDBContainer className={`max-w-${containerStyle.maxWidth}`}>
-                <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-5 pb-4">
+                <MDBRow className="xs:px-5 sm:px-5 xs:pt-2 sm:pt-5 md:px-0  pb-4">
                   <div className="d-inline-flex p-2">
                     <p
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"

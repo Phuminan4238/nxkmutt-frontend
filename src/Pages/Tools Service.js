@@ -158,14 +158,14 @@ const Toolservice = () => {
               <Toolsimage></Toolsimage>
             </MDBRow>
             {/* <MDBRow className="mt-4">
-            <MDBCol>
-              <div className="text-center">
-                <MDBBtn outline className="mx-2" color="secondary">
-                  LOAD MORE
-                </MDBBtn>
-              </div>
-            </MDBCol>
-          </MDBRow> */}
+              <MDBCol>
+                <div className="text-center">
+                  <MDBBtn outline className="mx-2" color="secondary">
+                    LOAD MORE
+                  </MDBBtn>
+                </div>
+              </MDBCol>
+            </MDBRow> */}
             <MDBRow className="py-5 xs:px-4 sm:px-0">
               <MDBCol>
                 <div className="d-inline-flex p-2">
@@ -192,7 +192,7 @@ const Toolservice = () => {
                       >
                         Research consultation
                       </p>
-                      <p className="text-lg">
+                      <p className="text-md">
                         We are open to research project consultant or
                         collaboration and sharing tools, etc.
                       </p>
@@ -213,7 +213,7 @@ const Toolservice = () => {
                       >
                         Coursework and workshop
                       </p>
-                      <p className="text-lg">
+                      <p className="text-md">
                         We are open to holding neuroscience seminar and EEG,
                         neuroscience, neurotechnology.
                       </p>
