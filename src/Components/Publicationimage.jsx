@@ -479,7 +479,7 @@ function ImageMobile() {
     .map(([year, publications]) => (
       <MDBRow key={year}>
         <MDBCol size="1" className="me-4 xs:pe-4 sm:pe-0">
-          <p className="fw-bold text-uppercase text-black xs:text-sm sm:text-2xl">
+          <p className="fw-bold text-uppercase text-black xs:text-lg sm:text-2xl">
             {year}
           </p>
         </MDBCol>

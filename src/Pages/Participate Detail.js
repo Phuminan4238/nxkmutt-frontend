@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import axios from "axios";
 /* Routes */
 import { Route, Routes, useParams } from "react-router";
@@ -18,8 +18,13 @@ import Container from "@mui/material/Container";
 import image1 from "../Images/participate-img1.png";
 import image2 from "../Images/participate-img2.png";
 import image3 from "../Images/participate-img3.png";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 function ParticipateDetail({ title }) {
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   let { id } = useParams();
   const [uploadfiles, setUploadfiles] = useState({});
   const [publicationfiles, setPublicationfiles] = useState([]);
@@ -27,7 +32,7 @@ function ParticipateDetail({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/tools/${id}?populate=uploadfiles.fileupload`
+        `https://10.35.29.186/api/participations/${id}?populate=uploadfiles.fileupload`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -163,36 +168,37 @@ function ParticipateDetail({ title }) {
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
               <MDBCol md="4" className="p-0">
                 <MDBCardImage
-                  className="rounded-0"
-                  // src={
-                  //   "https://10.35.29.186" +
-                  //     uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                  //       .fileupload.data[0]?.attributes.url || "-"
-                  // }
-                  src={image1}
-                  position="top"
-                  alt="..."
+                  className="rounded-2"
+                  src={
+                    "https://10.35.29.186" +
+                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url || "-"
+                  }
+                  // src={image1}
+                  // position="top"
+                  // alt="..."
                   style={{
                     //   height: "350px",
                     // width: "100%",
                     // height: "400px",
-                    objectFit: "fill",
-                    // height: "500px",
+                    // objectFit: "fill",
+                    height: "500px",
                     borderRadius: "0px",
                     alignSelf: "center",
                     // objectFit: "contain",
+                    objectFit: "initial",
                   }}
                 />
               </MDBCol>
               <MDBCol className="d-flex ps-0 pb-0 ps-5">
-                <div className="d-flex flex-column w-100">
+                {/* <div className="d-flex flex-column w-100">
                   <h1
                     className="fw-bolder pt-4"
                     style={{ color: "#AE023E", fontFamily: "MyFont" }}
                   >
                     {uploadfiles.attributes?.name_en || "-"}
                   </h1>
-                </div>
+                </div> */}
               </MDBCol>
             </MDBRow>
           </MDBContainer>
@@ -202,44 +208,35 @@ function ParticipateDetail({ title }) {
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 text-initial">
-                <p>More tools detail....</p>
+                {/* <p>More tools detail....</p> */}
               </MDBRow>
 
               {/*  Grants */}
               <MDBRow>
-                <h5
+                {/* <h5
                   className="fw-bold text-uppercase ps-2 pt-4"
                   style={{ color: "#A02040", fontFamily: "MyFont" }}
                 >
                   {uploadfiles.attributes?.content_en || "-"}
-                </h5>
+                </h5> */}
+                {uploadfiles.attributes?.content_en ? (
+                  <p
+                    className="fw-normal text-md"
+                    style={{
+                      wordBreak: "break-word",
+                      maxWidth: "80%",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        selectedLanguage === "en"
+                          ? uploadfiles.attributes.content_en
+                          : uploadfiles.attributes.content_th,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </MDBRow>
-              {/* <MDBRow className="pt-0 pb-0">
-              <MDBCardImage
-                className="rounded-0"
-                // src={
-                //   "https://10.35.29.186" +
-                //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                //     .fileupload.data[0]?.attributes.url
-                // }
-                src={vr2}
-                position="top"
-                alt="..."
-                style={{
-                  //   height: "350px",
-                  // width: "100%",
-                  height: "400px",
-                  objectFit: "initial",
-                  borderRadius: "0px",
-                  alignSelf: "center",
-                  // objectFit: "contain",
-                }}
-              />
-            </MDBRow>
-            {/* Current Affiliations */}
-              {/* <MDBRow className="pt-4 ">
-              <p>More tools detail....</p>
-            </MDBRow> */}
             </MDBRow>
           </MDBContainer>
         </section>

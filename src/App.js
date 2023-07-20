@@ -71,7 +71,7 @@ function App() {
               element={<PublicationsDetail title="PUBLICATION" />}
             />
             <Route
-              path="/Participate-Detail/"
+              path="/Participate-Detail/:id"
               element={<ParticipateDetail title="PARTICIPATE" />}
             />
             <Route

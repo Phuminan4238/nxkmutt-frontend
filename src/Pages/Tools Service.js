@@ -187,12 +187,12 @@ const Toolservice = () => {
                     </MDBCol>
                     <MDBCol>
                       <p
-                        className="fw-bold text-xl"
+                        className="fw-bold xs:text-lg md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
                         Research consultation
                       </p>
-                      <p className="text-md">
+                      <p className="xs:text-sm md:text-md">
                         We are open to research project consultant or
                         collaboration and sharing tools, etc.
                       </p>
@@ -208,12 +208,12 @@ const Toolservice = () => {
                     </MDBCol>
                     <MDBCol>
                       <p
-                        className="fw-bold text-xl"
+                        className="fw-bold xs:text-lg md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
                         Coursework and workshop
                       </p>
-                      <p className="text-md">
+                      <p className="xs:text-sm md:text-md">
                         We are open to holding neuroscience seminar and EEG,
                         neuroscience, neurotechnology.
                       </p>

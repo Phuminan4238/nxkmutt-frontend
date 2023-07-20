@@ -14,7 +14,7 @@ import {
   MDBCol,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import new1 from "../Images/new-1.png";
 import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
@@ -22,6 +22,8 @@ import { useLocation } from "react-router-dom";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -89,10 +91,15 @@ const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
 
 function ImageDesktop({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
+  const [uploadfilesAll, setUploadfilesAll] = useState([]);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   const cardStyle = {
     width: isMobile ? "-webkit-fit-content" : "100%",
@@ -104,11 +111,10 @@ function ImageDesktop({ members }) {
 
   useEffect(() => {
     let isMounted = true;
-
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.35.29.186/api/tools?populate=uploadfiles.fileupload"
+          "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -117,13 +123,32 @@ function ImageDesktop({ members }) {
         console.error(error);
       }
     };
-
     fetchData();
-
     return () => {
       isMounted = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesAll(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
 
   const [iconStyle, setIconStyle] = useState({
     color: "#AE023E",
@@ -194,10 +219,10 @@ function ImageDesktop({ members }) {
           {rowItems.map((member) => (
             <MDBCol md="4" key={member.id} className="pb-2 px-0 col-sm-8">
               <Link
-                to={`/Tools-Detail/${member.id}`}
+                to={`/Participate-Detail/${member.id}`}
                 onClick={() => {
                   window.scrollTo(0, 0);
-                  window.location.replace(`/Tools-Detail/${member.id}`);
+                  window.location.replace(`/Participate-Detail/${member.id}`);
                 }}
               >
                 <MDBCard style={cardStyle}>
