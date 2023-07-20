@@ -77,7 +77,7 @@ const Research = () => {
         style={{ boxShadow: "rgba(0, 0, 0, 0.1) 0px 5px 15px 0px" }}
       >
         <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl pb-4">
             <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
               <MDBCol className="d-flex pt-5 pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
@@ -99,14 +99,14 @@ const Research = () => {
                   ></div>
                 </div>
               </MDBCol>
-              <MDBCol md="4" className="p-0 d-none d-sm-block">
+              <MDBCol md="4" className="p-0 d-none d-sm-block ">
                 {/* <img
                 src={vr2}
                 class="image-fluid"
                 id="cluster-img"
                 style={{ height: "350px" }}
               /> */}
-                {memberCover.map((member) => (
+                {/* {memberCover.map((member) => (
                   <img
                     className="image-fluid"
                     style={{
@@ -123,7 +123,7 @@ const Research = () => {
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />
-                ))}
+                ))} */}
               </MDBCol>
             </MDBRow>
           </MDBContainer>
