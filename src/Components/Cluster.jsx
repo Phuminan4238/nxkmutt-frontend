@@ -617,7 +617,7 @@ function ImageMobile2() {
                 <MDBCol
                   md="4"
                   order="1"
-                  className={"d-flex p-6"}
+                  className={"d-flex p-5"}
                   style={{ backgroundColor: colors[index] }}
                 >
                   <div className="d-flex flex-column w-100">

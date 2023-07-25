@@ -97,74 +97,72 @@ function FooterMobile() {
       }`}
     >
       <MDBFooter id="footer-bg">
-        <Container maxWidth="lg" className="px-0">
-          <section>
-            <MDBContainer className="text-center text-md-start ">
-              <MDBRow className="pt4 pb-0">
-                <MDBCol
-                  className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
-                  id="footerpadding"
-                  style={{
-                    background: "#1e1e1e",
-                  }}
-                >
-                  <div className="d-flex flex-row mt-3 text-white">
-                    <div className="col-2 col-md-1" style={{ width: "5.33%" }}>
-                      {/* <img
+        <section>
+          <Container maxWidth="lg" className="px-0">
+            <MDBRow className="pt4 pb-0" id="footer-gutter">
+              <MDBCol
+                // className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+                id="footerpadding"
+                style={{
+                  background: "#1e1e1e",
+                }}
+              >
+                <div className="d-flex flex-row mt-3 text-white">
+                  <div className="col-2 col-md-1" style={{ width: "5.33%" }}>
+                    {/* <img
                     src={logokmutt}
                     class="image-fluid pr-6"
                     id="logokmutt-img"
                     style={{ borderRight: "1px solid white" }}
                   /> */}
-                      <img
-                        src={logokmutt}
-                        height="70"
-                        alt=""
-                        loading="lazy"
-                        // style={{
-                        //   borderRight: "1px solid white",
-                        //   paddingRight: "1rem",
-                        // }}
-                      />
-                    </div>
-                    <div
-                      className="mx-4"
-                      style={{
-                        borderRight: "1px solid white",
-                      }}
-                    ></div>
-                    {/* 
+                    <img
+                      src={logokmutt}
+                      height="70"
+                      alt=""
+                      loading="lazy"
+                      // style={{
+                      //   borderRight: "1px solid white",
+                      //   paddingRight: "1rem",
+                      // }}
+                    />
+                  </div>
+                  <div
+                    className="mx-4"
+                    style={{
+                      borderRight: "1px solid white",
+                    }}
+                  ></div>
+                  {/* 
                 <div className="col-3 col-md-2 pt-3 ms-4 ms-lg-6">
                   <img src={logo} height="40" alt="" loading="lazy" />
                 </div> */}
-                    <div className="col-3 col-md-2 pt-0 ms-sm-4 ms-lg-1">
-                      <img src={logo} height="80" alt="" loading="lazy" />
-                      <style>
-                        {`
+                  <div className="col-3 col-md-2 pt-0 ms-sm-4 ms-lg-1">
+                    <img src={logo} height="80" alt="" loading="lazy" />
+                    <style>
+                      {`
       @media (min-width: 1201px) {
         .ms-lg-0 {
           margin-left: 2rem !important;
         }
       }
     `}
-                      </style>
-                    </div>
+                    </style>
                   </div>
-                  <div className="d-flex flex-row mt-3 text-white">
-                    <div className="col-5 col-md-2 p-2 ps-0">
-                      {/* Privacy policy */}
-                    </div>
-                    <div className="col-5 col-md-2 p-2 ps-0"></div>
+                </div>
+                <div className="d-flex flex-row mt-3 text-white">
+                  <div className="col-5 col-md-2 p-2 ps-0">
+                    {/* Privacy policy */}
                   </div>
-                  <div className="d-flex flex-row mt-3 text-white">
-                    Copyright © 2023 King Mongkut’s University of Technology
-                    Thonburi, All rights reserved.
-                  </div>
-                </MDBCol>
-              </MDBRow>
-            </MDBContainer>
-          </section>
-        </Container>
+                  <div className="col-5 col-md-2 p-2 ps-0"></div>
+                </div>
+                <div className="d-flex flex-row mt-3 text-white">
+                  Copyright © 2023 King Mongkut’s University of Technology
+                  Thonburi, All rights reserved.
+                </div>
+              </MDBCol>
+            </MDBRow>
+          </Container>
+        </section>
       </MDBFooter>
     </div>
   );

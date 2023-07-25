@@ -136,7 +136,7 @@ const Searchresult = () => {
 
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
             <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="6" className="p-0">
+              <MDBCol md="12" className="p-0">
                 <div>
                   {/* Render publication results */}
                   <h4

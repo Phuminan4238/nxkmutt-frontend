@@ -104,53 +104,61 @@ function ImageDesktop() {
           >
             <Column>
               <div className="d-flex align-items-center justify-content-center flex-column w-100 h-100">
-                <p
-                  className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
-                  style={{
-                    fontFamily: "MyFont",
+                <Link
+                  to={`/Member-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Member-Detail/${member.id}`);
                   }}
                 >
-                  {selectedLanguage === "en"
-                    ? `${member.attributes.name_en} ${member.attributes.surname_en}`
-                    : `${member.attributes.name_th} ${member.attributes.surname_th}`}
-                  <div
+                  <p
+                    className="fw-bold text-white text-center mt-2 mb-2 xs:text-lg sm:text-xl md:text-xl"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      fontFamily: "MyFont",
                     }}
                   >
-                    <hr
+                    {selectedLanguage === "en"
+                      ? `${member.attributes.name_en} ${member.attributes.surname_en}`
+                      : `${member.attributes.name_th} ${member.attributes.surname_th}`}
+                    <div
                       style={{
-                        color: "white",
-                        opacity: "1",
-                        width: "40px",
-                        height: "3px",
-                        margin: "1rem 0",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
-                    />
-                    <img
-                      src={membericon}
-                      className="px-3"
-                      style={{ height: "20px" }}
-                    />
-                    <hr
-                      style={{
-                        color: "white",
-                        opacity: "1",
-                        width: "40px",
-                        height: "3px",
-                        margin: "1rem 0",
-                      }}
-                    />
-                  </div>
-                </p>
+                    >
+                      <hr
+                        style={{
+                          color: "white",
+                          opacity: "1",
+                          width: "40px",
+                          height: "3px",
+                          margin: "1rem 0",
+                        }}
+                      />
+                      <img
+                        src={membericon}
+                        className="px-3"
+                        style={{ height: "20px" }}
+                      />
+                      <hr
+                        style={{
+                          color: "white",
+                          opacity: "1",
+                          width: "40px",
+                          height: "3px",
+                          margin: "1rem 0",
+                        }}
+                      />
+                    </div>
+                  </p>
 
-                <p className="fw-normal text-white text-center xs:text-lg sm:text-lg">
-                  {selectedLanguage === "en"
-                    ? `${member.attributes.position_en} `
-                    : `${member.attributes.position_th}`}
-                </p>
+                  <p className="fw-normal text-white text-center xs:text-lg sm:text-lg">
+                    {selectedLanguage === "en"
+                      ? `${member.attributes.position_en} `
+                      : `${member.attributes.position_th}`}
+                  </p>
+                </Link>
               </div>
             </Column>
           </MDBCol>
@@ -228,64 +236,74 @@ function ImageMobile({ members }) {
                       backgroundColor: colors[index % colors.length],
                     }}
                   >
-                    {/* image_sauqre */}
-                    <MDBCardImage
-                      className="rounded-0"
-                      src={
-                        "https://10.35.29.186" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .image_original.data[0]?.attributes.url
-                      }
-                      position="top"
-                      alt="..."
-                      style={{
-                        objectFit: "cover",
-                        borderRadius: "0px",
-                        alignSelf: "center",
-                        // height: "300px",
-                        height: "50%",
-                        objectPosition: "50% 15%",
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/Member-Detail/${member.id}`}
+                      onClick={() => {
+                        window.scrollTo(0, 0);
+                        window.location.replace(`/Member-Detail/${member.id}`);
                       }}
-                    />
-
-                    <MDBCardBody style={{ padding: "0px" }}>
-                      <div className="d-flex align-items-center justify-content-center flex-column  h-100">
-                        <p
-                          className="text-white text-center mt-2 mb-2 xs:text-md sm:text-xl md:text-xl"
-                          style={{
-                            fontFamily: "FontMedium",
-                          }}
-                        >
-                          <span>{member.attributes.prefix_en}</span>{" "}
-                          {member.attributes.name_en}
-                          <br></br>
-                          {member.attributes.surname_en}
-                          <div
+                    >
+                      {/* image_sauqre */}
+                      <MDBCardImage
+                        className="rounded-0"
+                        src={
+                          "https://10.35.29.186" +
+                          member.attributes.uploadfiles.data[0]?.attributes
+                            .image_original.data[0]?.attributes.url
+                        }
+                        position="top"
+                        alt="..."
+                        style={{
+                          objectFit: "cover",
+                          borderRadius: "0px",
+                          alignSelf: "center",
+                          // height: "300px",
+                          // height: "50%",
+                          objectPosition: "50% 15%",
+                        }}
+                      />
+                      <MDBCardBody
+                        className="h-50"
+                        style={{ padding: "1.5rem" }}
+                      >
+                        <div className="d-flex align-items-center justify-content-center flex-column  h-100">
+                          <p
+                            className="text-white text-center mt-2 mb-2 xs:text-md sm:text-xl md:text-xl"
                             style={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
+                              fontFamily: "FontMedium",
                             }}
                           >
-                            <hr
+                            <span>{member.attributes.prefix_en}</span>{" "}
+                            {member.attributes.name_en}
+                            <br></br>
+                            {member.attributes.surname_en}
+                            <div
                               style={{
-                                color: "white",
-                                opacity: "1",
-                                width: "30px",
-                                height: "3px",
-                                margin: "1rem 0",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                               }}
-                            />
-                          </div>
-                        </p>
+                            >
+                              <hr
+                                style={{
+                                  color: "white",
+                                  opacity: "1",
+                                  width: "30px",
+                                  height: "3px",
+                                  margin: "1rem 0",
+                                }}
+                              />
+                            </div>
+                          </p>
 
-                        <p className="fw-normal text-white text-center xs:text-md">
-                          {member.attributes.position_en}
-                        </p>
-                      </div>
-                    </MDBCardBody>
+                          <p className="fw-normal text-white text-center xs:text-md">
+                            {member.attributes.position_en}
+                          </p>
+                        </div>
+                      </MDBCardBody>
+                    </Link>
                   </MDBCard>
-                  {/* </Link> */}
                 </MDBCol>
                 {/* {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
                   <div className="w-100"></div>

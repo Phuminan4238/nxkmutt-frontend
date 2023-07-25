@@ -215,7 +215,7 @@ function ImageMobile({ members }) {
                     <MDBCardTitle className="m-0">
                       <p
                         className="fw-bold text-center mb-0 xs:text-sm md:text-2xl"
-                        style={{ color: "#AE023E" }}
+                        style={{ color: "black" }}
                       >
                         {member.attributes.name_en}
                         <br></br>
@@ -225,7 +225,7 @@ function ImageMobile({ members }) {
                     <MDBCardText className="mb-2">
                       <p
                         className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
-                        style={{ color: "#AE023E" }}
+                        style={{ color: "black" }}
                       >
                         {member.attributes.position_en}
                       </p>

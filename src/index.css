@@ -172,7 +172,7 @@ text-align {
 
 /* Carousel  */
 #carousel-nav {
-  margin-top: -66px;
+  margin-top: -34px;
   z-index: -1;
 }
 
@@ -202,6 +202,11 @@ text-align {
 #greyscale-img {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+}
+
+.control-dots {
+  margin-top: 0px;
+  margin-bottom: 0px !important;
 }
 
 #footer-bg {
@@ -434,6 +439,10 @@ a:hover {
   .hide-on-mobile {
     display: none;
   }
+}
+
+#footer-gutter {
+  --mdb-gutter-x: "0rem !important";
 }
 
 @tailwind components;

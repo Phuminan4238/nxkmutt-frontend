@@ -582,7 +582,7 @@ function ImageMobile() {
                 >
                   {/* Tags  */}
                   <p
-                    className="fw-bold text-start mb-0 text-md"
+                    className="fw-bold text-start mb-0 text-sm"
                     style={{
                       fontFamily: "MyFont",
                       color:

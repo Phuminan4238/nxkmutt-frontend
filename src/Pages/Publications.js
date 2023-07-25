@@ -232,6 +232,7 @@ const Publications = () => {
                           right: "10px",
                           top: "50%",
                           transform: "translateY(-50%)",
+                          zIndex: "1000",
                         }}
                       >
                         <i className="fas fa-arrow-right"></i>
@@ -244,6 +245,7 @@ const Publications = () => {
                           left: "10px",
                           top: "50%",
                           transform: "translateY(-50%)",
+                          zIndex: "1000",
                         }}
                       >
                         <i className="fas fa-search"></i>
@@ -278,11 +280,11 @@ const Publications = () => {
             </MDBRow>
             <MDBRow className="pb-4">
               <div
-              // className="px-0"
-              // style={{ borderBottom: "1px solid black" }}
+                className="xs:px-4 sm:px-0"
+                // style={{ borderBottom: "1px solid black" }}
               >
                 {searchTerm && (
-                  <div>
+                  <div className="xs:px-4 sm:px-0">
                     {searchResults.map((result) => (
                       <>
                         <Link
@@ -291,7 +293,12 @@ const Publications = () => {
                           style={{ color: "black" }}
                         >
                           <MDBCol md="12" key={result.id} className="pb-2">
-                            <p style={{ display: "inline-block" }}>
+                            <p
+                              className="xs:text-sm sm:text-md"
+                              style={{
+                                display: "inline-block ",
+                              }}
+                            >
                               <StyledArticleIcon
                                 style={{ marginRight: "5px" }}
                               />

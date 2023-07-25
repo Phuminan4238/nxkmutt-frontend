@@ -291,9 +291,9 @@ function ImageMobile({ members }) {
     width: isMobile ? "-webkit-fit-content" : "80%",
     boxShadow: "unset",
     borderRadius: "8px",
-    width: "340px",
+    width: "220px",
     height: "80%",
-    padding: "0rem 1.5rem",
+    padding: "0rem 1rem",
   };
 
   useEffect(() => {

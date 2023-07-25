@@ -242,6 +242,10 @@ export default function HomeNav(props) {
   const RenderNavbar1 = () => {
     const { selectedLanguage, handleLanguageSwitch } =
       useContext(LanguageContext);
+
+    const toggleLanguage = () => {
+      handleLanguageSwitch(selectedLanguage === "en" ? "th" : "en");
+    };
     return (
       <React.Fragment>
         <CssBaseline />
@@ -309,26 +313,14 @@ export default function HomeNav(props) {
                       />
                     </button>
                   </div>
-                  <span>
+                  <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                    ></LanguageIcon>
-                    {/* EN */}
-                    {selectedLanguage === "en" ? (
-                      <span
-                        onClick={() => handleLanguageSwitch("th")}
-                        style={{ color: "#AE023E", cursor: "pointer" }}
-                      >
-                        TH
-                      </span>
-                    ) : (
-                      <span
-                        onClick={() => handleLanguageSwitch("en")}
-                        style={{ color: "#AE023E", cursor: "pointer" }}
-                      >
-                        EN
-                      </span>
-                    )}
+                      style={{ color: "#AE023E", marginRight: "0.2rem" }}
+                    />
+                    <span style={{ color: "#AE023E" }}>
+                      {" "}
+                      {selectedLanguage === "en" ? "EN" : "TH"}
+                    </span>
                   </span>
                   <Tooltip title="Open settings">
                     <IconButton
@@ -439,6 +431,10 @@ export default function HomeNav(props) {
   const RenderNavbar2 = () => {
     const { selectedLanguage, handleLanguageSwitch } =
       useContext(LanguageContext);
+
+    const toggleLanguage = () => {
+      handleLanguageSwitch(selectedLanguage === "en" ? "th" : "en");
+    };
     return (
       <React.Fragment>
         <CssBaseline />
@@ -512,26 +508,14 @@ export default function HomeNav(props) {
                       />
                     </button>
                   </div>
-                  <span>
+                  <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                    ></LanguageIcon>
-                    {/* EN */}
-                    {selectedLanguage === "en" ? (
-                      <span
-                        onClick={() => handleLanguageSwitch("th")}
-                        style={{ color: "#AE023E", cursor: "pointer" }}
-                      >
-                        TH
-                      </span>
-                    ) : (
-                      <span
-                        onClick={() => handleLanguageSwitch("en")}
-                        style={{ color: "#AE023E", cursor: "pointer" }}
-                      >
-                        EN
-                      </span>
-                    )}
+                      style={{ color: "#AE023E", marginRight: "0.2rem" }}
+                    />
+                    <span style={{ color: "#AE023E" }}>
+                      {" "}
+                      {selectedLanguage === "en" ? "EN" : "TH"}
+                    </span>
                   </span>
                   <Tooltip title="Open settings">
                     <IconButton
@@ -668,7 +652,43 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="searchBox" style={{ top: "12%" }}>
+                  <div
+                    className="searchBox"
+                    style={{ top: "12%" }}
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={handleSearchIconClick}
+                      style={{
+                        position: showSearchBox ? "absolute" : "static",
+                        right: "3%",
+                      }}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
+                  </div>
+                  {/* <div className="searchBox" style={{ top: "12%" }}>
                     <input
                       className="searchInput"
                       type="text"
@@ -677,7 +697,7 @@ export default function HomeNav(props) {
                       onChange={handleSearch}
                       style={{ display: showSearchBox ? "block" : "none" }}
                     />
-                    {/* Other search box content here */}
+           
                     <button
                       className="searchButton"
                       onClick={handleSearchIconClick}
@@ -694,7 +714,7 @@ export default function HomeNav(props) {
                         }}
                       />
                     </button>
-                  </div>
+                  </div> */}
                   {/* <span style={{ color: "#AE023E" }}>
                     <LanguageIcon
                       style={{ color: "#AE023E", marginRight: "0.5rem" }}
@@ -853,7 +873,43 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="searchBox" style={{ top: "12%" }}>
+                  <div
+                    className="searchBox"
+                    style={{ top: "12%" }}
+                    // style={{ border: "2px solid #AE023E" }}
+                  >
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={handleSearch}
+                      onKeyDown={handleKeyDown}
+                      ref={inputRef}
+                      onMouseEnter={handleMouseEnter}
+                    />
+
+                    <button
+                      className="searchButton"
+                      href="#"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      onClick={handleSearchIconClick}
+                      style={{
+                        position: showSearchBox ? "absolute" : "static",
+                        right: "3%",
+                      }}
+                    >
+                      <SearchIcon
+                        style={{
+                          color: isHovered ? "grey" : "#AE023E",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease-in-out",
+                        }}
+                      />
+                    </button>
+                  </div>
+                  {/* <div className="searchBox" style={{ top: "12%" }}>
                     <input
                       className="searchInput"
                       type="text"
@@ -862,7 +918,7 @@ export default function HomeNav(props) {
                       onChange={handleSearch}
                       style={{ display: showSearchBox ? "block" : "none" }}
                     />
-                    {/* Other search box content here */}
+                 
                     <button
                       className="searchButton"
                       onClick={handleSearchIconClick}
@@ -879,7 +935,7 @@ export default function HomeNav(props) {
                         }}
                       />
                     </button>
-                  </div>
+                  </div> */}
                   {/* <span>
                     {" "}
                     <LanguageIcon

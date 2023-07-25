@@ -140,7 +140,7 @@ function ImageDesktop({ title }) {
           <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
               <MDBCol
-                className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+                className="col-2 text-uppercase fw-bold pt-1 sm:pb-0"
                 style={{
                   width: "-webkit-max-content",
                   fontFamily: "FontMedium",
@@ -148,7 +148,7 @@ function ImageDesktop({ title }) {
                 }}
               >
                 {/* color: "#AE023E", */}
-                <Link to="/">
+                <Link to="/Team-Member">
                   <a
                     style={{ color: "#AE023E" }}
                     className="xs:text-lg sm:text-xl"
@@ -162,13 +162,13 @@ function ImageDesktop({ title }) {
                   <KeyboardArrowRightIcon
                     style={{
                       width: "2em",
-                      height: "2em",
+                      height: "1.4em",
                       color: "#2F3437 !important",
                     }}
                   ></KeyboardArrowRightIcon>
                 </span>
               </MDBCol>
-              <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-2">
+              <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-1">
                 <span
                   className="text-uppercase fw-bold xs:text-lg sm:text-xl"
                   style={{ fontFamily: "FontMedium" }}
@@ -213,34 +213,15 @@ function ImageDesktop({ title }) {
                   >
                     {/* {uploadfiles.attributes?.position_en || "-"} */}
                   </h3>
-
-                  {/* <h6 className="" style={{ color: "#AE023E" }}>
-                  Neuroscience Center for Research and Innovation (NX), Learning
-                  Institute, KMUTT
-                </h6> */}
-                  <MDBRow className="pt-2">
-                    {/* <MDBCol size="1" style={{ width: "3.33%" }}>
-                    <MailOutlineIcon style={{ color: "#119ED1" }} />
-                  </MDBCol> */}
-                    {/* <MDBCol>
-                    <span
-                      className="fw-normal text-normal ps-2"
-                      style={{ color: "#119ED1" }}
-                    >
-                      {uploadfiles.attributes?.email || "-"}
-                    </span>
-                  </MDBCol> */}
-                  </MDBRow>
-                  {/* <p
-                  className="fw-normal text-normal pt-3"
-                  style={{ maxWidth: "90%" }}
-                >
-                  {uploadfiles.attributes?.bio_en || "-"}
-                </p> */}
+                  <MDBRow className="pt-2"></MDBRow>
                   {uploadfiles.attributes?.bio_en ? (
                     <p
                       className="fw-normal text-md pt-3"
-                      style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                      style={{
+                        wordWrap: "break-word",
+                        wordBreak: "break-word",
+                        maxWidth: "90%",
+                      }}
                       dangerouslySetInnerHTML={{
                         __html: uploadfiles.attributes.bio_en,
                       }}
@@ -298,8 +279,8 @@ function ImageDesktop({ title }) {
                   >
                     <MDBCol className="d-flex pb-0 pe-5">
                       <div className="d-flex flex-column w-100">
-                        <h1
-                          className="fw-bold text-uppercase text-black"
+                        <p
+                          className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                           style={{ fontFamily: "MyFont" }}
                         >
                           {member.attributes?.name_en || "-"}
@@ -313,13 +294,13 @@ function ImageDesktop({ title }) {
                           </span>
                           {member.attributes?.nickname_en}
                           <span>)</span>
-                        </h1>
-                        <h1
-                          className="fw-bold text-uppercase text-black"
+                        </p>
+                        <p
+                          className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                           style={{ fontFamily: "MyFont" }}
                         >
                           {member.attributes?.surname_en || "-"}
-                        </h1>
+                        </p>
                         {/* <h3
                         className="fw-normal text-normal pt-2 mb-1"
                         style={{ color: "#AE023E" }}
@@ -486,7 +467,7 @@ function ImageMobile({ title }) {
         <MDBContainer className="pt-5 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0 ">
           <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
             <MDBCol
-              className="col-2 text-uppercase fw-bold pt-2 sm:pb-0"
+              className="col-2 text-uppercase fw-bold pt-1 sm:pb-0"
               style={{
                 width: "-webkit-max-content",
                 fontFamily: "FontMedium",
@@ -494,13 +475,13 @@ function ImageMobile({ title }) {
               }}
             >
               {/* color: "#AE023E", */}
-              <Link to="/">
-                <a
+              <Link to="/Team-Member">
+                <span
                   style={{ color: "#AE023E" }}
-                  className="xs:text-lg sm:text-xl"
+                  className="xs:text-md sm:text-xl"
                 >
                   STUDENT MEMBER
-                </a>
+                </span>
               </Link>
             </MDBCol>
             <MDBCol className="col-1 p-0 me-3" style={{ width: "3.33%" }}>
@@ -508,15 +489,15 @@ function ImageMobile({ title }) {
                 <KeyboardArrowRightIcon
                   style={{
                     width: "2em",
-                    height: "2em",
+                    height: "1.4em",
                     color: "#2F3437 !important",
                   }}
                 ></KeyboardArrowRightIcon>
               </span>
             </MDBCol>
-            <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-2">
+            <MDBCol className="col-md-8 col-12 xs:ps-4 sm:ps-0 pt-1">
               <span
-                className="text-uppercase fw-bold xs:text-lg sm:text-xl"
+                className="text-uppercase fw-bold xs:text-md sm:text-xl"
                 style={{ fontFamily: "FontMedium" }}
               >
                 ALL STUDENT
@@ -527,9 +508,9 @@ function ImageMobile({ title }) {
 
         <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
           {/* {uploadfiles.map((member) => ( */}
-          <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
+          <MDBRow className="pt-0 pb-2 xs:px-5 sm:px-5 md:px-0">
             <MDBCol md="4" className="xs:px-4 sm:px-5 md:px-0 pb-4">
-              <div className="d-flex flex-column h-fit">
+              <div className="d-flex justify-content-center">
                 <MDBCardImage
                   className="rounded-4 h-fit"
                   src={
@@ -540,8 +521,8 @@ function ImageMobile({ title }) {
                   position="top"
                   alt="..."
                   style={{
-                    height: "300px",
-                    width: "300px",
+                    height: "200px",
+                    width: "auto",
                     objectFit: "initial",
                     borderRadius: "0px",
                     alignSelf: "start",
@@ -549,10 +530,10 @@ function ImageMobile({ title }) {
                 />
               </div>
             </MDBCol>
-            <MDBCol className="d-flex pb-0 pe-5">
+            <MDBCol className="d-flex pb-0 ">
               <div className="d-flex flex-column w-100 h-fit">
-                <h1
-                  className="fw-bold text-uppercase text-black xs:text-lg sm:text-4xl"
+                <p
+                  className="fw-bold text-uppercase text-black xs:text-sm text-center mb-0"
                   style={{ fontFamily: "MyFont" }}
                 >
                   {uploadfiles.attributes?.name_en || "-"}
@@ -564,41 +545,25 @@ function ImageMobile({ title }) {
                   </span>
                   {uploadfiles.attributes?.nickname_en}
                   <span>)</span>
-                </h1>
-                <h1
-                  className="fw-bold text-uppercase text-black xs:text-lg sm:text-4xl"
+                </p>
+                <p
+                  className="fw-bold text-uppercase text-black xs:text-sm  text-center"
                   style={{ fontFamily: "MyFont" }}
                 >
                   {uploadfiles.attributes?.surname_en || "-"}
-                </h1>
+                </p>
 
-                {/* <h6 className="" style={{ color: "#AE023E" }}>
-                  Neuroscience Center for Research and Innovation (NX), Learning
-                  Institute, KMUTT
-                </h6> */}
-                <MDBRow className="pt-2">
-                  {/* <MDBCol size="1" style={{ width: "3.33%" }}>
-                    <MailOutlineIcon style={{ color: "#119ED1" }} />
-                  </MDBCol> */}
-                  {/* <MDBCol>
-                    <span
-                      className="fw-normal text-normal ps-2"
-                      style={{ color: "#119ED1" }}
-                    >
-                      {uploadfiles.attributes?.email || "-"}
-                    </span>
-                  </MDBCol> */}
-                </MDBRow>
+                <MDBRow className="pt-0"></MDBRow>
                 {uploadfiles.attributes?.bio_en ? (
                   <p
-                    className="fw-normal text-md pt-3"
-                    style={{ wordBreak: "break-word" }}
+                    className="fw-normal text-xs pt-2"
+                    style={{ wordWrap: "break-word", wordBreak: "break-all" }}
                     dangerouslySetInnerHTML={{
                       __html: uploadfiles.attributes.bio_en,
                     }}
                   />
                 ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
+                  <p className="fw-normal text-sm pt-3">-</p>
                 )}
               </div>
             </MDBCol>
@@ -620,7 +585,7 @@ function ImageMobile({ title }) {
               .filter((member) => member.id !== uploadfiles.id) // Exclude the already rendered student
               .map((member) => (
                 <MDBRow
-                  className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0"
+                  className="pt-0 pb-2  xs:px-5 sm:px-5 md:px-0"
                   key={member.id}
                   style={{
                     borderBottom: "1px solid black",
@@ -628,7 +593,7 @@ function ImageMobile({ title }) {
                   }}
                 >
                   <MDBCol md="4" className="xs:px-4 sm:px-5 md:px-0 pb-4">
-                    <div className="d-flex flex-column  h-fit">
+                    <div className="d-flex justify-content-center">
                       <MDBCardImage
                         className="rounded-4"
                         src={
@@ -639,8 +604,8 @@ function ImageMobile({ title }) {
                         position="top"
                         alt="..."
                         style={{
-                          height: "300px",
-                          width: "300px",
+                          height: "240px",
+                          width: "auto",
                           objectFit: "initial",
                           borderRadius: "0px",
                           alignSelf: "start",
@@ -648,10 +613,10 @@ function ImageMobile({ title }) {
                       />
                     </div>
                   </MDBCol>
-                  <MDBCol className="d-flex pb-0 pe-5">
+                  <MDBCol className="d-flex pb-0 ">
                     <div className="d-flex flex-column w-100">
-                      <h1
-                        className="fw-bold text-uppercase text-black  xs:text-lg sm:text-4xl"
+                      <p
+                        className="fw-bold text-uppercase text-black xs:text-sm text-center mb-0"
                         style={{ fontFamily: "MyFont" }}
                       >
                         {member.attributes?.name_en || "-"}
@@ -665,13 +630,13 @@ function ImageMobile({ title }) {
                         </span>
                         {member.attributes?.nickname_en}
                         <span>)</span>
-                      </h1>
-                      <h1
-                        className="fw-bold text-uppercase text-black  xs:text-lg sm:text-4xl"
+                      </p>
+                      <p
+                        className="fw-bold text-uppercase text-black xs:text-sm text-center"
                         style={{ fontFamily: "MyFont" }}
                       >
                         {member.attributes?.surname_en || "-"}
-                      </h1>
+                      </p>
 
                       {/* <p
                         className="fw-normal text-normal pt-3"
@@ -682,14 +647,14 @@ function ImageMobile({ title }) {
 
                       {member.attributes?.bio_en ? (
                         <p
-                          className="fw-normal text-md pt-3"
+                          className="fw-normal text-xs pt-2"
                           style={{ wordBreak: "break-word" }}
                           dangerouslySetInnerHTML={{
                             __html: member.attributes.bio_en,
                           }}
                         />
                       ) : (
-                        <p className="fw-normal text-md pt-3">-</p>
+                        <p className="fw-normal text-md pt-2">-</p>
                       )}
                     </div>
                   </MDBCol>

@@ -97,7 +97,7 @@ const Team = () => {
 // "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
 
 // Mobile
-function Image({ members }) {
+function Image({ members, memberId }) {
   const [uploadfiles, setUploadfilesMember] = useState([]);
 
   useEffect(() => {
@@ -147,11 +147,12 @@ function Image({ members }) {
                 className="col-6 d-flex flex-column p-0 px-0"
               >
                 <Link
-                  to={`/Member-Detail/${member.id}`}
+                  to={`/Student-Detail/${member.id}`}
                   onClick={() => {
                     window.scrollTo(0, 0);
-                    window.location.replace(`/Member-Detail/${member.id}`);
+                    window.location.replace(`/Student-Detail/${member.id}`);
                   }}
+                  className="image-link"
                 >
                   <MDBCard
                     style={{
@@ -175,17 +176,17 @@ function Image({ members }) {
                       }}
                     />
                     <Link
-                      to={`/Member-Detail/${member.id}`}
+                      to={`/Student-Detail/${member.id}`}
                       onClick={() => {
                         window.scrollTo(0, 0);
-                        window.location.replace(`/Member-Detail/${member.id}`);
+                        window.location.replace(`/Student-Detail/${member.id}`);
                       }}
                     >
                       <MDBCardBody>
                         <MDBCardTitle className="m-0">
                           <p
                             className="fw-bold text-center mb-0 xs:text-xs md:text-2xl"
-                            style={{ color: "#AE023E" }}
+                            style={{ color: "black" }}
                           >
                             {member.attributes.name_en}
                             <br></br>
@@ -195,7 +196,7 @@ function Image({ members }) {
                         <MDBCardText className="mb-2">
                           <p
                             className="fw-normal text-center mb-0 xs:text-xs md:text-2xl"
-                            style={{ color: "#AE023E" }}
+                            style={{ color: "black" }}
                           >
                             {member.attributes.position_en}
                           </p>

@@ -45,6 +45,7 @@ function ImageDesktop() {
             renderIndicator={(onClickHandler, isSelected, index) => (
               <button
                 onClick={onClickHandler}
+                className="my-0"
                 style={{
                   background: isSelected ? "#AE023E" : "gray", // Set the selected indicator to red and others to gray
                   width: "10px",
@@ -54,7 +55,7 @@ function ImageDesktop() {
                   margin: "0 4px",
                   padding: 0,
                   cursor: "pointer",
-                  top: "88%",
+                  // top: "98%",
                 }}
                 key={index}
               />
@@ -70,6 +71,7 @@ function ImageDesktop() {
                   src={`https://10.35.29.186${image.attributes.url}`}
                   alt={`Cover Image ${image.id}`}
                   className="w-100 d-block xs:h-4/5 md:h-full object-cover"
+                  // style={{ objectPosition: "50% -300%" }}
                 />
               </div>
             ))}

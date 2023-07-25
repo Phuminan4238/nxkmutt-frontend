@@ -142,7 +142,7 @@ const Member = ({ imageUrl }) => {
             <MDBRow className="pt-5 py-4 xs:px-5 sm:px-5 md:px-0">
               <div className="d-inline-flex xs:px-4 sm:p-2">
                 <p
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   Member
@@ -151,7 +151,7 @@ const Member = ({ imageUrl }) => {
               <Memberimage></Memberimage>
               <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
                 <p
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   Advisor & Collaborator
@@ -159,17 +159,17 @@ const Member = ({ imageUrl }) => {
               </div>
               <Memberadvisor></Memberadvisor>
               <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
-                <h3
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                <p
+                  className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   International Collaborators
-                </h3>
+                </p>
               </div>
               <Memberalumni></Memberalumni>
               <div className="d-flex justify-content-between align-items-center xs:pt-0 sm:pt-5 xs:px-4 sm:p-2 flex-mobile-column">
                 <p
-                  className="font-black text-uppercase xs:text-xl md:text-3xl"
+                  className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
                   Students & Research Assistants & Alumni
@@ -180,9 +180,9 @@ const Member = ({ imageUrl }) => {
                     window.scrollTo(0, 0);
                     window.location.replace(`/Student-Detail/9`);
                   }}
-                  className="image-link"
+                  className="image-link hide-on-mobile"
                 >
-                  <div className="sm:d-inline-flex text-red py-2 md:py-4 hide-on-mobile">
+                  <div className="d-inline-flex text-red py-2 md:py-4 hide-on-mobile">
                     <h5
                       href="#"
                       className="pe-4 hide-on-mobile"
