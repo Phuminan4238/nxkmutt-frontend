@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
+import axios from "axios";
 /* Routes */
 import { Route, Routes } from "react-router";
 import { Link } from "react-router-dom";
@@ -17,8 +18,48 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
 import Container from "@mui/material/Container";
 import { useMediaQuery } from "react-responsive";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const ImageDesktop = () => {
+  const [emailData, setEmailData] = useState(null);
+  const [phoneData, setPhoneData] = useState(null);
+  const [locationData, setLocationData] = useState(null);
+  const [staffData, setStaffData] = useState([]);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "https://10.35.29.186/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            // Filter data for each type based on the ID
+            const emailInfo = data.find((item) => item.id === 1);
+            const phoneInfo = data.find((item) => item.id === 2);
+            const locationInfo = data.find((item) => item.id === 3);
+            const staffInfo = data.find((item) => item.id === 4);
+
+            setEmailData(emailInfo ? emailInfo.attributes : null);
+            setPhoneData(phoneInfo ? phoneInfo.attributes : null);
+            setLocationData(locationInfo ? locationInfo.attributes : null);
+            setStaffData(
+              staffInfo ? staffInfo.attributes.admin_staff.data : []
+            );
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
   // Lotties
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -30,6 +71,9 @@ const ImageDesktop = () => {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -81,7 +125,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    Contact Us
+                    {selectedLanguage === "en" ? "Contact Us" : "Contact Us_TH"}
                   </p>
                 </div>
               </MDBCol>
@@ -108,13 +152,21 @@ const ImageDesktop = () => {
                       className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-xl md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      E-mail
+                      {selectedLanguage === "en"
+                        ? `${emailData?.header_en || ""} 
+                          `
+                        : `${emailData?.header_th || ""} 
+                          `}
                     </h4>
                     <p
                       className="text-black pt-2 xs:text-base md:text-md"
                       style={{ fontFamily: "FontLight" }}
                     >
-                      nx.kmutt.@gmail.com
+                      {selectedLanguage === "en"
+                        ? `${emailData?.content_en || ""} 
+                          `
+                        : `${emailData?.content_th || ""} 
+                          `}
                     </p>
                   </MDBRow>
                   <MDBRow className="pt-4">
@@ -122,14 +174,23 @@ const ImageDesktop = () => {
                       className="fw-bold text-black xs:text-xl md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      Phone
+                      {" "}
+                      {selectedLanguage === "en"
+                        ? `${phoneData?.header_en || ""} 
+                      `
+                        : `${phoneData?.header_th || ""} 
+                      `}
                     </h4>
 
                     <p
                       className="text-black pt-2 xs:text-base md:text-md"
                       style={{ fontFamily: "FontLight" }}
                     >
-                      0123456789
+                      {selectedLanguage === "en"
+                        ? `${phoneData?.content_en || ""} 
+                          `
+                        : `${phoneData?.content_th || ""} 
+                          `}
                     </p>
                   </MDBRow>
                   <MDBRow className="pt-4">
@@ -137,16 +198,21 @@ const ImageDesktop = () => {
                       className="fw-bold text-black"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      Location
+                      {selectedLanguage === "en"
+                        ? `${locationData?.header_en || ""} 
+                      `
+                        : `${locationData?.header_th || ""} 
+                      `}
                     </h4>
                     <p
-                      className=" text-black pe-5 pt-2 xs:text-base md:text-md"
+                      className="text-black pt-2 xs:text-base md:text-md"
                       style={{ fontFamily: "FontLight" }}
                     >
-                      Neuroscience Center for Research and Innovation (NX),
-                      Learning Institute King Mongkut's University of Technology
-                      Thonburi (KMUTT) 126 Pracha Uthit Rd,
-                      <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
+                      {selectedLanguage === "en"
+                        ? `${locationData?.content_en || ""} 
+                          `
+                        : `${locationData?.content_th || ""} 
+                          `}
                     </p>
                   </MDBRow>
                 </div>
@@ -164,6 +230,12 @@ const ImageDesktop = () => {
                 >
                   Administration Staff
                 </p>
+                {/* {staffData.length > 0 && (
+                  <div>
+                    <h4>{staffData[0]?.attributes?.name_en}</h4>
+                    <p>{staffData[0]?.attributes?.su_en}</p>
+                  </div>
+                )} */}
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
                 <Contactadministration></Contactadministration>
@@ -241,6 +313,9 @@ const ImageMobile = () => {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
@@ -291,7 +366,7 @@ const ImageMobile = () => {
                     className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    Contact Us
+                    {selectedLanguage === "en" ? "Contact" : "Contact_TH"}
                   </p>
                 </div>
               </MDBCol>

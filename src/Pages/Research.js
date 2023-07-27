@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 /* Images */
@@ -8,6 +8,8 @@ import ClusterAccordion from "../Components/ClusterAccordion";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const Research = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -34,6 +36,9 @@ const Research = () => {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -85,13 +90,15 @@ const Research = () => {
                     className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    Research
+                    {selectedLanguage === "en" ? "Research" : "Researchi_TH"}
                   </p>
                   <p
                     className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl"
                     style={{ fontFamily: "FontLight" }}
                   >
-                    Clusters
+                    {selectedLanguage === "en"
+                      ? "      Clusters"
+                      : "           Clusters_TH"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"

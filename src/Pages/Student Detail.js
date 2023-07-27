@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 /* Routes */
@@ -31,6 +31,7 @@ import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import { useMediaQuery } from "react-responsive";
 import Container from "@mui/material/Container";
+import { LanguageContext } from "../Components/LanguageContext";
 
 function ImageDesktop({ title }) {
   let { id } = useParams();
@@ -94,6 +95,9 @@ function ImageDesktop({ title }) {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -198,14 +202,22 @@ function ImageDesktop({ title }) {
                     >
                       (
                     </span>
-                    {uploadfiles.attributes?.nickname_en}
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.nickname_en || ""} 
+                      `
+                      : `${uploadfiles.attributes?.nickname_th || ""} 
+                      `}
                     <span>)</span>
                   </h1>
                   <h1
                     className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {uploadfiles.attributes?.surname_en || "-"}
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.surname_en || ""} 
+                      `
+                      : `${uploadfiles.attributes?.surname_th || ""} 
+                      `}
                   </h1>
                   <h3
                     className="fw-normal text-normal pt-2 mb-1"
@@ -223,7 +235,10 @@ function ImageDesktop({ title }) {
                         maxWidth: "90%",
                       }}
                       dangerouslySetInnerHTML={{
-                        __html: uploadfiles.attributes.bio_en,
+                        __html:
+                          selectedLanguage === "en"
+                            ? uploadfiles.attributes.bio_en
+                            : uploadfiles.attributes.bio_th,
                       }}
                     />
                   ) : (
@@ -283,7 +298,11 @@ function ImageDesktop({ title }) {
                           className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                           style={{ fontFamily: "MyFont" }}
                         >
-                          {member.attributes?.name_en || "-"}
+                          {selectedLanguage === "en"
+                            ? `${member.attributes?.name_en || ""} 
+                      `
+                            : `${member.attributes?.name_th || ""} 
+                      `}
                           <span
                             style={{
                               paddingLeft: "0.5rem",
@@ -292,7 +311,11 @@ function ImageDesktop({ title }) {
                           >
                             (
                           </span>
-                          {member.attributes?.nickname_en}
+                          {selectedLanguage === "en"
+                            ? `${member.attributes?.nickname_en || ""} 
+                      `
+                            : `${member.attributes?.nickname_th || ""} 
+                      `}
                           <span>)</span>
                         </p>
                         <p
@@ -327,9 +350,16 @@ function ImageDesktop({ title }) {
                         {member.attributes?.bio_en ? (
                           <p
                             className="fw-normal text-md pt-3"
-                            style={{ wordBreak: "break-word", maxWidth: "80%" }}
+                            style={{
+                              wordWrap: "break-word",
+                              wordBreak: "break-word",
+                              maxWidth: "90%",
+                            }}
                             dangerouslySetInnerHTML={{
-                              __html: member.attributes.bio_en,
+                              __html:
+                                selectedLanguage === "en"
+                                  ? member.attributes.bio_en
+                                  : member.attributes.bio_th,
                             }}
                           />
                         ) : (

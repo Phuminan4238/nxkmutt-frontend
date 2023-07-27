@@ -151,7 +151,7 @@ function Home(props) {
                       >
                         {selectedLanguage === "en"
                           ? uploadfiles[0].attributes.content_en || "Not found"
-                          : uploadfiles[0].attributes.content_th2 || "ภาษาไทย"}
+                          : uploadfiles[0].attributes.content_th || "ภาษาไทย"}
                       </p>
                     </div>
 
@@ -160,7 +160,9 @@ function Home(props) {
                         className="font-normal text-uppercase xs:text-xl md:text-3xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        What we do
+                        {selectedLanguage === "en"
+                          ? "What we do"
+                          : "What we do_TH"}
                       </p>
                     </div>
                   </MDBRow>
@@ -180,7 +182,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      TOOLS & SERVICES
+                      {selectedLanguage === "en"
+                        ? "TOOLS & SERVICES"
+                        : "TOOLS & SERVICES_TH"}
                     </p>
                   </div>
                 </MDBRow>
@@ -202,7 +206,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      NEW & ACTIVITY
+                      {selectedLanguage === "en"
+                        ? "NEW & ACTIVITY"
+                        : "NEW & ACTIVITY_TH"}
                     </p>
                   </div>
                 </MDBRow>
@@ -224,7 +230,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      Our Brain Army
+                      {selectedLanguage === "en"
+                        ? "Our Brain Army"
+                        : "Our Brain Army_TH"}
                     </p>
                   </div>
                 </MDBRow>
@@ -240,7 +248,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      Advisors & Collaborators
+                      {selectedLanguage === "en"
+                        ? "Advisors & Collaborators"
+                        : "Advisors & Collaborators_TH"}
                     </p>
                   </div>
                 </MDBRow>
@@ -256,7 +266,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      Students & Research Assistants
+                      {selectedLanguage === "en"
+                        ? "Students & Research Assistants"
+                        : "Students & Research Assistants_TH"}
                     </p>
                   </div>
                 </MDBRow>
@@ -273,7 +285,9 @@ function Home(props) {
                       className="font-normal text-uppercase xs:text-xl md:text-3xl"
                       style={{ fontFamily: "MyFont" }}
                     >
-                      International Collaborators
+                      {selectedLanguage === "en"
+                        ? "International Collaborators"
+                        : "International Collaborators_TH"}
                     </p>
                   </div>
                 </MDBRow>

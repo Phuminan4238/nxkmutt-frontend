@@ -33,6 +33,7 @@ import Animation from "../Components/Animation.json";
 import { useMediaQuery } from "react-responsive";
 import ReactMarkdown from "react-markdown";
 import Container from "@mui/material/Container";
+// Language
 import { LanguageContext } from "../Components/LanguageContext";
 
 function ImageDesktop({ title }) {
@@ -256,24 +257,18 @@ function ImageDesktop({ title }) {
                   ) : (
                     <p className="fw-normal text-md pt-3">-</p>
                   )} */}
-                  {uploadfiles.attributes?.bio_en ? (
-                    <p
-                      className="fw-normal text-md pt-3"
-                      style={{
-                        wordWrap: "break-word",
-                        wordBreak: "break-word",
-                        maxWidth: "90%",
-                      }}
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          selectedLanguage === "en"
-                            ? uploadfiles.attributes.bio_en
-                            : uploadfiles.attributes.bio_th,
-                      }}
-                    />
-                  ) : (
-                    <p className="fw-normal text-md pt-3">-</p>
-                  )}
+
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{
+                      // wordWrap: "break-word",
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.bio_text_en || ""} `
+                      : `${uploadfiles.attributes?.bio_text_th || ""} `}
+                  </p>
                 </div>
               </MDBCol>
               <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">

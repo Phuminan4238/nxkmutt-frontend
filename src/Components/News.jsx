@@ -79,7 +79,7 @@ function ImageDesktop({ member }) {
             >
               {selectedLanguage === "en"
                 ? member.attributes.name_en || "Not found"
-                : member.attributes.name_th2 || "ภาษาไทย"}
+                : member.attributes.name_th || "ภาษาไทย"}
             </p>
             <p
               className="font-light mt-auto xs:text-sm sm:text-lg"
@@ -87,7 +87,7 @@ function ImageDesktop({ member }) {
             >
               {selectedLanguage === "en"
                 ? member.attributes.name_th || "Not found"
-                : member.attributes.name_th2 || "ภาษาไทย"}
+                : member.attributes.name_th || "ภาษาไทย"}
             </p>
 
             <div

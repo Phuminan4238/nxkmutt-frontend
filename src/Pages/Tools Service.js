@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 /* Routes */
 import { Route, Routes } from "react-router";
 /* MDBootstrap */
@@ -15,6 +15,8 @@ import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
 import { useMediaQuery } from "react-responsive";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const ImageDesktop = () => {
   const [memberCover, setMembercover] = useState([]);
@@ -39,6 +41,9 @@ const ImageDesktop = () => {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -90,7 +95,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Tools
+                    {selectedLanguage === "en" ? "Tools" : "Tools_TH"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -106,7 +111,7 @@ const ImageDesktop = () => {
                     >
                       &
                     </span>{" "}
-                    Service
+                    {selectedLanguage === "en" ? "Service" : "Service_TH"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"
@@ -149,7 +154,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Tools
+                    {selectedLanguage === "en" ? "Tools" : "Tools_TH"}
                   </p>
                 </div>
               </MDBCol>
@@ -174,7 +179,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Service
+                    {selectedLanguage === "en" ? "Service" : "Service_TH"}
                   </p>
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
@@ -191,11 +196,14 @@ const ImageDesktop = () => {
                         className="fw-bold xs:text-lg md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
-                        Research consultation
+                        {selectedLanguage === "en"
+                          ? "      Research consultation"
+                          : "      Research consultation_TH"}
                       </p>
                       <p className="xs:text-sm md:text-md">
-                        We are open to research project consultant or
-                        collaboration and sharing tools, etc.
+                        {selectedLanguage === "en"
+                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
+                          : "We are open to research project consultant or collaboration and sharing tools, etc_TH"}
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -212,11 +220,14 @@ const ImageDesktop = () => {
                         className="fw-bold xs:text-lg md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
-                        Coursework and workshop
+                        {selectedLanguage === "en"
+                          ? "   Coursework and workshop"
+                          : "   Coursework and workshop_TH"}
                       </p>
                       <p className="xs:text-sm md:text-md">
-                        We are open to holding neuroscience seminar and EEG,
-                        neuroscience, neurotechnology.
+                        {selectedLanguage === "en"
+                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
+                          : "We are open to research project consultant or collaboration and sharing tools, etc_TH"}
                       </p>
                     </MDBCol>
                   </MDBRow>

@@ -25,8 +25,6 @@ const CardList = ({ cards }) => {
           </div>
         </div>
       ))}
-      <div className="col"></div> {/* 4th column as placeholder */}
-      <div className="col"></div> {/* 5th column as placeholder */}
     </div>
   );
 };
@@ -44,12 +42,6 @@ export default function App() {
     {
       title: "Instagram",
       img: vr2,
-    },
-    {
-      title: "",
-    },
-    {
-      title: "",
     },
   ];
 

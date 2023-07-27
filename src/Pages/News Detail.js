@@ -158,7 +158,11 @@ function ImageDesktop({ title }) {
                       lineHeight: "1.6",
                     }}
                   >
-                    {tags.attributes?.name_en || "-"}
+                    {selectedLanguage === "en"
+                      ? `${tags.attributes?.name_en || ""} 
+                      `
+                      : `${tags.attributes?.name_th || ""} 
+                      `}
                   </p>
                 </div>
               </MDBCol>
@@ -194,19 +198,36 @@ function ImageDesktop({ title }) {
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               {/* Current Affiliations */}
               <MDBRow className="pt-4">
-                <p>More news detail....</p>
+                {tags.attributes?.content_en ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{
+                      wordWrap: "break-word",
+                      wordBreak: "break-word",
+                      maxWidth: "90%",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        selectedLanguage === "en"
+                          ? tags.attributes.content_en
+                          : tags.attributes.content_th,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </MDBRow>
 
               {/*  Grants */}
-              <MDBRow>
+              {/* <MDBRow>
                 <h5
                   className="fw-bold text-uppercase ps-2 pt-4"
                   style={{ color: "#A02040" }}
                 >
                   More news detail....
                 </h5>
-              </MDBRow>
-              <MDBRow className="pt-0 pb-0">
+              </MDBRow> */}
+              {/* <MDBRow className="pt-0 pb-0">
                 <MDBCardImage
                   className="rounded-0"
                   // src={
@@ -227,11 +248,11 @@ function ImageDesktop({ title }) {
                     // objectFit: "contain",
                   }}
                 />
-              </MDBRow>
+              </MDBRow> */}
               {/* Current Affiliations */}
-              <MDBRow className="pt-4 ">
+              {/* <MDBRow className="pt-4 ">
                 <p>More news detail....</p>
-              </MDBRow>
+              </MDBRow> */}
             </MDBRow>
           </MDBContainer>
         </section>
@@ -414,7 +435,24 @@ function ImageMobile({ title }) {
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               {/* Current Affiliations */}
               <MDBRow className="pt-4">
-                <p>Wait for detail</p>
+                {tags.attributes?.content_en_markdown ? (
+                  <p
+                    className="fw-normal text-md pt-3"
+                    style={{
+                      wordWrap: "break-word",
+                      wordBreak: "break-word",
+                      maxWidth: "90%",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        selectedLanguage === "en"
+                          ? tags.attributes.content_en_markdown
+                          : tags.attributes.content_th_markdown,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </MDBRow>
 
               {/*  Grants */}

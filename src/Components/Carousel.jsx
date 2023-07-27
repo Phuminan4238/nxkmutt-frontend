@@ -28,7 +28,7 @@ function ImageDesktop() {
     <>
       <div
         className="slider-container"
-        style={{ marginTop: "-146px", zIndex: "-1" }}
+        style={{ marginTop: "-113px", zIndex: "-1" }}
       >
         {coverImages.length > 0 && (
           <Carousel

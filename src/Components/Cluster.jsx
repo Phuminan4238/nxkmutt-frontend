@@ -322,7 +322,9 @@ function ImageDesktop() {
                 >
                   <MDBCol>
                     <p className="text-black px-20">
-                      {contentData.attributes?.content_en || "-"}
+                      {selectedLanguage === "en"
+                        ? contentData.attributes?.content_en || "Not found"
+                        : contentData.attributes?.content_th || "ภาษาไทย"}
                     </p>
                     <Link
                       to={`/Tags-Detail/${contentData.id}`}

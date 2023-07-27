@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 /* MDBootstrap */
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { Link } from "react-router-dom";
@@ -17,6 +17,8 @@ import Animation from "../Components/Animation.json";
 // Icon
 import EastIcon from "@mui/icons-material/East";
 import Container from "@mui/material/Container";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
@@ -46,6 +48,9 @@ const Member = ({ imageUrl }) => {
 
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
@@ -97,13 +102,13 @@ const Member = ({ imageUrl }) => {
                     className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    Meet Our
+                    {selectedLanguage === "en" ? "Meet Our" : "Meet Our_TH"}
                   </p>
                   <p
                     className="font-black text-uppercase pt-2 xs:text-3xl md:text-6xl"
                     style={{ color: "#AE023E" }}
                   >
-                    Team
+                    {selectedLanguage === "en" ? "   Team" : "   Team_TH"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"
@@ -145,7 +150,7 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Member
+                  {selectedLanguage === "en" ? "Member" : "Member_TH"}
                 </p>
               </div>
               <Memberimage></Memberimage>
@@ -154,7 +159,9 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Advisor & Collaborator
+                  {selectedLanguage === "en"
+                    ? "    Advisor & Collaborator"
+                    : "     Advisor & Collaborator_TH"}
                 </p>
               </div>
               <Memberadvisor></Memberadvisor>
@@ -163,7 +170,9 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  International Collaborators
+                  {selectedLanguage === "en"
+                    ? "   International Collaborators"
+                    : "      International Collaborators_TH"}
                 </p>
               </div>
               <Memberalumni></Memberalumni>
@@ -172,7 +181,9 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Students & Research Assistants & Alumni
+                  {selectedLanguage === "en"
+                    ? "     Students & Research Assistants & Alumni"
+                    : "        Students & Research Assistants & Alumni_TH"}
                 </p>
                 <Link
                   to={`/Student-Detail/9`}

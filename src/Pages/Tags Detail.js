@@ -211,44 +211,17 @@ function ImageDesktop({ title }) {
               </MDBRow>
 
               {/*  Grants */}
-              <MDBRow>
+              {/* <MDBRow>
                 <h5
                   className="fw-bold text-capitalize ps-0 pt-4"
                   style={{ color: "#A02040", fontFamily: "FontMedium" }}
                 >
-                  {/* 1. Early Detection and Prevention of Mild Cognitive Impairment */}
                   Wait for Title
                 </h5>
-              </MDBRow>
-              <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-                {/* <MDBCardImage
-                  className="rounded-0"
-                  // src={
-                  //   "https://10.35.29.186" +
-                  //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                  //     .fileupload.data[0]?.attributes.url
-                  // }
-                  src={vr2}
-                  position="top"
-                  alt="..."
-                  style={{
-                    //   height: "350px",
-                    // width: "100%",
-                    height: "300px",
-                    objectFit: "initial",
-                    borderRadius: "0px",
-                    alignSelf: "center",
-                    // objectFit: "contain",
-                  }}
-                /> */}
-              </MDBRow>
-              {/* Current Affiliations */}
-              <MDBRow className="pt-4 ps-0">
-                <p>wait for Content</p>
-              </MDBRow>
+              </MDBRow> */}
 
               {/*  Awards */}
-              <MDBRow>
+              {/* <MDBRow>
                 <p
                   className="fw-bold text-initial text-black ps-0 pt-4"
                   style={{ fontFamily: "FontMedium" }}
@@ -257,15 +230,14 @@ function ImageDesktop({ title }) {
                 </p>
               </MDBRow>
 
-              {/*  Selected Publications */}
               <MDBRow>
                 <p
                   className="fw-bold text-initial text-black ps-0 pt-4"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   Wait for Relevant publications
-                </p>
-              </MDBRow>
+                </p> */}
+              {/* </MDBRow> */}
               <MDBRow className="pt-2">
                 {/* {publicationfiles.map((member) => (
                   <>
@@ -488,44 +460,9 @@ function ImageMobile({ title }) {
               </MDBRow>
 
               {/*  Grants */}
-              <MDBRow>
-                <p
-                  className="fw-bold text-capitalize ps-0 pt-4"
-                  style={{ color: "#A02040", fontFamily: "FontMedium" }}
-                >
-                  {/* 1. Early Detection and Prevention of Mild Cognitive Impairment */}
-                  Wait for Title
-                </p>
-              </MDBRow>
-              <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
-                {/* <MDBCardImage
-                  className="rounded-0"
-                  // src={
-                  //   "https://10.35.29.186" +
-                  //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                  //     .fileupload.data[0]?.attributes.url
-                  // }
-                  src={vr2}
-                  position="top"
-                  alt="..."
-                  style={{
-                    //   height: "350px",
-                    // width: "100%",
-                    height: "300px",
-                    objectFit: "initial",
-                    borderRadius: "0px",
-                    alignSelf: "center",
-                    // objectFit: "contain",
-                  }}
-                /> */}
-              </MDBRow>
-              {/* Current Affiliations */}
-              <MDBRow className="pt-4 ps-0">
-                <p>wait for Content</p>
-              </MDBRow>
 
               {/*  Awards */}
-              <MDBRow>
+              {/* <MDBRow>
                 <p
                   className="fw-bold text-initial text-black ps-0 pt-4"
                   style={{ fontFamily: "FontMedium" }}
@@ -534,7 +471,6 @@ function ImageMobile({ title }) {
                 </p>
               </MDBRow>
 
-              {/*  Selected Publications */}
               <MDBRow>
                 <p
                   className="fw-bold text-initial text-black ps-0 pt-4"
@@ -542,7 +478,7 @@ function ImageMobile({ title }) {
                 >
                   Wait for Relevant publications
                 </p>
-              </MDBRow>
+              </MDBRow> */}
               <MDBRow className="pt-2">
                 {/* {publicationfiles.map((member) => (
                   <>

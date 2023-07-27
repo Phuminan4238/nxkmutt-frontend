@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 /* Routes */
@@ -18,6 +18,8 @@ import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
 import ArticleIcon from "@mui/icons-material/Article";
 import styled from "styled-components";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const Publications = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -154,6 +156,9 @@ const Publications = () => {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
@@ -204,13 +209,15 @@ const Publications = () => {
                     className=" font-black fw-light text-uppercase text-black xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontLight" }}
                   >
-                    Our
+                    {selectedLanguage === "en" ? "Our" : "Our_TH"}
                   </p>
                   <p
                     className="font-black  text-uppercase pt-2 xs:text-3xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    Publications
+                    {selectedLanguage === "en"
+                      ? "Publication"
+                      : "Publication_TH"}
                   </p>
 
                   <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:pt-5">

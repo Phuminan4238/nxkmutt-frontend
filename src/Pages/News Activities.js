@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 /* MDBootstrap */
@@ -13,6 +13,8 @@ import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
 import { useMediaQuery } from "react-responsive";
+// Language
+import { LanguageContext } from "../Components/LanguageContext";
 
 const ImageDesktop = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -119,6 +121,9 @@ const ImageDesktop = () => {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
@@ -169,7 +174,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    News
+                    {selectedLanguage === "en" ? "News" : "News_TH"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -185,7 +190,7 @@ const ImageDesktop = () => {
                     >
                       &
                     </span>{" "}
-                    Activity
+                    {selectedLanguage === "en" ? "Activity" : "Activity_TH"}
                   </p>
 
                   <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">

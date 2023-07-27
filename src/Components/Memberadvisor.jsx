@@ -99,7 +99,6 @@ function Post() {
                         {member.attributes.surname_en}
                       </p>
                     </MDBCardTitle>
-
                     <MDBCardText>
                       <h6
                         className="fw-light text-center"
