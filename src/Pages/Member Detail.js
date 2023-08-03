@@ -39,12 +39,13 @@ import { LanguageContext } from "../Components/LanguageContext";
 function ImageDesktop({ title }) {
   let { id } = useParams();
   const [uploadfiles, setUploadfiles] = useState([]);
+  // const [cvfiles, setCVfiles] = useState([]);
   const [publicationfiles, setPublicationfiles] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
+        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -53,6 +54,19 @@ function ImageDesktop({ title }) {
         console.error(error);
       });
   }, [id]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
+  //     )
+  //     .then((response) => {
+  //       setCVfiles(response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, [id]);
 
   useEffect(() => {
     axios
@@ -268,6 +282,10 @@ function ImageDesktop({ title }) {
                     {selectedLanguage === "en"
                       ? `${uploadfiles.attributes?.bio_text_en || ""} `
                       : `${uploadfiles.attributes?.bio_text_th || ""} `}
+                    {
+                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
+                        .image_original.data[0]?.attributes.url
+                    }
                   </p>
                 </div>
               </MDBCol>
@@ -310,44 +328,37 @@ function ImageDesktop({ title }) {
                 >
                   Education
                 </h5>
-
-                <MDBBtn
-                  outline
-                  className="mx-2"
-                  style={{ borderColor: "#A02040", borderWidth: "1px" }}
-                >
-                  <DescriptionIcon
-                    style={{ color: "#A02040" }}
-                  ></DescriptionIcon>
-                  <span
-                    className="ps-2 text-normal"
-                    style={{ color: "#A02040" }}
+                {uploadfiles.attributes?.scholar_url ? (
+                  <Link
+                    to={uploadfiles.attributes?.scholar_url}
+                    target="_blank"
+                    style={{ color: "black" }}
                   >
-                    download CV
-                  </span>
-                </MDBBtn>
+                    <MDBBtn
+                      outline
+                      className="mx-2"
+                      style={{ borderColor: "#A02040", borderWidth: "1px" }}
+                    >
+                      <DescriptionIcon
+                        style={{ color: "#A02040" }}
+                      ></DescriptionIcon>
+                      <span
+                        className="ps-2 text-normal"
+                        style={{ color: "#A02040" }}
+                      >
+                        download CV
+                      </span>
+                    </MDBBtn>
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
             </MDBRow>
 
             {/* Education  */}
             <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-                {/* {uploadfiles.attributes?.education_en ? (
-                  <ul style={{ paddingLeft: "1rem" }}>
-                    {uploadfiles.attributes.education_en.map(
-                      (education, index) => {
-                        const [degree, year] = education.split("–");
-                        return (
-                          <li key={index} className="fw-normal text-normal">
-                            <p className="mb-1">{degree || "-"} </p>
-                          </li>
-                        );
-                      }
-                    )}
-                  </ul>
-                ) : (
-                  <p className="fw-normal text-normal">-</p>
-                )} */}
+              <MDBCol md="8">
                 {uploadfiles.attributes?.education_en ? (
                   <ul style={{ paddingLeft: "1rem" }}>
                     {selectedLanguage === "en"
@@ -667,20 +678,29 @@ function ImageDesktop({ title }) {
                 >
                   Selected Publications
                 </h5>
-
-                <MDBBtn
-                  outline
-                  className="mx-2"
-                  style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
-                >
-                  <SchoolIcon style={{ color: "#6A4F94" }}></SchoolIcon>
-                  <span
-                    className="ps-2 text-capitalize"
-                    style={{ color: "#6A4F94" }}
+                {uploadfiles.attributes?.cv_file?.data?.attributes ? (
+                  <Link
+                    to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                    target="_blank"
+                    style={{ color: "black" }}
                   >
-                    Google Scholar
-                  </span>
-                </MDBBtn>
+                    <MDBBtn
+                      outline
+                      className="mx-2"
+                      style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
+                    >
+                      <SchoolIcon style={{ color: "#6A4F94" }} />
+                      <span
+                        className="ps-2 text-capitalize"
+                        style={{ color: "#6A4F94" }}
+                      >
+                        Google Scholar
+                      </span>
+                    </MDBBtn>
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
             </MDBRow>
             <MDBRow className="pt-2">
@@ -782,7 +802,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
+        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -1032,23 +1052,31 @@ function ImageMobile({ title }) {
               >
                 Education
               </p>
-
-              <MDBBtn
-                outline
-                className="px-2 py-1"
-                style={{ borderColor: "#A02040", borderWidth: "1px" }}
-              >
-                <DescriptionIcon
-                  style={{ color: "#A02040", height: "80%" }}
-                ></DescriptionIcon>
-
-                <span
-                  className="ps-2 text-capitalize text-xs"
-                  style={{ color: "#A02040" }}
+              {uploadfiles.attributes?.scholar_url ? (
+                <Link
+                  to={uploadfiles.attributes?.scholar_url}
+                  target="_blank"
+                  style={{ color: "black" }}
                 >
-                  download CV
-                </span>
-              </MDBBtn>
+                  <MDBBtn
+                    outline
+                    className="px-2 py-1"
+                    style={{ borderColor: "#A02040", borderWidth: "1px" }}
+                  >
+                    <DescriptionIcon
+                      style={{ color: "#A02040", height: "80%" }}
+                    />
+                    <span
+                      className="ps-2 text-capitalize text-xs"
+                      style={{ color: "#A02040" }}
+                    >
+                      download CV
+                    </span>
+                  </MDBBtn>
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </MDBRow>
 
@@ -1208,22 +1236,31 @@ function ImageMobile({ title }) {
               >
                 Selected Publications
               </p>
-
-              <MDBBtn
-                outline
-                className="py-1 px-2"
-                style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
-              >
-                <SchoolIcon
-                  style={{ color: "#6A4F94", height: "80%" }}
-                ></SchoolIcon>
-                <span
-                  className="ps-2 text-capitalize text-xs"
-                  style={{ color: "#6A4F94" }}
+              {uploadfiles.attributes?.cv_file?.data?.attributes ? (
+                <Link
+                  to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                  target="_blank"
+                  style={{ color: "black" }}
                 >
-                  Google Scholar
-                </span>
-              </MDBBtn>
+                  <MDBBtn
+                    outline
+                    className="py-1 px-2"
+                    style={{ borderColor: "#6A4F94", borderWidth: "1px" }}
+                  >
+                    <SchoolIcon
+                      style={{ color: "#6A4F94", height: "80%" }}
+                    ></SchoolIcon>
+                    <span
+                      className="ps-2 text-capitalize text-xs"
+                      style={{ color: "#6A4F94" }}
+                    >
+                      Google Scholar
+                    </span>
+                  </MDBBtn>
+                </Link>
+              ) : (
+                ""
+              )}
             </div>
           </MDBRow>
           <MDBRow className="pt-2 px-4">

@@ -228,7 +228,9 @@ const ImageDesktop = () => {
                   className="font-black  xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Administration Staff
+                  {selectedLanguage === "en"
+                    ? "    Administration Staff"
+                    : "    Administration Staff_TH"}
                 </p>
                 {/* {staffData.length > 0 && (
                   <div>
@@ -237,7 +239,7 @@ const ImageDesktop = () => {
                   </div>
                 )} */}
               </div>
-              <div className="pt-2 py-4 mx-0 md:px-0 ">
+              <div className="pt-2 py-4 px-2 mx-0 ">
                 <Contactadministration></Contactadministration>
               </div>
               <div className="d-inline-flex p-2">

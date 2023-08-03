@@ -445,5 +445,9 @@ a:hover {
   --mdb-gutter-x: "0rem !important";
 }
 
+#contact-gutter {
+  --mdb-gutter-x: "0rem !important";
+}
+
 @tailwind components;
 @tailwind utilities;
