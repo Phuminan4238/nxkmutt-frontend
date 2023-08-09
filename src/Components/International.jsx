@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -14,6 +14,8 @@ import {
 } from "mdb-react-ui-kit";
 import membericon from "../Images/member-icon.png";
 import teamimg5 from "../Images/team-5.png";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 function ImageDesktop() {
   const [uploadfiles, setUploadfiles] = useState([]);
@@ -52,6 +54,9 @@ function ImageDesktop() {
   }, [uploadfiles]);
 
   const colors = ["#E0B054", "#88BFD2"];
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <>
@@ -99,9 +104,9 @@ function ImageDesktop() {
                           fontFamily: "FontMedium",
                         }}
                       >
-                        {member.attributes.name_en}
-                        <br></br>
-                        {member.attributes.surname_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                          : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
                         <div
                           style={{
                             display: "flex",
@@ -122,7 +127,9 @@ function ImageDesktop() {
                       </p>
 
                       <p className="fw-normal text-white text-center xs:text-md">
-                        {member.attributes.position_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.position_en} `
+                          : `${member.attributes.position_th}`}
                       </p>
                     </div>
                   </MDBCardBody>
@@ -176,6 +183,9 @@ function ImageMobile({ members }) {
     };
   }, [uploadfiles]);
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
@@ -217,9 +227,9 @@ function ImageMobile({ members }) {
                         className="fw-bold text-center mb-0 xs:text-sm md:text-2xl"
                         style={{ color: "black" }}
                       >
-                        {member.attributes.name_en}
-                        <br></br>
-                        {member.attributes.surname_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                          : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
                       </p>
                     </MDBCardTitle>
                     <MDBCardText className="mb-2">
@@ -227,7 +237,9 @@ function ImageMobile({ members }) {
                         className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
                         style={{ color: "black" }}
                       >
-                        {member.attributes.position_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.position_en} `
+                          : `${member.attributes.position_th}`}
                       </p>
                     </MDBCardText>
                     <MDBCardText key={member.attributes}>

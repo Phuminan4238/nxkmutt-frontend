@@ -17,6 +17,7 @@ import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
 import { LanguageContext } from "../Components/LanguageContext";
 import { useMediaQuery } from "react-responsive";
+import ReactMarkdown from "react-markdown";
 
 function ImageDesktop({ title }) {
   let { id } = useParams();
@@ -201,13 +202,23 @@ function ImageDesktop({ title }) {
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 px-0">
-                <p>
-                  {selectedLanguage === "en"
-                    ? `${tags.attributes?.content_en || ""} 
-                      `
-                    : `${tags.attributes?.content_th || ""} 
-                      `}
-                </p>
+                {tags.attributes?.content_en_markdown ? (
+                  <p
+                    className="fw-normal text-md"
+                    style={{
+                      wordBreak: "break-word",
+                      maxWidth: "80%",
+                    }}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        selectedLanguage === "en"
+                          ? tags.attributes.content_en_markdown
+                          : tags.attributes.content_th_markdown,
+                    }}
+                  />
+                ) : (
+                  <p className="fw-normal text-md pt-3">-</p>
+                )}
               </MDBRow>
 
               {/*  Grants */}

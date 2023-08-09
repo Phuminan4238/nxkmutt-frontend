@@ -328,9 +328,10 @@ function ImageDesktop({ title }) {
                 >
                   Education
                 </h5>
-                {uploadfiles.attributes?.scholar_url ? (
+
+                {uploadfiles.attributes?.cv_file?.data?.attributes ? (
                   <Link
-                    to={uploadfiles.attributes?.scholar_url}
+                    to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
                     target="_blank"
                     style={{ color: "black" }}
                   >
@@ -678,9 +679,9 @@ function ImageDesktop({ title }) {
                 >
                   Selected Publications
                 </h5>
-                {uploadfiles.attributes?.cv_file?.data?.attributes ? (
+                {uploadfiles.attributes?.scholar_url ? (
                   <Link
-                    to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                    to={uploadfiles.attributes?.scholar_url}
                     target="_blank"
                     style={{ color: "black" }}
                   >
@@ -1052,9 +1053,9 @@ function ImageMobile({ title }) {
               >
                 Education
               </p>
-              {uploadfiles.attributes?.scholar_url ? (
+              {uploadfiles.attributes?.cv_file?.data?.attributes ? (
                 <Link
-                  to={uploadfiles.attributes?.scholar_url}
+                  to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
                   target="_blank"
                   style={{ color: "black" }}
                 >
@@ -1236,9 +1237,9 @@ function ImageMobile({ title }) {
               >
                 Selected Publications
               </p>
-              {uploadfiles.attributes?.cv_file?.data?.attributes ? (
+              {uploadfiles.attributes?.scholar_url ? (
                 <Link
-                  to={`https://10.35.29.186${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                  to={uploadfiles.attributes?.scholar_url}
                   target="_blank"
                   style={{ color: "black" }}
                 >

@@ -78,7 +78,7 @@ function ImageDesktop({ member }) {
               style={{ fontFamily: "MyFont" }}
             >
               {selectedLanguage === "en"
-                ? member.attributes.name_en || "Not found"
+                ? member.attributes.name_en || ""
                 : member.attributes.name_th || "ภาษาไทย"}
             </p>
             <p
@@ -86,8 +86,8 @@ function ImageDesktop({ member }) {
               style={{ fontFamily: "FontLight" }}
             >
               {selectedLanguage === "en"
-                ? member.attributes.name_th || "Not found"
-                : member.attributes.name_th || "ภาษาไทย"}
+                ? member.attributes.description_en || ""
+                : member.attributes.description_th || "ภาษาไทย"}
             </p>
 
             <div

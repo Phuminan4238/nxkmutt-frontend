@@ -135,7 +135,6 @@ const Research = () => {
             </MDBRow>
           </MDBContainer>
         </section>
-
         <ClusterAccordion></ClusterAccordion>
       </Container>
     </div>

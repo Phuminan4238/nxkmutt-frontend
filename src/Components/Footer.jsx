@@ -75,8 +75,7 @@ function FooterDesktop() {
                   <div className="col-5 col-md-2 p-2 ps-0"></div>
                 </div>
                 <div className="d-flex flex-row mt-3 text-white text-sm text-start">
-                  Copyright © 2023 King Mongkut’s University of Technology
-                  Thonburi, All rights reserved.
+                  Neuroscience Center for Research and Innovation
                 </div>
               </MDBCol>
             </MDBRow>
@@ -156,8 +155,7 @@ function FooterMobile() {
                   <div className="col-5 col-md-2 p-2 ps-0"></div>
                 </div>
                 <div className="d-flex flex-row mt-3 text-white">
-                  Copyright © 2023 King Mongkut’s University of Technology
-                  Thonburi, All rights reserved.
+                  Neuroscience Center for Research and Innovation
                 </div>
               </MDBCol>
             </MDBRow>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
@@ -13,6 +13,8 @@ import {
   MDBCol,
 } from "mdb-react-ui-kit";
 import membericon from "../Images/member-icon.png";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 // Desktop
 function Post() {
@@ -50,6 +52,9 @@ function Post() {
       isMounted = false;
     };
   }, [uploadfiles]);
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className="d-flex justify-content-between pb-4" id="tools-flex">
@@ -93,9 +98,9 @@ function Post() {
                         className="fw-bold text-center mb-0 xs:text-md md:text-md"
                         style={{ color: "black", fontFamily: "MyFont" }}
                       >
-                        {member.attributes.name_en}
-
-                        {member.attributes.surname_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                          : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
                       </p>
                     </MDBCardTitle>
 
@@ -104,9 +109,9 @@ function Post() {
                         className="fw-light text-center"
                         style={{ color: "#AE023E", paddingTop: "1rem" }}
                       >
-                        {/* {member.attributes.position_en}
-                         */}
-                        Organization
+                        {selectedLanguage === "en"
+                          ? `${member.attributes.position_en} `
+                          : `${member.attributes.position_th}`}
                       </h6>
                     </MDBCardText>
                   </MDBCardBody>
@@ -159,6 +164,9 @@ function Image({ members }) {
       isMounted = false;
     };
   }, [uploadfiles]);
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <>
@@ -215,9 +223,9 @@ function Image({ members }) {
                             className="fw-bold text-center mb-0 xs:text-sm md:text-2xl"
                             style={{ color: "black" }}
                           >
-                            {member.attributes.name_en}
-                            <br></br>
-                            {member.attributes.surname_en}
+                            {selectedLanguage === "en"
+                              ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                              : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
                           </p>
                         </MDBCardTitle>
                         <MDBCardText className="mb-2">
@@ -225,7 +233,9 @@ function Image({ members }) {
                             className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
                             style={{ color: "black" }}
                           >
-                            {member.attributes.position_en}
+                            {selectedLanguage === "en"
+                              ? `${member.attributes.position_en} `
+                              : `${member.attributes.position_th}`}
                           </p>
                         </MDBCardText>
                         <MDBCardText key={member.attributes}>
