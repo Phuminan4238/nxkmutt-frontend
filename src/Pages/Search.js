@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -14,6 +14,7 @@ import Contactsocial from "../Components/Contactsocial";
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
 import Container from "@mui/material/Container";
+import { LanguageContext } from "../Components/LanguageContext";
 
 const Searchresult = () => {
   const { term } = useParams();
@@ -22,48 +23,102 @@ const Searchresult = () => {
   const [eventResults, setEventResults] = useState([]);
   const [toolResults, setToolResults] = useState([]);
 
+  const titleAttributeMap = {
+    publication: {
+      en: "title_en",
+      th: "title_th",
+    },
+    member: {
+      en: "name_en",
+      th: "name_th",
+    },
+    event: {
+      en: "name_en",
+      th: "name_th",
+    },
+    tool: {
+      en: "name_en",
+      th: "name_th",
+    },
+  };
+
+  const getTitleAttribute = (contentType) => {
+    return titleAttributeMap[contentType][searchTermLanguage];
+  };
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
+  const [searchTermLanguage, setSearchTermLanguage] = useState("en"); // Default to English
+
+  let resultLanguage = "name_en"; // Default language is English
+  if (searchTermLanguage === "th") {
+    resultLanguage = "name_th"; // Switch to Thai if needed
+  }
+
+  let surnameLanguage = "surname_en"; // Default language is English
+  if (searchTermLanguage === "th") {
+    surnameLanguage = "surname_th"; // Switch to Thai if needed
+  }
+
   useEffect(() => {
+    const determineSearchTermLanguage = () => {
+      // Check if the search term contains Thai characters
+      const thaiPattern = new RegExp("[ก-๙]");
+      if (thaiPattern.test(term)) {
+        setSearchTermLanguage("th");
+      } else {
+        setSearchTermLanguage("en");
+      }
+    };
+
+    determineSearchTermLanguage();
+
+    // setResultLanguage(selectedLanguage === "en" ? "name_en" : "name_th");
+
     const fetchSearchResults = async () => {
       try {
         const encodedTerm = encodeURIComponent(term);
 
+        let resultLanguage = "name_en"; // Default language is English
+        if (searchTermLanguage === "th") {
+          resultLanguage = "name_th"; // Switch to Thai if needed
+        }
+
         // Fetch publication results
         const publicationResponse = await fetch(
-          `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodedTerm}&filters[title_th][$contains]=${encodedTerm}`
+          `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[$or][0][title_en][$contains]=${encodedTerm}&filters[$or][1][title_th][$contains]=${encodedTerm}`
         );
         const publicationData = await publicationResponse.json();
         setSearchResults(publicationData.data);
-        console.log("Publication data:", publicationData.data);
 
         // Fetch member results
         const memberResponse = await fetch(
-          `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][surname_en][$contains]=${encodedTerm}`
+          `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}&filters[$or][2][surname_en][$contains]=${encodedTerm}&filters[$or][3][surname_th][$contains]=${encodedTerm}`
         );
         const memberData = await memberResponse.json();
         setMemberResults(memberData.data);
-        console.log("Member data:", memberData.data);
 
         // Fetch event results
         const eventResponse = await fetch(
-          `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodedTerm}&filters[name_th][$contains]=${encodedTerm}`
+          `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const eventData = await eventResponse.json();
         setEventResults(eventData.data);
-        console.log("Event data:", eventData.data);
 
         // Fetch tool results
         const toolResponse = await fetch(
-          `https://10.35.29.186/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodedTerm}&filters[name_th][$contains]=${encodedTerm}`
+          `https://10.35.29.186/api/tools?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const toolData = await toolResponse.json();
         setToolResults(toolData.data);
-        console.log("Tool data:", toolData.data);
       } catch (error) {
         console.error("Error fetching search results:", error);
       }
     };
+
     fetchSearchResults();
-  }, [term]);
+  }, [term, searchTermLanguage, selectedLanguage]);
 
   // Lotties
   const [loaded, setLoaded] = useState(false);
@@ -140,7 +195,7 @@ const Searchresult = () => {
                 <div>
                   {/* Render publication results */}
                   <h4
-                    className="xs:pt-5 sm:pt-0 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
+                    className="xs:pt-5 sm:pt-4 fw-bold ps-3 text-black xs:text-xl md:text-2xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
                     Publication Results:
@@ -149,13 +204,16 @@ const Searchresult = () => {
                     <ul className="ms-4">
                       {searchResults.map((result) => (
                         <li key={result.id}>
-                          {/* Display the relevant data from the search results */}
                           <a
                             href={result.attributes.url}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {result.attributes.title_en}
+                            {
+                              result.attributes[
+                                getTitleAttribute("publication")
+                              ]
+                            }
                           </a>
                         </li>
                       ))}
@@ -164,33 +222,11 @@ const Searchresult = () => {
                     <>
                       <ul className="ms-4">
                         <li>
-                          <p>No member results found.</p>
+                          <p>No publication results found.</p>
                         </li>
                       </ul>
                     </>
                   )}
-
-                  {/* <h2 className="ps-4">Member Results:</h2>
-                {memberResults.length > 0 ? (
-                  <ul className="ms-4">
-                    {memberResults.map((result) => (
-                      <li key={result.id}>
-                        <a href={result.attributes.url}>
-                          {result.attributes.name_en}{" "}
-                          {result.attributes.surname_en}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <>
-                    <ul className="ms-4">
-                      <li>
-                        <p>No member results found.</p>
-                      </li>
-                    </ul>
-                  </>
-                )} */}
 
                   {/* Render member results */}
                   <h4
@@ -207,8 +243,8 @@ const Searchresult = () => {
                           <a
                             href={`https://10.35.29.186/Member-Detail/${result.id}`}
                           >
-                            {result.attributes.name_en}{" "}
-                            {result.attributes.surname_en}
+                            {result.attributes[resultLanguage]}{" "}
+                            {result.attributes[surnameLanguage]}
                           </a>
                         </li>
                       ))}
@@ -232,9 +268,15 @@ const Searchresult = () => {
                     <ul className="ms-4">
                       {eventResults.map((result) => (
                         <li key={result.id}>
-                          {/* Display the relevant data from the tool results */}
-                          <a href={result.attributes.url}>
-                            {result.attributes.name_en}
+                          {/* Display the relevant data from the event results */}
+                          {/* <a href={result.attributes.url}> */}
+                          <a
+                            href={`https://10.35.29.186/News-Detail/${result.id}`}
+                          >
+                            {/* {selectedLanguage === "en"
+                              ? `${result.attributes.name_en}`
+                              : `${result.attributes.name_th}`} */}
+                            {result.attributes[resultLanguage]}
                           </a>
                         </li>
                       ))}
@@ -242,7 +284,7 @@ const Searchresult = () => {
                   ) : (
                     <ul className="ms-4">
                       <li>
-                        <p>No member results found.</p>
+                        <p>No event results found.</p>
                       </li>
                     </ul>
                   )}
@@ -259,8 +301,10 @@ const Searchresult = () => {
                       {toolResults.map((result) => (
                         <li key={result.id}>
                           {/* Display the relevant data from the tool results */}
-                          <a href={result.attributes.url}>
-                            {result.attributes.name_en}
+                          <a
+                            href={`https://10.35.29.186/Tools-Detail/${result.id}`}
+                          >
+                            {result.attributes[resultLanguage]}
                           </a>
                         </li>
                       ))}
@@ -314,3 +358,27 @@ const Searchresult = () => {
 };
 
 export default Searchresult;
+
+{
+  /* <h2 className="ps-4">Member Results:</h2>
+                {memberResults.length > 0 ? (
+                  <ul className="ms-4">
+                    {memberResults.map((result) => (
+                      <li key={result.id}>
+                        <a href={result.attributes.url}>
+                          {result.attributes.name_en}{" "}
+                          {result.attributes.surname_en}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <>
+                    <ul className="ms-4">
+                      <li>
+                        <p>No member results found.</p>
+                      </li>
+                    </ul>
+                  </>
+                )} */
+}

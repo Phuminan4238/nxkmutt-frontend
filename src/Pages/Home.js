@@ -102,8 +102,8 @@ function Home(props) {
 
   return (
     <>
-      {!isMobileWidth && <Preloader />}
-      <Preloader />
+      {/* {!isMobileWidth && <Preloader />} */}
+      {/* <Preloader /> */}
       <div className="App">
         {/* ******************/}
 
@@ -207,8 +207,8 @@ function Home(props) {
                       style={{ fontFamily: "MyFont" }}
                     >
                       {selectedLanguage === "en"
-                        ? "NEW & ACTIVITY"
-                        : "NEW & ACTIVITY_TH"}
+                        ? "NEW & ACTIVITYS"
+                        : "NEW & ACTIVITYS_TH"}
                     </p>
                   </div>
                 </MDBRow>

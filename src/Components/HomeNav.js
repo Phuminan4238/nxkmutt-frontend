@@ -212,6 +212,7 @@ export default function HomeNav(props) {
     }
   };
 
+
   const inputStyle = {
     // opacity: isSearchOpen ? 1 : 0,
     // height: isSearchOpen ? "auto" : 0,

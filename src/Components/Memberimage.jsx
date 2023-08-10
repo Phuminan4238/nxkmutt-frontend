@@ -143,9 +143,6 @@ function Post({ title }) {
                           textOverflow: "ellipsis",
                         }}
                       >
-                        {/* {member.attributes.name_en}
-
-                        {member.attributes.surname_en} */}
                         {selectedLanguage === "en"
                           ? `${member.attributes.name_en} ${member.attributes.surname_en}`
                           : `${member.attributes.name_th} ${member.attributes.surname_th}`}
