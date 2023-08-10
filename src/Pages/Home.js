@@ -102,8 +102,8 @@ function Home(props) {
 
   return (
     <>
-      {/* {!isMobileWidth && <Preloader />} */}
-      {/* <Preloader /> */}
+      {!isMobileWidth && <Preloader />}
+      <Preloader />
       <div className="App">
         {/* ******************/}
 
