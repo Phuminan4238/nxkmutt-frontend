@@ -295,11 +295,17 @@ function ImageDesktop() {
                         {openStates[index] ? (
                           <span style={{ float: "right" }}>
                             {" "}
-                            Hide Info <ExpandLessIcon />
+                            {selectedLanguage === "en"
+                              ? "Hide Info"
+                              : "ซ่อนข้อมูล"}{" "}
+                            <ExpandLessIcon />
                           </span>
                         ) : (
                           <span style={{ float: "right" }}>
-                            <ExpandMoreIcon /> More Info
+                            <ExpandMoreIcon />
+                            {selectedLanguage === "en"
+                              ? "More Info"
+                              : "ข้อมูลเพิ่มเติม"}
                           </span>
                         )}
                       </p>
@@ -341,7 +347,9 @@ function ImageDesktop() {
                         onMouseEnter={() => handleMouseEnter3(index)}
                         onMouseLeave={() => handleMouseLeave3(index)}
                       >
-                        More Detail
+                        {selectedLanguage === "en"
+                          ? "More Detail"
+                          : "รายละเอียดเพิ่มเติม"}
                         <EastIcon style={iconStyle3[index]}></EastIcon>
                       </p>
                     </Link>

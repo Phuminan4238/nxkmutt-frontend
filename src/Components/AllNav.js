@@ -615,6 +615,10 @@ export default function HomeNav(props) {
   const RenderNavbar3 = () => {
     const { selectedLanguage, handleLanguageSwitch } =
       useContext(LanguageContext);
+
+    const toggleLanguage = () => {
+      handleLanguageSwitch(selectedLanguage === "en" ? "th" : "en");
+    };
     return (
       <React.Fragment>
         <CssBaseline />
@@ -721,6 +725,13 @@ export default function HomeNav(props) {
                     ></LanguageIcon>
                     EN
                   </span> */}
+
+                  <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "1rem" }}
+                    />
+                    <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
+                  </span>
                   <Tooltip title="Open settings">
                     <IconButton
                       color="black"
@@ -830,6 +841,10 @@ export default function HomeNav(props) {
   const RenderNavbar4 = () => {
     const { selectedLanguage, handleLanguageSwitch } =
       useContext(LanguageContext);
+
+    const toggleLanguage = () => {
+      handleLanguageSwitch(selectedLanguage === "en" ? "th" : "en");
+    };
     return (
       <React.Fragment>
         <CssBaseline />
@@ -943,6 +958,12 @@ export default function HomeNav(props) {
                     ></LanguageIcon>
                     <span style={{ color: "#AE023E" }}>EN</span>
                   </span> */}
+                  <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
+                    <LanguageIcon
+                      style={{ color: "#AE023E", marginRight: "1rem" }}
+                    />
+                    <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
+                  </span>
                   <Tooltip title="Open settings">
                     <IconButton
                       color="black"

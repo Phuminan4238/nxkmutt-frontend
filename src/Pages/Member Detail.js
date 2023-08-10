@@ -326,7 +326,7 @@ function ImageDesktop({ title }) {
                   className="fw-bold text-capitalize text-black"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Education
+                  {selectedLanguage === "en" ? "  Education" : "การศึกษา"}
                 </h5>
 
                 {uploadfiles.attributes?.cv_file?.data?.attributes ? (
@@ -421,7 +421,9 @@ function ImageDesktop({ title }) {
                   className="fw-bold text-capitalize text-black"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Current Affiliations
+                  {selectedLanguage === "en"
+                    ? "  Current Affiliations"
+                    : "สังกัดปัจจุบัน"}
                 </h5>
               </div>
             </MDBRow>
@@ -504,7 +506,9 @@ function ImageDesktop({ title }) {
                     className="fw-bold text-capitalize text-black"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Recent and on-going projects
+                    {selectedLanguage === "en"
+                      ? "Recent and on-going projects"
+                      : "โปรเจคที่กำลงทำ"}
                   </h5>
                 </div>
               </MDBRow>
@@ -569,7 +573,7 @@ function ImageDesktop({ title }) {
                     className="fw-bold text-capitalize text-black"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Grants
+                    {selectedLanguage === "en" ? "Grants" : "แหล่งทุน"}
                   </h5>
                 </div>
               </MDBRow>
@@ -620,7 +624,7 @@ function ImageDesktop({ title }) {
                     className="fw-bold text-capitalize text-black"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Awards
+                    {selectedLanguage === "en" ? "Awards" : "รางวัล"}
                   </h5>
                 </div>
               </MDBRow>
@@ -677,7 +681,9 @@ function ImageDesktop({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Selected Publications
+                  {selectedLanguage === "en"
+                    ? "   Selected Publications"
+                    : "ผลงานตีพิมพ์ที่น่าสนใจ"}
                 </h5>
                 {uploadfiles.attributes?.scholar_url ? (
                   <Link
@@ -767,7 +773,9 @@ function ImageDesktop({ title }) {
                   className="fw-bold text-uppercase text-black"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  Other Members
+                  {selectedLanguage === "en"
+                    ? "Other Members"
+                    : "สมาชิกเพิ่มเติม"}
                 </h3>
 
                 <span className="flex">
@@ -782,7 +790,11 @@ function ImageDesktop({ title }) {
                       window.scrollTo(0, 0);
                     }}
                   >
-                    <p className="text-uppercase"> All Team Member</p>
+                    <p className="text-uppercase">
+                      {selectedLanguage === "en"
+                        ? "  All Team Members"
+                        : "สมาชิกทั้งหมด"}{" "}
+                    </p>
                   </Link>
                 </span>
               </div>
@@ -843,6 +855,9 @@ function ImageMobile({ title }) {
     color: "#AE023E",
     marginLeft: 0,
   });
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <div className="App">
@@ -1051,7 +1066,7 @@ function ImageMobile({ title }) {
                 className="fw-bold text-capitalize text-black mb-0 mt-2"
                 style={{ fontFamily: "FontMedium" }}
               >
-                Education
+                {selectedLanguage === "en" ? " Education" : "การศึกษา"}
               </p>
               {uploadfiles.attributes?.cv_file?.data?.attributes ? (
                 <Link

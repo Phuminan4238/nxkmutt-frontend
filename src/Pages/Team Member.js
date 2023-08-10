@@ -102,13 +102,13 @@ const Member = ({ imageUrl }) => {
                     className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {selectedLanguage === "en" ? "Meet Our" : "Meet Our_TH"}
+                    {selectedLanguage === "en" ? "Meet Our" : "พบทีม"}
                   </p>
                   <p
                     className="font-black text-uppercase pt-2 xs:text-3xl md:text-6xl"
-                    style={{ color: "#AE023E" }}
+                    style={{ color: "#AE023E", fontFamily: "MyFont" }}
                   >
-                    {selectedLanguage === "en" ? "   Team" : "   Team_TH"}
+                    {selectedLanguage === "en" ? "Team" : "นักวิจัย"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"
@@ -150,7 +150,7 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {selectedLanguage === "en" ? "Member" : "Member_TH"}
+                  {selectedLanguage === "en" ? "Member" : "สมาชิก"}
                 </p>
               </div>
               <Memberimage></Memberimage>
@@ -160,8 +160,8 @@ const Member = ({ imageUrl }) => {
                   style={{ fontFamily: "MyFont" }}
                 >
                   {selectedLanguage === "en"
-                    ? "    Advisor & Collaborator"
-                    : "     Advisor & Collaborator_TH"}
+                    ? "Advisor & Collaborator"
+                    : "ที่ปรึกษาและผุ้ร่วมงานวิจัย"}
                 </p>
               </div>
               <Memberadvisor></Memberadvisor>
@@ -171,8 +171,8 @@ const Member = ({ imageUrl }) => {
                   style={{ fontFamily: "MyFont" }}
                 >
                   {selectedLanguage === "en"
-                    ? "   International Collaborators"
-                    : "      International Collaborators_TH"}
+                    ? "International Collaborators"
+                    : "ผุ้ร่วมงานวิจัยนานาชาติ"}
                 </p>
               </div>
               <Memberalumni></Memberalumni>
@@ -182,8 +182,8 @@ const Member = ({ imageUrl }) => {
                   style={{ fontFamily: "MyFont" }}
                 >
                   {selectedLanguage === "en"
-                    ? "     Students & Research Assistants & Alumni"
-                    : "        Students & Research Assistants & Alumni_TH"}
+                    ? "Students & Research Assistants & Alumni"
+                    : "นักเรียน ผู้ช่วยวิจัย และศิษย์เก่า"}
                 </p>
                 <Link
                   to={`/Student-Detail/9`}
@@ -199,7 +199,9 @@ const Member = ({ imageUrl }) => {
                       className="pe-4 hide-on-mobile"
                       style={{ color: "#AE023E" }}
                     >
-                      Find out more
+                      {selectedLanguage === "en"
+                        ? "Find out more"
+                        : "เพิ่มเติม"}
                     </h5>
                     <EastIcon
                       style={iconStyle}

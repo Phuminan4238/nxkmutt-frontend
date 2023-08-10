@@ -217,14 +217,16 @@ const Publications = () => {
                   >
                     {selectedLanguage === "en"
                       ? "Publication"
-                      : "Publication_TH"}
+                      : "ผลงานตีพิมพ์ของเรา"}
                   </p>
 
                   <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:pt-5">
                     <div className="input-group rounded">
                       <input
                         type="text"
-                        placeholder="Search"
+                        placeholder={
+                          selectedLanguage === "en" ? "Search" : "ค้นหา"
+                        }
                         value={searchTerm}
                         onChange={handleSearch}
                         onKeyDown={handleKeyDown}
@@ -337,7 +339,9 @@ const Publications = () => {
             </MDBRow>
             <MDBRow>
               <MDBCol>
-                <p className="ms-3  text-uppercase">Filter By</p>
+                <p className="ms-3  text-uppercase">
+                  {selectedLanguage === "en" ? "Filter By" : "กรองด้วย"}
+                </p>
               </MDBCol>
             </MDBRow>
             <MDBRow className="xs:px-4 sm:px-0">

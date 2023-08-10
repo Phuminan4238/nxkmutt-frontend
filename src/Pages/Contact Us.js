@@ -125,7 +125,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {selectedLanguage === "en" ? "Contact Us" : "Contact Us_TH"}
+                    {selectedLanguage === "en" ? "Contact Us" : "ติดต่อเรา"}
                   </p>
                 </div>
               </MDBCol>
@@ -230,7 +230,7 @@ const ImageDesktop = () => {
                 >
                   {selectedLanguage === "en"
                     ? "    Administration Staff"
-                    : "    Administration Staff_TH"}
+                    : "    เจ้าหน้าที่"}
                 </p>
                 {/* {staffData.length > 0 && (
                   <div>
@@ -258,7 +258,9 @@ const ImageDesktop = () => {
                   className="fw-bold text-black xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Lab Portal
+                  {selectedLanguage === "en"
+                    ? "     Lab Portal"
+                    : "    ช่องทางแลปอื่นๆ"}
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
@@ -269,7 +271,9 @@ const ImageDesktop = () => {
                   className="fw-bold text-black xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Open Data
+                  {selectedLanguage === "en"
+                    ? "       Open Data"
+                    : "    ข้อมูลที่เผยแพร่"}
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">

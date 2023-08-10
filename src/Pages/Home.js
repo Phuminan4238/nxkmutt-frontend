@@ -102,8 +102,8 @@ function Home(props) {
 
   return (
     <>
-      {!isMobileWidth && <Preloader />}
-      <Preloader />
+      {/* {!isMobileWidth && <Preloader />} */}
+      {/* <Preloader /> */}
       <div className="App">
         {/* ******************/}
 
@@ -162,7 +162,7 @@ function Home(props) {
                       >
                         {selectedLanguage === "en"
                           ? "What we do"
-                          : "What we do_TH"}
+                          : "สิ่งที่เราทำ"}
                       </p>
                     </div>
                   </MDBRow>
@@ -184,7 +184,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "TOOLS & SERVICES"
-                        : "TOOLS & SERVICES_TH"}
+                        : "อุปกรณ์และงานบริการ"}
                     </p>
                   </div>
                 </MDBRow>
@@ -208,7 +208,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "NEW & ACTIVITYS"
-                        : "NEW & ACTIVITYS_TH"}
+                        : "ข่าวสารและกิจกรรม"}
                     </p>
                   </div>
                 </MDBRow>
@@ -232,7 +232,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "Our Brain Army"
-                        : "Our Brain Army_TH"}
+                        : "ทีมงานระดมสมอง"}
                     </p>
                   </div>
                 </MDBRow>
@@ -250,7 +250,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "Advisors & Collaborators"
-                        : "Advisors & Collaborators_TH"}
+                        : "ที่ปรึกษาและผุ้ร่วมงานวิจัย"}
                     </p>
                   </div>
                 </MDBRow>
@@ -268,7 +268,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "Students & Research Assistants"
-                        : "Students & Research Assistants_TH"}
+                        : "นักเรียนและผู้ช่วยวิจัย"}
                     </p>
                   </div>
                 </MDBRow>
@@ -287,7 +287,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "International Collaborators"
-                        : "International Collaborators_TH"}
+                        : "ผุ้ร่วมงานวิจัยนานาชาติ"}
                     </p>
                   </div>
                 </MDBRow>

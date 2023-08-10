@@ -90,7 +90,7 @@ const Research = () => {
                     className="font-black text-uppercase text-black xs:text-3xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {selectedLanguage === "en" ? "Research" : "Researchi_TH"}
+                    {selectedLanguage === "en" ? "Research" : "กลุ่ม"}
                   </p>
                   <p
                     className="font-black fw-light text-uppercase  xs:text-2xl md:text-4xl"
@@ -98,7 +98,7 @@ const Research = () => {
                   >
                     {selectedLanguage === "en"
                       ? "      Clusters"
-                      : "           Clusters_TH"}
+                      : "        วิจัย"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"

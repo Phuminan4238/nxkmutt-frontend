@@ -95,7 +95,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en" ? "Tools" : "Tools_TH"}
+                    {selectedLanguage === "en" ? "Tools" : "อุปกรณ์"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -111,7 +111,7 @@ const ImageDesktop = () => {
                     >
                       &
                     </span>{" "}
-                    {selectedLanguage === "en" ? "Service" : "Service_TH"}
+                    {selectedLanguage === "en" ? "Service" : "และงานบริการ"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"
@@ -154,7 +154,9 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en" ? "Tools" : "Tools_TH"}
+                    {selectedLanguage === "en"
+                      ? "TOOLS & SERVICES"
+                      : "อุปกรณ์และงานบริการ"}
                   </p>
                 </div>
               </MDBCol>
@@ -179,7 +181,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en" ? "Service" : "Service_TH"}
+                    {selectedLanguage === "en" ? "Service" : "งานบริการ"}
                   </p>
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
@@ -198,12 +200,12 @@ const ImageDesktop = () => {
                       >
                         {selectedLanguage === "en"
                           ? "      Research consultation"
-                          : "      Research consultation_TH"}
+                          : "    การปรึกษาด้านงานวิจัย"}
                       </p>
                       <p className="xs:text-sm md:text-md">
                         {selectedLanguage === "en"
                           ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "We are open to research project consultant or collaboration and sharing tools, etc_TH"}
+                          : "เราเปิดโอกาสในการให้คำปรึกษาหรือการร่วมงานวิจัย และการแบ่งปันอุปกรณ์ต่างๆ"}
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -227,7 +229,7 @@ const ImageDesktop = () => {
                       <p className="xs:text-sm md:text-md">
                         {selectedLanguage === "en"
                           ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "We are open to research project consultant or collaboration and sharing tools, etc_TH"}
+                          : "การสอนและการสัมนาเชิงปฏิบัติการ"}
                       </p>
                     </MDBCol>
                   </MDBRow>

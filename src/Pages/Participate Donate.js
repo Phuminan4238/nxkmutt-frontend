@@ -250,7 +250,9 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    PARTICIPATE
+                    {selectedLanguage === "en"
+                      ? " PARTICIPATE"
+                      : "การมีส่วนร่วม"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -266,7 +268,7 @@ const ImageDesktop = () => {
                     >
                       &
                     </span>{" "}
-                    DONATE
+                    {selectedLanguage === "en" ? "  DONATE" : "และการบริจาค"}
                   </p>
                 </div>
               </MDBCol>
@@ -322,11 +324,14 @@ const ImageDesktop = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesJob[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesJob[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"} */}
+                        {selectedLanguage === "en"
+                          ? "JOB & INTERNSHIP"
+                          : "งานและการฝึกงาน"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -371,11 +376,15 @@ const ImageDesktop = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesStudy[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesStudy[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"} */}
+
+                        {selectedLanguage === "en"
+                          ? "STUDY PARTICIPATION"
+                          : "การมีส่วนร่วมในการศึกษา"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -425,11 +434,13 @@ const ImageDesktop = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesDonation[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesDonation[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"} */}
+
+                        {selectedLanguage === "en" ? "DONATION" : "การบริจาค"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -455,7 +466,7 @@ const ImageDesktop = () => {
                                 __html:
                                   selectedLanguage === "en"
                                     ? member.attributes.content_en
-                                    : member.attributes.content_thb,
+                                    : member.attributes.content_th,
                               }}
                             />
                           ) : (
@@ -765,11 +776,14 @@ const ImageMobile = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesJob[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesJob[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"} */}
+                        {selectedLanguage === "en"
+                          ? "JOB & INTERNSHIP"
+                          : "งานและการฝึกงาน"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -814,11 +828,14 @@ const ImageMobile = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesStudy[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesStudy[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"}{" "} */}
+                        {selectedLanguage === "en"
+                          ? "STUDY PARTICIPATION"
+                          : "การมีส่วนร่วมในการศึกษา"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -868,11 +885,12 @@ const ImageMobile = () => {
                         className="fw-bolder text-uppercase text-black ps-2 xs:text-lg md:text-2xl"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {selectedLanguage === "en"
+                        {/* {selectedLanguage === "en"
                           ? uploadfilesDonation[0].attributes.header_en ||
                             "Not found"
                           : uploadfilesDonation[0].attributes.header_th ||
-                            "Not found"}
+                            "Not found"}{" "} */}
+                        {selectedLanguage === "en" ? "DONATION" : "การบริจาค"}
                       </p>
                     </MDBRow>
                     <MDBCol className="ps-4 pt-2">
@@ -898,7 +916,7 @@ const ImageMobile = () => {
                                 __html:
                                   selectedLanguage === "en"
                                     ? member.attributes.content_en
-                                    : member.attributes.content_thb,
+                                    : member.attributes.content_th,
                               }}
                             />
                           ) : (

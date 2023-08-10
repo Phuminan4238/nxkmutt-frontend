@@ -14,7 +14,7 @@ import {
   MDBCol,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { useState, useEffect, setIsLoaded } from "react";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import new1 from "../Images/new-1.png";
 import EastIcon from "@mui/icons-material/East";
 import ReactPaginate from "react-paginate";
@@ -22,6 +22,8 @@ import { useLocation } from "react-router-dom";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+// Language
+import { LanguageContext } from "./LanguageContext";
 
 const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -229,6 +231,9 @@ function ImageDesktop({ members }) {
     return renderedItems;
   };
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       <div className="d-flex justify-content-between pt-0 px-0" id="tools-flex">
@@ -245,7 +250,7 @@ function ImageDesktop({ members }) {
                     color="secondary"
                     onClick={handleNext}
                   >
-                    LOAD MORE
+                    {selectedLanguage === "en" ? "LOAD MORE" : "เพิ่มเติม"}
                   </MDBBtn>
                 </div>
               </MDBCol>
@@ -268,7 +273,9 @@ function ImageDesktop({ members }) {
               >
                 <div className="d-inline-flex text-red py-2 md:py-4">
                   <h5 href="#" className="pe-4" style={{ color: "#AE023E" }}>
-                    Find out more
+                    {selectedLanguage === "en"
+                      ? "    Find out more"
+                      : "เพิ่มเติม"}{" "}
                   </h5>
                   <EastIcon style={iconStyle}></EastIcon>
                 </div>
@@ -382,6 +389,8 @@ function ImageMobile({ members }) {
       slidesToSlide: 1,
     },
   };
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
 
   return (
     <>
@@ -495,7 +504,9 @@ function ImageMobile({ members }) {
                     className="pe-4  xs:text-base sm:text-lg"
                     style={{ color: "#AE023E" }}
                   >
-                    Find out more
+                    {selectedLanguage === "en"
+                      ? "    Find out more"
+                      : "เพิ่มเติม"}
                   </h5>
                   <EastIcon style={iconStyle}></EastIcon>
                 </div>

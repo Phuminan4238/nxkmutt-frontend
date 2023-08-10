@@ -296,11 +296,17 @@ function ImageDesktop() {
                         {openStates[index] ? (
                           <span style={{ float: "right" }}>
                             {" "}
-                            Hide Info <ExpandLessIcon />
+                            {selectedLanguage === "en"
+                              ? "Hide Info"
+                              : "ซ่อนข้อมูล"}{" "}
+                            <ExpandLessIcon />
                           </span>
                         ) : (
                           <span style={{ float: "right" }}>
-                            <ExpandMoreIcon /> More Info
+                            <ExpandMoreIcon />
+                            {selectedLanguage === "en"
+                              ? "More Info"
+                              : "สิ่งที่เราทำ"}
                           </span>
                         )}
                       </p>
@@ -342,7 +348,9 @@ function ImageDesktop() {
                         onMouseEnter={() => handleMouseEnter3(index)}
                         onMouseLeave={() => handleMouseLeave3(index)}
                       >
-                        More Detail
+                        {selectedLanguage === "en"
+                          ? "More Detail"
+                          : "รายละเอียดเพิ่มเติม"}
                         <EastIcon style={iconStyle3[index]}></EastIcon>
                       </p>
                     </Link>
@@ -897,6 +905,9 @@ function ImageMobile() {
     }
   };
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       {tags.map((tagsData, index) => (
@@ -938,12 +949,15 @@ function ImageMobile() {
                   >
                     {openStates[index] ? (
                       <span style={{ float: "right" }}>
-                        {" "}
-                        Hide Info <ExpandLessIcon />
+                        {selectedLanguage === "en" ? "Hide Info" : "ซ่อนข้อมูล"}{" "}
+                        <ExpandLessIcon />
                       </span> // Move the arrow to the right
                     ) : (
                       <span style={{ float: "right" }}>
-                        <ExpandMoreIcon /> More Info
+                        <ExpandMoreIcon />{" "}
+                        {selectedLanguage === "en"
+                          ? "More Info"
+                          : "ข้อมูลเพิ่มเติม"}{" "}
                       </span> // Move the arrow to the right
                     )}
                   </p>
@@ -984,7 +998,9 @@ function ImageMobile() {
                       },
                     }}
                   >
-                    More Detail
+                    {selectedLanguage === "en"
+                      ? "More Detail"
+                      : "รายละเอียดเพิ่มเติม"}
                     <EastIcon className="ms-4" style={iconStyle}></EastIcon>
                   </p>
                 </Link>

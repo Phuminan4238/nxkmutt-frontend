@@ -174,7 +174,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en" ? "News" : "News_TH"}
+                    {selectedLanguage === "en" ? "News" : "ข่าวสาร"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -190,7 +190,7 @@ const ImageDesktop = () => {
                     >
                       &
                     </span>{" "}
-                    {selectedLanguage === "en" ? "Activity" : "Activity_TH"}
+                    {selectedLanguage === "en" ? "Activity" : "และกิจกรรม"}
                   </p>
 
                   <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
@@ -388,6 +388,9 @@ const ImageMobile = () => {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
@@ -438,7 +441,7 @@ const ImageMobile = () => {
                     className="font-black text-uppercase mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    News
+                    {selectedLanguage === "en" ? "  News" : "ข่าวสาร"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -454,14 +457,16 @@ const ImageMobile = () => {
                     >
                       &
                     </span>{" "}
-                    Activity
+                    {selectedLanguage === "en" ? "  Activity" : "และกิจกรรม"}
                   </p>
 
                   <div className="d-flex justify-content-between mt-auto xs:px-0 xs:pb-5 xs:pt-5 sm:pt-5 md:p-0">
                     <div className="input-group rounded">
                       <input
                         type="text"
-                        placeholder="Search"
+                        placeholder={
+                          selectedLanguage === "en" ? "Search" : "ค้นหา"
+                        }
                         value={searchTerm}
                         onChange={handleSearch}
                         onKeyDown={handleKeyDown}

@@ -106,7 +106,7 @@ function ImageDesktop({ member }) {
                 className="pe-4 xs:text-sm sm:text-lg"
                 style={textStyle}
               >
-                Read more
+                {selectedLanguage === "en" ? "     Read more" : "อ่านเพิ่มเติม"}
               </p>
               <EastIcon style={iconStyle} />
             </div>
@@ -212,7 +212,7 @@ function ImageMobile({ member }) {
                 className="pe-4 xs:text-sm sm:text-lg"
                 style={textStyle}
               >
-                Read more
+                {selectedLanguage === "en" ? "     Read more" : "อ่านเพิ่มเติม"}
               </p>
               <EastIcon style={iconStyle} />
             </div>
@@ -274,6 +274,9 @@ export default function News() {
   // Define the isMobile state using useMediaQuery
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   if (isHomePage) {
     // Don't render pagination on the home page
     return (
@@ -310,7 +313,9 @@ export default function News() {
                 className="pe-4 ps-1 xs:text-base sm:text-lg"
                 style={{ color: "#AE023E" }}
               >
-                More News & Activity
+                {selectedLanguage === "en"
+                  ? " More News & Activity"
+                  : "ข่าวสารและกิจกรรมเพิ่มเติม"}{" "}
               </h5>
               <EastIcon style={iconStyle}></EastIcon>
             </div>
@@ -339,8 +344,8 @@ export default function News() {
       <MDBRow onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <div className="d-inline-flex justify-center pt-4 pb-0 text-red">
           <ReactPaginate
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
+            previousLabel={selectedLanguage === "en" ? "Prev" : "ย้อนกลับ"}
+            nextLabel={selectedLanguage === "en" ? "Next" : "ถัดไป"}
             pageCount={pageCount}
             onPageChange={handlePageClick}
             containerClassName={"pagination"}
