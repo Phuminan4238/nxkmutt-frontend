@@ -102,8 +102,8 @@ function Home(props) {
 
   return (
     <>
-      {!isMobileWidth && <Preloader />}
-      <Preloader />
+      {/* {!isMobileWidth && <Preloader />} */}
+      {/* <Preloader /> */}
       <div className="App">
         {/* ******************/}
 
@@ -207,7 +207,7 @@ function Home(props) {
                       style={{ fontFamily: "MyFont" }}
                     >
                       {selectedLanguage === "en"
-                        ? "NEW & ACTIVITYS"
+                        ? "NEWS & ACTIVITY"
                         : "ข่าวสารและกิจกรรม"}
                     </p>
                   </div>
@@ -287,7 +287,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "International Collaborators"
-                        : "ผุ้ร่วมงานวิจัยนานาชาติ"}
+                        : "ผู้ร่วมงานวิจัยนานาชาติ"}
                     </p>
                   </div>
                 </MDBRow>

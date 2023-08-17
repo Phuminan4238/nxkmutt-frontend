@@ -269,7 +269,7 @@ function ImageDesktop({ members }) {
                     color="secondary"
                     onClick={handleNext}
                   >
-                    LOAD MORE
+                    {selectedLanguage === "en" ? "LOAD MORE" : "เพิ่มเติม"}
                   </MDBBtn>
                 </div>
               </MDBCol>

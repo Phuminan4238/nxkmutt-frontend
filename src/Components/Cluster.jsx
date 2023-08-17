@@ -306,7 +306,7 @@ function ImageDesktop() {
                             <ExpandMoreIcon />
                             {selectedLanguage === "en"
                               ? "More Info"
-                              : "สิ่งที่เราทำ"}
+                              : "ข้อมูลเพิ่มเติม"}
                           </span>
                         )}
                       </p>
@@ -651,11 +651,17 @@ function ImageMobile2() {
                         {openStates[index] ? (
                           <span style={{ float: "right" }}>
                             {" "}
-                            Hide Info <ExpandLessIcon />
+                            {selectedLanguage === "en"
+                              ? "Hide Info"
+                              : "ซ่อนข้อมูล"}{" "}
+                            <ExpandLessIcon />
                           </span>
                         ) : (
                           <span style={{ float: "right" }}>
-                            <ExpandMoreIcon /> More Info
+                            <ExpandMoreIcon />
+                            {selectedLanguage === "en"
+                              ? "More Info"
+                              : "ข้อมูลเพิ่มเติม"}
                           </span>
                         )}
                       </p>
@@ -702,11 +708,10 @@ function ImageMobile2() {
                         onMouseEnter={() => handleMouseEnter3(index)}
                         onMouseLeave={() => handleMouseLeave3(index)}
                       >
-                        More Detail
-                        <EastIcon
-                          className="ms-4"
-                          style={iconStyle3[index]}
-                        ></EastIcon>
+                        {selectedLanguage === "en"
+                          ? "More Detail"
+                          : "รายละเอียดเพิ่มเติม"}
+                        <EastIcon className="ms-4" style={iconStyle}></EastIcon>
                       </p>
                     </Link>
                   </MDBCol>
