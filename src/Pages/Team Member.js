@@ -161,7 +161,7 @@ const Member = ({ imageUrl }) => {
                 >
                   {selectedLanguage === "en"
                     ? "Advisor & Collaborator"
-                    : "ที่ปรึกษาและผุ้ร่วมงานวิจัย"}
+                    : "ที่ปรึกษาและผู้ร่วมงานวิจัย"}
                 </p>
               </div>
               <Memberadvisor></Memberadvisor>
@@ -172,7 +172,7 @@ const Member = ({ imageUrl }) => {
                 >
                   {selectedLanguage === "en"
                     ? "International Collaborators"
-                    : "ผุ้ร่วมงานวิจัยนานาชาติ"}
+                    : "ผู้ร่วมงานวิจัยนานาชาติ"}
                 </p>
               </div>
               <Memberalumni></Memberalumni>

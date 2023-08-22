@@ -250,7 +250,7 @@ function Home(props) {
                     >
                       {selectedLanguage === "en"
                         ? "Advisors & Collaborators"
-                        : "ที่ปรึกษาและผุ้ร่วมงานวิจัย"}
+                        : "ที่ปรึกษาและผู้ร่วมงานวิจัย"}
                     </p>
                   </div>
                 </MDBRow>

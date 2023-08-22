@@ -282,10 +282,6 @@ function ImageDesktop({ title }) {
                     {selectedLanguage === "en"
                       ? `${uploadfiles.attributes?.bio_text_en || ""} `
                       : `${uploadfiles.attributes?.bio_text_th || ""} `}
-                    {
-                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                        .image_original.data[0]?.attributes.url
-                    }
                   </p>
                 </div>
               </MDBCol>

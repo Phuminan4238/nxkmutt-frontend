@@ -127,7 +127,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_job_and_internship"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -148,7 +148,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=study_participation"
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_study_participation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -169,7 +169,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=donation"
+            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_donation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
