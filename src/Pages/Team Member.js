@@ -150,7 +150,7 @@ const Member = ({ imageUrl }) => {
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {selectedLanguage === "en" ? "Member" : "สมาชิก"}
+                  {selectedLanguage === "en" ? "Members" : "สมาชิก"}
                 </p>
               </div>
               <Memberimage></Memberimage>
@@ -160,7 +160,7 @@ const Member = ({ imageUrl }) => {
                   style={{ fontFamily: "MyFont" }}
                 >
                   {selectedLanguage === "en"
-                    ? "Advisor & Collaborator"
+                    ? "Advisor & Collaborators"
                     : "ที่ปรึกษาและผู้ร่วมงานวิจัย"}
                 </p>
               </div>

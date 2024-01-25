@@ -127,7 +127,6 @@ function Post({ title }) {
                     borderRadius: "0px",
                   }}
                 >
-                  {/* image_mediium  */}
                   <MDBCardImage
                     className="rounded-4"
                     src={

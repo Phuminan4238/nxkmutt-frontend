@@ -101,8 +101,16 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
                     style={{ color: "#AE023E" }}
                   >
                     {selectedLanguage === "en"
-                      ? member.attributes.organization_en || "Not found"
-                      : member.attributes.organization_th || "ภาษาไทย"}
+                      ? member.attributes.email || "Not found"
+                      : member.attributes.email || "ภาษาไทย"}
+                  </p>
+                  <p
+                    className="fw-normal text-start text-sm md:text-sm"
+                    style={{ color: "#AE023E" }}
+                  >
+                    {selectedLanguage === "en"
+                      ? member.attributes.phone_number || "Not found"
+                      : member.attributes.email || "ภาษาไทย"}
                   </p>
                 </MDBCardBody>
               </Link>

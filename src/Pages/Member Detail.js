@@ -39,7 +39,6 @@ import { LanguageContext } from "../Components/LanguageContext";
 function ImageDesktop({ title }) {
   let { id } = useParams();
   const [uploadfiles, setUploadfiles] = useState([]);
-  // const [cvfiles, setCVfiles] = useState([]);
   const [publicationfiles, setPublicationfiles] = useState([]);
 
   useEffect(() => {
@@ -159,7 +158,7 @@ function ImageDesktop({ title }) {
                     style={{ color: "#AE023E" }}
                     className="xs:text-lg sm:text-xl"
                   >
-                    TEAM MEMBER
+                    TEAM MEMBERS
                   </span>
                 </Link>
               </MDBCol>
@@ -954,7 +953,7 @@ function ImageMobile({ title }) {
                     src={
                       "https://10.35.29.186" +
                         uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                          .image_original.data[0]?.attributes.url || "-"
+                          .image_square.data[0]?.attributes.url || "-"
                     }
                     position="top"
                     alt="..."

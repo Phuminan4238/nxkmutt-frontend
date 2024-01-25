@@ -26,10 +26,10 @@ import { useMediaQuery } from "react-responsive";
 import { LanguageContext } from "./LanguageContext";
 
 const pages = [
-  "TEAM MEMBER",
+  "TEAM MEMBERS",
   "RESEARCH",
   "PUBLICATIONS",
-  "TOOLS & SERVICE",
+  "TOOLS & SERVICES",
   "NEWS & ACTIVITIES",
   "CONTACT US",
   "PARTICIPATE & DONATE",
@@ -360,8 +360,8 @@ export default function HomeNav(props) {
                     {pages.map((page, index) => (
                       <Link
                         to={
-                          page === "TOOLS & SERVICE"
-                            ? "/tools-and-service"
+                          page === "TOOLS & SERVICES"
+                            ? "/Tools-and-Services"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -403,8 +403,8 @@ export default function HomeNav(props) {
                           <a
                             textAlign="center"
                             to={
-                              page === "TOOLS & SERVICE"
-                                ? "/tools-and-service"
+                              page === "TOOLS & SERVICES"
+                                ? "/Tools-and-Services"
                                 : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                             }
                             sx={{
@@ -462,13 +462,6 @@ export default function HomeNav(props) {
                       </Link>
                     </div>
                   </Typography>
-                  {/* 👇️ Anchor link
-              <a href="https://google.com" target="_blank" rel="noreferrer">
-                <img
-                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
-                  alt="example"
-                />
-              </a> */}
                 </Box>
                 <Box
                   sx={{
@@ -692,39 +685,6 @@ export default function HomeNav(props) {
                       />
                     </button>
                   </div>
-                  {/* <div className="searchBox" style={{ top: "12%" }}>
-                    <input
-                      className="searchInput"
-                      type="text"
-                      placeholder="Search..."
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      style={{ display: showSearchBox ? "block" : "none" }}
-                    />
-           
-                    <button
-                      className="searchButton"
-                      onClick={handleSearchIconClick}
-                      style={{
-                        position: showSearchBox ? "absolute" : "static",
-                        right: "3%",
-                      }}
-                    >
-                      <SearchIcon
-                        style={{
-                          color: "#AE023E",
-                          cursor: "pointer",
-                          transition: "color 0.3s ease-in-out",
-                        }}
-                      />
-                    </button>
-                  </div> */}
-                  {/* <span style={{ color: "#AE023E" }}>
-                    <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                    ></LanguageIcon>
-                    EN
-                  </span> */}
 
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
@@ -771,7 +731,7 @@ export default function HomeNav(props) {
                       <Link
                         to={
                           page === "TOOLS & SERVICE"
-                            ? "/tools-and-service"
+                            ? "/Tools-and-Service"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -814,7 +774,7 @@ export default function HomeNav(props) {
                             textAlign="center"
                             to={
                               page === "TOOLS & SERVICE"
-                                ? "/tools-and-service"
+                                ? "/Tools-and-Service"
                                 : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                             }
                             sx={{
@@ -872,13 +832,6 @@ export default function HomeNav(props) {
                       </Link>
                     </div>
                   </Typography>
-                  {/* 👇️ Anchor link
-              <a href="https://google.com" target="_blank" rel="noreferrer">
-                <img
-                  src="https://bobbyhadz.com/images/blog/react-prevent-page-refresh-on-form-submit/thumbnail.webp"
-                  alt="example"
-                />
-              </a> */}
                 </Box>
                 <Box
                   sx={{
@@ -924,40 +877,7 @@ export default function HomeNav(props) {
                       />
                     </button>
                   </div>
-                  {/* <div className="searchBox" style={{ top: "12%" }}>
-                    <input
-                      className="searchInput"
-                      type="text"
-                      placeholder="Search..."
-                      value={searchTerm}
-                      onChange={handleSearch}
-                      style={{ display: showSearchBox ? "block" : "none" }}
-                    />
-                 
-                    <button
-                      className="searchButton"
-                      onClick={handleSearchIconClick}
-                      style={{
-                        position: showSearchBox ? "absolute" : "static",
-                        right: "3%",
-                      }}
-                    >
-                      <SearchIcon
-                        style={{
-                          color: "#AE023E",
-                          cursor: "pointer",
-                          transition: "color 0.3s ease-in-out",
-                        }}
-                      />
-                    </button>
-                  </div> */}
-                  {/* <span>
-                    {" "}
-                    <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "0.5rem" }}
-                    ></LanguageIcon>
-                    <span style={{ color: "#AE023E" }}>EN</span>
-                  </span> */}
+
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
                       style={{ color: "#AE023E", marginRight: "1rem" }}
@@ -1041,7 +961,6 @@ export default function HomeNav(props) {
                                   color: "white",
                                 },
                               },
-                              // color: "inherit", // set link color to inherit to match parent
                             }}
                           >
                             {page}

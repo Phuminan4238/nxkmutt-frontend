@@ -21,7 +21,7 @@ function ImageDesktop({ title }) {
   let { id } = useParams();
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/events/${id}?`)
+    fetch(`https://10.2.14.173/api/events/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -30,7 +30,7 @@ function ImageDesktop({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    fetch("https://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
@@ -214,7 +214,7 @@ function ImageDesktop({ title }) {
                     }}
                   />
                 ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
+                  <p className="fw-normal text-md pt-3">wait fot content</p>
                 )}
               </MDBRow>
 
@@ -231,7 +231,7 @@ function ImageDesktop({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.35.29.186" +
+                  //   "https://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }
@@ -265,7 +265,7 @@ function ImageMobile({ title }) {
   let { id } = useParams();
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/events/${id}?`)
+    fetch(`https://10.2.14.173/api/events/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -274,7 +274,7 @@ function ImageMobile({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    fetch("https://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);

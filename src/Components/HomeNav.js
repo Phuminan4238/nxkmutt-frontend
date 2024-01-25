@@ -26,10 +26,10 @@ import { useMediaQuery } from "react-responsive";
 import { LanguageContext } from "./LanguageContext";
 
 const pages = [
-  "TEAM MEMBER",
+  "TEAM MEMBERS",
   "RESEARCH",
   "PUBLICATIONS",
-  "TOOLS & SERVICE",
+  "TOOLS & SERVICES",
   "NEWS & ACTIVITIES",
   "CONTACT US",
   "PARTICIPATE & DONATE",
@@ -357,7 +357,7 @@ export default function HomeNav(props) {
                       <Link
                         to={
                           page === "TOOLS & SERVICE"
-                            ? "/tools-and-service"
+                            ? "/Tools-and-Services"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -400,7 +400,7 @@ export default function HomeNav(props) {
                             textAlign="center"
                             to={
                               page === "TOOLS & SERVICE"
-                                ? "/tools-and-service"
+                                ? "/Tools-and-Services"
                                 : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                             }
                             sx={{
@@ -419,7 +419,6 @@ export default function HomeNav(props) {
               </Toolbar>
             </Container>
           </AppBar>
-          {/* </Container> */}
         </HideOnScroll>
       </React.Fragment>
     );
@@ -772,7 +771,7 @@ export default function HomeNav(props) {
                       <Link
                         to={
                           page === "TOOLS & SERVICE"
-                            ? "/tools-and-service"
+                            ? "/Tools-and-Service"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -815,7 +814,7 @@ export default function HomeNav(props) {
                             textAlign="center"
                             to={
                               page === "TOOLS & SERVICE"
-                                ? "/tools-and-service"
+                                ? "/Tools-and-Service"
                                 : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                             }
                             sx={{

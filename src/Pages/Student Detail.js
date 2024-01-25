@@ -258,8 +258,8 @@ function ImageDesktop({ title }) {
                     position="top"
                     alt="..."
                     style={{
-                      height: "380px",
-                      width: "300px",
+                      // maxHeight: "300px",
+                      width: "100%",
                       objectFit: "initial",
                       borderRadius: "0px",
                       alignSelf: "center",
@@ -379,8 +379,8 @@ function ImageDesktop({ title }) {
                           position="top"
                           alt="..."
                           style={{
-                            height: "380px",
-                            width: "300px",
+                            // maxHeight: "300px",
+                            width: "100%",
                             objectFit: "initial",
                             borderRadius: "0px",
                             alignSelf: "center",
@@ -396,6 +396,8 @@ function ImageDesktop({ title }) {
     </div>
   );
 }
+
+// image_square
 
 function ImageMobile({ title }) {
   let { id } = useParams();

@@ -24,7 +24,7 @@ function ImageDesktop({ title }) {
   console.log(id);
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/contents/${id}?`)
+    fetch(`https://10.2.14.173/api/contents/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -33,7 +33,7 @@ function ImageDesktop({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    fetch("https://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
@@ -217,7 +217,7 @@ function ImageDesktop({ title }) {
                     }}
                   />
                 ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
+                  <p className="fw-normal text-md pt-3">wait for content</p>
                 )}
               </MDBRow>
 

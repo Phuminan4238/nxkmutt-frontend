@@ -42,13 +42,13 @@ function App() {
             <Route path="/Search/:term" element={<Searchresult />} />
             <Route path="/" element={<Home />} />
             <Route
-              path="/Team-Member"
-              element={<Member title="TEAM MEMBER" />}
+              path="/Team-Members"
+              element={<Member title="TEAM MEMBERS" />}
             />
             <Route path="/Research" element={<Research />} />
             <Route path="/Publications" element={<Publications />} />
             {/* <Route path="/Tools-Service" element={<Toolservice />} /> */}
-            <Route path="/Tools-and-Service" element={<Toolservice />} />
+            <Route path="/Tools-and-Services" element={<Toolservice />} />
             <Route path="/News-and-Activities" element={<Newsactivities />} />
             <Route path="/Contact-Us" element={<Contactus />} />
             <Route path="/Participate-and-Donate" element={<Participate />} />

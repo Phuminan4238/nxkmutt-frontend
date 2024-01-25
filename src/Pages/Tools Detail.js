@@ -26,7 +26,7 @@ function ImageDesktop({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/tools/${id}?populate=uploadfiles.fileupload`
+        `https://10.2.14.173/api/tools/${id}?populate=uploadfiles.fileupload`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -38,7 +38,7 @@ function ImageDesktop({ title }) {
 
   useEffect(() => {
     axios
-      .get("https://10.35.29.186/api/publications?populate=id")
+      .get("https://10.2.14.173/api/publications?populate=id")
       .then((response) => {
         setPublicationfiles(response.data.data);
       })
@@ -50,7 +50,7 @@ function ImageDesktop({ title }) {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -217,7 +217,23 @@ function ImageDesktop({ title }) {
                   className="fw-bold text-uppercase ps-2 pt-4"
                   style={{ color: "#A02040", fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.content_en || "Wait for Content"}
+                  {uploadfiles.attributes?.content_en ? (
+                    <p
+                      className="fw-normal text-md"
+                      style={{
+                        wordBreak: "break-word",
+                        maxWidth: "80%",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          selectedLanguage === "en"
+                            ? uploadfiles.attributes.content_en
+                            : uploadfiles.attributes.content_th,
+                      }}
+                    />
+                  ) : (
+                    "Wait for Content"
+                  )}
                 </h5>
               </MDBRow>
               <MDBRow className="pt-0 pb-0">

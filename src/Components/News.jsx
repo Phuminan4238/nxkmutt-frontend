@@ -56,7 +56,15 @@ function ImageDesktop({ member }) {
             rippleColor="light"
           >
             {" "}
-            <img src={new1} className="w-100" alt="" />
+            <img
+              src={
+                "https://10.2.14.173" +
+                member.attributes.uploadfiles.data[0]?.attributes.fileupload
+                  .data[0]?.attributes.url
+              }
+              className="w-100"
+              alt=""
+            />
             <a href="#!">
               <div
                 className="mask"
@@ -261,7 +269,7 @@ export default function News() {
   }
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/events?populate=id")
+    fetch("https://10.2.14.173/api/events?populate=uploadfiles.fileupload")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -297,6 +305,7 @@ export default function News() {
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
           style={colStyle}
+          className="pt-4"
         >
           <Link
             to={`/news-and-activities`}
@@ -314,7 +323,7 @@ export default function News() {
                 style={{ color: "#AE023E" }}
               >
                 {selectedLanguage === "en"
-                  ? " More News & Activity"
+                  ? " More News & Activities"
                   : "ข่าวสารและกิจกรรมเพิ่มเติม"}{" "}
               </h5>
               <EastIcon style={iconStyle}></EastIcon>

@@ -103,7 +103,7 @@ function Home(props) {
   return (
     <>
       {!isMobileWidth && <Preloader />}
-      <Preloader />
+      {/* <Preloader />  */}
       <div className="App">
         {/* ******************/}
 
@@ -207,7 +207,7 @@ function Home(props) {
                       style={{ fontFamily: "MyFont" }}
                     >
                       {selectedLanguage === "en"
-                        ? "NEWS & ACTIVITY"
+                        ? "NEWS & ACTIVITIES"
                         : "ข่าวสารและกิจกรรม"}
                     </p>
                   </div>

@@ -23,8 +23,8 @@ function ImageDesktop() {
 
   const topics = [
     "cognitive_clinical_and_computational_neuroscience",
-    "educational_neuroscience_and_neurodevelopment",
     "human_factors_research_and_decision_neuroscience",
+    "educational_neuroscience_and_neurodevelopment",
     "pharmaceutical_biology_and_neuropharmacology",
   ];
 
@@ -379,8 +379,8 @@ function ImageMobile2() {
 
   const topics = [
     "cognitive_clinical_and_computational_neuroscience",
-    "educational_neuroscience_and_neurodevelopment",
     "human_factors_research_and_decision_neuroscience",
+    "educational_neuroscience_and_neurodevelopment",
     "pharmaceutical_biology_and_neuropharmacology",
   ];
 
@@ -711,7 +711,11 @@ function ImageMobile2() {
                         {selectedLanguage === "en"
                           ? "More Detail"
                           : "รายละเอียดเพิ่มเติม"}
-                        <EastIcon className="ms-4" style={iconStyle}></EastIcon>
+                        {/* <EastIcon className="ms-4" style={iconStyle}></EastIcon> */}
+                        <EastIcon
+                          className="ms-4"
+                          style={iconStyle3[index]}
+                        ></EastIcon>
                       </p>
                     </Link>
                   </MDBCol>

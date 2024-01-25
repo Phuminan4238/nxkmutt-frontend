@@ -155,7 +155,7 @@ const ImageDesktop = () => {
                     style={{ fontFamily: "FontMedium" }}
                   >
                     {selectedLanguage === "en"
-                      ? "TOOLS & SERVICES"
+                      ? "SERVICES"
                       : "อุปกรณ์และงานบริการ"}
                   </p>
                 </div>

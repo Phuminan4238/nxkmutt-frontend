@@ -30,7 +30,9 @@ const Searchresult = () => {
     },
     member: {
       en: "name_en",
+      en: "surname_en",
       th: "name_th",
+      th: "surname_th",
     },
     event: {
       en: "name_en",
@@ -64,7 +66,7 @@ const Searchresult = () => {
   useEffect(() => {
     const determineSearchTermLanguage = () => {
       // Check if the search term contains Thai characters
-      const thaiPattern = new RegExp("[ก-๙]");
+      const thaiPattern = new RegExp("[ก-๙\\s]");
       if (thaiPattern.test(term)) {
         setSearchTermLanguage("th");
       } else {
@@ -78,7 +80,7 @@ const Searchresult = () => {
 
     const fetchSearchResults = async () => {
       try {
-        const encodedTerm = encodeURIComponent(term);
+        const encodedTerm = term.trim().replaceAll(" ", "%20");
 
         let resultLanguage = "name_en"; // Default language is English
         if (searchTermLanguage === "th") {
@@ -87,28 +89,28 @@ const Searchresult = () => {
 
         // Fetch publication results
         const publicationResponse = await fetch(
-          `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[$or][0][title_en][$contains]=${encodedTerm}&filters[$or][1][title_th][$contains]=${encodedTerm}`
+          `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[$or][0][title_en][$contains]=${encodedTerm}&filters[$or][1][title_th][$contains]=${encodedTerm}`
         );
         const publicationData = await publicationResponse.json();
         setSearchResults(publicationData.data);
 
         // Fetch member results
         const memberResponse = await fetch(
-          `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}&filters[$or][2][surname_en][$contains]=${encodedTerm}&filters[$or][3][surname_th][$contains]=${encodedTerm}`
+          `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}&filters[$or][2][surname_en][$contains]=${encodedTerm}&filters[$or][3][surname_th][$contains]=${encodedTerm}`
         );
         const memberData = await memberResponse.json();
         setMemberResults(memberData.data);
 
         // Fetch event results
         const eventResponse = await fetch(
-          `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
+          `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const eventData = await eventResponse.json();
         setEventResults(eventData.data);
 
         // Fetch tool results
         const toolResponse = await fetch(
-          `https://10.35.29.186/api/tools?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
+          `https://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const toolData = await toolResponse.json();
         setToolResults(toolData.data);
@@ -241,7 +243,7 @@ const Searchresult = () => {
                         <li key={result.id}>
                           {/* Display the relevant data from the member results */}
                           <a
-                            href={`https://10.35.29.186/Member-Detail/${result.id}`}
+                            href={`https://10.2.14.173/Member-Detail/${result.id}`}
                           >
                             {result.attributes[resultLanguage]}{" "}
                             {result.attributes[surnameLanguage]}
@@ -271,7 +273,7 @@ const Searchresult = () => {
                           {/* Display the relevant data from the event results */}
                           {/* <a href={result.attributes.url}> */}
                           <a
-                            href={`https://10.35.29.186/News-Detail/${result.id}`}
+                            href={`https://10.2.14.173/News-Detail/${result.id}`}
                           >
                             {/* {selectedLanguage === "en"
                               ? `${result.attributes.name_en}`
@@ -302,7 +304,7 @@ const Searchresult = () => {
                         <li key={result.id}>
                           {/* Display the relevant data from the tool results */}
                           <a
-                            href={`https://10.35.29.186/Tools-Detail/${result.id}`}
+                            href={`https://10.2.14.173/Tools-Detail/${result.id}`}
                           >
                             {result.attributes[resultLanguage]}
                           </a>
@@ -320,35 +322,6 @@ const Searchresult = () => {
                   )}
                 </div>
               </MDBCol>
-              {/* <MDBCol className="d-flex pb-0 pe-5">
-              <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
-                <MDBRow>
-                  <h4 className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-xl md:text-2xl">
-                    E-mail
-                  </h4>
-                  <p className="text-black pt-2 xs:text-base md:text-lg">
-                    nx.kmutt.@gmail.com
-                  </p>
-                </MDBRow>
-                <MDBRow className="pt-4">
-                  <h4 className="fw-bold text-black xs:text-xl md:text-2xl">
-                    Phone
-                  </h4>
-                  <p className=" text-black pt-2 xs:text-base md:text-lg ">
-                    0123456789
-                  </p>
-                </MDBRow>
-                <MDBRow className="pt-4">
-                  <h4 className="fw-bold text-black">Location</h4>
-                  <p className=" text-black pe-5 pt-2 xs:text-base md:text-lg">
-                    Neuroscience Center for Research and Innovation (NX),
-                    Learning Institute King Mongkut's University of Technology
-                    Thonburi (KMUTT) 126 Pracha Uthit Rd,
-                    <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
-                  </p>
-                </MDBRow>
-              </div>
-            </MDBCol> */}
             </MDBRow>
           </MDBContainer>
         </section>

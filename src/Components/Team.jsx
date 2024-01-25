@@ -51,7 +51,6 @@ function ImageDesktop() {
     const order1 = isFirstColumn ? (isFront ? 2 : 1) : isFront ? 1 : 2;
     const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
-    // image_square
     const imgSrc =
       "https://10.35.29.186" +
       member.attributes.uploadfiles.data[0]?.attributes.image_original.data[0]
@@ -118,8 +117,8 @@ function ImageDesktop() {
                     }}
                   >
                     {selectedLanguage === "en"
-                      ? `${member.attributes.name_en} ${member.attributes.surname_en}`
-                      : `${member.attributes.name_th} ${member.attributes.surname_th}`}
+                      ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                      : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
                     <div
                       style={{
                         display: "flex",
@@ -244,13 +243,12 @@ function ImageMobile({ members }) {
                         window.location.replace(`/Member-Detail/${member.id}`);
                       }}
                     >
-                      {/* image_sauqre */}
                       <MDBCardImage
                         className="rounded-0"
                         src={
                           "https://10.35.29.186" +
                           member.attributes.uploadfiles.data[0]?.attributes
-                            .image_original.data[0]?.attributes.url
+                            .image_square.data[0]?.attributes.url
                         }
                         position="top"
                         alt="..."
