@@ -136,7 +136,7 @@ export default function HomeNav(props) {
   const fetchPublicationResults = async () => {
     try {
       const publicationResponse = await fetch(
-        `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+        `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -151,7 +151,7 @@ export default function HomeNav(props) {
   const fetchMemberResults = async () => {
     try {
       const memberResponse = await fetch(
-        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
+        `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[$or][1][surname_en][$contains]=${encodeURIComponent(
           searchTerm
@@ -168,7 +168,7 @@ export default function HomeNav(props) {
   const fetchEventResults = async () => {
     try {
       const eventResponse = await fetch(
-        `https://10.35.29.186/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -183,7 +183,7 @@ export default function HomeNav(props) {
   const fetchToolResults = async () => {
     try {
       const toolResponse = await fetch(
-        `https://10.35.29.186/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `https://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );

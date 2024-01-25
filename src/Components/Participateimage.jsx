@@ -114,7 +114,7 @@ function ImageDesktop({ members }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+          "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -134,7 +134,7 @@ function ImageDesktop({ members }) {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+            "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -234,7 +234,7 @@ function ImageDesktop({ members }) {
                       borderRadius: "8px",
                     }}
                     imageUrl={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url
                     }
@@ -302,7 +302,7 @@ function ImageMobile({ members }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+          "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -442,7 +442,7 @@ function ImageMobile({ members }) {
                         borderRadius: "8px",
                       }}
                       imageUrl={
-                        "https://10.35.29.186" +
+                        "https://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url
                       }
@@ -536,7 +536,7 @@ function ImageMobile({ members }) {
 //     const fetchData = async () => {
 //       try {
 //         const response = await axios.get(
-//           "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+//           "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
 //         );
 //         if (isMounted) {
 //           setUploadfiles(response.data.data);
@@ -556,7 +556,7 @@ function ImageMobile({ members }) {
 //       const fetchData = async () => {
 //         try {
 //           const response = await axios.get(
-//             "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+//             "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
 //           );
 //           const data = response.data.data;
 //           if (data && data.length > 0) {
@@ -656,7 +656,7 @@ function ImageMobile({ members }) {
 //                       borderRadius: "8px",
 //                     }}
 //                     imageUrl={
-//                       "https://10.35.29.186" +
+//                       "https://10.2.14.173" +
 //                       member.attributes.uploadfiles.data[0]?.attributes
 //                         .fileupload.data[0]?.attributes.url
 //                     }

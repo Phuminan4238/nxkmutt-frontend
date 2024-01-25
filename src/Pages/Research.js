@@ -15,7 +15,7 @@ const Research = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=research_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=research_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -126,7 +126,7 @@ const Research = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />

@@ -111,7 +111,7 @@ export default function News() {
   }
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/events?populate=id")
+    fetch("https://10.2.14.173/api/events?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -248,7 +248,7 @@ export default function News() {
 //   };
 
 //   useEffect(() => {
-//     fetch("https://10.35.29.186/api/events?populate=id")
+//     fetch("https://10.2.14.173/api/events?populate=id")
 //       .then((res) => res.json())
 //       .then((result) => {
 //         setUploadfiles(result.data);

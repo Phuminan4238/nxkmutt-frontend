@@ -16,7 +16,7 @@ const Tags = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/tags?populate=id ")
+    fetch("https://10.2.14.173/api/tags?populate=id ")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -24,14 +24,14 @@ const Tags = () => {
   });
 
   // useEffect(() => {
-  //   fetch("http://10.35.29.186:1337/api/memberss?populate=id ")
+  //   fetch("http://10.2.14.173:1337/api/memberss?populate=id ")
   //     .then((res) => res.json())
   //     .then((result) => {
   //       setUploadfiles(result.data);
   //     });
   // });
 
-  //   http://10.35.29.186:1337/api/members/
+  //   http://10.2.14.173:1337/api/members/
 
   return (
     <div className="App" style={{ borderTop: "1px solid black" }}>
@@ -43,7 +43,7 @@ const Tags = () => {
                 <MDBCardImage
                   variant="top"
                   // src={
-                  //   "http://10.35.29.186:1337" +
+                  //   "http://10.2.14.173:1337" +
                   //   uploadfile.attributes.fileupload.data[0].attributes.url
                   //   // uploadfile.attributes.filetype
                   // }
@@ -70,7 +70,7 @@ const Tags = () => {
                 class="image-fluid"
                 id="cluster-img"
                 // src={
-                //   "http://10.35.29.186:1337" +
+                //   "http://10.2.14.173:1337" +
                 //   uploadfile.attributes.fileupload.data[0].attributes.url
                 // }
               />

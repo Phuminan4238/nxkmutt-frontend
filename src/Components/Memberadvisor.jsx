@@ -24,7 +24,7 @@ function Post() {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -77,7 +77,7 @@ function Post() {
                   <MDBCardImage
                     className="rounded-4"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url
                     }
@@ -136,7 +136,7 @@ function Image({ members }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -192,7 +192,7 @@ function Image({ members }) {
                   <MDBCardImage
                     className="rounded-4 w-75 sm:w-100"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url
                     }
@@ -406,7 +406,7 @@ export default function Team() {
 //   const [memberfiles, setMemberfiles] = useState([]);
 
 //   useEffect(() => {
-//     fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+//     fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
 //       .then((res) => res.json())
 //       .then((result) => {
 //         setMemberfiles(result.data);
@@ -435,7 +435,7 @@ export default function Team() {
 //           <MDBCol md="6" className="p-0">
 //             <img
 //               src={
-//                 "https://10.35.29.186" +
+//                 "https://10.2.14.173" +
 //                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
 //                   .data[0]?.attributes.url
 //               }
@@ -508,7 +508,7 @@ export default function Team() {
 //   const [memberfiles, setMemberfiles] = useState([]);
 
 //   useEffect(() => {
-//     fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+//     fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
 //       .then((res) => res.json())
 //       .then((result) => {
 //         setMemberfiles(result.data);
@@ -540,7 +540,7 @@ export default function Team() {
 //           >
 //             <img
 //               src={
-//                 "https://10.35.29.186" +
+//                 "https://10.2.14.173" +
 //                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
 //                   .data[0]?.attributes.url
 //               }

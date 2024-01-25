@@ -44,7 +44,7 @@ function Home(props) {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=who_we_are"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=who_we_are"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -68,7 +68,7 @@ function Home(props) {
     const fetchSearchResults = async () => {
       try {
         const response = await fetch(
-          `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+          `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
             searchTerm
           )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
         );

@@ -182,7 +182,7 @@ function ImageDesktop({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   src={
-                    "https://10.35.29.186" +
+                    "https://10.2.14.173" +
                       uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url || "-"
                   }
@@ -240,7 +240,7 @@ function ImageDesktop({ title }) {
                 {/* <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.35.29.186" +
+                  //   "https://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }
@@ -278,7 +278,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/tools/${id}?populate=uploadfiles.fileupload`
+        `https://10.2.14.173/api/tools/${id}?populate=uploadfiles.fileupload`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -290,7 +290,7 @@ function ImageMobile({ title }) {
 
   useEffect(() => {
     axios
-      .get("https://10.35.29.186/api/publications?populate=id")
+      .get("https://10.2.14.173/api/publications?populate=id")
       .then((response) => {
         setPublicationfiles(response.data.data);
       })
@@ -302,7 +302,7 @@ function ImageMobile({ title }) {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -434,7 +434,7 @@ function ImageMobile({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   src={
-                    "https://10.35.29.186" +
+                    "https://10.2.14.173" +
                       uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url || "-"
                   }
@@ -476,7 +476,7 @@ function ImageMobile({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.35.29.186" +
+                  //   "https://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }

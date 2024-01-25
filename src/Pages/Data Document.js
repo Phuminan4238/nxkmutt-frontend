@@ -36,7 +36,7 @@ const ImageDesktop = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=participate_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=participate_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -53,7 +53,7 @@ const ImageDesktop = () => {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -63,7 +63,7 @@ const ImageDesktop = () => {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+          "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
         );
         if (isMounted) {
           setUploadfilesMember(response.data.data);
@@ -106,7 +106,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+            "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -127,7 +127,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_job_and_internship"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_job_and_internship"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -148,7 +148,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_study_participation"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_study_participation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -169,7 +169,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=data_document_donation"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_donation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -190,7 +190,7 @@ const ImageDesktop = () => {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
+        `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -284,7 +284,7 @@ const ImageDesktop = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                     // src={image1}
@@ -305,7 +305,7 @@ const ImageDesktop = () => {
                   }}
                   id="cluster-img"
                   src={
-                    "https://10.35.29.186" +
+                    "https://10.2.14.173" +
                     member.attributes.fileupload.data[0]?.attributes.url
                   }
                 />
@@ -479,7 +479,7 @@ const ImageMobile = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=participate_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=participate_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -496,7 +496,7 @@ const ImageMobile = () => {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -506,7 +506,7 @@ const ImageMobile = () => {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+          "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
         );
         if (isMounted) {
           setUploadfilesMember(response.data.data);
@@ -549,7 +549,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/participations?populate=uploadfiles.fileupload"
+            "https://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -570,7 +570,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -591,7 +591,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=study_participation"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -612,7 +612,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contents?populate=*&filters[topic][$eq]=donation"
+            "https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=donation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -633,7 +633,7 @@ const ImageMobile = () => {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
+        `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -727,7 +727,7 @@ const ImageMobile = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                     // src={image1}
@@ -748,7 +748,7 @@ const ImageMobile = () => {
                   }}
                   id="cluster-img"
                   src={
-                    "https://10.35.29.186" +
+                    "https://10.2.14.173" +
                     member.attributes.fileupload.data[0]?.attributes.url
                   }
                 />

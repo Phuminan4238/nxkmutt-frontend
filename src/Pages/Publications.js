@@ -24,7 +24,7 @@ import { LanguageContext } from "../Components/LanguageContext";
 const Publications = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/members?populate=uploadfiles.fileupload")
+    fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -34,7 +34,7 @@ const Publications = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.35.29.186/api/uploadfiles?populate=fileupload&filters[filename][$eq]=publications_cover_image"
+      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=publications_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -107,7 +107,7 @@ const Publications = () => {
   const fetchPublicationResults = async () => {
     try {
       const publicationResponse = await fetch(
-        `https://10.35.29.186/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+        `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -276,7 +276,7 @@ const Publications = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />

@@ -33,7 +33,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+            "https://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {

@@ -40,7 +40,7 @@ function ImageDesktop({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
+        `https://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -55,7 +55,7 @@ function ImageDesktop({ title }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -251,7 +251,7 @@ function ImageDesktop({ title }) {
                   <MDBCardImage
                     className="rounded-4 h-fit"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                         uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url || "-"
                     }
@@ -372,7 +372,7 @@ function ImageDesktop({ title }) {
                         <MDBCardImage
                           className="rounded-4"
                           src={
-                            "https://10.35.29.186" +
+                            "https://10.2.14.173" +
                               member.attributes?.uploadfiles.data[0]?.attributes
                                 .fileupload.data[0]?.attributes.url || "-"
                           }
@@ -406,7 +406,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.35.29.186/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
+        `https://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -421,7 +421,7 @@ function ImageMobile({ title }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -546,7 +546,7 @@ function ImageMobile({ title }) {
                 <MDBCardImage
                   className="rounded-4 h-fit"
                   src={
-                    "https://10.35.29.186" +
+                    "https://10.2.14.173" +
                       uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url || "-"
                   }
@@ -629,7 +629,7 @@ function ImageMobile({ title }) {
                       <MDBCardImage
                         className="rounded-4"
                         src={
-                          "https://10.35.29.186" +
+                          "https://10.2.14.173" +
                             member.attributes?.uploadfiles.data[0]?.attributes
                               .fileupload.data[0]?.attributes.url || "-"
                         }

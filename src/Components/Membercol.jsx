@@ -58,7 +58,7 @@ const Team = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.35.29.186/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.imagesquare&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&&filters[usertype][$eq]=research_assistance&sort=sort"
+          "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.imagesquare&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&&filters[usertype][$eq]=research_assistance&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -83,7 +83,7 @@ const Team = () => {
         {uploadfiles.map((member, index) => (
           <TeamMemberImage
             key={index}
-            src={`https://10.35.29.186${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
+            src={`https://10.2.14.173${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
             index={index}
             total={uploadfiles.length}
             memberId={member.id} // Pass the member ID as a prop
@@ -104,7 +104,7 @@ function Image({ members, memberId }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -163,7 +163,7 @@ function Image({ members, memberId }) {
                     <MDBCardImage
                       className="rounded-4 w-75 sm:w-100"
                       src={
-                        "https://10.35.29.186" +
+                        "https://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url
                       }

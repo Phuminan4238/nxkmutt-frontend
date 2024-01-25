@@ -56,7 +56,7 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
               <MDBCardImage
                 className="rounded-4 w-25"
                 src={
-                  "https://10.35.29.186" +
+                  "https://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -109,8 +109,8 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
                     style={{ color: "#AE023E" }}
                   >
                     {selectedLanguage === "en"
-                      ? member.attributes.phone_number || "Not found"
-                      : member.attributes.email || "ภาษาไทย"}
+                      ? member.attributes.phone_number || ""
+                      : member.attributes.phone_number || ""}
                   </p>
                 </MDBCardBody>
               </Link>
@@ -148,7 +148,7 @@ const CardListMobile = ({ cards, staffData, selectedLanguage }) => {
               <MDBCardImage
                 className="rounded-4 w-25"
                 src={
-                  "https://10.35.29.186" +
+                  "https://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -215,7 +215,7 @@ export default function Student() {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.35.29.186/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+            "https://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {

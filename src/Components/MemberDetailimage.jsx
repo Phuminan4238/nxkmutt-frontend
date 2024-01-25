@@ -23,7 +23,7 @@ function Post({ title }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -58,7 +58,7 @@ function Post({ title }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -130,7 +130,7 @@ function Post({ title }) {
                   <MDBCardImage
                     className="rounded-4"
                     src={
-                      "https://10.35.29.186" +
+                      "https://10.2.14.173" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .image_original.data[0]?.attributes.url
                     }
@@ -211,7 +211,7 @@ function Image({ members }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.35.29.186/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -283,7 +283,7 @@ function Image({ members }) {
                     <MDBCardImage
                       className="rounded-4 w-75 sm:w-100"
                       src={
-                        "https://10.35.29.186" +
+                        "https://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .image_square.data[0]?.attributes.url
                       }

@@ -22,7 +22,7 @@ function PublicationsDetail({ title }) {
   const [tags, setTags] = useState({});
 
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/publications/${id}?`)
+    fetch(`https://10.2.14.173/api/publications/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -32,7 +32,7 @@ function PublicationsDetail({ title }) {
   const [publicationfiles, setPuplicataionfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    fetch("https://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
@@ -154,7 +154,7 @@ function PublicationsDetail({ title }) {
               <MDBCardImage
                 className="rounded-0"
                 // src={
-                //   "https://10.35.29.186" +
+                //   "https://10.2.14.173" +
                 //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                 //     .fileupload.data[0]?.attributes.url
                 // }
@@ -230,7 +230,7 @@ function PublicationsDetail({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.35.29.186" +
+                  //   "https://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }
@@ -270,7 +270,7 @@ function PublicationsDetail({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.35.29.186" +
+                  //   "https://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }

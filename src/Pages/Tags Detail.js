@@ -283,7 +283,7 @@ function ImageMobile({ title }) {
   console.log(id);
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.35.29.186/api/contents/${id}?`)
+    fetch(`https://10.2.14.173/api/contents/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -292,7 +292,7 @@ function ImageMobile({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.35.29.186/api/publications?populate=id")
+    fetch("https://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
