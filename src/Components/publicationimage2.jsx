@@ -19,7 +19,7 @@ function Menu() {
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/tags")
+    fetch("http://10.2.14.173/api/tags")
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data.slice(0, 4));
@@ -43,27 +43,27 @@ function Menu() {
       let endpoint = "";
 
       if (activeTag === -1) {
-        endpoint = "https://10.2.14.173/api/publications";
+        endpoint = "http://10.2.14.173/api/publications";
       } else {
         switch (activeTag) {
           case 0:
             endpoint =
-              "https://10.2.14.173/api/publications?filters[theme][key][$eq]=cognitive_clinical_and_computational_neuroscience";
+              "http://10.2.14.173/api/publications?filters[theme][key][$eq]=cognitive_clinical_and_computational_neuroscience";
             break;
           case 1:
             endpoint =
-              "https://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=human_factors_research_and_decision_neuroscience";
+              "http://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=human_factors_research_and_decision_neuroscience";
             break;
           case 2:
             endpoint =
-              "https://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=educational_neuroscience_and_neurodevelopment";
+              "http://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=educational_neuroscience_and_neurodevelopment";
             break;
           case 3:
             endpoint =
-              "https://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
+              "http://10.2.14.173/api/publications?populate=*&filters[theme][key][$eq]=pharmaceutical_biology_and_neuropharmacology";
             break;
           default:
-            endpoint = `https://10.2.14.173/api/publications?filters[theme][key][$eq]=${selectedTag}`;
+            endpoint = `http://10.2.14.173/api/publications?filters[theme][key][$eq]=${selectedTag}`;
             break;
         }
       }

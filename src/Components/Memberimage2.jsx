@@ -15,7 +15,7 @@ function Image() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
+    fetch("http://10.2.14.173/api/members?populate=uploadfiles.fileupload")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -54,7 +54,7 @@ function Image() {
               <img
                 className="rounded-0"
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -103,7 +103,7 @@ function Image() {
               <img
                 className="rounded-0"
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -158,7 +158,7 @@ function Image() {
               <img
                 className="rounded-0"
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -199,7 +199,7 @@ function Image() {
             <img
               className="rounded-0"
               src={
-                "https://10.2.14.173" +
+                "http://10.2.14.173" +
                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
                   .data[0]?.attributes.url
               }

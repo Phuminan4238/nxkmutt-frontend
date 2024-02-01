@@ -10,7 +10,6 @@ import Home from "./Pages/Home";
 import Member from "./Pages/Team Member";
 import Research from "./Pages/Research";
 import Publications from "./Pages/Publications";
-import Toolservice from "./Pages/Tools Service";
 import Newsactivities from "./Pages/News Activities";
 import Contactus from "./Pages/Contact Us";
 import DataDocument from "./Pages/Data Document";
@@ -23,6 +22,7 @@ import PublicationsDetail from "./Pages/Publication Detail";
 import Searchresult from "./Pages/Search";
 import Participate from "./Pages/Participate Donate";
 import ParticipateDetail from "./Pages/Participate Detail";
+import Toolservice from "./Pages/Tools Service";
 
 function App() {
   const location = useLocation();

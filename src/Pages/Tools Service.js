@@ -22,7 +22,7 @@ const ImageDesktop = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -139,7 +139,7 @@ const ImageDesktop = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />
@@ -247,7 +247,7 @@ const ImageMobile = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=tools_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -361,7 +361,7 @@ const ImageMobile = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />

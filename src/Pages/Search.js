@@ -89,28 +89,28 @@ const Searchresult = () => {
 
         // Fetch publication results
         const publicationResponse = await fetch(
-          `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[$or][0][title_en][$contains]=${encodedTerm}&filters[$or][1][title_th][$contains]=${encodedTerm}`
+          `http://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[$or][0][title_en][$contains]=${encodedTerm}&filters[$or][1][title_th][$contains]=${encodedTerm}`
         );
         const publicationData = await publicationResponse.json();
         setSearchResults(publicationData.data);
 
         // Fetch member results
         const memberResponse = await fetch(
-          `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}&filters[$or][2][surname_en][$contains]=${encodedTerm}&filters[$or][3][surname_th][$contains]=${encodedTerm}`
+          `http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}&filters[$or][2][surname_en][$contains]=${encodedTerm}&filters[$or][3][surname_th][$contains]=${encodedTerm}`
         );
         const memberData = await memberResponse.json();
         setMemberResults(memberData.data);
 
         // Fetch event results
         const eventResponse = await fetch(
-          `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
+          `http://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const eventData = await eventResponse.json();
         setEventResults(eventData.data);
 
         // Fetch tool results
         const toolResponse = await fetch(
-          `https://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
+          `http://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodedTerm}&filters[$or][1][name_th][$contains]=${encodedTerm}`
         );
         const toolData = await toolResponse.json();
         setToolResults(toolData.data);
@@ -243,7 +243,7 @@ const Searchresult = () => {
                         <li key={result.id}>
                           {/* Display the relevant data from the member results */}
                           <a
-                            href={`https://10.2.14.173/Member-Detail/${result.id}`}
+                            href={`http://10.2.14.173/Member-Detail/${result.id}`}
                           >
                             {result.attributes[resultLanguage]}{" "}
                             {result.attributes[surnameLanguage]}
@@ -273,7 +273,7 @@ const Searchresult = () => {
                           {/* Display the relevant data from the event results */}
                           {/* <a href={result.attributes.url}> */}
                           <a
-                            href={`https://10.2.14.173/News-Detail/${result.id}`}
+                            href={`http://10.2.14.173/News-Detail/${result.id}`}
                           >
                             {/* {selectedLanguage === "en"
                               ? `${result.attributes.name_en}`
@@ -304,7 +304,7 @@ const Searchresult = () => {
                         <li key={result.id}>
                           {/* Display the relevant data from the tool results */}
                           <a
-                            href={`https://10.2.14.173/Tools-Detail/${result.id}`}
+                            href={`http://10.2.14.173/Tools-Detail/${result.id}`}
                           >
                             {result.attributes[resultLanguage]}
                           </a>

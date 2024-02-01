@@ -24,7 +24,7 @@ function ImageDesktop({ title }) {
   console.log(id);
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.2.14.173/api/contents/${id}?`)
+    fetch(`http://10.2.14.173/api/contents/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -33,7 +33,7 @@ function ImageDesktop({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
@@ -283,7 +283,7 @@ function ImageMobile({ title }) {
   console.log(id);
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.2.14.173/api/contents/${id}?`)
+    fetch(`http://10.2.14.173/api/contents/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -292,7 +292,7 @@ function ImageMobile({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);

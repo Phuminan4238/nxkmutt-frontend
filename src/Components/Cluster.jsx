@@ -12,7 +12,7 @@ import { LanguageContext } from "./LanguageContext";
 function ImageDesktop() {
   const [tags, setTags] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/tags")
+    fetch("http://10.2.14.173/api/tags")
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data.slice(0, 4));
@@ -32,7 +32,7 @@ function ImageDesktop() {
     const fetchContents = async () => {
       const promises = topics.map((topic) =>
         fetch(
-          `https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=${topic}`
+          `http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=${topic}`
         ).then((res) => res.json())
       );
       const results = await Promise.all(promises);
@@ -45,7 +45,7 @@ function ImageDesktop() {
   const [cognitiveimg, setCognitiveimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -56,7 +56,7 @@ function ImageDesktop() {
   const [humanfactorimg, setHumanfactorimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -67,7 +67,7 @@ function ImageDesktop() {
   const [neurodevimg, setNeurodevimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -78,7 +78,7 @@ function ImageDesktop() {
   const [neuropharmaimg, setNeuropharmaimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -177,7 +177,7 @@ function ImageDesktop() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -196,7 +196,7 @@ function ImageDesktop() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -215,7 +215,7 @@ function ImageDesktop() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -234,7 +234,7 @@ function ImageDesktop() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -368,7 +368,7 @@ function ImageDesktop() {
 function ImageMobile2() {
   const [tags, setTags] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/tags")
+    fetch("http://10.2.14.173/api/tags")
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data.slice(0, 4));
@@ -388,7 +388,7 @@ function ImageMobile2() {
     const fetchContents = async () => {
       const promises = topics.map((topic) =>
         fetch(
-          `https://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=${topic}`
+          `http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=${topic}`
         ).then((res) => res.json())
       );
       const results = await Promise.all(promises);
@@ -401,7 +401,7 @@ function ImageMobile2() {
   const [cognitiveimg, setCognitiveimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -412,7 +412,7 @@ function ImageMobile2() {
   const [humanfactorimg, setHumanfactorimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -423,7 +423,7 @@ function ImageMobile2() {
   const [neurodevimg, setNeurodevimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -434,7 +434,7 @@ function ImageMobile2() {
   const [neuropharmaimg, setNeuropharmaimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -533,7 +533,7 @@ function ImageMobile2() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -552,7 +552,7 @@ function ImageMobile2() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -571,7 +571,7 @@ function ImageMobile2() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -590,7 +590,7 @@ function ImageMobile2() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -732,7 +732,7 @@ function ImageMobile2() {
 function ImageMobile() {
   const [tags, setTags] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/tags")
+    fetch("http://10.2.14.173/api/tags")
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data.slice(0, 4));
@@ -742,7 +742,7 @@ function ImageMobile() {
   const [cognitiveimg, setCognitiveimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_cognitive"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -753,7 +753,7 @@ function ImageMobile() {
   const [humanfactorimg, setHumanfactorimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_humanfactors"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -764,7 +764,7 @@ function ImageMobile() {
   const [neurodevimg, setNeurodevimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neurodevelopment"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -775,7 +775,7 @@ function ImageMobile() {
   const [neuropharmaimg, setNeuropharmaimg] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=public_neuropharmacology"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -845,7 +845,7 @@ function ImageMobile() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -864,7 +864,7 @@ function ImageMobile() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -883,7 +883,7 @@ function ImageMobile() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />
@@ -902,7 +902,7 @@ function ImageMobile() {
                   objectFit: "cover",
                 }}
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.fileupload.data[0]?.attributes.url
                 }
               />

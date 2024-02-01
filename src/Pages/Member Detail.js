@@ -44,7 +44,7 @@ function ImageDesktop({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
+        `http://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -57,7 +57,7 @@ function ImageDesktop({ title }) {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `https://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
+  //       `http://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
   //     )
   //     .then((response) => {
   //       setCVfiles(response.data.data);
@@ -70,7 +70,7 @@ function ImageDesktop({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.2.14.173/api/publications?populate=*&filters[owner][id][$eq]=${id}`
+        `http://10.2.14.173/api/publications?populate=*&filters[owner][id][$eq]=${id}`
       )
       .then((response) => {
         setPublicationfiles(response.data.data);
@@ -153,7 +153,7 @@ function ImageDesktop({ title }) {
                   // fontSize: "1.3rem",
                 }}
               >
-                <Link to="/Team-Member">
+                <Link to="/team-members">
                   <span
                     style={{ color: "#AE023E" }}
                     className="xs:text-lg sm:text-xl"
@@ -288,7 +288,7 @@ function ImageDesktop({ title }) {
                 <MDBCardImage
                   className="rounded-4"
                   src={
-                    "https://10.2.14.173" +
+                    "http://10.2.14.173" +
                       uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                         .image_original.data[0]?.attributes.url || "-"
                   }
@@ -326,7 +326,7 @@ function ImageDesktop({ title }) {
 
                 {uploadfiles.attributes?.cv_file?.data?.attributes ? (
                   <Link
-                    to={`https://10.2.14.173${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                    to={`http://10.2.14.173${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
                     target="_blank"
                     style={{ color: "black" }}
                   >
@@ -779,7 +779,7 @@ function ImageDesktop({ title }) {
                     style={{ color: "#AE023E", marginRight: "0.5rem" }}
                   ></EastIcon>
                   <Link
-                    to={`/team-member`}
+                    to={`/team-members`}
                     style={{ color: "#AE023E" }}
                     onClick={() => {
                       window.scrollTo(0, 0);
@@ -810,7 +810,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
+        `http://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort&populate=cv_file`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -823,7 +823,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `https://10.2.14.173/api/publications?populate=*&filters[owner][id][$eq]=${id}`
+        `http://10.2.14.173/api/publications?populate=*&filters[owner][id][$eq]=${id}`
       )
       .then((response) => {
         setPublicationfiles(response.data.data);
@@ -951,7 +951,7 @@ function ImageMobile({ title }) {
                   <MDBCardImage
                     className="rounded-4"
                     src={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                         uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                           .image_square.data[0]?.attributes.url || "-"
                     }
@@ -1065,7 +1065,7 @@ function ImageMobile({ title }) {
               </p>
               {uploadfiles.attributes?.cv_file?.data?.attributes ? (
                 <Link
-                  to={`https://10.2.14.173${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
+                  to={`http://10.2.14.173${uploadfiles.attributes?.cv_file.data?.attributes.url}`}
                   target="_blank"
                   style={{ color: "black" }}
                 >
@@ -1385,7 +1385,7 @@ function ImageMobile({ title }) {
                   }}
                 ></EastIcon>
                 <Link
-                  to={`/team-member`}
+                  to={`/Team-Member`}
                   style={{ color: "#AE023E" }}
                   onClick={() => {
                     window.scrollTo(0, 0);

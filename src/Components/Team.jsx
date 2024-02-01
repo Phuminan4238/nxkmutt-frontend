@@ -22,7 +22,7 @@ function ImageDesktop() {
 
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+      "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -52,7 +52,7 @@ function ImageDesktop() {
     const order2 = isFirstColumn ? (isFront ? 1 : 2) : isFront ? 2 : 1;
 
     const imgSrc =
-      "https://10.2.14.173" +
+      "http://10.2.14.173" +
       member.attributes.uploadfiles.data[0]?.attributes.image_original.data[0]
         ?.attributes.url;
 
@@ -185,7 +185,7 @@ function ImageMobile({ members }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "https://10.2.14.173/api/",
+      baseURL: "http://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -246,7 +246,7 @@ function ImageMobile({ members }) {
                       <MDBCardImage
                         className="rounded-0"
                         src={
-                          "https://10.2.14.173" +
+                          "http://10.2.14.173" +
                           member.attributes.uploadfiles.data[0]?.attributes
                             .image_square.data[0]?.attributes.url
                         }
@@ -474,7 +474,7 @@ export default function Team() {
 //   const [memberfiles, setMemberfiles] = useState([]);
 
 //   useEffect(() => {
-//     fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
+//     fetch("http://10.2.14.173/api/members?populate=uploadfiles.fileupload")
 //       .then((res) => res.json())
 //       .then((result) => {
 //         setMemberfiles(result.data);
@@ -503,7 +503,7 @@ export default function Team() {
 //           <MDBCol md="6" className="p-0">
 //             <img
 //               src={
-//                 "https://10.2.14.173" +
+//                 "http://10.2.14.173" +
 //                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
 //                   .data[0]?.attributes.url
 //               }
@@ -576,7 +576,7 @@ export default function Team() {
 //   const [memberfiles, setMemberfiles] = useState([]);
 
 //   useEffect(() => {
-//     fetch("https://10.2.14.173/api/members?populate=uploadfiles.fileupload")
+//     fetch("http://10.2.14.173/api/members?populate=uploadfiles.fileupload")
 //       .then((res) => res.json())
 //       .then((result) => {
 //         setMemberfiles(result.data);
@@ -608,7 +608,7 @@ export default function Team() {
 //           >
 //             <img
 //               src={
-//                 "https://10.2.14.173" +
+//                 "http://10.2.14.173" +
 //                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
 //                   .data[0]?.attributes.url
 //               }

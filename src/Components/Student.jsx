@@ -47,7 +47,7 @@ const ImageDesktop = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -72,7 +72,7 @@ const ImageDesktop = () => {
         {uploadfiles.map((member, index) => (
           <TeamMemberImage
             key={index}
-            src={`https://10.2.14.173${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
+            src={`http://10.2.14.173${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
             index={index}
             total={uploadfiles.length}
             memberId={member.id} // Pass the member ID as a prop
@@ -126,7 +126,7 @@ const ImageMobile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -150,7 +150,7 @@ const ImageMobile = () => {
       {uploadfiles.map((member, index) => (
         <TeamMemberImage2
           key={index}
-          src={`https://10.2.14.173${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
+          src={`http://10.2.14.173${member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]?.attributes.url}`}
           index={index}
           total={uploadfiles.length}
           memberId={member.id} // Pass the member ID as a prop
@@ -194,7 +194,7 @@ export default function Student() {
 //     let isMounted = true;
 
 //     const instance = axios.create({
-//       baseURL: "https://10.2.14.173/api/",
+//       baseURL: "http://10.2.14.173/api/",
 //       headers: {
 //         "Content-Type": "application/json",
 //         Accept: "application/json",

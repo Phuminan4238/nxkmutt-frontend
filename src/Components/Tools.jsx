@@ -110,7 +110,7 @@ function ImageDesktop({ members }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/tools?populate=uploadfiles.fileupload"
+          "http://10.2.14.173/api/tools?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -211,7 +211,7 @@ function ImageDesktop({ members }) {
                       borderRadius: "8px",
                     }}
                     imageUrl={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                       member.attributes.uploadfiles.data[0]?.attributes
                         .fileupload.data[0]?.attributes.url
                     }
@@ -309,7 +309,7 @@ function ImageMobile({ members }) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/tools?populate=uploadfiles.fileupload"
+          "http://10.2.14.173/api/tools?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -448,7 +448,7 @@ function ImageMobile({ members }) {
                         borderRadius: "8px",
                       }}
                       imageUrl={
-                        "https://10.2.14.173" +
+                        "http://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url
                       }
@@ -623,7 +623,7 @@ export default function ToolsImage() {
 //     let isMounted = true;
 
 //     const instance = axios.create({
-//       baseURL: "https://10.2.14.173/api/",
+//       baseURL: "http://10.2.14.173/api/",
 //       headers: {
 //         "Content-Type": "application/json",
 //         Accept: "application/json",

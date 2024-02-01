@@ -136,7 +136,7 @@ export default function HomeNav(props) {
   const fetchPublicationResults = async () => {
     try {
       const publicationResponse = await fetch(
-        `https://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/publications?populate=uploadfiles.fileupload&filters[title_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[title_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -151,7 +151,7 @@ export default function HomeNav(props) {
   const fetchMemberResults = async () => {
     try {
       const memberResponse = await fetch(
-        `https://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[$or][0][name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[$or][1][surname_en][$contains]=${encodeURIComponent(
           searchTerm
@@ -168,7 +168,7 @@ export default function HomeNav(props) {
   const fetchEventResults = async () => {
     try {
       const eventResponse = await fetch(
-        `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -183,7 +183,7 @@ export default function HomeNav(props) {
   const fetchToolResults = async () => {
     try {
       const toolResponse = await fetch(
-        `https://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/tools?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -361,7 +361,7 @@ export default function HomeNav(props) {
                       <Link
                         to={
                           page === "TOOLS & SERVICES"
-                            ? "/Tools-and-Services"
+                            ? "/tools-and-services"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -402,11 +402,15 @@ export default function HomeNav(props) {
                         >
                           <a
                             textAlign="center"
-                            to={
-                              page === "TOOLS & SERVICES"
-                                ? "/Tools-and-Services"
-                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                            }
+                            // to={
+                            //   page === "TOOLS & SERVICES"
+                            //     ? "/Tools-and-Services"
+                            //     : page === "NEWS & ACTIVITIES"
+                            //     ? "/news-and-activities"
+                            //     : page === "PARTICIPATE & DONATE"
+                            //     ? "/participate-and-donate"
+                            //     : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            // }
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
@@ -546,7 +550,15 @@ export default function HomeNav(props) {
                   >
                     {pages.map((page) => (
                       <Link
-                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                        to={
+                          page === "TOOLS & SERVICES"
+                            ? "/tools-and-services"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
                         style={{ color: "inherit" }}
                       >
                         <MenuItem
@@ -577,7 +589,7 @@ export default function HomeNav(props) {
                         >
                           <a
                             textAlign="center"
-                            to={`/${page}`}
+                            // to={`/${page}`}
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
@@ -730,8 +742,8 @@ export default function HomeNav(props) {
                     {pages.map((page, index) => (
                       <Link
                         to={
-                          page === "TOOLS & SERVICE"
-                            ? "/Tools-and-Service"
+                          page === "TOOLS & SERVICES"
+                            ? "/tools-and-services"
                             : page === "NEWS & ACTIVITIES"
                             ? "/news-and-activities"
                             : page === "PARTICIPATE & DONATE"
@@ -772,11 +784,15 @@ export default function HomeNav(props) {
                         >
                           <a
                             textAlign="center"
-                            to={
-                              page === "TOOLS & SERVICE"
-                                ? "/Tools-and-Service"
-                                : `/${page.replace(/\s+/g, "-").toLowerCase()}`
-                            }
+                            // to={
+                            //   page === "TOOLS & SERVICES"
+                            //     ? "/Tools-and-Services"
+                            //     : page === "NEWS & ACTIVITIES"
+                            //     ? "/news-and-activities"
+                            //     : page === "PARTICIPATE & DONATE"
+                            //     ? "/participate-and-donate"
+                            //     : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                            // }
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
@@ -920,7 +936,15 @@ export default function HomeNav(props) {
                   >
                     {pages.map((page) => (
                       <Link
-                        to={`/${page.replace(/\s+/g, "-").toLowerCase()}`}
+                        to={
+                          page === "TOOLS & SERVICES"
+                            ? "/tools-and-services"
+                            : page === "NEWS & ACTIVITIES"
+                            ? "/news-and-activities"
+                            : page === "PARTICIPATE & DONATE"
+                            ? "/participate-and-donate"
+                            : `/${page.replace(/\s+/g, "-").toLowerCase()}`
+                        }
                         style={{ color: "inherit" }}
                       >
                         <MenuItem
@@ -951,7 +975,7 @@ export default function HomeNav(props) {
                         >
                           <a
                             textAlign="center"
-                            to={`/${page}`}
+                            // to={`/${page}`}
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",

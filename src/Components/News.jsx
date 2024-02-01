@@ -58,7 +58,7 @@ function ImageDesktop({ member }) {
             {" "}
             <img
               src={
-                "https://10.2.14.173" +
+                "http://10.2.14.173" +
                 member.attributes.uploadfiles.data[0]?.attributes.fileupload
                   .data[0]?.attributes.url
               }
@@ -269,7 +269,7 @@ export default function News() {
   }
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/events?populate=uploadfiles.fileupload")
+    fetch("http://10.2.14.173/api/events?populate=uploadfiles.fileupload")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);

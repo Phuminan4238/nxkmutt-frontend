@@ -21,7 +21,7 @@ function ImageDesktop({ title }) {
   let { id } = useParams();
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.2.14.173/api/events/${id}?`)
+    fetch(`http://10.2.14.173/api/events/${id}?populate=uploadfiles.fileupload`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -30,7 +30,7 @@ function ImageDesktop({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);
@@ -169,7 +169,11 @@ function ImageDesktop({ title }) {
               <MDBCol md="5" className="p-0">
                 <MDBCardImage
                   className="rounded-0"
-                  src={news1}
+                  src={
+                    "http://10.2.14.173" +
+                      tags.attributes?.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url || "-"
+                  }
                   position="top"
                   alt="..."
                   // style={{
@@ -231,7 +235,7 @@ function ImageDesktop({ title }) {
                 <MDBCardImage
                   className="rounded-0"
                   // src={
-                  //   "https://10.2.14.173" +
+                  //   "http://10.2.14.173" +
                   //   uploadfiles.attributes?.uploadfiles.data[0]?.attributes
                   //     .fileupload.data[0]?.attributes.url
                   // }
@@ -265,7 +269,7 @@ function ImageMobile({ title }) {
   let { id } = useParams();
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`https://10.2.14.173/api/events/${id}?`)
+    fetch(`http://10.2.14.173/api/events/${id}?`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -274,7 +278,7 @@ function ImageMobile({ title }) {
 
   const [publicationfiles, setPuplicataionfiles] = useState([]);
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPuplicataionfiles(result.data);

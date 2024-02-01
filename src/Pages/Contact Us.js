@@ -33,7 +33,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+            "http://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -139,7 +139,7 @@ const ImageDesktop = () => {
                   class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
-                  src="https://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  src="http://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   scrolling="no"
                   marginheight="0"
                   marginwidth="0"
@@ -386,7 +386,7 @@ const ImageMobile = () => {
                   class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
-                  src="https://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                  src="http://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   scrolling="no"
                   marginheight="0"
                   marginwidth="0"

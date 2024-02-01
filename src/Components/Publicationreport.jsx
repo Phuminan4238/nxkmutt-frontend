@@ -18,7 +18,7 @@ function Report1() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
@@ -28,7 +28,7 @@ function Report1() {
   const [publications, setPublications] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setPublications(result.data);
@@ -130,7 +130,7 @@ function Report2() {
   const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
-    fetch("https://10.2.14.173/api/publications?populate=id")
+    fetch("http://10.2.14.173/api/publications?populate=id")
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);

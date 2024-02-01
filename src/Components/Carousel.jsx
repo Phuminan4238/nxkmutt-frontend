@@ -13,7 +13,7 @@ function ImageDesktop() {
     async function fetchCoverImages() {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=website_slider_cover_images"
+          "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=website_slider_cover_images"
         );
         setCoverImages(response.data.data[0]?.attributes.fileupload.data);
       } catch (error) {
@@ -68,7 +68,7 @@ function ImageDesktop() {
                 id="carousel-nav"
               >
                 <img
-                  src={`https://10.2.14.173${image.attributes.url}`}
+                  src={`http://10.2.14.173${image.attributes.url}`}
                   alt={`Cover Image ${image.id}`}
                   className="w-100 d-block xs:h-4/5 md:h-full object-cover"
                   // style={{ objectPosition: "50% -300%" }}
@@ -90,7 +90,7 @@ function ImageMobile({ members }) {
     async function fetchCoverImages() {
       try {
         const response = await axios.get(
-          "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=website_slider_cover_images"
+          "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=website_slider_cover_images"
         );
         setCoverImages(response.data.data[0]?.attributes.fileupload.data);
       } catch (error) {
@@ -138,7 +138,7 @@ function ImageMobile({ members }) {
               {coverImages.map((image) => (
                 <div key={image.id} className="w-100 d-block pb-5 md:h-100">
                   <img
-                    src={`https://10.2.14.173${image.attributes.url}`}
+                    src={`http://10.2.14.173${image.attributes.url}`}
                     alt={`Cover Image ${image.id}`}
                     className="w-100 d-block object-cover"
                     style={{ height: "250px" }}

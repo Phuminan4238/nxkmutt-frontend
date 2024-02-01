@@ -56,7 +56,7 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
               <MDBCardImage
                 className="rounded-4 w-25"
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -148,7 +148,7 @@ const CardListMobile = ({ cards, staffData, selectedLanguage }) => {
               <MDBCardImage
                 className="rounded-4 w-25"
                 src={
-                  "https://10.2.14.173" +
+                  "http://10.2.14.173" +
                   member.attributes.uploadfiles.data[0]?.attributes.fileupload
                     .data[0]?.attributes.url
                 }
@@ -215,7 +215,7 @@ export default function Student() {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "https://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+            "http://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
           );
           const data = response.data.data;
           if (data && data.length > 0) {

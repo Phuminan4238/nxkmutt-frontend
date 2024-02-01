@@ -20,7 +20,7 @@ const ImageDesktop = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
   useEffect(() => {
     axios
-      .get("https://10.2.14.173/api/contents?populate=id")
+      .get("http://10.2.14.173/api/contents?populate=id")
       .then((res) => {
         setUploadfiles(res.data.data);
       })
@@ -32,7 +32,7 @@ const ImageDesktop = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=news_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=news_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -81,7 +81,7 @@ const ImageDesktop = () => {
   const fetchEventResults = async () => {
     try {
       const eventResponse = await fetch(
-        `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -266,7 +266,7 @@ const ImageDesktop = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />
@@ -287,7 +287,7 @@ const ImageMobile = () => {
   const [uploadfiles, setUploadfiles] = useState([]);
   useEffect(() => {
     axios
-      .get("https://10.2.14.173/api/contents?populate=id")
+      .get("http://10.2.14.173/api/contents?populate=id")
       .then((res) => {
         setUploadfiles(res.data.data);
       })
@@ -299,7 +299,7 @@ const ImageMobile = () => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=news_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=news_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -348,7 +348,7 @@ const ImageMobile = () => {
   const fetchEventResults = async () => {
     try {
       const eventResponse = await fetch(
-        `https://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
+        `http://10.2.14.173/api/events?populate=uploadfiles.fileupload&filters[name_en][$contains]=${encodeURIComponent(
           searchTerm
         )}&filters[name_th][$contains]=${encodeURIComponent(searchTerm)}`
       );
@@ -535,7 +535,7 @@ const ImageMobile = () => {
                     }}
                     id="cluster-img"
                     src={
-                      "https://10.2.14.173" +
+                      "http://10.2.14.173" +
                       member.attributes.fileupload.data[0]?.attributes.url
                     }
                   />

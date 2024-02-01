@@ -24,7 +24,7 @@ const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "https://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=member_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=member_cover_image"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -130,7 +130,7 @@ const Member = ({ imageUrl }) => {
                     height: "320px",
                   }}
                   src={
-                    "https://10.2.14.173" +
+                    "http://10.2.14.173" +
                     memberCover[0]?.attributes.fileupload.data[0]?.attributes
                       .url
                   }
