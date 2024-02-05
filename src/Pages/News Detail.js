@@ -186,7 +186,7 @@ function ImageDesktop({ title }) {
                   style={{
                     //   height: "350px",
                     // width: "100%",
-                    height: "300px",
+                    height: "auto",
                     objectFit: "initial",
                     borderRadius: "0px",
                     alignSelf: "center",

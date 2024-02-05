@@ -187,8 +187,8 @@ function ImageDesktop({ title }) {
                   position="top"
                   alt="..."
                   style={{
-                    height: "300px",
-                    width: "300px",
+                    height: "auto",
+                    // width: "300px",
                     // height: "400px",
                     objectFit: "fill",
                     // height: "500px",

@@ -56,73 +56,105 @@ function Post() {
   const { selectedLanguage, handleLanguageSwitch } =
     useContext(LanguageContext);
 
+  const renderMemberColumn = (member) => (
+    <MDBCol
+      md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
+      key={member.id}
+      className="col-md-2 d-flex flex-column grow "
+    >
+      <MDBCard
+        className="pt-4"
+        style={{
+          boxShadow: "unset",
+          borderRadius: "0px",
+        }}
+      >
+        <MDBCardImage
+          className="rounded-4"
+          src={
+            "http://10.2.14.173" +
+            member.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
+              ?.attributes.url
+          }
+          position="top"
+          alt="..."
+          style={{
+            objectFit: "cover",
+            borderRadius: "0px",
+            alignSelf: "center",
+            objectPosition: "50% 15%",
+          }}
+        />
+        <MDBCardBody className="px-0">
+          <MDBCardTitle className="m-0 pt-2">
+            <p
+              className="fw-bold text-center mb-0 xs:text-md md:text-md"
+              style={{ color: "black", fontFamily: "MyFont" }}
+            >
+              {selectedLanguage === "en"
+                ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
+            </p>
+          </MDBCardTitle>
+
+          <MDBCardText>
+            <h6
+              className="fw-light text-center"
+              style={{ color: "#AE023E", paddingTop: "1rem" }}
+            >
+              {selectedLanguage === "en"
+                ? `${member.attributes.position_en} `
+                : `${member.attributes.position_th}`}
+            </h6>
+          </MDBCardText>
+        </MDBCardBody>
+      </MDBCard>
+    </MDBCol>
+  );
+
+  const renderEmptyColumn = (index) => (
+    <MDBCol
+      md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
+      key={`empty_${index}`}
+      className="col-md-2 d-flex flex-column grow "
+    >
+      {/* Render your empty column UI here */}
+    </MDBCol>
+  );
+
+  const renderRow = (startIndex) => (
+    <MDBRow key={`row_${startIndex}`} className="p-0 w-fill">
+      {Array.from({ length: 5 }, (_, colIndex) => {
+        const memberIndex = startIndex + colIndex;
+        const member = uploadfiles[memberIndex];
+        return member
+          ? renderMemberColumn(member)
+          : renderEmptyColumn(colIndex);
+      })}
+    </MDBRow>
+  );
+
+  const renderRows = () => {
+    const totalMembers = uploadfiles.length;
+    const rows = Math.ceil(totalMembers / 5);
+    const emptyColumnsCount = rows * 5 - totalMembers;
+
+    return Array.from({ length: rows }, (_, rowIndex) => {
+      const startIndex = rowIndex * 5;
+      return renderRow(startIndex);
+    }).concat(
+      // Add additional rows with empty columns if needed
+      Array.from({ length: emptyColumnsCount }, (_, rowIndex) => {
+        const startIndex = rows * 5 + rowIndex;
+        return renderRow(startIndex);
+      })
+    );
+  };
+
   return (
     <div className="d-flex justify-content-between pb-4" id="tools-flex">
       <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
-        <MDBRow>
-          {uploadfiles.map((member, index) => (
-            <React.Fragment key={member.id}>
-              <MDBCol
-                md={Math.floor(12 / Math.min(uploadfiles.length, 5))}
-                key={member.id}
-                className="col-md-2 d-flex flex-column grow "
-              >
-                <MDBCard
-                  className="pt-4"
-                  style={{
-                    boxShadow: "unset",
-                    borderRadius: "0px",
-                  }}
-                >
-                  <MDBCardImage
-                    className="rounded-4"
-                    src={
-                      "http://10.2.14.173" +
-                      member.attributes.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url
-                    }
-                    position="top"
-                    alt="..."
-                    style={{
-                      // height: "340px",
-                      objectFit: "cover",
-                      borderRadius: "0px",
-                      alignSelf: "center",
-                      objectPosition: "50% 15%",
-                      // objectPosition: "top",
-                    }}
-                  />
-                  <MDBCardBody className="px-0">
-                    <MDBCardTitle className="m-0 pt-2">
-                      <p
-                        className="fw-bold text-center mb-0 xs:text-md md:text-md"
-                        style={{ color: "black", fontFamily: "MyFont" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
-                          : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
-                      </p>
-                    </MDBCardTitle>
-
-                    <MDBCardText>
-                      <h6
-                        className="fw-light text-center"
-                        style={{ color: "#AE023E", paddingTop: "1rem" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? `${member.attributes.position_en} `
-                          : `${member.attributes.position_th}`}
-                      </h6>
-                    </MDBCardText>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              {(index + 1) % 5 === 0 && index + 1 !== uploadfiles.length && (
-                <div className="w-100"></div>
-              )}
-            </React.Fragment>
-          ))}
-        </MDBRow>
+        {renderRows()}
       </MDBContainer>
     </div>
   );
@@ -136,7 +168,7 @@ function Image({ members }) {
     let isMounted = true;
 
     const instance = axios.create({
-      baseURL: "http://10.2.14.173/api/",
+      baseURL: "https://10.2.14.173/api/",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -198,7 +230,7 @@ function Image({ members }) {
                     <MDBCardImage
                       className="rounded-4 w-75 sm:w-100"
                       src={
-                        "http://10.2.14.173" +
+                        "https://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
                           .fileupload.data[0]?.attributes.url
                       }

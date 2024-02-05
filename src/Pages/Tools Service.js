@@ -154,9 +154,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en"
-                      ? "SERVICES"
-                      : "อุปกรณ์และงานบริการ"}
+                    {selectedLanguage === "en" ? "TOOLS" : "อุปกรณ์"}
                   </p>
                 </div>
               </MDBCol>
@@ -181,7 +179,7 @@ const ImageDesktop = () => {
                     className="font-black text-uppercase xs:text-xl md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    {selectedLanguage === "en" ? "Service" : "งานบริการ"}
+                    {selectedLanguage === "en" ? "Services" : "งานบริการ"}
                   </p>
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
@@ -224,7 +222,7 @@ const ImageDesktop = () => {
                       >
                         {selectedLanguage === "en"
                           ? "   Coursework and workshop"
-                          : "   Coursework and workshop_TH"}
+                          : "   Coursework and workshop"}
                       </p>
                       <p className="xs:text-sm md:text-md">
                         {selectedLanguage === "en"
