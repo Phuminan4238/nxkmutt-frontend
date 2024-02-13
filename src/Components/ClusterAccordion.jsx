@@ -22,8 +22,8 @@ function ImageDesktop() {
   const [contents, setContents] = useState([]);
   const topics = [
     "cognitive_clinical_and_computational_neuroscience",
-    "educational_neuroscience_and_neurodevelopment",
     "human_factors_research_and_decision_neuroscience",
+    "educational_neuroscience_and_neurodevelopment",
     "pharmaceutical_biology_and_neuropharmacology",
   ];
 
