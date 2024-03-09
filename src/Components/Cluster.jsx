@@ -512,7 +512,6 @@ function ImageMobile2() {
   const handleMouseLeave2 = () => {
     setIsHovered(false);
   };
-  3;
   const colStyle = {
     marginLeft: isHovered ? "12px" : "0px",
     transition: "margin-right 0.3s ease-out",
