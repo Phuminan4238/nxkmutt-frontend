@@ -221,6 +221,9 @@ function Image({ members }) {
     };
   }, [uploadfiles]);
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <>
       <div
@@ -296,8 +299,14 @@ function Image({ members }) {
                             className="fw-normal text-center text-xs md:text-lg"
                             style={{ color: "#AE023E" }}
                           >
-                            Main Interest, Main <br></br> Interest, Main
-                            Interest
+                            {/* Handle  */}
+                            {member.attributes.tags?.data.map((tag, index) => (
+                              <li key={index}>
+                                {selectedLanguage === "en"
+                                  ? tag.attributes.name_en
+                                  : tag.attributes.name_th}
+                              </li>
+                            ))}
                           </p>
                         </MDBCardText>
                       </MDBCardBody>

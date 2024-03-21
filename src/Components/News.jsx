@@ -172,7 +172,15 @@ function ImageMobile({ member }) {
             rippleColor="light"
           >
             {" "}
-            <img src={new1} className="w-100" alt="" />
+            <img
+              src={
+                "http://10.2.14.173" +
+                member.attributes.uploadfiles.data[0]?.attributes.fileupload
+                  .data[0]?.attributes.url
+              }
+              className="w-100"
+              alt=""
+            />
             <a href="#!">
               <div
                 className="mask"
