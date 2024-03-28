@@ -907,7 +907,7 @@ const ImageMobile = () => {
                           {/* // Member  */}
                           {member.attributes?.content_en ? (
                             <p
-                              className="fw-normal text-md"
+                              className="fw-normal text-sm"
                               style={{
                                 wordBreak: "break-word",
                                 // maxWidth: "80%",

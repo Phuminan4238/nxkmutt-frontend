@@ -134,7 +134,7 @@ function ImageDesktop({ title }) {
               <MDBCol className="col-md-8 col-12 text-uppercase fw-bold pt-1 sm:pb-0">
                 <span
                   className="text-uppercase fw-bold xs:text-lg sm:text-xl"
-                  style={{ fontFamily: "FontMedium", fontSize: "1.3rem" }}
+                  style={{ fontFamily: "FontMedium" }}
                 >
                   {selectedLanguage === "en"
                     ? `${tags.attributes?.name_en || ""} 
@@ -151,7 +151,7 @@ function ImageDesktop({ title }) {
               <MDBCol className="d-flex ps-0 pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
                   <p
-                    className="fw-bolder pt-4 xs:text-xl sm:text-4xl"
+                    className="fw-bolder pt-4 xs:text-xl sm:text-2xl"
                     style={{
                       color: "#AE023E",
                       fontFamily: "MyFont",
@@ -184,9 +184,9 @@ function ImageDesktop({ title }) {
                   //   alignSelf: "center",
                   // }}
                   style={{
-                    //   height: "350px",
-                    // width: "100%",
-                    height: "auto",
+                    maxHeight: "300px",
+                    width: "100%",
+                    // height: "auto",
                     objectFit: "initial",
                     borderRadius: "0px",
                     alignSelf: "center",
@@ -222,7 +222,7 @@ function ImageDesktop({ title }) {
                 )}
               </MDBRow>
 
-              {/*  Grants */}
+              {/* Grants */}
               {/* <MDBRow>
                 <h5
                   className="fw-bold text-uppercase ps-2 pt-4"
@@ -269,7 +269,7 @@ function ImageMobile({ title }) {
   let { id } = useParams();
   const [tags, setTags] = useState({});
   useEffect(() => {
-    fetch(`http://10.2.14.173/api/events/${id}?`)
+    fetch(`http://10.2.14.173/api/events/${id}?populate=uploadfiles.fileupload`)
       .then((res) => res.json())
       .then((result) => {
         setTags(result.data);
@@ -376,9 +376,9 @@ function ImageMobile({ title }) {
                   ></KeyboardArrowRightIcon>
                 </span>
               </MDBCol>
-              <MDBCol className="col-md-8 col-12 text-uppercase fw-bold pt-1 sm:pb-0">
+              <MDBCol className="col-md-8 text-uppercase fw-bold pt-1 sm:pb-0">
                 <span
-                  className="text-uppercase fw-bold xs:text-md sm:text-xl"
+                  className="text-uppercase fw-bold xs:text-sm sm:text-xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
                   {selectedLanguage === "en"
@@ -410,7 +410,11 @@ function ImageMobile({ title }) {
               <MDBCol md="5" className="p-0 pe-5">
                 <MDBCardImage
                   className="rounded-0"
-                  src={news1}
+                  src={
+                    "http://10.2.14.173" +
+                      tags.attributes?.uploadfiles.data[0]?.attributes
+                        .fileupload.data[0]?.attributes.url || "-"
+                  }
                   position="top"
                   alt="..."
                   // style={{
@@ -423,6 +427,7 @@ function ImageMobile({ title }) {
                   style={{
                     //   height: "350px",
                     // width: "100%",
+                    width: "300px",
                     height: "200px",
                     objectFit: "initial",
                     borderRadius: "0px",
@@ -455,19 +460,19 @@ function ImageMobile({ title }) {
                     }}
                   />
                 ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
+                  <p className="fw-normal text-md pt-3">wait for content</p>
                 )}
               </MDBRow>
 
               {/*  Grants */}
-              <MDBRow>
+              {/* <MDBRow>
                 <p
                   className="fw-bold text-uppercase ps-2 pt-4"
                   style={{ color: "#A02040" }}
                 >
-                  <p>Wait for Title</p>
+                  <p>Wait for content</p>
                 </p>
-              </MDBRow>
+              </MDBRow> */}
             </MDBRow>
           </MDBContainer>
         </section>

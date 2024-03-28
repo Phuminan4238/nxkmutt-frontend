@@ -282,14 +282,14 @@ function ImageMobile({ members }) {
                           : `${member.attributes.position_th}`}
                       </p>
                     </MDBCardText>
-                    <MDBCardText key={member.attributes}>
+                    {/* <MDBCardText key={member.attributes}>
                       <p
                         className="fw-normal text-center text-xs md:text-lg"
                         style={{ color: "#AE023E" }}
                       >
                         Main Interest, Main <br></br> Interest, Main Interest
                       </p>
-                    </MDBCardText>
+                    </MDBCardText> */}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>

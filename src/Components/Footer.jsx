@@ -155,7 +155,8 @@ function FooterMobile() {
                   <div className="col-5 col-md-2 p-2 ps-0"></div>
                 </div>
                 <div className="d-flex flex-row mt-3 text-white">
-                  Neuroscience Center for Research and Innovation
+                  King Mongkut's University of Technology Thonburi (KMUTT) 126
+                  Pracha Uthit Rd, Bang Mod, Thung Khru, Bangkok 10140, Thailand
                 </div>
               </MDBCol>
             </MDBRow>

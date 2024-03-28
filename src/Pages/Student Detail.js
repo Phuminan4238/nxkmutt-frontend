@@ -316,13 +316,17 @@ function ImageDesktop({ title }) {
                       `
                             : `${member.attributes?.nickname_th || ""} 
                       `}
-                          <span>)</span>
+                          )
                         </p>
                         <p
                           className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                           style={{ fontFamily: "MyFont" }}
                         >
-                          {member.attributes?.surname_en || "-"}
+                          {selectedLanguage === "en"
+                            ? `${member.attributes?.surname_en || ""} 
+                      `
+                            : `${member.attributes?.surname_th || ""} 
+                      `}
                         </p>
                         {/* <h3
                         className="fw-normal text-normal pt-2 mb-1"
@@ -351,9 +355,9 @@ function ImageDesktop({ title }) {
                           <p
                             className="fw-normal text-md pt-3"
                             style={{
-                              wordWrap: "break-word",
-                              wordBreak: "break-word",
-                              maxWidth: "90%",
+                              // overflowWrap: "break-word", // This property allows long words to be broken and wrap onto the next line
+                              wordBreak: "break-all", // This property allows long words to be broken at any point
+                              maxWidth: "90%", // Adjust this value as needed
                             }}
                             dangerouslySetInnerHTML={{
                               __html:
@@ -576,6 +580,7 @@ function ImageMobile({ title }) {
                     (
                   </span>
                   {uploadfiles.attributes?.nickname_en}
+
                   <span>)</span>
                 </p>
                 <p
