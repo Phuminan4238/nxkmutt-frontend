@@ -427,8 +427,8 @@ function ImageMobile({ title }) {
                   style={{
                     //   height: "350px",
                     // width: "100%",
-                    width: "300px",
-                    height: "200px",
+                    width: "auto",
+                    height: "250px",
                     objectFit: "initial",
                     borderRadius: "0px",
                     alignSelf: "center",
