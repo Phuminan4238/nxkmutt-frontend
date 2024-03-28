@@ -393,7 +393,7 @@ function ImageMobile({ title }) {
           {/* Container  */}
           <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-              <MDBCol className="d-flex ps-0 pb-0 pe-5">
+              <MDBCol className="d-flex ps-0 pb-0 ps-5">
                 <div className="d-flex flex-column w-100">
                   <p
                     className="fw-bolder pt-4 xs:text-lg sm:text-4xl"
@@ -407,7 +407,7 @@ function ImageMobile({ title }) {
                   </p>
                 </div>
               </MDBCol>
-              <MDBCol md="5" className="p-0 pe-5">
+              <MDBCol md="5" className="p-0 ps-5">
                 <MDBCardImage
                   className="rounded-0"
                   src={
@@ -441,12 +441,12 @@ function ImageMobile({ title }) {
         </section>
         <section>
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
-            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <MDBRow className="pt-4 pb-0 xs:px-6 sm:px-5 md:px-0">
               {/* Current Affiliations */}
-              <MDBRow className="pt-4">
-                {tags.attributes?.content_en_markdown ? (
+              <MDBRow className="pt-4 px-4">
+                {tags.attributes?.content_en ? (
                   <p
-                    className="fw-normal text-md pt-3"
+                    className="fw-normal text-sm pt-3"
                     style={{
                       wordWrap: "break-word",
                       wordBreak: "break-word",
@@ -455,8 +455,8 @@ function ImageMobile({ title }) {
                     dangerouslySetInnerHTML={{
                       __html:
                         selectedLanguage === "en"
-                          ? tags.attributes.content_en_markdown
-                          : tags.attributes.content_th_markdown,
+                          ? tags.attributes.content_en
+                          : tags.attributes.content_th,
                     }}
                   />
                 ) : (
