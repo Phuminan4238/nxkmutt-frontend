@@ -87,8 +87,12 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
                   </MDBCardTitle>
                   <MDBCardText className="mb-2">
                     <p
-                      className=" text-start mb-0 text-xs md:text-lg pt-2"
-                      style={{ color: "black" }}
+                      className=" text-start mb-0 text-xs md:text-md pt-2"
+                      style={{
+                        color: "black",
+                        fontSize: "1rem",
+                        lineHeight: "1.4rem",
+                      }}
                     >
                       {selectedLanguage === "en"
                         ? `${member.attributes.position_en} `
@@ -97,7 +101,7 @@ const CardList = ({ cards, staffData, selectedLanguage }) => {
                   </MDBCardText>
 
                   <p
-                    className="fw-normal text-start text-sm md:text-sm"
+                    className="fw-normal text-start text-md"
                     style={{ color: "#AE023E" }}
                   >
                     {selectedLanguage === "en"

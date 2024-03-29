@@ -145,7 +145,7 @@ const ImageDesktop = () => {
                   marginwidth="0"
                 ></iframe>
               </MDBCol>
-              <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-5">
+              <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-0">
                 <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
                   <MDBRow>
                     <h4
@@ -205,15 +205,18 @@ const ImageDesktop = () => {
                       `}
                     </h4>
                     <p
-                      className="text-black pt-2 xs:text-base md:text-md"
-                      style={{ fontFamily: "FontLight" }}
-                    >
-                      {selectedLanguage === "en"
-                        ? `${locationData?.content_en || ""} 
-                          `
-                        : `${locationData?.content_th || ""} 
-                          `}
-                    </p>
+                      className="text-black pt-2 xs:text-base md:text-md "
+                      style={{
+                        fontFamily: "FontLight",
+                        marginBottom: "0.6rem",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          selectedLanguage === "en"
+                            ? locationData?.content_markdown_en || ""
+                            : locationData?.content_markdown_th || "",
+                      }}
+                    ></p>
                   </MDBRow>
                 </div>
               </MDBCol>

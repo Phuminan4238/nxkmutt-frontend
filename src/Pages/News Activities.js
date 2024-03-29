@@ -254,7 +254,6 @@ const ImageDesktop = () => {
                   </div>
                 </div>
               </MDBCol>
-              =
             </MDBRow>
             <MDBRow className="pt-0 pb-5 xs:px-4 sm:px-5 md:px-0">
               <News></News>
