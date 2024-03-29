@@ -277,7 +277,9 @@ export default function News() {
   }
 
   useEffect(() => {
-    fetch("http://10.2.14.173/api/events?populate=uploadfiles.fileupload")
+    fetch(
+      "http://10.2.14.173/api/events?populate=uploadfiles.fileupload&sort=sort:desc"
+    )
       .then((res) => res.json())
       .then((result) => {
         setUploadfiles(result.data);
