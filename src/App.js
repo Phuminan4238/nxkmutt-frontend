@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { useState, useEffect, setIsLoaded, useContext } from "react";
 import { useLocation } from "react-router";
 import { Container } from "@mui/system";
 import HomeNav from "./Components/HomeNav";
@@ -26,6 +27,26 @@ import Toolservice from "./Pages/Tools Service";
 
 function App() {
   const location = useLocation();
+  // Utility function to convert a string to camel case with spaces
+  const toCamelCaseWithSpaces = (str) => {
+    return str.replace(
+      /-([a-z])/g,
+      (match, letter) => " " + letter.toUpperCase()
+    );
+  };
+
+  useEffect(() => {
+    // Set default title for home page
+    if (location.pathname === "/") {
+      document.title =
+        "Neuroscience Center for Research and Innovation (NX) at King Mongkut's University of Technology Thonburi";
+    } else {
+      // For other pages, set title based on the path name in camel case with spaces
+      const title = toCamelCaseWithSpaces(location.pathname.slice(1));
+      document.title = title.charAt(0).toUpperCase() + title.slice(1);
+    }
+  }, [location.pathname]);
+
   const nav = location.pathname === "/" ? <HomeNav /> : <AllNav />;
 
   return (
@@ -41,10 +62,7 @@ function App() {
             <Route path="/Search" element={<Searchresult />} />
             <Route path="/Search/:term" element={<Searchresult />} />
             <Route path="/" element={<Home />} />
-            <Route
-              path="/Team-Members"
-              element={<Member title="TEAM MEMBERS" />}
-            />
+            <Route path="/Team-Members" element={<Member />} />
             <Route path="/Research" element={<Research />} />
             <Route path="/Publications" element={<Publications />} />
             {/* <Route path="/Tools-Service" element={<Toolservice />} /> */}
