@@ -127,7 +127,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_job_and_internship"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -148,7 +148,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_study_participation"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -455,7 +455,7 @@ const ImageDesktop = () => {
                                 __html:
                                   selectedLanguage === "en"
                                     ? member.attributes.content_en
-                                    : member.attributes.content_thb,
+                                    : member.attributes.content_th,
                               }}
                             />
                           ) : (

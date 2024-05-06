@@ -391,9 +391,9 @@ function ImageMobile({ title }) {
             </MDBRow>
           </MDBContainer>
           {/* Container  */}
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-              <MDBCol className="d-flex ps-0 pb-0 ps-5">
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-4 sm:px-1">
+            <MDBRow className="pt-0 pb-0 xs:px-4 sm:px-1">
+              <MDBCol className="d-flex ps-0 pb-0 ps-3">
                 <div className="d-flex flex-column w-100">
                   <p
                     className="fw-bolder pt-4 xs:text-lg sm:text-4xl"
@@ -407,7 +407,7 @@ function ImageMobile({ title }) {
                   </p>
                 </div>
               </MDBCol>
-              <MDBCol md="5" className="p-0 ps-5">
+              <MDBCol md="5" className="p-0 px-3">
                 <MDBCardImage
                   className="rounded-0"
                   src={
@@ -427,7 +427,7 @@ function ImageMobile({ title }) {
                   style={{
                     //   height: "350px",
                     // width: "100%",
-                    width: "auto",
+                    width: "inherit",
                     height: "250px",
                     objectFit: "initial",
                     borderRadius: "0px",
@@ -441,9 +441,9 @@ function ImageMobile({ title }) {
         </section>
         <section>
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
-            <MDBRow className="pt-4 pb-0 xs:px-6 sm:px-5 md:px-0">
+            <MDBRow className="pt-4 pb-0 xs:px-6 sm:px-4 md:px-0">
               {/* Current Affiliations */}
-              <MDBRow className="pt-4 px-4">
+              <MDBRow className="pt-4 px-3">
                 {tags.attributes?.content_en ? (
                   <p
                     className="fw-normal text-sm pt-3"

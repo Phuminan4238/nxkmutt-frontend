@@ -192,8 +192,11 @@ function ImageDesktop({ title }) {
                     className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {uploadfiles.attributes?.name_en || "-"}
-                    {/* <span>&nbsp</span> */}
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.name_en || ""} 
+                      `
+                      : `${uploadfiles.attributes?.name_th || ""} 
+                      `}
                     <span
                       style={{
                         paddingLeft: "0.5rem",
