@@ -881,7 +881,6 @@ const ImageMobile = () => {
                     </MDBRow> */}
                   </MDBRow>
                 ))}
-
                 {uploadfilesDonation.map((member) => (
                   <MDBRow>
                     <MDBRow className="xs:px-5 sm:px-5 md:px-0 pt-4">

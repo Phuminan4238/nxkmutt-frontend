@@ -185,7 +185,7 @@ function ImageDesktop({ title }) {
                   // }}
                   style={{
                     maxHeight: "300px",
-                    width: "100%",
+                    // width: "100%",
                     // height: "auto",
                     objectFit: "initial",
                     borderRadius: "0px",
@@ -391,12 +391,12 @@ function ImageMobile({ title }) {
             </MDBRow>
           </MDBContainer>
           {/* Container  */}
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-4 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-4 sm:px-1">
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-4 sm:px-5">
+            <MDBRow className="pt-0 pb-0 xs:px-4 sm:px-5">
               <MDBCol className="d-flex ps-0 pb-0 ps-3">
                 <div className="d-flex flex-column w-100">
                   <p
-                    className="fw-bolder pt-4 xs:text-lg sm:text-4xl"
+                    className="fw-bolder pt-4 xs:text-lg sm:text-2xl"
                     style={{
                       color: "#AE023E",
                       fontFamily: "MyFont",
@@ -427,7 +427,7 @@ function ImageMobile({ title }) {
                   style={{
                     //   height: "350px",
                     // width: "100%",
-                    width: "inherit",
+                    width: "fit-content",
                     height: "250px",
                     objectFit: "initial",
                     borderRadius: "0px",
