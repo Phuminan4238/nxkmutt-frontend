@@ -106,7 +106,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/participations?populate=uploadfiles.fileupload"
+            "http://10.2.14.173/api/participations?populate=uploadfiles.fileupload2"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -127,7 +127,7 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship2"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -148,11 +148,32 @@ const ImageDesktop = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation2"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
             setUploadfilesStudy(data);
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=donation"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            setUploadfilesDonation(data);
           }
           setHasDataFetched(true);
         } catch (error) {
@@ -570,7 +591,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=job_and_internship2"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -591,7 +612,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=study_participation2"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -612,7 +633,7 @@ const ImageMobile = () => {
       const fetchData = async () => {
         try {
           const response = await axios.get(
-            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=donation"
+            "http://10.2.14.173/api/contents?populate=*&filters[topic][$eq]=data_document_donation"
           );
           const data = response.data.data;
           if (data && data.length > 0) {
@@ -852,7 +873,7 @@ const ImageMobile = () => {
                           )}
                         </MDBCol>
                       </MDBRow>
-                      <Participateimage></Participateimage>
+                      {/* <Participateimage></Participateimage> */}
                     </MDBCol>
 
                     {/* <MDBRow className="xs:px-5 sm:px-5 md:px-0 pb-4">
@@ -898,7 +919,7 @@ const ImageMobile = () => {
                                 __html:
                                   selectedLanguage === "en"
                                     ? member.attributes.content_en
-                                    : member.attributes.content_thb,
+                                    : member.attributes.content_th,
                               }}
                             />
                           ) : (
