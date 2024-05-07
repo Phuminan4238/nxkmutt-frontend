@@ -10,7 +10,6 @@ import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
 import Contactlab from "../Components/Contactlab";
 import Contactsocial from "../Components/Contactsocial";
 import Contactadministration from "../Components/Contactadministration";
-import DataDocument from "./Data Document";
 // Lotties
 import Lottie from "react-lottie-player";
 import Animation from "../Components/Animation.json";
@@ -26,6 +25,7 @@ const ImageDesktop = () => {
   const [phoneData, setPhoneData] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [staffData, setStaffData] = useState([]);
+  const [socialMediaData, setSocialMediaData] = useState(null);
   const [hasDataFetched, setHasDataFetched] = useState(false);
 
   useEffect(() => {
@@ -42,12 +42,16 @@ const ImageDesktop = () => {
             const phoneInfo = data.find((item) => item.id === 2);
             const locationInfo = data.find((item) => item.id === 3);
             const staffInfo = data.find((item) => item.id === 4);
+            const socialMediaInfo = data.find((item) => item.id === 5); // Assuming social media ID is 5, adjust as needed
 
             setEmailData(emailInfo ? emailInfo.attributes : null);
             setPhoneData(phoneInfo ? phoneInfo.attributes : null);
             setLocationData(locationInfo ? locationInfo.attributes : null);
             setStaffData(
               staffInfo ? staffInfo.attributes.admin_staff.data : []
+            );
+            setSocialMediaData(
+              socialMediaInfo ? socialMediaInfo.attributes : null
             );
           }
           setHasDataFetched(true);
