@@ -503,26 +503,6 @@ const ImageMobile = () => {
                   </div>
                 </div>
               </MDBCol>
-              {/* <MDBCol md="4" className="p-0 d-none d-sm-block">
-                {memberCover.map((member) => (
-                  <img
-                    className="image-fluid"
-                    style={{
-                      width: "-webkit-fill-available",
-                      height: "300px",
-                      // maxWidth: "-webkit-fill-available",
-                      // height: "400px",
-                      // objectFit: "contain",
-                      // verticalAlign: "top",
-                    }}
-                    id="cluster-img"
-                    src={
-                      "http://10.2.14.173" +
-                      member.attributes.fileupload.data[0]?.attributes.url
-                    }
-                  />
-                ))}
-              </MDBCol> */}
             </MDBRow>
             <MDBRow className="pt-0 pb-5 xs:px-4 sm:px-5 md:px-0">
               <News></News>

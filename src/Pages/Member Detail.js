@@ -383,28 +383,59 @@ function ImageDesktop({ title }) {
                   <p className="fw-normal text-normal">-</p>
                 )}
               </MDBCol>
+
               <MDBCol md="1">
                 <ul>
-                  {uploadfiles.attributes?.education_en?.map(
-                    (education, index) => {
-                      const [degree, year] = education.split("–");
-                      return (
-                        <li
-                          key={index}
-                          className="fw-normal text-normal"
-                          style={{
-                            listStyle: '"- "',
-                            "::before": {
-                              content: '"-"',
-                              marginRight: "0.5rem",
-                            },
-                          }}
-                        >
-                          <p className="mb-1">{year} </p>
-                        </li>
-                      );
-                    }
-                  )}
+                  {selectedLanguage === "en"
+                    ? uploadfiles.attributes?.education_en.map(
+                        (education, index) => {
+                          // Find and replace any non-standard hyphen characters with the standard hyphen "-"
+                          const standardizedYear = education.replace("–", "-");
+                          const [degree, startYear, endYear] =
+                            standardizedYear.split("-");
+                          const yearRange = endYear
+                            ? `${startYear}-${endYear}`
+                            : startYear; // Adjust for year range
+                          return (
+                            <li
+                              key={index}
+                              className="fw-normal text-normal"
+                              style={{
+                                listStyle: '"- "',
+                                "::before": {
+                                  content: '"-"',
+                                  marginRight: "0.5rem",
+                                },
+                              }}
+                            >
+                              <span style={{ whiteSpace: "nowrap" }}>
+                                <p className="mb-1">{yearRange}</p>{" "}
+                                {/* Display the corrected year range */}
+                              </span>
+                            </li>
+                          );
+                        }
+                      )
+                    : uploadfiles.attributes?.education_th.map(
+                        (education, index) => {
+                          const [degree, year] = education.split("–");
+                          return (
+                            <li
+                              key={index}
+                              className="fw-normal text-normal"
+                              style={{
+                                listStyle: '"- "',
+                                "::before": {
+                                  content: '"-"',
+                                  marginRight: "0.5rem",
+                                },
+                              }}
+                            >
+                              <p className="mb-1">{year}</p>
+                            </li>
+                          );
+                        }
+                      )}
                 </ul>
               </MDBCol>
             </MDBRow>

@@ -349,9 +349,9 @@ export default function News() {
       <MDBContainer className="xs:py-0 md:py-4">
         {isMobile
           ? // Mobile view
-            uploadfiles.map((member) => (
-              <ImageMobile key={member.id} member={member} />
-            ))
+            uploadfiles
+              .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)
+              .map((member) => <ImageMobile key={member.id} member={member} />)
           : // Desktop view
             uploadfiles
               .slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE)

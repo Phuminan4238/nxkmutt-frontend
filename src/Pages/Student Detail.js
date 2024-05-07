@@ -152,7 +152,7 @@ function ImageDesktop({ title }) {
                 }}
               >
                 {/* color: "#AE023E", */}
-                <Link to="/Team-Member">
+                <Link to="/team-members">
                   <a
                     style={{ color: "#AE023E" }}
                     className="xs:text-lg sm:text-xl"
@@ -529,7 +529,7 @@ function ImageMobile({ title }) {
               }}
             >
               {/* color: "#AE023E", */}
-              <Link to="/Team-Member">
+              <Link to="/team-members">
                 <span
                   style={{ color: "#AE023E" }}
                   className="xs:text-md sm:text-xl"

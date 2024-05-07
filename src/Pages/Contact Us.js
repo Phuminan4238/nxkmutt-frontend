@@ -413,7 +413,7 @@ const ImageMobile = () => {
                     className="font-black text-uppercase text-black xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "MyFont" }}
                   >
-                    {selectedLanguage === "en" ? "Contact" : "Contact_TH"}
+                    {selectedLanguage === "en" ? "Contact" : "ติดต่อเรา"}
                   </p>
                 </div>
               </MDBCol>
