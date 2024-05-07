@@ -41,7 +41,7 @@ const CardList = ({ cards }) => {
               />
             )}
             {card.title && (
-              <p className="fw-normal text-center text-black xs:text-base md:text-lg mt-3 card-description">
+              <p className="fw-normal text-center text-black xs:text-sm md:text-lg mt-3 card-description">
                 {card.title}
               </p>
             )}

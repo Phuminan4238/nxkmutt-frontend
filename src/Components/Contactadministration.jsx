@@ -193,7 +193,7 @@ const CardListMobile = ({ cards, staffData, selectedLanguage }) => {
                   </MDBCardText>
 
                   <p
-                    className="fw-normal text-start text-sm md:text-sm"
+                    className="fw-normal text-start text-xs"
                     style={{ color: "#AE023E" }}
                   >
                     {selectedLanguage === "en"

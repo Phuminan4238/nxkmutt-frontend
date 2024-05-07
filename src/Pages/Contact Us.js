@@ -135,7 +135,7 @@ const ImageDesktop = () => {
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
             <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="6" className="xs:px-4 sm:p-0">
-                <iframe
+                {/* <iframe
                   class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
@@ -143,6 +143,14 @@ const ImageDesktop = () => {
                   scrolling="no"
                   marginheight="0"
                   marginwidth="0"
+                ></iframe> */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7575349643107!2d100.53505844018773!3d13.733124197779864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f29c9740eb5%3A0x3bd9b4c1a09fbbfa!2zTmV1cm9zY2llbmNlIENlbnRyZSBmb3IgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IHwg4Lio4Li54LiZ4Lii4LmM4Lib4LiP4Li04Lia4Lix4LiV4Li04LiB4Liy4Lij4LmC4Lij4LiE4LiX4Liy4LiH4Liq4Lih4Lit4LiH!5e0!3m2!1sen!2sth!4v1715071623236!5m2!1sen!2sth"
+                  id="cluster-img"
+                  style={{ height: "350px" }}
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
               </MDBCol>
               <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-0">
@@ -195,7 +203,7 @@ const ImageDesktop = () => {
                   </MDBRow>
                   <MDBRow className="pt-4">
                     <h4
-                      className="fw-bold text-black"
+                      className="fw-bold text-black xs:text-xl md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
                       {selectedLanguage === "en"
@@ -423,7 +431,7 @@ const ImageMobile = () => {
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
             <MDBRow className="pt-0 pb-2 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="6" className="xs:px-4 sm:p-0">
-                <iframe
+                {/* <iframe
                   class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
@@ -431,6 +439,14 @@ const ImageMobile = () => {
                   scrolling="no"
                   marginheight="0"
                   marginwidth="0"
+                ></iframe> */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7575349643107!2d100.53505844018773!3d13.733124197779864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f29c9740eb5%3A0x3bd9b4c1a09fbbfa!2zTmV1cm9zY2llbmNlIENlbnRyZSBmb3IgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IHwg4Lio4Li54LiZ4Lii4LmM4Lib4LiP4Li04Lia4Lix4LiV4Li04LiB4Liy4Lij4LmC4Lij4LiE4LiX4Liy4LiH4Liq4Lih4Lit4LiH!5e0!3m2!1sen!2sth!4v1715071623236!5m2!1sen!2sth"
+                  id="cluster-img"
+                  style={{ height: "350px" }}
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
               </MDBCol>
               <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-5">
@@ -493,7 +509,7 @@ const ImageMobile = () => {
                       `}
                     </h4>
                     <p
-                      className="text-black pt-2 xs:text-base md:text-md "
+                      className="text-black pt-2 xs:text-sm "
                       style={{
                         fontFamily: "FontLight",
                         marginBottom: "0.6rem",
