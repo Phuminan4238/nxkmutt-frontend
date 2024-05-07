@@ -228,7 +228,7 @@ function ImageMobile({ members }) {
   return (
     <>
       <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
-        <MDBContainer className="xs:max-w-full sm:max-w-7xl">
+        <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
           <MDBRow>
             {uploadfiles.map((member) => (
               <MDBCol
@@ -255,11 +255,9 @@ function ImageMobile({ members }) {
                     style={{
                       // height: "350px",
                       objectFit: "contain",
-                      // borderRadius: "0px",
                       alignSelf: "center",
                     }}
                   />
-
                   <MDBCardBody>
                     <MDBCardTitle className="m-0">
                       <p
@@ -281,14 +279,14 @@ function ImageMobile({ members }) {
                           : `${member.attributes.position_th}`}
                       </p>
                     </MDBCardText>
-                    <MDBCardText key={member.attributes}>
+                    {/* <MDBCardText key={member.attributes}>
                       <p
                         className="fw-normal text-center text-xs md:text-lg"
                         style={{ color: "#AE023E" }}
                       >
                         Main Interest, Main <br></br> Interest, Main Interest
                       </p>
-                    </MDBCardText>
+                    </MDBCardText> */}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>

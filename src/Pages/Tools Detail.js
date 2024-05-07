@@ -454,7 +454,7 @@ function ImageMobile({ title }) {
             <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 text-initial">
-                <p>Wait for Content.</p>
+                {/* <p>Wait for Content.</p> */}
               </MDBRow>
 
               {/*  Grants */}
@@ -463,11 +463,27 @@ function ImageMobile({ title }) {
                   className="fw-bold text-uppercase ps-2 pt-4"
                   style={{ color: "#A02040", fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.content_en || "-"}
+                  {uploadfiles.attributes?.content_en ? (
+                    <p
+                      className="fw-normal text-md"
+                      style={{
+                        wordBreak: "break-word",
+                        maxWidth: "80%",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          selectedLanguage === "en"
+                            ? uploadfiles.attributes.content_en
+                            : uploadfiles.attributes.content_th,
+                      }}
+                    />
+                  ) : (
+                    "Wait for Content"
+                  )}
                 </p>
               </MDBRow>
               <MDBRow className="pt-0 pb-0">
-                <MDBCardImage
+                {/* <MDBCardImage
                   className="rounded-0"
                   // src={
                   //   "http://10.2.14.173" +
@@ -486,12 +502,10 @@ function ImageMobile({ title }) {
                     alignSelf: "center",
                     // objectFit: "contain",
                   }}
-                />
+                /> */}
               </MDBRow>
               {/* Current Affiliations */}
-              <MDBRow className="pt-4 ">
-                <p>Wait for Content</p>
-              </MDBRow>
+              <MDBRow className="pt-4 ">{/* <p>Wait for Content</p> */}</MDBRow>
             </MDBRow>
           </MDBContainer>
         </section>

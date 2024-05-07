@@ -135,10 +135,7 @@ function Image({ members, memberId }) {
 
   return (
     <>
-      <div
-        className="d-flex justify-content-between xs:py-2 py-4"
-        id="tools-flex"
-      >
+      <div className="d-flex justify-content-between pt-0 pb-4" id="tools-flex">
         <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
           <MDBRow>
             {uploadfiles.map((member) => (
@@ -161,7 +158,7 @@ function Image({ members, memberId }) {
                     }}
                   >
                     <MDBCardImage
-                      className="rounded-4 w-75 sm:w-100"
+                      className="img-fluid rounded-4 h-40"
                       src={
                         "http://10.2.14.173" +
                         member.attributes.uploadfiles.data[0]?.attributes
@@ -171,6 +168,7 @@ function Image({ members, memberId }) {
                       alt="..."
                       style={{
                         // height: "350px",
+                        width: "",
                         objectFit: "contain",
                         alignSelf: "center",
                       }}
@@ -201,7 +199,7 @@ function Image({ members, memberId }) {
                             {member.attributes.position_en}
                           </p>
                         </MDBCardText>
-                        <MDBCardText key={member.attributes}>
+                        {/* <MDBCardText key={member.attributes}>
                           <p
                             className="fw-normal text-center text-xs md:text-lg"
                             style={{ color: "#AE023E" }}
@@ -209,7 +207,7 @@ function Image({ members, memberId }) {
                             Main Interest, Main <br></br> Interest, Main
                             Interest
                           </p>
-                        </MDBCardText>
+                        </MDBCardText> */}
                       </MDBCardBody>
                     </Link>
                   </MDBCard>

@@ -203,15 +203,15 @@ function ImageMobile({ member }) {
             >
               {selectedLanguage === "en"
                 ? member.attributes.name_en || "Not found"
-                : member.attributes.name_th2 || "ภาษาไทย"}
+                : member.attributes.name_th || "ภาษาไทย"}
             </p>
             <p
               className="font-light mt-auto xs:text-sm"
               style={{ fontFamily: "FontLight" }}
             >
               {selectedLanguage === "en"
-                ? member.attributes.name_th || "Not found"
-                : member.attributes.name_th2 || "ภาษาไทย"}
+                ? member.attributes.name_en || "Not found"
+                : member.attributes.name_th || "ภาษาไทย"}
             </p>
 
             <div
@@ -228,7 +228,7 @@ function ImageMobile({ member }) {
                 className="pe-4 xs:text-sm sm:text-lg"
                 style={textStyle}
               >
-                {selectedLanguage === "en" ? "     Read more" : "อ่านเพิ่มเติม"}
+                {selectedLanguage === "en" ? "Read more" : "อ่านเพิ่มเติม"}
               </p>
               <EastIcon style={iconStyle} />
             </div>

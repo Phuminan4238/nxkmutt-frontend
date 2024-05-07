@@ -310,6 +310,44 @@ const ImageDesktop = () => {
 };
 
 const ImageMobile = () => {
+  const [emailData, setEmailData] = useState(null);
+  const [phoneData, setPhoneData] = useState(null);
+  const [locationData, setLocationData] = useState(null);
+  const [staffData, setStaffData] = useState([]);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
+
+  useEffect(() => {
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "http://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+          );
+          const data = response.data.data;
+          if (data && data.length > 0) {
+            // Filter data for each type based on the ID
+            const emailInfo = data.find((item) => item.id === 1);
+            const phoneInfo = data.find((item) => item.id === 2);
+            const locationInfo = data.find((item) => item.id === 3);
+            const staffInfo = data.find((item) => item.id === 4);
+
+            setEmailData(emailInfo ? emailInfo.attributes : null);
+            setPhoneData(phoneInfo ? phoneInfo.attributes : null);
+            setLocationData(locationInfo ? locationInfo.attributes : null);
+            setStaffData(
+              staffInfo ? staffInfo.attributes.admin_staff.data : []
+            );
+          }
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchData();
+    }
+  }, [hasDataFetched]);
+
   // Lotties
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -402,13 +440,21 @@ const ImageMobile = () => {
                       className="xs:pt-5 sm:pt-0 fw-bold text-black xs:text-lg md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      E-mail
+                      {selectedLanguage === "en"
+                        ? `${emailData?.header_en || ""} 
+                          `
+                        : `${emailData?.header_th || ""} 
+                          `}
                     </h4>
                     <p
                       className="text-black pt-2 xs:text-sm md:text-md"
                       style={{ fontFamily: "FontLight" }}
                     >
-                      nx.kmutt.@gmail.com
+                      {selectedLanguage === "en"
+                        ? `${emailData?.content_en || ""} 
+                          `
+                        : `${emailData?.content_th || ""} 
+                          `}
                     </p>
                   </MDBRow>
                   <MDBRow className="pt-4">
@@ -416,14 +462,23 @@ const ImageMobile = () => {
                       className="fw-bold text-black xs:text-lg md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      Phone
+                      {" "}
+                      {selectedLanguage === "en"
+                        ? `${phoneData?.header_en || ""} 
+                      `
+                        : `${phoneData?.header_th || ""} 
+                      `}
                     </h4>
 
                     <p
                       className="text-black pt-2 xs:text-sm md:text-md"
                       style={{ fontFamily: "FontLight" }}
                     >
-                      0123456789
+                      {selectedLanguage === "en"
+                        ? `${phoneData?.content_en || ""} 
+                          `
+                        : `${phoneData?.content_th || ""} 
+                          `}
                     </p>
                   </MDBRow>
                   <MDBRow className="pt-4">
@@ -431,17 +486,25 @@ const ImageMobile = () => {
                       className="fw-bold text-black text-lg"
                       style={{ fontFamily: "FontMedium" }}
                     >
-                      Location
+                      {selectedLanguage === "en"
+                        ? `${locationData?.header_en || ""} 
+                      `
+                        : `${locationData?.header_th || ""} 
+                      `}
                     </h4>
                     <p
-                      className=" text-black pt-2 xs:text-sm md:text-md"
-                      style={{ fontFamily: "FontLight" }}
-                    >
-                      Neuroscience Center for Research and Innovation (NX),
-                      Learning Institute King Mongkut's University of Technology
-                      Thonburi (KMUTT) 126 Pracha Uthit Rd,
-                      <br></br> Bang Mot, Thung Khru, Bangkok, Thailand
-                    </p>
+                      className="text-black pt-2 xs:text-base md:text-md "
+                      style={{
+                        fontFamily: "FontLight",
+                        marginBottom: "0.6rem",
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          selectedLanguage === "en"
+                            ? locationData?.content_markdown_en || ""
+                            : locationData?.content_markdown_th || "",
+                      }}
+                    ></p>
                   </MDBRow>
                 </div>
               </MDBCol>
@@ -456,7 +519,9 @@ const ImageMobile = () => {
                   className="font-black  xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Administration Staff
+                  {selectedLanguage === "en"
+                    ? "    Administration Staff"
+                    : "    เจ้าหน้าที่"}
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
@@ -478,7 +543,9 @@ const ImageMobile = () => {
                   className="fw-bold text-black xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Lab Portal
+                  {selectedLanguage === "en"
+                    ? "     Lab Portal"
+                    : "    ช่องทางแลปอื่นๆ"}
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
@@ -489,7 +556,9 @@ const ImageMobile = () => {
                   className="fw-bold text-black xs:text-xl md:text-3xl"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  Open Data
+                  {selectedLanguage === "en"
+                    ? "       Open Data"
+                    : "    ข้อมูลที่เผยแพร่"}
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">

@@ -10,6 +10,9 @@ import Memberimage from "../Components/Memberimage";
 import Memberalumni from "../Components/Memberalumni";
 import Memberadvisor from "../Components/Memberadvisor";
 import Membercol from "../Components/Membercol";
+import International from "../Components/International";
+import Student from "../Components/Student";
+import Collaborator from "../Components/Collaborator";
 import membericon from "../Images/vr-2.png";
 // Lotties
 import Lottie from "react-lottie-player";
@@ -116,28 +119,6 @@ const Member = ({ imageUrl }) => {
                   ></div>
                 </div>
               </MDBCol>
-              {/* <MDBCol md="4" className="p-0">
-              {memberCover.length > 0 && (
-                <img
-                  className={`image-fluid ${
-                    memberCover[0]?.attributes.fileupload.data[0]?.attributes
-                      .url
-                      ? "loaded"
-                      : ""
-                  }`}
-                  style={{
-                    width: "-webkit-fill-available",
-                    height: "320px",
-                  }}
-                  src={
-                    "http://10.2.14.173" +
-                    memberCover[0]?.attributes.fileupload.data[0]?.attributes
-                      .url
-                  }
-                  alt="Member Cover"
-                />
-              )}
-            </MDBCol> */}
             </MDBRow>
           </MDBContainer>
         </section>
@@ -175,8 +156,8 @@ const Member = ({ imageUrl }) => {
                     : "ผู้ร่วมงานวิจัยนานาชาติ"}
                 </p>
               </div>
-              <Memberalumni></Memberalumni>
-              <div className="d-flex justify-content-between align-items-center xs:pt-0 sm:pt-5 xs:px-4 sm:p-2 flex-mobile-column">
+              <International></International>
+              <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
                 <p
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
@@ -210,7 +191,8 @@ const Member = ({ imageUrl }) => {
                   </div>
                 </Link>
               </div>
-              <Membercol></Membercol>
+              {/* <Membercol></Membercol> */}
+              <Student></Student>
             </MDBRow>
           </MDBContainer>
         </section>

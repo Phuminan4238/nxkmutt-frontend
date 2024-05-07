@@ -1023,17 +1023,18 @@ function ImageMobile({ title }) {
                   </MDBRow>
                 </div>
 
-                {uploadfiles.attributes?.bio_en ? (
-                  <p
-                    className="fw-normal text-sm pt-3"
-                    style={{ wordBreak: "break-word" }}
-                    dangerouslySetInnerHTML={{
-                      __html: uploadfiles.attributes.bio_en,
-                    }}
-                  />
-                ) : (
-                  <p className="fw-normal text-md pt-3">-</p>
-                )}
+                <p
+                  className="fw-normal text-sm pt-3"
+                  style={{
+                    // wordWrap: "break-word",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.bio_text_en || ""} `
+                    : `${uploadfiles.attributes?.bio_text_th || ""} `}
+                </p>
+
                 {/* <p
                   className="fw-normal text-lg pt-3"
                   style={{ maxWidth: "90%" }}

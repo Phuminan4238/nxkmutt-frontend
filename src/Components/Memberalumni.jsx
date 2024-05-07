@@ -178,7 +178,7 @@ function Image({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator"
+          "members?populate=uploadfiles.fileupload&populate=uploadfiles.imagesquare&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&&filters[usertype][$eq]=international_collaborator&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);

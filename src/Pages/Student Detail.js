@@ -229,7 +229,19 @@ function ImageDesktop({ title }) {
                     {/* {uploadfiles.attributes?.position_en || "-"} */}
                   </h3>
                   <MDBRow className="pt-2"></MDBRow>
-                  {uploadfiles.attributes?.bio_en ? (
+                  <p
+                    className="fw-normal text-sm pt-3"
+                    style={{
+                      // wordWrap: "break-word",
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.bio_text_en || ""} `
+                      : `${uploadfiles.attributes?.bio_text_th || ""} `}
+                  </p>
+
+                  {/* {uploadfiles.attributes?.bio_en ? (
                     <p
                       className="fw-normal text-md pt-3"
                       style={{
@@ -246,7 +258,7 @@ function ImageDesktop({ title }) {
                     />
                   ) : (
                     <p className="fw-normal text-md pt-3">-</p>
-                  )}
+                  )} */}
                 </div>
               </MDBCol>
               <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
@@ -466,6 +478,9 @@ function ImageMobile({ title }) {
     return () => clearTimeout(timer);
   }, []);
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className="App">
       {!loaded && (
@@ -575,26 +590,48 @@ function ImageMobile({ title }) {
                   className="fw-bold text-uppercase text-black xs:text-sm text-center mb-0"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.name_en || "-"}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.name_en || ""} 
+                      `
+                    : `${uploadfiles.attributes?.name_th || ""} 
+                      `}
                   {/* <span>&nbsp</span> */}
                   <span
                     style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
                   >
                     (
                   </span>
-                  {uploadfiles.attributes?.nickname_en}
-
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.nickname_en || ""} 
+                      `
+                    : `${uploadfiles.attributes?.nickname_th || ""} 
+                      `}
                   <span>)</span>
                 </p>
                 <p
                   className="fw-bold text-uppercase text-black xs:text-sm  text-center"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.surname_en || "-"}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.surname_en || ""} 
+                      `
+                    : `${uploadfiles.attributes?.surname_th || ""} 
+                      `}
                 </p>
 
                 <MDBRow className="pt-0"></MDBRow>
-                {uploadfiles.attributes?.bio_en ? (
+                <p
+                  className="fw-normal text-sm pt-3"
+                  style={{
+                    // wordWrap: "break-word",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.bio_text_en || ""} `
+                    : `${uploadfiles.attributes?.bio_text_th || ""} `}
+                </p>
+                {/* {uploadfiles.attributes?.bio_en ? (
                   <p
                     className="fw-normal text-xs pt-2"
                     style={{ wordWrap: "break-word", wordBreak: "break-all" }}
@@ -604,7 +641,7 @@ function ImageMobile({ title }) {
                   />
                 ) : (
                   <p className="fw-normal text-sm pt-3">-</p>
-                )}
+                )} */}
               </div>
             </MDBCol>
           </MDBRow>{" "}
@@ -659,7 +696,10 @@ function ImageMobile({ title }) {
                         className="fw-bold text-uppercase text-black xs:text-sm text-center mb-0"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {member.attributes?.name_en || "-"}
+                        {/* {member.attributes?.name_en || "-"} */}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes?.name_en || ""} `
+                          : `${member.attributes?.name_th || ""} `}
                         <span
                           style={{
                             paddingLeft: "0.5rem",
@@ -668,14 +708,18 @@ function ImageMobile({ title }) {
                         >
                           (
                         </span>
-                        {member.attributes?.nickname_en}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes?.nickname_en || ""} `
+                          : `${member.attributes?.nickname_th || ""} `}
                         <span>)</span>
                       </p>
                       <p
                         className="fw-bold text-uppercase text-black xs:text-sm text-center"
                         style={{ fontFamily: "MyFont" }}
                       >
-                        {member.attributes?.surname_en || "-"}
+                        {selectedLanguage === "en"
+                          ? `${member.attributes?.surname_en || ""} `
+                          : `${member.attributes?.surname_th || ""} `}
                       </p>
 
                       {/* <p
@@ -685,17 +729,17 @@ function ImageMobile({ title }) {
                         {member.attributes?.bio_en || "-"}
                       </p> */}
 
-                      {member.attributes?.bio_en ? (
-                        <p
-                          className="fw-normal text-xs pt-2"
-                          style={{ wordBreak: "break-word" }}
-                          dangerouslySetInnerHTML={{
-                            __html: member.attributes.bio_en,
-                          }}
-                        />
-                      ) : (
-                        <p className="fw-normal text-md pt-2">-</p>
-                      )}
+                      <p
+                        className="fw-normal text-sm pt-3"
+                        style={{
+                          // wordWrap: "break-word",
+                          wordBreak: "break-word",
+                        }}
+                      >
+                        {selectedLanguage === "en"
+                          ? `${member.attributes?.bio_text_en || ""} `
+                          : `${member.attributes?.bio_text_th || ""} `}
+                      </p>
                     </div>
                   </MDBCol>
                 </MDBRow>
