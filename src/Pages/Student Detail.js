@@ -229,6 +229,7 @@ function ImageDesktop({ title }) {
                     {/* {uploadfiles.attributes?.position_en || "-"} */}
                   </h3>
                   <MDBRow className="pt-2"></MDBRow>
+                  
                   <p
                     className="fw-normal text-sm pt-3"
                     style={{
