@@ -139,23 +139,23 @@ const ImageDesktop = () => {
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
             <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="6" className="xs:px-4 sm:p-0">
-                {/* <iframe
-                  class="image-fluid"
-                  id="cluster-img"
-                  style={{ height: "350px" }}
-                  src="http://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  scrolling="no"
-                  marginheight="0"
-                  marginwidth="0"
-                ></iframe> */}
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7575349643107!2d100.53505844018773!3d13.733124197779864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f29c9740eb5%3A0x3bd9b4c1a09fbbfa!2zTmV1cm9zY2llbmNlIENlbnRyZSBmb3IgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IHwg4Lio4Li54LiZ4Lii4LmM4Lib4LiP4Li04Lia4Lix4LiV4Li04LiB4Liy4Lij4LmC4Lij4LiE4LiX4Liy4LiH4Liq4Lih4Lit4LiH!5e0!3m2!1sen!2sth!4v1715071623236!5m2!1sen!2sth"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.107040251083!2d100.49387324024765!3d13.651252186785438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2sKing%20Mongkut%E2%80%99s%20University%20of%20Technology%20Thonburi%20(KMUTT)!5e0!3m2!1sen!2sth!4v1715145302100!5m2!1sen!2sth"
+                  class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
                   allowfullscreen=""
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
+                {/* <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7575349643107!2d100.53505844018773!3d13.733124197779864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f29c9740eb5%3A0x3bd9b4c1a09fbbfa!2zTmV1cm9zY2llbmNlIENlbnRyZSBmb3IgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IHwg4Lio4Li54LiZ4Lii4LmM4Lib4LiP4Li04Lia4Lix4LiV4Li04LiB4Liy4Lij4LmC4Lij4LiE4LiX4Liy4LiH4Liq4Lih4Lit4LiH!5e0!3m2!1sen!2sth!4v1715071623236!5m2!1sen!2sth"
+                  id="cluster-img"
+                  style={{ height: "350px" }}
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe> */}
               </MDBCol>
               <MDBCol className="d-flex xs:pt-2 sm:pt-0 pb-0 pe-0">
                 <div className="d-flex flex-column w-100 xs:px-0 sm:px-5">
@@ -266,7 +266,7 @@ const ImageDesktop = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                <Contactsocial></Contactsocial>
+                {/* <Contactsocial></Contactsocial> */}
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -279,7 +279,7 @@ const ImageDesktop = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                <Contactlab></Contactlab>
+                {/* <Contactlab></Contactlab> */}
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -435,17 +435,9 @@ const ImageMobile = () => {
           <MDBContainer className="xs:max-w-full sm:max-w-5xl">
             <MDBRow className="pt-0 pb-2 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="6" className="xs:px-4 sm:p-0">
-                {/* <iframe
-                  class="image-fluid"
-                  id="cluster-img"
-                  style={{ height: "350px" }}
-                  src="http://maps.google.com/maps?q=nxkmutt&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  scrolling="no"
-                  marginheight="0"
-                  marginwidth="0"
-                ></iframe> */}
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7575349643107!2d100.53505844018773!3d13.733124197779864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f29c9740eb5%3A0x3bd9b4c1a09fbbfa!2zTmV1cm9zY2llbmNlIENlbnRyZSBmb3IgUmVzZWFyY2ggYW5kIERldmVsb3BtZW50IHwg4Lio4Li54LiZ4Lii4LmM4Lib4LiP4Li04Lia4Lix4LiV4Li04LiB4Liy4Lij4LmC4Lij4LiE4LiX4Liy4LiH4Liq4Lih4Lit4LiH!5e0!3m2!1sen!2sth!4v1715071623236!5m2!1sen!2sth"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.107040251083!2d100.49387324024765!3d13.651252186785438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2a251bb6b0cf1%3A0xf656e94ff13324ad!2sKing%20Mongkut%E2%80%99s%20University%20of%20Technology%20Thonburi%20(KMUTT)!5e0!3m2!1sen!2sth!4v1715145302100!5m2!1sen!2sth"
+                  class="image-fluid"
                   id="cluster-img"
                   style={{ height: "350px" }}
                   allowfullscreen=""
@@ -467,7 +459,7 @@ const ImageMobile = () => {
                           `}
                     </h4>
                     <p
-                      className="text-black pt-2 xs:text-sm md:text-md"
+                      className="text-black pt-2  text-sm"
                       style={{ fontFamily: "FontLight" }}
                     >
                       {selectedLanguage === "en"
@@ -491,7 +483,7 @@ const ImageMobile = () => {
                     </h4>
 
                     <p
-                      className="text-black pt-2 xs:text-sm md:text-md"
+                      className="text-black pt-2 text-sm"
                       style={{ fontFamily: "FontLight" }}
                     >
                       {selectedLanguage === "en"
@@ -503,7 +495,7 @@ const ImageMobile = () => {
                   </MDBRow>
                   <MDBRow className="pt-4">
                     <h4
-                      className="fw-bold text-black text-lg"
+                      className="fw-bold text-black md:text-2xl"
                       style={{ fontFamily: "FontMedium" }}
                     >
                       {selectedLanguage === "en"
@@ -513,7 +505,7 @@ const ImageMobile = () => {
                       `}
                     </h4>
                     <p
-                      className="text-black pt-2 xs:text-sm "
+                      className="text-black pt-2 text-sm"
                       style={{
                         fontFamily: "FontLight",
                         marginBottom: "0.6rem",
@@ -556,7 +548,7 @@ const ImageMobile = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                <Contactsocial></Contactsocial>
+                {/* <Contactsocial></Contactsocial> */}
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -569,7 +561,7 @@ const ImageMobile = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                <Contactlab></Contactlab>
+                {/* <Contactlab></Contactlab> */}
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p

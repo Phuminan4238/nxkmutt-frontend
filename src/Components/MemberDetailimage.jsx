@@ -205,7 +205,7 @@ function Post({ title }) {
 
 // Mobile
 function Image({ members }) {
-  const [uploadfiles, setUploadfilesMember] = useState([]);
+  const [uploadfiles, setUploadfiles] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -221,10 +221,10 @@ function Image({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+          "members?populate=uploadfiles.fileupload"
         );
         if (isMounted) {
-          setUploadfilesMember(response.data.data);
+          setUploadfiles(response.data.data);
         }
       } catch (error) {
         console.error(error);
@@ -240,6 +240,44 @@ function Image({ members }) {
     };
   }, [uploadfiles]);
 
+  const [uploadfilesMember, setUploadfilesMember] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const instance = axios.create({
+      baseURL: "http://10.2.14.173/api/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+
+    async function fetchData() {
+      try {
+        const response = await instance.get(
+          "members?populate=tags&populate=uploadfiles.fileupload&populate=uploadfiles.image_original&populate=uploadfiles.image_square&populate=uploadfiles.image_medium&populate=uploadfiles.image_large&filters[usertype][$eq]=faculty_member&sort=sort"
+        );
+        if (isMounted) {
+          setUploadfilesMember(response.data.data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (uploadfilesMember.length === 0) {
+      fetchData();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [uploadfilesMember]);
+
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   // Helper function to shuffle an array randomly
   const shuffleArray = (array) => {
     const shuffled = array.slice();
@@ -250,7 +288,11 @@ function Image({ members }) {
     return shuffled;
   };
 
-  const shuffledMembers = shuffleArray(uploadfiles);
+  // Shuffle the members array randomly on each render
+  const shuffledMembers = useMemo(
+    () => shuffleArray(uploadfilesMember),
+    [uploadfilesMember]
+  );
 
   return (
     <>
@@ -306,31 +348,43 @@ function Image({ members }) {
                       <MDBCardBody>
                         <MDBCardTitle className="m-0">
                           <p
-                            className="fw-bold text-center mb-0 xs:text-sm md:text-2xl"
-                            style={{ color: "black" }}
+                            className="fw-bold text-center mb-0 xs:text-sm"
+                            style={{
+                              color: "black",
+                              fontFamily: "MyFont",
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
                           >
-                            {member.attributes.name_en}
-                            <br></br>
-                            {member.attributes.surname_en}
+                            {selectedLanguage === "en"
+                              ? `${member.attributes.name_en} ${member.attributes.surname_en}`
+                              : `${member.attributes.name_th} ${member.attributes.surname_th}`}
                           </p>
                         </MDBCardTitle>
                         <MDBCardText className="mb-2">
                           <p
-                            className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
-                            style={{ color: "black" }}
+                            className="fw-normal text-center mb-0 xs:text-xs md:text-md"
+                            style={{ color: "black", }}
                           >
-                            {member.attributes.position_en}
+                            {selectedLanguage === "en"
+                              ? `${member.attributes.position_en} `
+                              : `${member.attributes.position_th}`}
                           </p>
                         </MDBCardText>
-                        <MDBCardText key={member.attributes}>
-                          <p
-                            className="fw-normal text-center text-xs md:text-lg"
-                            style={{ color: "#AE023E" }}
-                          >
-                            Main Interest, Main <br></br> Interest, Main
-                            Interest
-                          </p>
-                        </MDBCardText>
+                        <p
+                          className="fw-normal text-center text-xs"
+                          style={{ color: "#AE023E" }}
+                        >
+                          {/* Handle  */}
+                          {member.attributes.tags?.data.map((tag, index) => (
+                            <li key={index}>
+                              {selectedLanguage === "en"
+                                ? tag.attributes.name_en
+                                : tag.attributes.name_th}
+                            </li>
+                          ))}
+                        </p>
                       </MDBCardBody>
                     </Link>
                   </MDBCard>

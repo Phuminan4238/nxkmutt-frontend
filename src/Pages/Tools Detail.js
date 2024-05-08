@@ -164,8 +164,8 @@ function ImageDesktop({ title }) {
             </MDBRow>
           </MDBContainer>
 
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="pt-0 pb-0 px-4">
               <MDBCol className="d-flex ps-0 pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
                   <h1
@@ -366,7 +366,7 @@ function ImageMobile({ title }) {
       >
         <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
           <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <MDBRow className="pt-0 pb-0 px-4">
               <MDBCol
                 className="col-2 text-uppercase fw-bold pt-1 sm:pb-0"
                 style={{
@@ -412,9 +412,9 @@ function ImageMobile({ title }) {
             </MDBRow>
           </MDBContainer>
 
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-2 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-              <MDBCol className="d-flex ps-0 pb-0 pe-5">
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="pt-0 pb-0 px-4">
+              <MDBCol className="d-flex pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
                   <p
                     className="fw-bolder pt-4 text-lg"
@@ -424,7 +424,7 @@ function ImageMobile({ title }) {
                   </p>
                 </div>
               </MDBCol>
-              <MDBCol md="4" className="p-0">
+              <MDBCol md="4" className="">
                 <MDBCardImage
                   className="rounded-0"
                   src={
@@ -450,8 +450,8 @@ function ImageMobile({ title }) {
           </MDBContainer>
         </section>
         <section>
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl">
-            <MDBRow className="pt-4 pb-0 xs:px-5 sm:px-5 md:px-0">
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="pt-0 pb-0 px-4">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 text-initial">
                 {/* <p>Wait for Content.</p> */}

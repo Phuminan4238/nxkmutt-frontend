@@ -240,8 +240,9 @@ function ImageDesktop({ title }) {
                   </h3>
                   {/* local data */}
                   <p className="text-lg" style={{ color: "#AE023E" }}>
-                    Neuroscience Center for Research and Innovation (NX),
-                    Learning Institute, KMUTT
+                    {selectedLanguage === "en"
+                      ? `${uploadfiles.attributes?.tag_en || ""} `
+                      : `${uploadfiles.attributes?.tag_th || ""} `}
                   </p>
                   <MDBRow className="pt-2">
                     <MDBCol size="1" style={{ width: "3.33%" }}>
@@ -960,8 +961,13 @@ function ImageMobile({ title }) {
                 className="text-uppercase fw-bold xs:text-md sm:text-xl"
                 style={{ fontFamily: "FontMedium" }}
               >
-                {uploadfiles.attributes?.prefix_en || "-"}
-                {uploadfiles.attributes?.nickname_en || "-"}
+                {selectedLanguage === "en"
+                  ? `${uploadfiles.attributes?.prefix_en || ""} ${
+                      uploadfiles.attributes?.nickname_en || ""
+                    }`
+                  : `${uploadfiles.attributes?.prefix_th || ""} ${
+                      uploadfiles.attributes?.nickname_th || ""
+                    }`}
               </span>
             </MDBCol>
           </MDBRow>
@@ -1005,36 +1011,48 @@ function ImageMobile({ title }) {
                   className="mb-0 fw-bold text-uppercase text-black xs:text-md  text-center"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.prefix_en || "-"}
-                  {uploadfiles.attributes?.name_en || "-"}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.prefix_en || ""} ${
+                        uploadfiles.attributes?.nickname_en || ""
+                      }`
+                    : `${uploadfiles.attributes?.prefix_th || ""} ${
+                        uploadfiles.attributes?.nickname_th || ""
+                      }`}
                   {/* <span>&nbsp</span> */}
                   <span
                     style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
                   >
                     (
                   </span>
-                  {uploadfiles.attributes?.nickname_en}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.nickname_en || ""} `
+                    : `${uploadfiles.attributes?.nickname_th || ""} `}
                   <span>)</span>
                 </p>
                 <p
                   className="fw-bold text-uppercase text-black xs:text-md mb-2 text-center"
                   style={{ fontFamily: "MyFont" }}
                 >
-                  {uploadfiles.attributes?.surname_en || "-"}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.surname_en || ""} `
+                    : `${uploadfiles.attributes?.surname_th || ""} `}
                 </p>
                 <p
                   className="fw-normal xs:text-md mb-1  text-center"
                   // style={{ color: "#AE023E" }}
                 >
-                  {uploadfiles.attributes?.position_en || "-"}
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.position_en || ""} `
+                    : `${uploadfiles.attributes?.position_th || ""} `}
                 </p>
                 {/* local data */}
                 <p
                   className="text-sm mb-0  text-center"
                   style={{ color: "#AE023E" }}
                 >
-                  Neuroscience Center for Research and Innovation (NX), Learning
-                  Institute, KMUTT
+                  {selectedLanguage === "en"
+                    ? `${uploadfiles.attributes?.tag_en || ""} `
+                    : `${uploadfiles.attributes?.tag_th || ""} `}
                 </p>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <MDBRow className="pt-2">
@@ -1123,21 +1141,26 @@ function ImageMobile({ title }) {
             </div>
           </MDBRow>
 
-          {/* Education  */}
+          {/* Education */}
           <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
+            <MDBCol md="8">
               {uploadfiles.attributes?.education_en ? (
                 <ul style={{ paddingLeft: "1rem" }}>
-                  {uploadfiles.attributes.education_en.map(
-                    (education, index) => {
-                      // const [degree, year] = education.split("–");
-                      return (
-                        <li key={index} className="fw-normal text-normal">
-                          <p className="mb-1 text-xs">{education || "-"} </p>
-                        </li>
-                      );
-                    }
-                  )}
+                  {selectedLanguage === "en"
+                    ? uploadfiles.attributes.education_en.map(
+                        (education, index) => (
+                          <li key={index} className="fw-normal text-xs pt-2">
+                            <p className="mb-1">{education || "-"}</p>
+                          </li>
+                        )
+                      )
+                    : uploadfiles.attributes.education_th.map(
+                        (education, index) => (
+                          <li key={index} className="fw-normal text-xs pt-2">
+                            <p className="mb-1">{education || "-"}</p>
+                          </li>
+                        )
+                      )}
                 </ul>
               ) : (
                 <p className="fw-normal text-normal">-</p>
@@ -1161,13 +1184,21 @@ function ImageMobile({ title }) {
               <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                 {uploadfiles.attributes?.affiliation_en ? (
                   <ul style={{ paddingLeft: "1rem" }}>
-                    {uploadfiles.attributes.affiliation_en.map(
-                      (affiliation, index) => (
-                        <li key={index} className="fw-normal text-xs pt-2">
-                          {affiliation}
-                        </li>
-                      )
-                    )}
+                    {selectedLanguage === "en"
+                      ? uploadfiles.attributes.affiliation_en.map(
+                          (affiliation, index) => (
+                            <li key={index} className="fw-normal text-xs pt-2">
+                              {affiliation}
+                            </li>
+                          )
+                        )
+                      : uploadfiles.attributes.affiliation_th.map(
+                          (affiliation, index) => (
+                            <li key={index} className="fw-normal text-xs pt-2">
+                              {affiliation}
+                            </li>
+                          )
+                        )}
                   </ul>
                 ) : (
                   <p className="fw-normal text-normal text-black">-</p>
@@ -1189,15 +1220,29 @@ function ImageMobile({ title }) {
             <MDBCol className="pt-2">
               <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
                 <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
-                  {uploadfiles.attributes?.affiliation_en ? (
+                  {uploadfiles.attributes?.project_en ? (
                     <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.project_en.map(
-                        (affiliation, index) => (
-                          <li key={index} className="fw-normal text-xs pt-2">
-                            {affiliation}
-                          </li>
-                        )
-                      )}
+                      {selectedLanguage === "en"
+                        ? uploadfiles.attributes.project_en.map(
+                            (project, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {project}
+                              </li>
+                            )
+                          )
+                        : uploadfiles.attributes.project_th.map(
+                            (project, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {project}
+                              </li>
+                            )
+                          )}
                     </ul>
                   ) : (
                     <p className="fw-normal text-normal text-black">-</p>
@@ -1222,11 +1267,27 @@ function ImageMobile({ title }) {
                 <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                   {uploadfiles.attributes?.grant_en ? (
                     <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.grant_en.map((grant, index) => (
-                        <li key={index} className="fw-normal text-xs pt-2">
-                          {grant}
-                        </li>
-                      ))}
+                      {selectedLanguage === "en"
+                        ? uploadfiles.attributes.grant_en.map(
+                            (grant, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {grant}
+                              </li>
+                            )
+                          )
+                        : uploadfiles.attributes.grant_th.map(
+                            (grant, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {grant}
+                              </li>
+                            )
+                          )}
                     </ul>
                   ) : (
                     <p className="fw-normal text-normal text-black">-</p>
@@ -1251,11 +1312,27 @@ function ImageMobile({ title }) {
                 <MDBCol md="8" style={{ width: "-webkit-fit-content" }}>
                   {uploadfiles.attributes?.award_en ? (
                     <ul style={{ paddingLeft: "1rem" }}>
-                      {uploadfiles.attributes.award_en.map((award, index) => (
-                        <li key={index} className="fw-normal text-xs pt-2">
-                          {award}
-                        </li>
-                      ))}
+                      {selectedLanguage === "en"
+                        ? uploadfiles.attributes.award_en.map(
+                            (award, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {award}
+                              </li>
+                            )
+                          )
+                        : uploadfiles.attributes.award_th.map(
+                            (award, index) => (
+                              <li
+                                key={index}
+                                className="fw-normal text-xs pt-2"
+                              >
+                                {award}
+                              </li>
+                            )
+                          )}
                     </ul>
                   ) : (
                     <p className="fw-normal text-normal">-</p>
@@ -1404,7 +1481,10 @@ function ImageMobile({ title }) {
                 className="fw-bold text-uppercase text-black"
                 style={{ fontFamily: "MyFont" }}
               >
-                Other Members
+                {" "}
+                {selectedLanguage === "en"
+                  ? "Other Members"
+                  : "สมาชิกเพิ่มเติม"}
               </p>
 
               <span className="flex">
@@ -1425,7 +1505,9 @@ function ImageMobile({ title }) {
                 >
                   <p className="text-uppercase text-xs pt-1">
                     {" "}
-                    All Team Member
+                    {selectedLanguage === "en"
+                      ? "  All Team Members"
+                      : "สมาชิกทั้งหมด"}{" "}
                   </p>
                 </Link>
               </span>

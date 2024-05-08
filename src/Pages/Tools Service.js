@@ -265,6 +265,9 @@ const ImageMobile = () => {
   const isDesktopWidth = window.innerWidth > 1600;
   const isMobileWidth = window.innerWidth < 420;
 
+  const { selectedLanguage, handleLanguageSwitch } =
+    useContext(LanguageContext);
+
   return (
     <div className={`App ${isDesktopWidth || isMobileWidth ? "" : "px-0"}`}>
       {!loaded && (
@@ -309,13 +312,13 @@ const ImageMobile = () => {
         <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
           <MDBContainer className="xs:max-w-full sm:max-w-5xl pb-4">
             <MDBRow className="pt-0 xs:pb-5 xs:px-5 sm:px-5 sm:pb-0 md:px-0">
-              <MDBCol className="d-flex pt-5 pb-0 pe-5">
+              <MDBCol className="d-flex pt-5 pb-0 pe-5 ps-4">
                 <div className="d-flex flex-column w-100">
                   <p
                     className="font-black text-uppercase text-black mb-0 xs:text-2xl md:text-5xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Tools
+                    {selectedLanguage === "en" ? "Tools" : "อุปกรณ์"}
                   </p>
                   <p
                     className="font-black text-uppercase xs:pt-6 xs:text-2xl md:text-5xl md:pt-0"
@@ -331,7 +334,7 @@ const ImageMobile = () => {
                     >
                       &
                     </span>{" "}
-                    Service
+                    {selectedLanguage === "en" ? "Service" : "และงานบริการ"}
                   </p>
                   <div
                     className="d-flex justify-content-between mt-auto"
@@ -367,14 +370,14 @@ const ImageMobile = () => {
               </MDBCol>
             </MDBRow>
 
-            <MDBRow className="xs:px-4 sm:px-0">
+            <MDBRow className="px-6">
               <MDBCol>
                 <div className="d-inline-flex p-2">
                   <p
                     className="font-black text-uppercase xs:text-lg md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Tools
+                    {selectedLanguage === "en" ? "TOOLS" : "อุปกรณ์"}
                   </p>
                 </div>
               </MDBCol>
@@ -392,14 +395,14 @@ const ImageMobile = () => {
                 </div>
               </MDBCol>
             </MDBRow> */}
-            <MDBRow className="xs:px-4 xs:pt-2 sm:px-0 md:py-5 ">
+            <MDBRow className="px-6">
               <MDBCol>
                 <div className="d-inline-flex p-2">
                   <p
                     className="font-black text-uppercase xs:text-lg md:text-3xl"
                     style={{ fontFamily: "FontMedium" }}
                   >
-                    Service
+                    {selectedLanguage === "en" ? "Services" : "งานบริการ"}
                   </p>
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
@@ -416,11 +419,14 @@ const ImageMobile = () => {
                         className="fw-bold xs:text-md md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
-                        Research consultation
+                        {selectedLanguage === "en"
+                          ? "      Research consultation"
+                          : "    การปรึกษาด้านงานวิจัย"}
                       </p>
                       <p className="xs:text-sm md:text-md">
-                        We are open to research project consultant or
-                        collaboration and sharing tools, etc.
+                        {selectedLanguage === "en"
+                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
+                          : "เราเปิดโอกาสในการให้คำปรึกษาหรือการร่วมงานวิจัย และการแบ่งปันอุปกรณ์ต่างๆ"}
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -437,11 +443,14 @@ const ImageMobile = () => {
                         className="fw-bold xs:text-md md:text-xl"
                         style={{ fontFamily: "FontMedium" }}
                       >
-                        Coursework and workshop
+                        {selectedLanguage === "en"
+                          ? "   Coursework and workshop"
+                          : "   Coursework and workshop"}
                       </p>
                       <p className="xs:text-sm md:text-md">
-                        We are open to holding neuroscience seminar and EEG,
-                        neuroscience, neurotechnology.
+                        {selectedLanguage === "en"
+                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
+                          : "การสอนและการสัมนาเชิงปฏิบัติการ"}
                       </p>
                     </MDBCol>
                   </MDBRow>

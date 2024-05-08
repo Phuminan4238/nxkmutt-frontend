@@ -176,58 +176,62 @@ function Image({ members }) {
       >
         <MDBContainer className="xs:max-w-full sm:max-w-7xl px-0">
           <MDBRow>
-            {uploadfiles.map((member) => (
-              <MDBCol
-                md="4"
-                key={member.id}
-                className="col-6 d-flex flex-column p-0 px-0"
-              >
-                <MDBCard
-                  style={{
-                    // borderBottom: "1px solid black",
-                    boxShadow: "unset",
-                    borderRadius: "0px",
-                  }}
+            {uploadfiles
+              .filter(
+                (member) => member.attributes.uploadfiles?.data?.length > 0
+              )
+              .map((member) => (
+                <MDBCol
+                  md="4"
+                  key={member.id}
+                  className="col-6 d-flex flex-column p-0 px-0"
                 >
-                  <MDBCardImage
-                    className="rounded-4 w-75 sm:w-100"
-                    src={
-                      "http://10.2.14.173" +
-                      member.attributes.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url
-                    }
-                    position="top"
-                    alt="..."
+                  <MDBCard
                     style={{
-                      // height: "350px",
-                      objectFit: "contain",
-                      // borderRadius: "0px",
-                      alignSelf: "center",
+                      // borderBottom: "1px solid black",
+                      boxShadow: "unset",
+                      borderRadius: "0px",
                     }}
-                  />
+                  >
+                    <MDBCardImage
+                      className="rounded-4 w-75 sm:w-100"
+                      src={
+                        "http://10.2.14.173" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      position="top"
+                      alt="..."
+                      style={{
+                        // height: "350px",
+                        objectFit: "contain",
+                        // borderRadius: "0px",
+                        alignSelf: "center",
+                      }}
+                    />
 
-                  <MDBCardBody>
-                    <MDBCardTitle className="m-0">
-                      <p
-                        className="fw-bold text-center mb-0 xs:text-sm md:text-xl"
-                        style={{ color: "black" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
-                          : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
-                      </p>
-                    </MDBCardTitle>
-                    <MDBCardText className="mb-2">
-                      <p
-                        className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
-                        style={{ color: "black" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? `${member.attributes.position_en} `
-                          : `${member.attributes.position_th}`}
-                      </p>
-                    </MDBCardText>
-                    {/* <MDBCardText key={member.attributes} >
+                    <MDBCardBody>
+                      <MDBCardTitle className="m-0">
+                        <p
+                          className="fw-bold text-center mb-0 xs:text-sm md:text-xl"
+                          style={{ color: "black" }}
+                        >
+                          {selectedLanguage === "en"
+                            ? `${member.attributes.prefix_en} ${member.attributes.name_en} ${member.attributes.surname_en}`
+                            : `${member.attributes.prefix_th} ${member.attributes.name_th} ${member.attributes.surname_th}`}
+                        </p>
+                      </MDBCardTitle>
+                      <MDBCardText className="mb-2">
+                        <p
+                          className="fw-normal text-center mb-0 xs:text-xs md:text-2xl pt-2"
+                          style={{ color: "black" }}
+                        >
+                          {selectedLanguage === "en"
+                            ? `${member.attributes.position_en || ""}`
+                            : `${member.attributes.position_th || ""}`}
+                        </p>
+                      </MDBCardText>
+                      {/* <MDBCardText key={member.attributes} >
                       <p
                         className="fw-normal text-center text-xs md:text-lg"
                         style={{ color: "#AE023E" }}
@@ -235,10 +239,10 @@ function Image({ members }) {
                         Main Interest, Main <br></br> Interest, Main Interest
                       </p>
                     </MDBCardText> */}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-            ))}
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              ))}
           </MDBRow>
         </MDBContainer>
       </div>

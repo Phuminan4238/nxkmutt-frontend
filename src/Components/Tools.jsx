@@ -264,18 +264,16 @@ function ImageDesktop({ members }) {
               style={colStyle}
             >
               <Link
-                to={`/news-and-activities`}
+                to={`/tools-and-services`}
                 style={{ color: "inherit" }}
                 onClick={() => {
                   window.scrollTo(0, 0);
-                  window.location.href = `/Tools-and-Service?`;
+                  window.location.href = `/tools-and-services`;
                 }}
               >
                 <div className="d-inline-flex text-red py-2 md:py-4">
-                  <h5 href="#" className="pe-4" style={{ color: "#AE023E" }}>
-                    {selectedLanguage === "en"
-                      ? "    Find out more"
-                      : "เพิ่มเติม"}{" "}
+                  <h5 className="pe-4" style={{ color: "#AE023E" }}>
+                    {selectedLanguage === "en" ? "Find out more" : "เพิ่มเติม"}
                   </h5>
                   <EastIcon style={iconStyle}></EastIcon>
                 </div>
@@ -370,7 +368,15 @@ function ImageMobile({ members }) {
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
-  const displayedItems = uploadfiles.slice(currentIndex, currentIndex + 3);
+  const startIndex = currentIndex;
+  const endIndex = Math.min(startIndex + 3, uploadfiles.length);
+  const displayedItems = uploadfiles.slice(startIndex, endIndex);
+
+  // Disable the prev button when at the beginning of the list
+  const isPrevDisabled = currentIndex === 0;
+
+  // Disable the next button when at the end of the list
+  const isNextDisabled = endIndex >= uploadfiles.length;
 
   const responsive = {
     desktop: {
@@ -398,40 +404,14 @@ function ImageMobile({ members }) {
         <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
           <Carousel
             responsive={responsive}
-            arrows={true}
-            renderArrowPrev={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-prev"
-                  style={{
-                    padding: "unset",
-                    left: "calc(4% + 1px) !important",
-                  }}
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowLeft />
-                </button>
-              )
-            }
-            renderArrowNext={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-next"
-                  style={{
-                    padding: "unset",
-                    right: "calc(4% + 1px) !important",
-                  }}
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowRight />
-                </button>
-              )
-            }
+            arrows={false} // Set arrows to false inside the Carousel component
           >
             {displayedItems.map((member) => (
-              <MDBCol md="4" key={member.id} className="pb-2 px-0 col-sm-8">
+              <MDBCol
+                md="4"
+                key={member.id}
+                className="pb-2 px-0 col-sm-8 position-relative"
+              >
                 <Link
                   to={`/Tools-Detail/${member.id}`}
                   onClick={() => {
@@ -460,60 +440,92 @@ function ImageMobile({ members }) {
               </MDBCol>
             ))}
           </Carousel>
-          <div className="d-flex justify-content-center">
+          {/* Arrow buttons */}
+          {/* <div className="d-flex justify-content-between">
             <button
-              className={`carousel-arrow carousel-prev ${
-                window.matchMedia("(max-width: 768px)").matches
-                  ? "d-none"
-                  : "d-flex"
-              }`}
+              className={`carousel-arrow carousel-prev`}
               onClick={handlePrev}
-              disabled={currentIndex === 0}
+              disabled={isPrevDisabled}
+              style={{
+                marginTop: "1rem", // Adjust the margin-top here
+              }}
             >
               <MdKeyboardArrowLeft />
             </button>
             <button
-              className={`carousel-arrow carousel-next ${
-                window.matchMedia("(max-width: 768px)").matches
-                  ? "d-none"
-                  : "d-flex"
-              }`}
+              className={`carousel-arrow carousel-next`}
               onClick={handleNext}
-              disabled={currentIndex >= uploadfiles.length - 3}
+              disabled={isNextDisabled}
+              style={{
+                marginTop: "1rem", // Adjust the margin-top here
+              }}
             >
               <MdKeyboardArrowRight />
             </button>
-          </div>
-          {isHomePage && (
-            <MDBRow
-              onMouseEnter={handleMouseEnter2}
-              onMouseLeave={handleMouseLeave2}
-              style={colStyle}
-            >
-              <Link
-                to={`/news-and-activities`}
-                style={{ color: "inherit" }}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  window.location.href = `/Tools-and-Service?`;
-                }}
-              >
-                <div className="d-inline-flex text-red pt-4 pb-2 md:py-4">
-                  <h5
-                    href="#"
-                    className="pe-4  xs:text-base sm:text-lg"
-                    style={{ color: "#AE023E" }}
-                  >
-                    {selectedLanguage === "en"
-                      ? "    Find out more"
-                      : "เพิ่มเติม"}
-                  </h5>
-                  <EastIcon style={iconStyle}></EastIcon>
-                </div>
-              </Link>
-            </MDBRow>
-          )}
+          </div> */}
         </MDBContainer>
+        {/* <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
+          <Carousel
+            responsive={responsive}
+            arrows={true}
+            renderArrowPrev={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  className="carousel-arrow carousel-prev"
+                  onClick={onClickHandler}
+                  aria-label={label}
+                >
+                  <MdKeyboardArrowLeft />
+                </button>
+              )
+            }
+            renderArrowNext={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  className="carousel-arrow carousel-next"
+                  onClick={onClickHandler}
+                  aria-label={label}
+                >
+                  <MdKeyboardArrowRight />
+                </button>
+              )
+            }
+          >
+            {displayedItems.map((member) => (
+              <MDBCol
+                md="4"
+                key={member.id}
+                className="pb-2 px-0 col-sm-8 position-relative"
+              >
+                <Link
+                  to={`/Tools-Detail/${member.id}`}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    window.location.replace(`/Tools-Detail/${member.id}`);
+                  }}
+                >
+                  <MDBCard style={cardStyle}>
+                    <ImageMask
+                      style={{
+                        width: "-webkit-fill-available",
+                        objectFit: "cover",
+                        height: "80%",
+                        borderRadius: "8px",
+                      }}
+                      imageUrl={
+                        "http://10.2.14.173" +
+                        member.attributes.uploadfiles.data[0]?.attributes
+                          .fileupload.data[0]?.attributes.url
+                      }
+                      maskText={member.attributes.name_en + " "}
+                      imageHeight="80%" // Adjust the height here
+                    />
+                  </MDBCard>
+                </Link>
+              </MDBCol>
+            ))}
+          </Carousel>
+        </MDBContainer> */}
       </div>
     </>
   );

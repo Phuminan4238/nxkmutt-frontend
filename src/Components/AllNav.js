@@ -700,7 +700,7 @@ export default function HomeNav(props) {
 
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "1rem" }}
+                      style={{ color: "#AE023E", marginRight: "1.6rem" }}
                     />
                     <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
                   </span>
@@ -896,7 +896,7 @@ export default function HomeNav(props) {
 
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "1rem" }}
+                      style={{ color: "#AE023E", marginRight: "1.6rem" }}
                     />
                     <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
                   </span>

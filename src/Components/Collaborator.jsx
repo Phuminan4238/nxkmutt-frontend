@@ -133,8 +133,8 @@ function ImageDesktop() {
 
             <p className="fw-normal text-white text-center px-4 xs:text-sm">
               {selectedLanguage === "en"
-                ? `${member.attributes.position_en} `
-                : `${member.attributes.position_th}`}
+                ? `${member.attributes.position_en || ""}`
+                : `${member.attributes.position_th || ""}`}
             </p>
           </div>
         </MDBCardBody>
@@ -278,8 +278,8 @@ function ImageMobile({ members }) {
                         style={{ color: "black" }}
                       >
                         {selectedLanguage === "en"
-                          ? `${member.attributes.position_en} `
-                          : `${member.attributes.position_th}`}
+                          ? `${member.attributes.position_en || ""} `
+                          : `${member.attributes.position_th || ""}`}
                       </p>
                     </MDBCardText>
                     {/* <MDBCardText key={member.attributes}>

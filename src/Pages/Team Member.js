@@ -157,7 +157,7 @@ const Member = ({ imageUrl }) => {
                 </p>
               </div>
               <International></International>
-              <div className="d-inline-flex xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
+              <div className="d-flex justify-content-between align-items-center xs:pt-0 sm:pt-5 xs:px-4 sm:p-2">
                 <p
                   className="font-black text-uppercase xs:text-lg md:text-3xl"
                   style={{ fontFamily: "MyFont" }}
@@ -176,7 +176,6 @@ const Member = ({ imageUrl }) => {
                 >
                   <div className="d-inline-flex text-red py-2 md:py-4 hide-on-mobile">
                     <h5
-                      href="#"
                       className="pe-4 hide-on-mobile"
                       style={{ color: "#AE023E" }}
                     >
@@ -191,6 +190,7 @@ const Member = ({ imageUrl }) => {
                   </div>
                 </Link>
               </div>
+
               {/* <Membercol></Membercol> */}
               <Student></Student>
             </MDBRow>
