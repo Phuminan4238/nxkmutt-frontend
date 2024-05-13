@@ -266,7 +266,7 @@ const ImageDesktop = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                {/* <Contactsocial></Contactsocial> */}
+                <Contactsocial></Contactsocial>
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -279,7 +279,7 @@ const ImageDesktop = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                {/* <Contactlab></Contactlab> */}
+                <Contactlab></Contactlab>
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -548,7 +548,7 @@ const ImageMobile = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                {/* <Contactsocial></Contactsocial> */}
+                <Contactsocial></Contactsocial>
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p
@@ -561,7 +561,7 @@ const ImageMobile = () => {
                 </p>
               </div>
               <div className="pt-2 py-4 mx-0 md:px-0 ">
-                {/* <Contactlab></Contactlab> */}
+                <Contactlab></Contactlab>
               </div>
               <div className="d-inline-flex p-2 pt-2">
                 <p

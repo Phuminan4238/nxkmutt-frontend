@@ -30,6 +30,15 @@ const ImageDesktop = () => {
       });
   }, []);
 
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("http://10.2.14.173/api/services?populate=fileupload")
+      .then((res) => res.json())
+      .then((result) => {
+        setServices(result.data);
+      });
+  }, []);
+
   // Lotties
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -184,52 +193,36 @@ const ImageDesktop = () => {
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
                   <MDBRow className="pt-2">
-                    <MDBCol
-                      size="1"
-                      style={{ width: "3.33%" }}
-                      className="me-4 md:me-0"
-                    >
-                      <PeopleIcon style={{ color: "#AE023E" }} />
-                    </MDBCol>
-                    <MDBCol>
-                      <p
-                        className="fw-bold xs:text-lg md:text-xl"
-                        style={{ fontFamily: "FontMedium" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? "      Research consultation"
-                          : "    การปรึกษาด้านงานวิจัย"}
-                      </p>
-                      <p className="xs:text-sm md:text-md">
-                        {selectedLanguage === "en"
-                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "เราเปิดโอกาสในการให้คำปรึกษาหรือการร่วมงานวิจัย และการแบ่งปันอุปกรณ์ต่างๆ"}
-                      </p>
-                    </MDBCol>
-                  </MDBRow>
-                  <MDBRow>
-                    <MDBCol
-                      size="1"
-                      style={{ width: "3.33%" }}
-                      className="me-4 md:me-0"
-                    >
-                      <SchoolIcon style={{ color: "#AE023E" }} />
-                    </MDBCol>
-                    <MDBCol>
-                      <p
-                        className="fw-bold xs:text-lg md:text-xl"
-                        style={{ fontFamily: "FontMedium" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? "   Coursework and workshop"
-                          : "   Coursework and workshop"}
-                      </p>
-                      <p className="xs:text-sm md:text-md">
-                        {selectedLanguage === "en"
-                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "การสอนและการสัมนาเชิงปฏิบัติการ"}
-                      </p>
-                    </MDBCol>
+                    {services.map((service, index) => (
+                      <MDBRow className="pt-2" key={index}>
+                        <MDBCol
+                          size="1"
+                          style={{ width: "3.33%" }}
+                          className="me-4 md:me-0"
+                        >
+                          {index % 2 === 0 ? (
+                            <PeopleIcon style={{ color: "#AE023E" }} />
+                          ) : (
+                            <SchoolIcon style={{ color: "#AE023E" }} />
+                          )}
+                        </MDBCol>
+                        <MDBCol>
+                          <p
+                            className="fw-bold xs:text-lg md:text-xl"
+                            style={{ fontFamily: "FontMedium" }}
+                          >
+                            {selectedLanguage === "en"
+                              ? service.attributes.name_en
+                              : service.attributes.name_th}
+                          </p>
+                          <p className="xs:text-sm md:text-md">
+                            {selectedLanguage === "en"
+                              ? service.attributes.description_en
+                              : service.attributes.description_th}
+                          </p>
+                        </MDBCol>
+                      </MDBRow>
+                    ))}
                   </MDBRow>
                 </MDBCol>
               </MDBCol>
@@ -250,6 +243,15 @@ const ImageMobile = () => {
       .then((res) => res.json())
       .then((result) => {
         setMembercover(result.data);
+      });
+  }, []);
+
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("http://10.2.14.173/api/services?populate=fileupload")
+      .then((res) => res.json())
+      .then((result) => {
+        setServices(result.data);
       });
   }, []);
 
@@ -407,52 +409,36 @@ const ImageMobile = () => {
                 </div>
                 <MDBCol className="xs:px-2 sm:ps-4 pt-2">
                   <MDBRow className="">
-                    <MDBCol
-                      size="1"
-                      style={{ width: "3.33%" }}
-                      className="me-4 md:me-0"
-                    >
-                      <PeopleIcon style={{ color: "#AE023E" }} />
-                    </MDBCol>
-                    <MDBCol>
-                      <p
-                        className="fw-bold xs:text-md md:text-xl"
-                        style={{ fontFamily: "FontMedium" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? "      Research consultation"
-                          : "    การปรึกษาด้านงานวิจัย"}
-                      </p>
-                      <p className="xs:text-sm md:text-md">
-                        {selectedLanguage === "en"
-                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "เราเปิดโอกาสในการให้คำปรึกษาหรือการร่วมงานวิจัย และการแบ่งปันอุปกรณ์ต่างๆ"}
-                      </p>
-                    </MDBCol>
-                  </MDBRow>
-                  <MDBRow className="pt-2">
-                    <MDBCol
-                      size="1"
-                      style={{ width: "3.33%" }}
-                      className="me-4 md:me-0"
-                    >
-                      <SchoolIcon style={{ color: "#AE023E" }} />
-                    </MDBCol>
-                    <MDBCol>
-                      <p
-                        className="fw-bold xs:text-md md:text-xl"
-                        style={{ fontFamily: "FontMedium" }}
-                      >
-                        {selectedLanguage === "en"
-                          ? "   Coursework and workshop"
-                          : "   Coursework and workshop"}
-                      </p>
-                      <p className="xs:text-sm md:text-md">
-                        {selectedLanguage === "en"
-                          ? "We are open to research project consultant or collaboration and sharing tools, etc"
-                          : "การสอนและการสัมนาเชิงปฏิบัติการ"}
-                      </p>
-                    </MDBCol>
+                    {services.map((service, index) => (
+                      <MDBRow className="pt-2" key={index}>
+                        <MDBCol
+                          size="1"
+                          style={{ width: "3.33%" }}
+                          className="me-4 md:me-0"
+                        >
+                          {index % 2 === 0 ? (
+                            <PeopleIcon style={{ color: "#AE023E" }} />
+                          ) : (
+                            <SchoolIcon style={{ color: "#AE023E" }} />
+                          )}
+                        </MDBCol>
+                        <MDBCol>
+                          <p
+                            className="fw-bold xs:text-lg md:text-xl"
+                            style={{ fontFamily: "FontMedium" }}
+                          >
+                            {selectedLanguage === "en"
+                              ? service.attributes.name_en
+                              : service.attributes.name_th}
+                          </p>
+                          <p className="xs:text-sm md:text-md">
+                            {selectedLanguage === "en"
+                              ? service.attributes.description_en
+                              : service.attributes.description_th}
+                          </p>
+                        </MDBCol>
+                      </MDBRow>
+                    ))}
                   </MDBRow>
                 </MDBCol>
               </MDBCol>

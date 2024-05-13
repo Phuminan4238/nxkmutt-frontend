@@ -1,103 +1,81 @@
-import React from "react";
-import { useState, useEffect, setIsLoaded, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-/* Routes */
-import { Route, Routes } from "react-router";
-import { Link } from "react-router-dom";
-/* MDBootstrap */
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdb-react-ui-kit";
-/* Components */
-import Contactlab from "../Components/Contactlab";
-import Contactsocial from "../Components/Contactsocial";
-import Contactadministration from "../Components/Contactadministration";
-// Lotties
-import Lottie from "react-lottie-player";
-import Animation from "../Components/Animation.json";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import DocumentScannerIcon from "@mui/icons-material/DocumentScanner";
-import Container from "@mui/material/Container";
-import { useMediaQuery } from "react-responsive";
-// Language
-import { LanguageContext } from "../Components/LanguageContext";
+import { LanguageContext } from "./LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
-  faTwitter,
   faYoutube,
+  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import vr2 from "../Images/vr-2.png";
 
-const CardList = ({ cards, socialMediaData }) => {
-  const visibleCards = cards.slice(0, 3); // Only display the first 3 cards
-  const { selectedLanguage, handleLanguageSwitch } =
-    useContext(LanguageContext);
-
-  return (
-    <div className="row" id="contact-gutter">
-      {visibleCards.map((card, index) => (
-        <div className="col" key={index}>
-          <div className="image-container d-flex align-items-center">
-            {card.icon && (
-              <FontAwesomeIcon
-                icon={card.icon}
-                size="3x"
-                style={{ color: card.color }}
-              />
-            )}
-            {card.title && (
-              <p className="fw-normal ps-4 text-center text-black xs:text-base md:text-md mt-3 card-description">
-                {selectedLanguage === "en"
-                  ? `${socialMediaData?.content_en || ""}`
-                  : `${socialMediaData?.content_th || ""}`}
-              </p>
-            )}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-export default function App() {
-  const [socialMediaData, setSocialMediaData] = useState(null);
+const ContactInfo = () => {
+  const [socialMediaData, setSocialMediaData] = useState([]);
+  const [hasDataFetched, setHasDataFetched] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
-        );
-        const data = response.data.data;
-        const socialMediaInfo = data.find((item) => item.id === 5); // Assuming social media ID is 5, adjust as needed
-        setSocialMediaData(socialMediaInfo ? socialMediaInfo.attributes : null);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    if (!hasDataFetched) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            "http://10.2.14.173/api/contacts?populate=admin_staff.uploadfiles.fileupload"
+          );
+          const data = response.data.data;
+          setSocialMediaData(data);
+          setHasDataFetched(true);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-    fetchData();
-  }, []);
+      fetchData();
+    }
+  }, [hasDataFetched]);
 
   const cards = [
     {
+      id: 6,
       title: "Facebook",
       icon: faFacebook,
       color: "#0370e6",
     },
     {
-      title: "Youtube",
+      id: 7,
+      title: "YouTube",
       icon: faYoutube,
       color: "red",
     },
     {
+      id: 8,
       title: "Twitter",
       icon: faTwitter,
-      color: "#37bcf8",
+      color: "#1DA1F2",
     },
   ];
 
   return (
-    <div className="container px-2 mx-0">
-      <CardList cards={cards} socialMediaData={socialMediaData} />
+    <div className="container m-0">
+      <div className="row">
+        {cards.map((card, index) => {
+          const socialData = socialMediaData.find(
+            (item) => item.id === card.id
+          );
+          return (
+            <div className="col" key={index}>
+              <div className="image-container d-flex align-items-center">
+                <FontAwesomeIcon
+                  icon={card.icon}
+                  size="3x"
+                  style={{ color: card.color }}
+                />
+                <p className="ps-4 text-center align-middle">{card.title}</p>
+                {socialData && <p>{socialData.content_en}</p>}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
-}
+};
+
+export default ContactInfo;
