@@ -475,8 +475,8 @@ const ImageDesktop = () => {
                               dangerouslySetInnerHTML={{
                                 __html:
                                   selectedLanguage === "en"
-                                    ? member.attributes.content_en
-                                    : member.attributes.content_th,
+                                    ? member.attributes.content_en_markdown
+                                    : member.attributes.content_th_markdown,
                               }}
                             />
                           ) : (
