@@ -465,7 +465,7 @@ const ImageDesktop = () => {
                         </MDBCol>
                         <MDBCol className="ps-0">
                           {/* // Member  */}
-                          {member.attributes?.content_en ? (
+                          {member.attributes?.content_en_markdown ? (
                             <p
                               className="fw-normal text-md"
                               style={{
@@ -907,7 +907,7 @@ const ImageMobile = () => {
                         </MDBCol>
                         <MDBCol className="ps-0">
                           {/* // Member  */}
-                          {member.attributes?.content_en ? (
+                          {member.attributes?.content_en_markdown ? (
                             <p
                               className="fw-normal text-md"
                               style={{
@@ -917,8 +917,8 @@ const ImageMobile = () => {
                               dangerouslySetInnerHTML={{
                                 __html:
                                   selectedLanguage === "en"
-                                    ? member.attributes.content_en
-                                    : member.attributes.content_th,
+                                    ? member.attributes.content_en_markdown
+                                    : member.attributes.content_th_markdown,
                               }}
                             />
                           ) : (
