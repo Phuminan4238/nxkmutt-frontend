@@ -9,12 +9,14 @@ const CardList = ({ cards }) => {
         <div className="col" key={index}>
           <div className="image-container">
             {card.img && (
-              <MDBCardImage
-                className="rounded-2"
-                src={card.img}
-                alt="..."
-                style={{ height: "150px", objectFit: "contain" }}
-              />
+              <a href={card.url} target="_blank" rel="noopener noreferrer">
+                <MDBCardImage
+                  className="rounded-2"
+                  src={card.img}
+                  alt="..."
+                  style={{ height: "150px", objectFit: "contain" }}
+                />
+              </a>
             )}
             {card.title && (
               <p className="fw-normal text-center text-black xs:text-sm md:text-lg mt-3 card-description">
@@ -57,6 +59,7 @@ export default function App() {
       "http://10.2.14.173" +
       lab.attributes.uploadfiles.data[0]?.attributes.fileupload.data[0]
         ?.attributes.url,
+    url: lab.attributes.url,
   }));
 
   return (
