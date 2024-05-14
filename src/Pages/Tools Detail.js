@@ -435,8 +435,8 @@ function ImageMobile({ title }) {
                   position="top"
                   alt="..."
                   style={{
-                    height: "300px",
-                    width: "300px",
+                    maxHeight: "280px",
+                    maxWidth: "280px",
                     // height: "400px",
                     objectFit: "fill",
                     // height: "500px",

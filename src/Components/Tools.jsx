@@ -89,6 +89,70 @@ const ImageMask = ({ imageUrl, maskText, imageHeight }) => {
   );
 };
 
+const ImageMaskMobile = ({ imageUrl, maskText, imageHeight }) => {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  const containerStyle = {
+    position: "relative",
+    width: "100%",
+    height: imageHeight,
+    borderRadius: "8px",
+    overflow: "hidden",
+  };
+
+  const imageStyle = {
+    width: "100%",
+    height: "260px",
+    objectFit: "fill",
+  };
+
+  const maskStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "85%", // Adjust the width of the mask
+    height: "85%", // Adjust the height of the mask
+    borderRadius: "150px",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    opacity: isHovering ? "80%" : 0,
+    transition: "opacity 0.3s ease-in-out",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "10%", // Add padding or margin value here
+  };
+
+  const textStyle = {
+    color: "#fff",
+    fontSize: "1.5rem",
+    fontWeight: 500,
+    textAlign: "center",
+    opacity: isHovering ? 1 : 0,
+  };
+
+  return (
+    <div
+      style={containerStyle}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <img src={imageUrl} alt="" style={imageStyle} />
+      <div style={maskStyle}>
+        <p style={textStyle}>{maskText}</p>
+      </div>
+    </div>
+  );
+};
+
 function ImageDesktop({ members }) {
   const [uploadfiles, setUploadfiles] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -297,7 +361,7 @@ function ImageMobile({ members }) {
     boxShadow: "unset",
     borderRadius: "8px",
     width: "220px",
-    height: "80%",
+    // height: "80%",
     padding: "0rem 1rem",
   };
 
@@ -420,11 +484,11 @@ function ImageMobile({ members }) {
                   }}
                 >
                   <MDBCard style={cardStyle}>
-                    <ImageMask
+                    <ImageMaskMobile
                       style={{
                         width: "-webkit-fill-available",
-                        objectFit: "cover",
-                        height: "80%",
+                        objectFit: "fill",
+                        // height: "280px",
                         borderRadius: "8px",
                       }}
                       imageUrl={
@@ -433,99 +497,14 @@ function ImageMobile({ members }) {
                           .fileupload.data[0]?.attributes.url
                       }
                       maskText={member.attributes.name_en + " "}
-                      imageHeight="80%" // Adjust the height here
+                      // imageHeight="80%" // Adjust the height here
                     />
                   </MDBCard>
                 </Link>
               </MDBCol>
             ))}
           </Carousel>
-          {/* Arrow buttons */}
-          {/* <div className="d-flex justify-content-between">
-            <button
-              className={`carousel-arrow carousel-prev`}
-              onClick={handlePrev}
-              disabled={isPrevDisabled}
-              style={{
-                marginTop: "1rem", // Adjust the margin-top here
-              }}
-            >
-              <MdKeyboardArrowLeft />
-            </button>
-            <button
-              className={`carousel-arrow carousel-next`}
-              onClick={handleNext}
-              disabled={isNextDisabled}
-              style={{
-                marginTop: "1rem", // Adjust the margin-top here
-              }}
-            >
-              <MdKeyboardArrowRight />
-            </button>
-          </div> */}
         </MDBContainer>
-        {/* <MDBContainer className="px-0 xs:max-w-full sm:max-w-7xl">
-          <Carousel
-            responsive={responsive}
-            arrows={true}
-            renderArrowPrev={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-prev"
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowLeft />
-                </button>
-              )
-            }
-            renderArrowNext={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  className="carousel-arrow carousel-next"
-                  onClick={onClickHandler}
-                  aria-label={label}
-                >
-                  <MdKeyboardArrowRight />
-                </button>
-              )
-            }
-          >
-            {displayedItems.map((member) => (
-              <MDBCol
-                md="4"
-                key={member.id}
-                className="pb-2 px-0 col-sm-8 position-relative"
-              >
-                <Link
-                  to={`/Tools-Detail/${member.id}`}
-                  onClick={() => {
-                    window.scrollTo(0, 0);
-                    window.location.replace(`/Tools-Detail/${member.id}`);
-                  }}
-                >
-                  <MDBCard style={cardStyle}>
-                    <ImageMask
-                      style={{
-                        width: "-webkit-fill-available",
-                        objectFit: "cover",
-                        height: "80%",
-                        borderRadius: "8px",
-                      }}
-                      imageUrl={
-                        "http://10.2.14.173" +
-                        member.attributes.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url
-                      }
-                      maskText={member.attributes.name_en + " "}
-                      imageHeight="80%" // Adjust the height here
-                    />
-                  </MDBCard>
-                </Link>
-              </MDBCol>
-            ))}
-          </Carousel>
-        </MDBContainer> */}
       </div>
     </>
   );
