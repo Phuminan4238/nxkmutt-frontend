@@ -34,7 +34,7 @@ function Post() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -146,7 +146,7 @@ function Image({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=advisor_and_collaborator&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);

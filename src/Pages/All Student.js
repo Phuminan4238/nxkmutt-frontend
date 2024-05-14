@@ -40,7 +40,7 @@ function ImageDesktop({ title }) {
   useEffect(() => {
     axios
       .get(
-        `http://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
+        `http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance&sort=sort`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -182,97 +182,7 @@ function ImageDesktop({ title }) {
               </MDBCol>
             </MDBRow>
           </MDBContainer>
-
-          {/* First student that clicked */}
-          <MDBContainer className="pt-4 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
-            {/* {uploadfiles.map((member) => ( */}
-            <MDBRow className="pt-0 pb-5 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol className="d-flex pb-0 pe-5">
-                <div className="d-flex flex-column w-100 h-fit">
-                  <h1
-                    className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    {selectedLanguage === "en"
-                      ? `${uploadfiles.attributes?.name_en || ""} 
-                      `
-                      : `${uploadfiles.attributes?.name_th || ""} 
-                      `}
-                    <span
-                      style={{
-                        paddingLeft: "0.5rem",
-                        fontFamily: "FontMedium",
-                      }}
-                    >
-                      (
-                    </span>
-                    {selectedLanguage === "en"
-                      ? `${uploadfiles.attributes?.nickname_en || ""} 
-                      `
-                      : `${uploadfiles.attributes?.nickname_th || ""} 
-                      `}
-                    <span>)</span>
-                  </h1>
-                  <h1
-                    className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
-                    style={{ fontFamily: "MyFont" }}
-                  >
-                    {selectedLanguage === "en"
-                      ? `${uploadfiles.attributes?.surname_en || ""} 
-                      `
-                      : `${uploadfiles.attributes?.surname_th || ""} 
-                      `}
-                  </h1>
-                  <h3
-                    className="fw-normal text-normal pt-2 mb-1"
-                    style={{ color: "#AE023E" }}
-                  >
-                    {/* {uploadfiles.attributes?.position_en || "-"} */}
-                  </h3>
-                  <MDBRow className="pt-2"></MDBRow>
-                  <p
-                    className="fw-normal text-sm pt-3"
-                    style={{
-                      // wordWrap: "break-word",
-                      wordBreak: "break-word",
-                    }}
-                  >
-                    {selectedLanguage === "en"
-                      ? `${uploadfiles.attributes?.bio_text_en || ""} `
-                      : `${uploadfiles.attributes?.bio_text_th || ""} `}
-                  </p>
-                </div>
-              </MDBCol>
-              <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
-                <div className="d-flex flex-column h-fit">
-                  <MDBCardImage
-                    className="rounded-4 h-fit"
-                    src={
-                      "http://10.2.14.173" +
-                        uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                          .fileupload.data[0]?.attributes.url || "-"
-                    }
-                    position="top"
-                    alt="..."
-                    style={{
-                      // maxHeight: "300px",
-                      width: "100%",
-                      objectFit: "initial",
-                      borderRadius: "0px",
-                      alignSelf: "center",
-                    }}
-                  />
-                </div>
-              </MDBCol>
-            </MDBRow>{" "}
-            <MDBRow
-              style={{
-                borderBottom: "1px solid black",
-              }}
-            ></MDBRow>
-          </MDBContainer>
         </section>
-        {/* ***  */}
 
         {/* the rest student
          */}
@@ -378,8 +288,6 @@ function ImageDesktop({ title }) {
   );
 }
 
-// image_square
-
 function ImageMobile({ title }) {
   let { id } = useParams();
   const [uploadfiles, setUploadfiles] = useState({});
@@ -387,7 +295,7 @@ function ImageMobile({ title }) {
   useEffect(() => {
     axios
       .get(
-        `http://10.2.14.173/api/members/${id}?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance`
+        `http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance&sort=sort`
       )
       .then((response) => {
         setUploadfiles(response.data.data);
@@ -521,98 +429,6 @@ function ImageMobile({ title }) {
             </MDBCol>
           </MDBRow>
         </MDBContainer>
-
-        <MDBContainer className="pt-4 xs:max-w-full sm:max-w-7xl sm:px-5 md:px-0">
-          {/* {uploadfiles.map((member) => ( */}
-          <MDBRow className="pt-0 pb-2 xs:px-5 sm:px-5 md:px-0">
-            <MDBCol md="4" className="xs:px-4 sm:px-5 md:px-0 pb-4">
-              <div className="d-flex justify-content-center">
-                <MDBCardImage
-                  className="rounded-4 h-fit"
-                  src={
-                    "http://10.2.14.173" +
-                      uploadfiles.attributes?.uploadfiles.data[0]?.attributes
-                        .fileupload.data[0]?.attributes.url || "-"
-                  }
-                  position="top"
-                  alt="..."
-                  style={{
-                    height: "200px",
-                    width: "auto",
-                    objectFit: "initial",
-                    borderRadius: "0px",
-                    alignSelf: "start",
-                  }}
-                />
-              </div>
-            </MDBCol>
-            <MDBCol className="d-flex pb-0 ">
-              <div className="d-flex flex-column w-100 h-fit">
-                <p
-                  className="fw-bold text-uppercase text-black xs:text-sm text-center mb-0"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  {selectedLanguage === "en"
-                    ? `${uploadfiles.attributes?.name_en || ""} 
-                      `
-                    : `${uploadfiles.attributes?.name_th || ""} 
-                      `}
-                  {/* <span>&nbsp</span> */}
-                  <span
-                    style={{ paddingLeft: "0.5rem", fontFamily: "FontMedium" }}
-                  >
-                    (
-                  </span>
-                  {selectedLanguage === "en"
-                    ? `${uploadfiles.attributes?.nickname_en || ""} 
-                      `
-                    : `${uploadfiles.attributes?.nickname_th || ""} 
-                      `}
-                  <span>)</span>
-                </p>
-                <p
-                  className="fw-bold text-uppercase text-black xs:text-sm  text-center"
-                  style={{ fontFamily: "MyFont" }}
-                >
-                  {selectedLanguage === "en"
-                    ? `${uploadfiles.attributes?.surname_en || ""} 
-                      `
-                    : `${uploadfiles.attributes?.surname_th || ""} 
-                      `}
-                </p>
-
-                <MDBRow className="pt-0"></MDBRow>
-                <p
-                  className="fw-normal text-sm pt-3"
-                  style={{
-                    // wordWrap: "break-word",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  {selectedLanguage === "en"
-                    ? `${uploadfiles.attributes?.bio_text_en || ""} `
-                    : `${uploadfiles.attributes?.bio_text_th || ""} `}
-                </p>
-                {/* {uploadfiles.attributes?.bio_en ? (
-                  <p
-                    className="fw-normal text-xs pt-2"
-                    style={{ wordWrap: "break-word", wordBreak: "break-all" }}
-                    dangerouslySetInnerHTML={{
-                      __html: uploadfiles.attributes.bio_en,
-                    }}
-                  />
-                ) : (
-                  <p className="fw-normal text-sm pt-3">-</p>
-                )} */}
-              </div>
-            </MDBCol>
-          </MDBRow>{" "}
-          <MDBRow
-            style={{
-              borderBottom: "1px solid black",
-            }}
-          ></MDBRow>
-        </MDBContainer>
       </section>
 
       {/* section 3
@@ -712,7 +528,7 @@ function ImageMobile({ title }) {
   );
 }
 
-export default function Studentdetail() {
+export default function Allstudent() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   return (

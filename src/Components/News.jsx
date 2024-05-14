@@ -164,7 +164,7 @@ function ImageMobile({ member }) {
         window.location.replace(`/News-Detail/${member.id}`);
       }}
     >
-      <MDBRow className="xs:pb-3 md:pb-0 xs:px-4 md:px-0 w-80">
+      <MDBRow className="px-6">
         <MDBCol md="4" className="px-1">
           <MDBRipple
             className="bg-image hover-overlay shadow-1-strong rounded"

@@ -27,7 +27,7 @@ const Member = ({ imageUrl }) => {
   const [memberCover, setMembercover] = useState([]);
   useEffect(() => {
     fetch(
-      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=member_cover_image"
+      "http://10.2.14.173/api/uploadfiles?populate=fileupload&filters[filename][$eq]=member_cover_image&sort=sort"
     )
       .then((res) => res.json())
       .then((result) => {
@@ -167,10 +167,10 @@ const Member = ({ imageUrl }) => {
                     : "นักเรียน ผู้ช่วยวิจัย และศิษย์เก่า"}
                 </p>
                 <Link
-                  to={`/Student-Detail/9`}
+                  to={`/All-Student/`}
                   onClick={() => {
                     window.scrollTo(0, 0);
-                    window.location.replace(`/Student-Detail/9`);
+                    window.location.replace(`/All-Student`);
                   }}
                   className="image-link hide-on-mobile"
                 >
@@ -190,7 +190,6 @@ const Member = ({ imageUrl }) => {
                   </div>
                 </Link>
               </div>
-
               {/* <Membercol></Membercol> */}
               <Student></Student>
             </MDBRow>

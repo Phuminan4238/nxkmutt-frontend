@@ -47,7 +47,7 @@ const ImageDesktop = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -126,7 +126,7 @@ const ImageMobile = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance"
+          "http://10.2.14.173/api/members?populate=uploadfiles.fileupload&filters[usertype][$eq]=research_assistance&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);

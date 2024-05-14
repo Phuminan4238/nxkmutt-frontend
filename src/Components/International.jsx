@@ -34,7 +34,7 @@ function ImageDesktop() {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);
@@ -203,7 +203,7 @@ function ImageMobile({ members }) {
     async function fetchData() {
       try {
         const response = await instance.get(
-          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator"
+          "members?populate=uploadfiles.fileupload&filters[usertype][$eq]=international_collaborator&sort=sort"
         );
         if (isMounted) {
           setUploadfiles(response.data.data);

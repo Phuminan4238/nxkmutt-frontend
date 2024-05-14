@@ -24,6 +24,7 @@ import Searchresult from "./Pages/Search";
 import Participate from "./Pages/Participate Donate";
 import ParticipateDetail from "./Pages/Participate Detail";
 import Toolservice from "./Pages/Tools Service";
+import Allstudent from "./Pages/All Student";
 
 function App() {
   const location = useLocation();
@@ -78,6 +79,10 @@ function App() {
             <Route
               path="/Student-Detail/:id"
               element={<Studentdetail title="STUDENT MEMBER" />}
+            />
+            <Route
+              path="/All-Student/"
+              element={<Allstudent title="STUDENT MEMBER" />}
             />
             <Route
               path="/Tags-Detail/:id"
