@@ -328,23 +328,23 @@ function ImageDesktop({ title }) {
                         </p>
 
                         <MDBRow className="pt-2"></MDBRow>
-                        {member.attributes?.bio_en ? (
+                        {member.attributes?.bio_text_en ? (
                           <p
-                            className="fw-normal text-md pt-3"
+                            className="fw-normal text-sm pt-3"
                             style={{
                               // overflowWrap: "break-word", // This property allows long words to be broken and wrap onto the next line
-                              wordBreak: "break-all", // This property allows long words to be broken at any point
-                              maxWidth: "90%", // Adjust this value as needed
+                              wordBreak: "break-word", // This property allows long words to be broken at any point
+                              // maxWidth: "90%", // Adjust this value as needed
                             }}
                             dangerouslySetInnerHTML={{
                               __html:
                                 selectedLanguage === "en"
-                                  ? member.attributes.bio_en
-                                  : member.attributes.bio_th,
+                                  ? member.attributes.bio_text_en
+                                  : member.attributes.bio_text_th,
                             }}
                           />
                         ) : (
-                          <p className="fw-normal text-md pt-3">-</p>
+                          <p className="fw-normal text-sm pt-3">-</p>
                         )}
                       </div>
                     </MDBCol>
