@@ -694,7 +694,6 @@ function ImageMobile({ title }) {
                       <p
                         className="fw-normal text-sm pt-3"
                         style={{
-                          // wordWrap: "break-word",
                           wordBreak: "break-word",
                         }}
                       >
