@@ -198,19 +198,23 @@ function ImageDesktop({ title }) {
                     style={{
                       borderBottom: "1px solid black",
                       marginTop: "1.5rem",
+                      display: "flex",
+                      flexDirection: "row",
+                      flexWrap: "nowrap", // Ensure items stay in the same row
                     }}
                   >
-                    <MDBCol className="d-flex pb-0 pe-5">
+                    <MDBCol
+                      className="d-flex pb-0 pe-5"
+                      style={{ flex: "1 1 60%", minWidth: "0" }} // Ensure text container can shrink
+                    >
                       <div className="d-flex flex-column w-100">
                         <p
                           className="fw-bold text-uppercase text-black xs:text-xl sm:text-4xl"
                           style={{ fontFamily: "MyFont" }}
                         >
                           {selectedLanguage === "en"
-                            ? `${member.attributes?.name_en || ""} 
-                      `
-                            : `${member.attributes?.name_th || ""} 
-                      `}
+                            ? `${member.attributes?.name_en || ""}`
+                            : `${member.attributes?.name_th || ""}`}
                           <span
                             style={{
                               paddingLeft: "0.5rem",
@@ -220,10 +224,8 @@ function ImageDesktop({ title }) {
                             (
                           </span>
                           {selectedLanguage === "en"
-                            ? `${member.attributes?.nickname_en || ""} 
-                      `
-                            : `${member.attributes?.nickname_th || ""} 
-                      `}
+                            ? `${member.attributes?.nickname_en || ""}`
+                            : `${member.attributes?.nickname_th || ""}`}
                           )
                         </p>
                         <p
@@ -231,35 +233,36 @@ function ImageDesktop({ title }) {
                           style={{ fontFamily: "MyFont" }}
                         >
                           {selectedLanguage === "en"
-                            ? `${member.attributes?.surname_en || ""} 
-                      `
-                            : `${member.attributes?.surname_th || ""} 
-                      `}
+                            ? `${member.attributes?.surname_en || ""}`
+                            : `${member.attributes?.surname_th || ""}`}
                         </p>
 
                         <MDBRow className="pt-2"></MDBRow>
-                        {member.attributes?.bio_en ? (
+                        {member.attributes?.bio_text_en ? (
                           <p
-                            className="fw-normal text-md pt-3"
+                            className="fw-normal text-sm pt-3"
                             style={{
-                              // overflowWrap: "break-word", // This property allows long words to be broken and wrap onto the next line
-                              wordBreak: "break-all", // This property allows long words to be broken at any point
-                              maxWidth: "90%", // Adjust this value as needed
+                              wordWrap: "break-word",
+                              whiteSpace: "normal", // Ensure text breaks only at words
                             }}
                             dangerouslySetInnerHTML={{
                               __html:
                                 selectedLanguage === "en"
-                                  ? member.attributes.bio_en
-                                  : member.attributes.bio_th,
+                                  ? member.attributes.bio_text_en
+                                  : member.attributes.bio_text_th,
                             }}
                           />
                         ) : (
-                          <p className="fw-normal text-md pt-3">-</p>
+                          <p className="fw-normal text-sm pt-3">-</p>
                         )}
                       </div>
                     </MDBCol>
-                    <MDBCol md="4" className="xs:px-5 sm:px-5 md:px-0">
-                      <div className="d-flex flex-column  h-fit">
+                    <MDBCol
+                      md="4"
+                      className="xs:px-5 sm:px-5 md:px-0"
+                      style={{ flex: "0 0 auto" }} // Prevent the image from shrinking
+                    >
+                      <div className="d-flex flex-column h-fit">
                         <MDBCardImage
                           className="rounded-4"
                           src={
@@ -270,7 +273,6 @@ function ImageDesktop({ title }) {
                           position="top"
                           alt="..."
                           style={{
-                            // maxHeight: "300px",
                             width: "100%",
                             objectFit: "initial",
                             borderRadius: "0px",
