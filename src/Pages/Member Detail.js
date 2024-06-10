@@ -316,13 +316,15 @@ function ImageDesktop({ title }) {
         <section>
           <MDBContainer className="xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0">
             {/* Education */}
+
+            {/* Education Header */}
             <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
               <div className="d-flex justify-content-between pt-4 xs:text-base sm:text-lg sm:px-5 md:px-0">
                 <h5
                   className="fw-bold text-capitalize text-black"
                   style={{ fontFamily: "FontMedium" }}
                 >
-                  {selectedLanguage === "en" ? "  Education" : "การศึกษา"}
+                  {selectedLanguage === "en" ? "Education" : "การศึกษา"}
                 </h5>
 
                 {uploadfiles.attributes?.cv_file?.data?.attributes ? (
@@ -336,9 +338,7 @@ function ImageDesktop({ title }) {
                       className="mx-2"
                       style={{ borderColor: "#A02040", borderWidth: "1px" }}
                     >
-                      <DescriptionIcon
-                        style={{ color: "#A02040" }}
-                      ></DescriptionIcon>
+                      <DescriptionIcon style={{ color: "#A02040" }} />
                       <span
                         className="ps-2 text-normal"
                         style={{ color: "#A02040" }}
@@ -353,7 +353,7 @@ function ImageDesktop({ title }) {
               </div>
             </MDBRow>
 
-            {/* Education  */}
+            {/* Education Details */}
             <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
               <MDBCol md="8">
                 {uploadfiles.attributes?.education_en ? (
@@ -361,7 +361,13 @@ function ImageDesktop({ title }) {
                     {selectedLanguage === "en"
                       ? uploadfiles.attributes.education_en.map(
                           (education, index) => {
-                            const [degree, year] = education.split("–");
+                            // Extract the year or year range using regex
+                            const match = education.match(
+                              /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                            );
+                            const degree = match
+                              ? education.substring(0, match.index).trim()
+                              : education;
                             return (
                               <li key={index} className="fw-normal text-normal">
                                 <p className="mb-1">{degree || "-"}</p>
@@ -371,7 +377,13 @@ function ImageDesktop({ title }) {
                         )
                       : uploadfiles.attributes.education_th.map(
                           (education, index) => {
-                            const [degree, year] = education.split("–");
+                            // Extract the year or year range using regex
+                            const match = education.match(
+                              /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                            );
+                            const degree = match
+                              ? education.substring(0, match.index).trim()
+                              : education;
                             return (
                               <li key={index} className="fw-normal text-normal">
                                 <p className="mb-1">{degree || "-"}</p>
@@ -385,33 +397,20 @@ function ImageDesktop({ title }) {
                 )}
               </MDBCol>
 
-              <MDBCol md="1">
+              <MDBCol md="4">
                 <ul>
                   {selectedLanguage === "en"
                     ? uploadfiles.attributes?.education_en.map(
                         (education, index) => {
-                          // Find and replace any non-standard hyphen characters with the standard hyphen "-"
-                          const standardizedYear = education.replace("–", "-");
-                          const [degree, startYear, endYear] =
-                            standardizedYear.split("-");
-                          const yearRange = endYear
-                            ? `${startYear}-${endYear}`
-                            : startYear; // Adjust for year range
+                          // Extract the year or year range using regex
+                          const match = education.match(
+                            /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                          );
+                          const year = match ? match[0].trim() : "";
                           return (
-                            <li
-                              key={index}
-                              className="fw-normal text-normal"
-                              style={{
-                                listStyle: '"- "',
-                                "::before": {
-                                  content: '"-"',
-                                  marginRight: "0.5rem",
-                                },
-                              }}
-                            >
+                            <li key={index} className="fw-normal text-normal">
                               <span style={{ whiteSpace: "nowrap" }}>
-                                <p className="mb-1">{yearRange}</p>{" "}
-                                {/* Display the corrected year range */}
+                                <p className="mb-1">{year || "-"}</p>
                               </span>
                             </li>
                           );
@@ -419,20 +418,16 @@ function ImageDesktop({ title }) {
                       )
                     : uploadfiles.attributes?.education_th.map(
                         (education, index) => {
-                          const [degree, year] = education.split("–");
+                          // Extract the year or year range using regex
+                          const match = education.match(
+                            /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                          );
+                          const year = match ? match[0].trim() : "";
                           return (
-                            <li
-                              key={index}
-                              className="fw-normal text-normal"
-                              style={{
-                                listStyle: '"- "',
-                                "::before": {
-                                  content: '"-"',
-                                  marginRight: "0.5rem",
-                                },
-                              }}
-                            >
-                              <p className="mb-1">{year}</p>
+                            <li key={index} className="fw-normal text-normal">
+                              <span style={{ whiteSpace: "nowrap" }}>
+                                <p className="mb-1">{year || "-"}</p>
+                              </span>
                             </li>
                           );
                         }
