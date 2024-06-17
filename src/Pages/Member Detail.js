@@ -355,38 +355,34 @@ function ImageDesktop({ title }) {
 
             {/* Education Details */}
             <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="8">
+              <MDBCol md="9">
                 {uploadfiles.attributes?.education_en ? (
-                  <ul style={{ paddingLeft: "1rem" }}>
+                  <ul style={{ paddingLeft: "1rem", listStyleType: "disc" }}>
                     {selectedLanguage === "en"
                       ? uploadfiles.attributes.education_en.map(
                           (education, index) => {
-                            // Extract the year or year range using regex
+                            // Extract the degree using regex
                             const match = education.match(
-                              /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                              /(.+?)\s*-\s*(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
                             );
-                            const degree = match
-                              ? education.substring(0, match.index).trim()
-                              : education;
+                            const degree = match ? match[1].trim() : education;
                             return (
                               <li key={index} className="fw-normal text-normal">
-                                <p className="mb-1">{degree || "-"}</p>
+                                <span>{degree || "-"}</span>
                               </li>
                             );
                           }
                         )
                       : uploadfiles.attributes.education_th.map(
                           (education, index) => {
-                            // Extract the year or year range using regex
+                            // Extract the degree using regex
                             const match = education.match(
-                              /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
+                              /(.+?)\s*-\s*(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
                             );
-                            const degree = match
-                              ? education.substring(0, match.index).trim()
-                              : education;
+                            const degree = match ? match[1].trim() : education;
                             return (
                               <li key={index} className="fw-normal text-normal">
-                                <p className="mb-1">{degree || "-"}</p>
+                                <span>{degree || "-"}</span>
                               </li>
                             );
                           }
@@ -397,7 +393,7 @@ function ImageDesktop({ title }) {
                 )}
               </MDBCol>
 
-              <MDBCol md="4">
+              <MDBCol md="3">
                 <ul>
                   {selectedLanguage === "en"
                     ? uploadfiles.attributes?.education_en.map(
@@ -406,12 +402,10 @@ function ImageDesktop({ title }) {
                           const match = education.match(
                             /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
                           );
-                          const year = match ? match[0].trim() : "";
+                          const year = match ? match[0].trim() : "-";
                           return (
                             <li key={index} className="fw-normal text-normal">
-                              <span style={{ whiteSpace: "nowrap" }}>
-                                <p className="mb-1">{year || "-"}</p>
-                              </span>
+                              <span>{year}</span>
                             </li>
                           );
                         }
@@ -422,12 +416,13 @@ function ImageDesktop({ title }) {
                           const match = education.match(
                             /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
                           );
-                          const year = match ? match[0].trim() : "";
+                          const year = match ? match[0].trim() : "-";
                           return (
-                            <li key={index} className="fw-normal text-normal">
-                              <span style={{ whiteSpace: "nowrap" }}>
-                                <p className="mb-1">{year || "-"}</p>
-                              </span>
+                            <li
+                              key={index}
+                              className="fw-normal text-normal list-none"
+                            >
+                              {/* <span>{year}</span> */}
                             </li>
                           );
                         }
