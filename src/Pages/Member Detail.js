@@ -355,79 +355,28 @@ function ImageDesktop({ title }) {
 
             {/* Education Details */}
             <MDBRow className="pt-2 xs:px-5 sm:px-5 md:px-0">
-              <MDBCol md="9">
+              <MDBCol md="12">
                 {uploadfiles.attributes?.education_en ? (
                   <ul style={{ paddingLeft: "1rem", listStyleType: "disc" }}>
                     {selectedLanguage === "en"
                       ? uploadfiles.attributes.education_en.map(
-                          (education, index) => {
-                            // Extract the degree using regex
-                            const match = education.match(
-                              /(.+?)\s*-\s*(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
-                            );
-                            const degree = match ? match[1].trim() : education;
-                            return (
-                              <li key={index} className="fw-normal text-normal">
-                                <span>{degree || "-"}</span>
-                              </li>
-                            );
-                          }
+                          (education, index) => (
+                            <li key={index} className="fw-normal text-normal">
+                              <span>{education || "-"}</span>
+                            </li>
+                          )
                         )
                       : uploadfiles.attributes.education_th.map(
-                          (education, index) => {
-                            // Extract the degree using regex
-                            const match = education.match(
-                              /(.+?)\s*-\s*(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
-                            );
-                            const degree = match ? match[1].trim() : education;
-                            return (
-                              <li key={index} className="fw-normal text-normal">
-                                <span>{degree || "-"}</span>
-                              </li>
-                            );
-                          }
+                          (education, index) => (
+                            <li key={index} className="fw-normal text-normal">
+                              <span>{education || "-"}</span>
+                            </li>
+                          )
                         )}
                   </ul>
                 ) : (
                   <p className="fw-normal text-normal">-</p>
                 )}
-              </MDBCol>
-
-              <MDBCol md="3">
-                <ul>
-                  {selectedLanguage === "en"
-                    ? uploadfiles.attributes?.education_en.map(
-                        (education, index) => {
-                          // Extract the year or year range using regex
-                          const match = education.match(
-                            /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
-                          );
-                          const year = match ? match[0].trim() : "-";
-                          return (
-                            <li key={index} className="fw-normal text-normal">
-                              <span>{year}</span>
-                            </li>
-                          );
-                        }
-                      )
-                    : uploadfiles.attributes?.education_th.map(
-                        (education, index) => {
-                          // Extract the year or year range using regex
-                          const match = education.match(
-                            /(\d{4}(?:\s*[\s–-]\s*\d{4})?)$/
-                          );
-                          const year = match ? match[0].trim() : "-";
-                          return (
-                            <li
-                              key={index}
-                              className="fw-normal text-normal list-none"
-                            >
-                              {/* <span>{year}</span> */}
-                            </li>
-                          );
-                        }
-                      )}
-                </ul>
               </MDBCol>
             </MDBRow>
 
@@ -1511,7 +1460,7 @@ function ImageMobile({ title }) {
 }
 
 export default function Memberdetail() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

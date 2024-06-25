@@ -478,7 +478,7 @@ function ImageMobile({ title }) {
 }
 
 export default function ParticipateDetail() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

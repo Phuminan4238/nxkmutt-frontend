@@ -118,7 +118,7 @@ export default function HomeNav(props) {
   };
 
   const containerStyle2 = {
-    width: "180px", // Adjust the width to your desired size
+    width: "140px", // Adjust the width to your desired size
   };
 
   const logoStyle = {
@@ -658,12 +658,12 @@ export default function HomeNav(props) {
                     display: "flex",
                     flexGrow: 0,
                     flexDirection: "initial",
-                    gap: "3rem",
+                    gap: "2rem",
                   }}
                 >
                   <div
                     className="searchBox"
-                    style={{ top: "12%" }}
+                    style={{ top: "6%" }}
                     // style={{ border: "2px solid #AE023E" }}
                   >
                     <input
@@ -700,10 +700,11 @@ export default function HomeNav(props) {
 
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "1.6rem" }}
+                      style={{ color: "#AE023E", marginRight: "2rem" }}
                     />
                     <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
                   </span>
+
                   <Tooltip title="Open settings">
                     <IconButton
                       color="black"
@@ -854,12 +855,12 @@ export default function HomeNav(props) {
                     display: "flex",
                     flexGrow: 0,
                     flexDirection: "initial",
-                    gap: "3rem",
+                    gap: "2rem",
                   }}
                 >
                   <div
                     className="searchBox"
-                    style={{ top: "12%" }}
+                    style={{ top: "6%" }}
                     // style={{ border: "2px solid #AE023E" }}
                   >
                     <input
@@ -896,10 +897,11 @@ export default function HomeNav(props) {
 
                   <span onClick={toggleLanguage} style={{ cursor: "pointer" }}>
                     <LanguageIcon
-                      style={{ color: "#AE023E", marginRight: "1.6rem" }}
+                      style={{ color: "#AE023E", marginRight: "2rem" }}
                     />
                     <span> {selectedLanguage === "en" ? "EN" : "TH"} </span>
                   </span>
+
                   <Tooltip title="Open settings">
                     <IconButton
                       color="black"
@@ -910,15 +912,16 @@ export default function HomeNav(props) {
                     </IconButton>
                   </Tooltip>
                   <Menu
-                    style={{ opacity: 0.9 }}
+                    // style={{ opacity: 0.7 }}
                     sx={{
-                      mt: "60px",
-                      left: "30px",
+                      mt: "76px",
+                      left: "48px",
                       width: drawerWidth,
                       flexShrink: 0,
                       "& .MuiDrawer-paper": {
                         width: drawerWidth,
                       },
+                      opacity: "0.9",
                     }}
                     id="menu-appbar"
                     anchorEl={anchorElUser}
@@ -934,7 +937,7 @@ export default function HomeNav(props) {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {pages.map((page) => (
+                    {pages.map((page, index) => (
                       <Link
                         to={
                           page === "TOOLS & SERVICES"
@@ -945,7 +948,14 @@ export default function HomeNav(props) {
                             ? "/participate-and-donate"
                             : `/${page.replace(/\s+/g, "-").toLowerCase()}`
                         }
-                        style={{ color: "inherit" }}
+                        // style={{ color: "black" }}
+                        sx={{
+                          color: "black",
+                          ":hover": {
+                            color: "white",
+                          },
+                        }}
+                        key={page}
                       >
                         <MenuItem
                           style={{
@@ -954,13 +964,11 @@ export default function HomeNav(props) {
                             height: "60px",
                             borderBottom: "1px solid gray",
                           }}
-                          key={page}
                           onClick={handleCloseUserMenu}
                           sx={{
                             color: "black",
                             ":hover": {
                               color: "white",
-
                               bgcolor: "#AE023E",
                               opacity: "100%",
                               "& a, & > a": {
@@ -970,21 +978,14 @@ export default function HomeNav(props) {
                             fontWeight: "bold",
                             padding: "10px 20px 10px 20px",
                             borderBottom: "1px solid white",
-                            color: "inherit", // set default link color to black
                           }}
                         >
                           <a
                             textAlign="center"
-                            // to={`/${page}`}
                             sx={{
                               fontWeight: "bold",
                               padding: "20px",
-
-                              ":hover": {
-                                "& a, & > a": {
-                                  color: "white",
-                                },
-                              },
+                              // color: "inherit",
                             }}
                           >
                             {page}
@@ -1002,7 +1003,7 @@ export default function HomeNav(props) {
     );
   };
 
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

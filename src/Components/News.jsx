@@ -290,7 +290,7 @@ export default function News() {
   const isHomePage = location.pathname === "/";
 
   // Define the isMobile state using useMediaQuery
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   const { selectedLanguage, handleLanguageSwitch } =
     useContext(LanguageContext);

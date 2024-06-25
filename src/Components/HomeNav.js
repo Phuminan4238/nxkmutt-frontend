@@ -116,7 +116,7 @@ export default function HomeNav(props) {
   };
 
   const containerStyle2 = {
-    width: "180px", // Adjust the width to your desired size
+    width: "140px", // Adjust the width to your desired size
   };
 
   const logoStyle = {
@@ -668,7 +668,7 @@ export default function HomeNav(props) {
                 >
                   <div
                     className="searchBox"
-                    style={{ top: "12%" }}
+                    style={{ top: "6%" }}
                     // style={{ border: "2px solid #AE023E" }}
                   >
                     <input
@@ -904,7 +904,7 @@ export default function HomeNav(props) {
                     gap: "3rem",
                   }}
                 >
-                  <div className="searchBox" style={{ top: "12%" }}>
+                  <div className="searchBox" style={{ top: "6%" }}>
                     <input
                       className="searchInput"
                       type="text"
@@ -1052,7 +1052,7 @@ export default function HomeNav(props) {
     );
   };
 
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

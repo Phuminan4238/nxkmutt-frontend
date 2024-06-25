@@ -168,12 +168,12 @@ function ImageDesktop({ title }) {
             <MDBRow className="pt-0 pb-0 px-4">
               <MDBCol className="d-flex ps-0 pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
-                  <h1
+                  <h2
                     className="fw-bolder pt-4"
                     style={{ color: "#AE023E", fontFamily: "MyFont" }}
                   >
                     {uploadfiles.attributes?.name_en || "-"}
-                  </h1>
+                  </h2>
                 </div>
               </MDBCol>
               <MDBCol md="4" className="p-0">
@@ -515,7 +515,7 @@ function ImageMobile({ title }) {
 }
 
 export default function ToolsDetail() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
   return (
     <>

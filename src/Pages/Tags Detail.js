@@ -148,25 +148,22 @@ function ImageDesktop({ title }) {
               </MDBCol>
             </MDBRow>
           </MDBContainer>
+
           {/* Container  */}
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
+          <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="pt-0 pb-0 xs:px-5 ">
               <MDBCol className="d-flex ps-0 pb-0 pe-5">
                 <div className="d-flex flex-column w-100">
-                  <p
-                    className="fw-bolder pt-4 xs:text-xl sm:text-4xl"
-                    style={{
-                      color: "#AE023E",
-                      fontFamily: "MyFont",
-                      lineHeight: "1.6",
-                    }}
+                  <h2
+                    className="fw-bolder pt-4"
+                    style={{ color: "#AE023E", fontFamily: "MyFont" }}
                   >
                     {selectedLanguage === "en"
                       ? `${tags.attributes?.header_en || ""} 
                       `
                       : `${tags.attributes?.header_th || ""} 
                       `}
-                  </p>
+                  </h2>
                 </div>
               </MDBCol>
               <MDBCol md="7" className="p-0">
@@ -198,8 +195,8 @@ function ImageDesktop({ title }) {
           </MDBContainer>
         </section>
         <section>
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
+          <MDBContainer className="container pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
+            <MDBRow className="row pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 px-0">
                 {tags.attributes?.content_en_markdown ? (
@@ -362,7 +359,7 @@ function ImageMobile({ title }) {
         <section style={{ borderTop: "1px solid black", marginTop: "1.5rem" }}>
           <MDBContainer className="pt-5 xs:max-w-full sm:max-w-5xl sm:px-5 md:px-0 ">
             {/* Title */}
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-5 md:px-0">
+            <MDBRow className="row pt-0 pb-0 px-3">
               <MDBCol
                 className="col-2 text-uppercase fw-bold pt-1 sm:pb-0"
                 style={{
@@ -408,9 +405,9 @@ function ImageMobile({ title }) {
             </MDBRow>
           </MDBContainer>
           {/* Container  */}
-          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
-              <MDBCol className="d-flex ps-0 pb-0 pe-5">
+          <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-5 xs:px-5 ">
+            <MDBRow className="row pt-0 pb-0 px-4">
+              <MDBCol className="d-flex ps-0 pb-0 pe-0">
                 <div className="d-flex flex-column w-100">
                   <p
                     className="fw-bolder pt-4 xs:text-lg sm:text-4xl"
@@ -458,7 +455,7 @@ function ImageMobile({ title }) {
         </section>
         <section>
           <MDBContainer className="xs:max-w-full sm:max-w-5xl pt-2 xs:px-5 sm:px-1">
-            <MDBRow className="pt-0 pb-0 xs:px-5 sm:px-1">
+            <MDBRow className="row pt-0 pb-0 px-4">
               {/* Current Affiliations */}
               <MDBRow className="pt-4 px-0">
                 <p>
@@ -520,7 +517,7 @@ function ImageMobile({ title }) {
 }
 
 export default function TagsDetail() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

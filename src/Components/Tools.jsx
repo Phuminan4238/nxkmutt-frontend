@@ -238,12 +238,12 @@ function ImageDesktop({ members }) {
       slidesToSlide: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 768 },
+      breakpoint: { max: 1024, min: 760 },
       items: 2,
       slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 768, min: 0 },
+      breakpoint: { max: 760, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -449,12 +449,12 @@ function ImageMobile({ members }) {
       slidesToSlide: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 768 },
+      breakpoint: { max: 1024, min: 760 },
       items: 2,
       slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 768, min: 0 },
+      breakpoint: { max: 760, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -511,7 +511,7 @@ function ImageMobile({ members }) {
 }
 
 export default function ToolsImage() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
   return (
     <>
       {/* Mobile  */}

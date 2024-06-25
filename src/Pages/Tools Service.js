@@ -451,7 +451,7 @@ const ImageMobile = () => {
 };
 
 export default function Toolservice() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

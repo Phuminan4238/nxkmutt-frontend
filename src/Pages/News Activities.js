@@ -515,7 +515,7 @@ const ImageMobile = () => {
 };
 
 export default function Newsactivities() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

@@ -365,7 +365,7 @@ function Image({ members }) {
                         <MDBCardText className="mb-2">
                           <p
                             className="fw-normal text-center mb-0 xs:text-xs md:text-md"
-                            style={{ color: "black", }}
+                            style={{ color: "black" }}
                           >
                             {selectedLanguage === "en"
                               ? `${member.attributes.position_en} `
@@ -399,7 +399,7 @@ function Image({ members }) {
 }
 
 export default function MemberDetailimage() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>

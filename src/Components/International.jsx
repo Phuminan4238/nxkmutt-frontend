@@ -299,7 +299,7 @@ function ImageMobile({ members }) {
 }
 
 export default function International() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
     <>
